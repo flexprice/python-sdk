@@ -1,0 +1,36 @@
+# DtoCreateEntitlementRequest
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**feature_id** | **str** |  | 
+**feature_type** | [**TypesFeatureType**](TypesFeatureType.md) |  | 
+**is_enabled** | **bool** |  | [optional] 
+**is_soft_limit** | **bool** |  | [optional] 
+**plan_id** | **str** |  | [optional] 
+**static_value** | **str** |  | [optional] 
+**usage_limit** | **int** |  | [optional] 
+**usage_reset_period** | [**TypesBillingPeriod**](TypesBillingPeriod.md) |  | [optional] 
+
+## Example
+
+```python
+from flexprice_client.models.dto_create_entitlement_request import DtoCreateEntitlementRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of DtoCreateEntitlementRequest from a JSON string
+dto_create_entitlement_request_instance = DtoCreateEntitlementRequest.from_json(json)
+# print the JSON string representation of the object
+print(DtoCreateEntitlementRequest.to_json())
+
+# convert the object into a dict
+dto_create_entitlement_request_dict = dto_create_entitlement_request_instance.to_dict()
+# create an instance of DtoCreateEntitlementRequest from a dict
+dto_create_entitlement_request_from_dict = DtoCreateEntitlementRequest.from_dict(dto_create_entitlement_request_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
