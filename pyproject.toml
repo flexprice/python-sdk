@@ -7,7 +7,7 @@ license = "Apache 2.0"
 readme = "README.md"
 repository = "https://github.com/flexprice/python-sdk"
 keywords = ["FlexPrice", "Billing", "Usage-based Billing", "Usage-based Pricing"]
-include = ["flexprice_client/py.typed"]
+include = ["flexprice/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -35,7 +35,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "flexprice_client",
+  "flexprice",
   #"test",  # auto-generated tests
   "tests", # hand-written tests
 ]
@@ -73,7 +73,7 @@ disallow_any_generics = true
 
 [[tool.mypy.overrides]]
 module = [
-  "flexprice_client.configuration",
+  "flexprice.configuration",
 ]
 warn_unused_ignores = true
 strict_equality = true
