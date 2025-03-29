@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_invoice_line_item_response import DtoInvoiceLineItemResponse
+from flexprice.models.dto_invoice_line_item_response import DtoInvoiceLineItemResponse
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.errors_error_response import ErrorsErrorResponse
+from flexprice.models.errors_error_response import ErrorsErrorResponse
 
 # TODO update the JSON string below
 json = "{}"

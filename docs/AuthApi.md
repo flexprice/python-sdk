@@ -1,4 +1,4 @@
-# flexprice_client.AuthApi
+# flexprice.AuthApi
 
 All URIs are relative to */v1*
 
@@ -19,24 +19,24 @@ Login a user
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_auth_response import DtoAuthResponse
-from flexprice_client.models.dto_login_request import DtoLoginRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_auth_response import DtoAuthResponse
+from flexprice.models.dto_login_request import DtoLoginRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.AuthApi(api_client)
-    login = flexprice_client.DtoLoginRequest() # DtoLoginRequest | Login request
+    api_instance = flexprice.AuthApi(api_client)
+    login = flexprice.DtoLoginRequest() # DtoLoginRequest | Login request
 
     try:
         # Login
@@ -89,24 +89,24 @@ Sign up a new user
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_auth_response import DtoAuthResponse
-from flexprice_client.models.dto_sign_up_request import DtoSignUpRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_auth_response import DtoAuthResponse
+from flexprice.models.dto_sign_up_request import DtoSignUpRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.AuthApi(api_client)
-    signup = flexprice_client.DtoSignUpRequest() # DtoSignUpRequest | Sign up request
+    api_instance = flexprice.AuthApi(api_client)
+    signup = flexprice.DtoSignUpRequest() # DtoSignUpRequest | Sign up request
 
     try:
         # Sign up

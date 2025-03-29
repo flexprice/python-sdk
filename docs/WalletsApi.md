@@ -1,4 +1,4 @@
-# flexprice_client.WalletsApi
+# flexprice.WalletsApi
 
 All URIs are relative to */v1*
 
@@ -26,14 +26,14 @@ Get all wallets for a customer
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_wallet_response import DtoWalletResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -49,9 +49,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Customer ID
 
     try:
@@ -107,14 +107,14 @@ Get real-time balance of a wallet
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_wallet_balance_response import DtoWalletBalanceResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_wallet_balance_response import DtoWalletBalanceResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -130,9 +130,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Wallet ID
 
     try:
@@ -189,14 +189,14 @@ Get a wallet by its ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_wallet_response import DtoWalletResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -212,9 +212,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Wallet ID
 
     try:
@@ -270,25 +270,25 @@ Update a wallet's details including auto top-up configuration
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_update_wallet_request import DtoUpdateWalletRequest
-from flexprice_client.models.dto_wallet_response import DtoWalletResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_update_wallet_request import DtoUpdateWalletRequest
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Wallet ID
-    request = flexprice_client.DtoUpdateWalletRequest() # DtoUpdateWalletRequest | Update wallet request
+    request = flexprice.DtoUpdateWalletRequest() # DtoUpdateWalletRequest | Update wallet request
 
     try:
         # Update a wallet
@@ -344,22 +344,22 @@ Terminates a wallet by closing it and debiting remaining balance
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_wallet_response import DtoWalletResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Wallet ID
 
     try:
@@ -416,15 +416,15 @@ Add credits to a wallet
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_top_up_wallet_request import DtoTopUpWalletRequest
-from flexprice_client.models.dto_wallet_response import DtoWalletResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_top_up_wallet_request import DtoTopUpWalletRequest
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -440,11 +440,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Wallet ID
-    request = flexprice_client.DtoTopUpWalletRequest() # DtoTopUpWalletRequest | Top up request
+    request = flexprice.DtoTopUpWalletRequest() # DtoTopUpWalletRequest | Top up request
 
     try:
         # Top up wallet
@@ -501,14 +501,14 @@ Get transactions for a wallet with pagination
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_wallet_transactions_response import DtoListWalletTransactionsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_wallet_transactions_response import DtoListWalletTransactionsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -524,9 +524,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
+    api_instance = flexprice.WalletsApi(api_client)
     id = 'id_example' # str | Wallet ID
     credits_available_gt = 3.4 # float |  (optional)
     end_time = 'end_time_example' # str |  (optional)
@@ -617,15 +617,15 @@ Create a new wallet for a customer
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_wallet_request import DtoCreateWalletRequest
-from flexprice_client.models.dto_wallet_response import DtoWalletResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_wallet_request import DtoCreateWalletRequest
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -641,10 +641,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.WalletsApi(api_client)
-    request = flexprice_client.DtoCreateWalletRequest() # DtoCreateWalletRequest | Create wallet request
+    api_instance = flexprice.WalletsApi(api_client)
+    request = flexprice.DtoCreateWalletRequest() # DtoCreateWalletRequest | Create wallet request
 
     try:
         # Create a new wallet

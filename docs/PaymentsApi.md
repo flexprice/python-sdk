@@ -1,4 +1,4 @@
-# flexprice_client.PaymentsApi
+# flexprice.PaymentsApi
 
 All URIs are relative to */v1*
 
@@ -24,14 +24,14 @@ List payments with the specified filter
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_payments_response import DtoListPaymentsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_payments_response import DtoListPaymentsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -47,9 +47,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PaymentsApi(api_client)
+    api_instance = flexprice.PaymentsApi(api_client)
     currency = 'currency_example' # str |  (optional)
     destination_id = 'destination_id_example' # str |  (optional)
     destination_type = 'destination_type_example' # str |  (optional)
@@ -133,13 +133,13 @@ Delete a payment
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -155,9 +155,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PaymentsApi(api_client)
+    api_instance = flexprice.PaymentsApi(api_client)
     id = 'id_example' # str | Payment ID
 
     try:
@@ -213,14 +213,14 @@ Get a payment by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_payment_response import DtoPaymentResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_payment_response import DtoPaymentResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -236,9 +236,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PaymentsApi(api_client)
+    api_instance = flexprice.PaymentsApi(api_client)
     id = 'id_example' # str | Payment ID
 
     try:
@@ -294,14 +294,14 @@ Process a payment
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_payment_response import DtoPaymentResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_payment_response import DtoPaymentResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -317,9 +317,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PaymentsApi(api_client)
+    api_instance = flexprice.PaymentsApi(api_client)
     id = 'id_example' # str | Payment ID
 
     try:
@@ -375,15 +375,15 @@ Update a payment with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_payment_response import DtoPaymentResponse
-from flexprice_client.models.dto_update_payment_request import DtoUpdatePaymentRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_payment_response import DtoPaymentResponse
+from flexprice.models.dto_update_payment_request import DtoUpdatePaymentRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -399,11 +399,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PaymentsApi(api_client)
+    api_instance = flexprice.PaymentsApi(api_client)
     id = 'id_example' # str | Payment ID
-    payment = flexprice_client.DtoUpdatePaymentRequest() # DtoUpdatePaymentRequest | Payment configuration
+    payment = flexprice.DtoUpdatePaymentRequest() # DtoUpdatePaymentRequest | Payment configuration
 
     try:
         # Update a payment
@@ -459,15 +459,15 @@ Create a new payment with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_payment_request import DtoCreatePaymentRequest
-from flexprice_client.models.dto_payment_response import DtoPaymentResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_payment_request import DtoCreatePaymentRequest
+from flexprice.models.dto_payment_response import DtoPaymentResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -483,10 +483,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PaymentsApi(api_client)
-    payment = flexprice_client.DtoCreatePaymentRequest() # DtoCreatePaymentRequest | Payment configuration
+    api_instance = flexprice.PaymentsApi(api_client)
+    payment = flexprice.DtoCreatePaymentRequest() # DtoCreatePaymentRequest | Payment configuration
 
     try:
         # Create a new payment

@@ -1,4 +1,4 @@
-# flexprice_client.EntitlementsApi
+# flexprice.EntitlementsApi
 
 All URIs are relative to */v1*
 
@@ -24,14 +24,14 @@ Get entitlements with the specified filter
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_entitlements_response import DtoListEntitlementsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_entitlements_response import DtoListEntitlementsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -47,9 +47,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EntitlementsApi(api_client)
+    api_instance = flexprice.EntitlementsApi(api_client)
     end_time = 'end_time_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
     feature_ids = ['feature_ids_example'] # List[str] |  (optional)
@@ -127,13 +127,13 @@ Delete an entitlement
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -149,9 +149,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EntitlementsApi(api_client)
+    api_instance = flexprice.EntitlementsApi(api_client)
     id = 'id_example' # str | Entitlement ID
 
     try:
@@ -207,14 +207,14 @@ Get an entitlement by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_entitlement_response import DtoEntitlementResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_entitlement_response import DtoEntitlementResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -230,9 +230,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EntitlementsApi(api_client)
+    api_instance = flexprice.EntitlementsApi(api_client)
     id = 'id_example' # str | Entitlement ID
 
     try:
@@ -288,15 +288,15 @@ Update an entitlement with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_entitlement_response import DtoEntitlementResponse
-from flexprice_client.models.dto_update_entitlement_request import DtoUpdateEntitlementRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_entitlement_response import DtoEntitlementResponse
+from flexprice.models.dto_update_entitlement_request import DtoUpdateEntitlementRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -312,11 +312,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EntitlementsApi(api_client)
+    api_instance = flexprice.EntitlementsApi(api_client)
     id = 'id_example' # str | Entitlement ID
-    entitlement = flexprice_client.DtoUpdateEntitlementRequest() # DtoUpdateEntitlementRequest | Entitlement configuration
+    entitlement = flexprice.DtoUpdateEntitlementRequest() # DtoUpdateEntitlementRequest | Entitlement configuration
 
     try:
         # Update an entitlement
@@ -372,15 +372,15 @@ Create a new entitlement with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_entitlement_request import DtoCreateEntitlementRequest
-from flexprice_client.models.dto_entitlement_response import DtoEntitlementResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_entitlement_request import DtoCreateEntitlementRequest
+from flexprice.models.dto_entitlement_response import DtoEntitlementResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -396,10 +396,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EntitlementsApi(api_client)
-    entitlement = flexprice_client.DtoCreateEntitlementRequest() # DtoCreateEntitlementRequest | Entitlement configuration
+    api_instance = flexprice.EntitlementsApi(api_client)
+    entitlement = flexprice.DtoCreateEntitlementRequest() # DtoCreateEntitlementRequest | Entitlement configuration
 
     try:
         # Create a new entitlement
@@ -454,14 +454,14 @@ Get all entitlements for a plan
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_plan_response import DtoPlanResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_plan_response import DtoPlanResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -477,9 +477,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EntitlementsApi(api_client)
+    api_instance = flexprice.EntitlementsApi(api_client)
     id = 'id_example' # str | Plan ID
 
     try:

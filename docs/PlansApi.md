@@ -1,4 +1,4 @@
-# flexprice_client.PlansApi
+# flexprice.PlansApi
 
 All URIs are relative to */v1*
 
@@ -23,14 +23,14 @@ Get plans with optional filtering
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_plans_response import DtoListPlansResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_plans_response import DtoListPlansResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -46,9 +46,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PlansApi(api_client)
+    api_instance = flexprice.PlansApi(api_client)
     end_time = 'end_time_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
     limit = 56 # int |  (optional)
@@ -120,13 +120,13 @@ Delete a plan by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -142,9 +142,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PlansApi(api_client)
+    api_instance = flexprice.PlansApi(api_client)
     id = 'id_example' # str | Plan ID
 
     try:
@@ -201,14 +201,14 @@ Get a plan by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_plan_response import DtoPlanResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_plan_response import DtoPlanResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -224,9 +224,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PlansApi(api_client)
+    api_instance = flexprice.PlansApi(api_client)
     id = 'id_example' # str | Plan ID
 
     try:
@@ -283,15 +283,15 @@ Update a plan by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_plan_response import DtoPlanResponse
-from flexprice_client.models.dto_update_plan_request import DtoUpdatePlanRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_plan_response import DtoPlanResponse
+from flexprice.models.dto_update_plan_request import DtoUpdatePlanRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -307,11 +307,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PlansApi(api_client)
+    api_instance = flexprice.PlansApi(api_client)
     id = 'id_example' # str | Plan ID
-    plan = flexprice_client.DtoUpdatePlanRequest() # DtoUpdatePlanRequest | Plan update
+    plan = flexprice.DtoUpdatePlanRequest() # DtoUpdatePlanRequest | Plan update
 
     try:
         # Update a plan
@@ -368,15 +368,15 @@ Create a new plan with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_plan_request import DtoCreatePlanRequest
-from flexprice_client.models.dto_plan_response import DtoPlanResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_plan_request import DtoCreatePlanRequest
+from flexprice.models.dto_plan_response import DtoPlanResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -392,10 +392,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PlansApi(api_client)
-    plan = flexprice_client.DtoCreatePlanRequest() # DtoCreatePlanRequest | Plan configuration
+    api_instance = flexprice.PlansApi(api_client)
+    plan = flexprice.DtoCreatePlanRequest() # DtoCreatePlanRequest | Plan configuration
 
     try:
         # Create a new plan

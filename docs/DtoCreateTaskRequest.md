@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_create_task_request import DtoCreateTaskRequest
+from flexprice.models.dto_create_task_request import DtoCreateTaskRequest
 
 # TODO update the JSON string below
 json = "{}"

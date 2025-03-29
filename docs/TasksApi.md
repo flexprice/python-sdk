@@ -1,4 +1,4 @@
-# flexprice_client.TasksApi
+# flexprice.TasksApi
 
 All URIs are relative to */v1*
 
@@ -22,22 +22,22 @@ List tasks with optional filtering
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_tasks_response import DtoListTasksResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_tasks_response import DtoListTasksResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.TasksApi(api_client)
+    api_instance = flexprice.TasksApi(api_client)
     created_by = 'created_by_example' # str |  (optional)
     end_time = 'end_time_example' # str |  (optional)
     entity_type = 'entity_type_example' # str |  (optional)
@@ -114,22 +114,22 @@ Get detailed information about a task
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_task_response import DtoTaskResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_task_response import DtoTaskResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.TasksApi(api_client)
+    api_instance = flexprice.TasksApi(api_client)
     id = 'id_example' # str | Task ID
 
     try:
@@ -184,21 +184,21 @@ Start processing a task
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.TasksApi(api_client)
+    api_instance = flexprice.TasksApi(api_client)
     id = 'id_example' # str | Task ID
 
     try:
@@ -254,25 +254,25 @@ Update the status of a task
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_task_response import DtoTaskResponse
-from flexprice_client.models.dto_update_task_status_request import DtoUpdateTaskStatusRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_task_response import DtoTaskResponse
+from flexprice.models.dto_update_task_status_request import DtoUpdateTaskStatusRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.TasksApi(api_client)
+    api_instance = flexprice.TasksApi(api_client)
     id = 'id_example' # str | Task ID
-    status = flexprice_client.DtoUpdateTaskStatusRequest() # DtoUpdateTaskStatusRequest | New status
+    status = flexprice.DtoUpdateTaskStatusRequest() # DtoUpdateTaskStatusRequest | New status
 
     try:
         # Update task status
@@ -328,24 +328,24 @@ Create a new import/export task
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_task_request import DtoCreateTaskRequest
-from flexprice_client.models.dto_task_response import DtoTaskResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_task_request import DtoCreateTaskRequest
+from flexprice.models.dto_task_response import DtoTaskResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.TasksApi(api_client)
-    task = flexprice_client.DtoCreateTaskRequest() # DtoCreateTaskRequest | Task details
+    api_instance = flexprice.TasksApi(api_client)
+    task = flexprice.DtoCreateTaskRequest() # DtoCreateTaskRequest | Task details
 
     try:
         # Create a new task

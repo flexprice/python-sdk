@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.types_wallet_config import TypesWalletConfig
+from flexprice.models.types_wallet_config import TypesWalletConfig
 
 # TODO update the JSON string below
 json = "{}"

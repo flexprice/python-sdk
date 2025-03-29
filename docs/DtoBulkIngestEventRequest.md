@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_bulk_ingest_event_request import DtoBulkIngestEventRequest
+from flexprice.models.dto_bulk_ingest_event_request import DtoBulkIngestEventRequest
 
 # TODO update the JSON string below
 json = "{}"

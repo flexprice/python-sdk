@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_top_up_wallet_request import DtoTopUpWalletRequest
+from flexprice.models.dto_top_up_wallet_request import DtoTopUpWalletRequest
 
 # TODO update the JSON string below
 json = "{}"

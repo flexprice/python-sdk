@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_subscription_pause_response import DtoSubscriptionPauseResponse
+from flexprice.models.dto_subscription_pause_response import DtoSubscriptionPauseResponse
 
 # TODO update the JSON string below
 json = "{}"

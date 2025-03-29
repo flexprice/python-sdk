@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.meter_aggregation import MeterAggregation
+from flexprice.models.meter_aggregation import MeterAggregation
 
 # TODO update the JSON string below
 json = "{}"

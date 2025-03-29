@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_create_subscription_request import DtoCreateSubscriptionRequest
+from flexprice.models.dto_create_subscription_request import DtoCreateSubscriptionRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_create_price_tier import DtoCreatePriceTier
+from flexprice.models.dto_create_price_tier import DtoCreatePriceTier
 
 # TODO update the JSON string below
 json = "{}"

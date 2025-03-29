@@ -1,4 +1,4 @@
-# flexprice_client.SecretsApi
+# flexprice.SecretsApi
 
 All URIs are relative to */v1*
 
@@ -20,22 +20,22 @@ Get a paginated list of API keys
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_secrets_response import DtoListSecretsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_secrets_response import DtoListSecretsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SecretsApi(api_client)
+    api_instance = flexprice.SecretsApi(api_client)
     limit = 56 # int | Limit (optional)
     offset = 56 # int | Offset (optional)
     status = 'status_example' # str | Status (published/archived) (optional)
@@ -94,21 +94,21 @@ Delete an API key by ID
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SecretsApi(api_client)
+    api_instance = flexprice.SecretsApi(api_client)
     id = 'id_example' # str | API key ID
 
     try:
@@ -161,24 +161,24 @@ Create a new API key with the specified type and permissions
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_api_key_request import DtoCreateAPIKeyRequest
-from flexprice_client.models.dto_create_api_key_response import DtoCreateAPIKeyResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_api_key_request import DtoCreateAPIKeyRequest
+from flexprice.models.dto_create_api_key_response import DtoCreateAPIKeyResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SecretsApi(api_client)
-    request = flexprice_client.DtoCreateAPIKeyRequest() # DtoCreateAPIKeyRequest | API key creation request
+    api_instance = flexprice.SecretsApi(api_client)
+    request = flexprice.DtoCreateAPIKeyRequest() # DtoCreateAPIKeyRequest | API key creation request
 
     try:
         # Create a new API key

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.price_jsonb_transform_quantity import PriceJSONBTransformQuantity
+from flexprice.models.price_jsonb_transform_quantity import PriceJSONBTransformQuantity
 
 # TODO update the JSON string below
 json = "{}"

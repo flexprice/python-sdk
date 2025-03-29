@@ -1,4 +1,4 @@
-# flexprice_client.InvoicesApi
+# flexprice.InvoicesApi
 
 All URIs are relative to */v1*
 
@@ -28,14 +28,14 @@ Get a customer invoice summary
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_customer_multi_currency_invoice_summary import DtoCustomerMultiCurrencyInvoiceSummary
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_customer_multi_currency_invoice_summary import DtoCustomerMultiCurrencyInvoiceSummary
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -51,9 +51,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Customer ID
 
     try:
@@ -108,22 +108,22 @@ List invoices with optional filtering
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_invoices_response import DtoListInvoicesResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_invoices_response import DtoListInvoicesResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     amount_due_gt = 3.4 # float |  (optional)
     amount_remaining_gt = 3.4 # float |  (optional)
     customer_id = 'customer_id_example' # str |  (optional)
@@ -206,21 +206,21 @@ Finalize a draft invoice
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
 
     try:
@@ -275,22 +275,22 @@ Get detailed information about an invoice
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_invoice_response import DtoInvoiceResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_invoice_response import DtoInvoiceResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
 
     try:
@@ -345,21 +345,21 @@ Attempt to pay an invoice using customer's available wallets
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
 
     try:
@@ -416,15 +416,15 @@ Update the payment status of an invoice
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_invoice_response import DtoInvoiceResponse
-from flexprice_client.models.dto_update_payment_status_request import DtoUpdatePaymentStatusRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_invoice_response import DtoInvoiceResponse
+from flexprice.models.dto_update_payment_status_request import DtoUpdatePaymentStatusRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -440,11 +440,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
-    request = flexprice_client.DtoUpdatePaymentStatusRequest() # DtoUpdatePaymentStatusRequest | Payment Status Update Request
+    request = flexprice.DtoUpdatePaymentStatusRequest() # DtoUpdatePaymentStatusRequest | Payment Status Update Request
 
     try:
         # Update invoice payment status
@@ -500,21 +500,21 @@ Retrieve the PDF document for a specific invoice by its ID
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
 
     try:
@@ -570,21 +570,21 @@ Void an invoice that hasn't been paid
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
+    api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
 
     try:
@@ -639,24 +639,24 @@ Create a new invoice with the provided details
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_invoice_request import DtoCreateInvoiceRequest
-from flexprice_client.models.dto_invoice_response import DtoInvoiceResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_invoice_request import DtoCreateInvoiceRequest
+from flexprice.models.dto_invoice_response import DtoInvoiceResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
-    invoice = flexprice_client.DtoCreateInvoiceRequest() # DtoCreateInvoiceRequest | Invoice details
+    api_instance = flexprice.InvoicesApi(api_client)
+    invoice = flexprice.DtoCreateInvoiceRequest() # DtoCreateInvoiceRequest | Invoice details
 
     try:
         # Create a new invoice
@@ -710,24 +710,24 @@ Get a preview invoice
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_get_preview_invoice_request import DtoGetPreviewInvoiceRequest
-from flexprice_client.models.dto_invoice_response import DtoInvoiceResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_get_preview_invoice_request import DtoGetPreviewInvoiceRequest
+from flexprice.models.dto_invoice_response import DtoInvoiceResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.InvoicesApi(api_client)
-    request = flexprice_client.DtoGetPreviewInvoiceRequest() # DtoGetPreviewInvoiceRequest | Preview Invoice Request
+    api_instance = flexprice.InvoicesApi(api_client)
+    request = flexprice.DtoGetPreviewInvoiceRequest() # DtoGetPreviewInvoiceRequest | Preview Invoice Request
 
     try:
         # Get a preview invoice

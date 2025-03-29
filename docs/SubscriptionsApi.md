@@ -1,4 +1,4 @@
-# flexprice_client.SubscriptionsApi
+# flexprice.SubscriptionsApi
 
 All URIs are relative to */v1*
 
@@ -26,14 +26,14 @@ Get subscriptions with optional filtering
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_subscriptions_response import DtoListSubscriptionsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_subscriptions_response import DtoListSubscriptionsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -49,9 +49,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
+    api_instance = flexprice.SubscriptionsApi(api_client)
     active_at = 'active_at_example' # str | ActiveAt filters subscriptions that are active at the given time (optional)
     billing_cadence = ['billing_cadence_example'] # List[str] | BillingCadence filters by billing cadence (optional)
     billing_period = ['billing_period_example'] # List[str] | BillingPeriod filters by billing period (optional)
@@ -137,13 +137,13 @@ Cancel a subscription
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -159,9 +159,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
+    api_instance = flexprice.SubscriptionsApi(api_client)
     id = 'id_example' # str | Subscription ID
     cancel_at_period_end = True # bool | Cancel at period end (optional)
 
@@ -219,14 +219,14 @@ Get a subscription by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_subscription_response import DtoSubscriptionResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_subscription_response import DtoSubscriptionResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -242,9 +242,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
+    api_instance = flexprice.SubscriptionsApi(api_client)
     id = 'id_example' # str | Subscription ID
 
     try:
@@ -299,25 +299,25 @@ Pause a subscription with the specified parameters
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_pause_subscription_request import DtoPauseSubscriptionRequest
-from flexprice_client.models.dto_subscription_pause_response import DtoSubscriptionPauseResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_pause_subscription_request import DtoPauseSubscriptionRequest
+from flexprice.models.dto_subscription_pause_response import DtoSubscriptionPauseResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
+    api_instance = flexprice.SubscriptionsApi(api_client)
     id = 'id_example' # str | Subscription ID
-    request = flexprice_client.DtoPauseSubscriptionRequest() # DtoPauseSubscriptionRequest | Pause subscription request
+    request = flexprice.DtoPauseSubscriptionRequest() # DtoPauseSubscriptionRequest | Pause subscription request
 
     try:
         # Pause a subscription
@@ -373,22 +373,22 @@ List all pauses for a subscription
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_subscription_pauses_response import DtoListSubscriptionPausesResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_subscription_pauses_response import DtoListSubscriptionPausesResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
+    api_instance = flexprice.SubscriptionsApi(api_client)
     id = 'id_example' # str | Subscription ID
 
     try:
@@ -444,25 +444,25 @@ Resume a paused subscription with the specified parameters
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_resume_subscription_request import DtoResumeSubscriptionRequest
-from flexprice_client.models.dto_subscription_pause_response import DtoSubscriptionPauseResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_resume_subscription_request import DtoResumeSubscriptionRequest
+from flexprice.models.dto_subscription_pause_response import DtoSubscriptionPauseResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
+    api_instance = flexprice.SubscriptionsApi(api_client)
     id = 'id_example' # str | Subscription ID
-    request = flexprice_client.DtoResumeSubscriptionRequest() # DtoResumeSubscriptionRequest | Resume subscription request
+    request = flexprice.DtoResumeSubscriptionRequest() # DtoResumeSubscriptionRequest | Resume subscription request
 
     try:
         # Resume a paused subscription
@@ -519,15 +519,15 @@ Create a new subscription
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_subscription_request import DtoCreateSubscriptionRequest
-from flexprice_client.models.dto_subscription_response import DtoSubscriptionResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_subscription_request import DtoCreateSubscriptionRequest
+from flexprice.models.dto_subscription_response import DtoSubscriptionResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -543,10 +543,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
-    subscription = flexprice_client.DtoCreateSubscriptionRequest() # DtoCreateSubscriptionRequest | Subscription Request
+    api_instance = flexprice.SubscriptionsApi(api_client)
+    subscription = flexprice.DtoCreateSubscriptionRequest() # DtoCreateSubscriptionRequest | Subscription Request
 
     try:
         # Create subscription
@@ -601,15 +601,15 @@ Get usage for a subscription
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_get_usage_by_subscription_request import DtoGetUsageBySubscriptionRequest
-from flexprice_client.models.dto_get_usage_by_subscription_response import DtoGetUsageBySubscriptionResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_get_usage_by_subscription_request import DtoGetUsageBySubscriptionRequest
+from flexprice.models.dto_get_usage_by_subscription_response import DtoGetUsageBySubscriptionResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -625,10 +625,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.SubscriptionsApi(api_client)
-    request = flexprice_client.DtoGetUsageBySubscriptionRequest() # DtoGetUsageBySubscriptionRequest | Usage request
+    api_instance = flexprice.SubscriptionsApi(api_client)
+    request = flexprice.DtoGetUsageBySubscriptionRequest() # DtoGetUsageBySubscriptionRequest | Usage request
 
     try:
         # Get usage by subscription

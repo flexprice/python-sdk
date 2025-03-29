@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_resume_subscription_request import DtoResumeSubscriptionRequest
+from flexprice.models.dto_resume_subscription_request import DtoResumeSubscriptionRequest
 
 # TODO update the JSON string below
 json = "{}"

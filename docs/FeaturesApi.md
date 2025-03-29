@@ -1,4 +1,4 @@
-# flexprice_client.FeaturesApi
+# flexprice.FeaturesApi
 
 All URIs are relative to */v1*
 
@@ -23,14 +23,14 @@ List features with optional filtering
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_features_response import DtoListFeaturesResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_features_response import DtoListFeaturesResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -46,9 +46,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.FeaturesApi(api_client)
+    api_instance = flexprice.FeaturesApi(api_client)
     end_time = 'end_time_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
     feature_ids = ['feature_ids_example'] # List[str] | Feature specific filters (optional)
@@ -124,13 +124,13 @@ Delete a feature by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -146,9 +146,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.FeaturesApi(api_client)
+    api_instance = flexprice.FeaturesApi(api_client)
     id = 'id_example' # str | Feature ID
 
     try:
@@ -205,14 +205,14 @@ Get a feature by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_feature_response import DtoFeatureResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_feature_response import DtoFeatureResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -228,9 +228,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.FeaturesApi(api_client)
+    api_instance = flexprice.FeaturesApi(api_client)
     id = 'id_example' # str | Feature ID
 
     try:
@@ -287,15 +287,15 @@ Update a feature by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_feature_response import DtoFeatureResponse
-from flexprice_client.models.dto_update_feature_request import DtoUpdateFeatureRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_feature_response import DtoFeatureResponse
+from flexprice.models.dto_update_feature_request import DtoUpdateFeatureRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -311,11 +311,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.FeaturesApi(api_client)
+    api_instance = flexprice.FeaturesApi(api_client)
     id = 'id_example' # str | Feature ID
-    feature = flexprice_client.DtoUpdateFeatureRequest() # DtoUpdateFeatureRequest | Feature update data
+    feature = flexprice.DtoUpdateFeatureRequest() # DtoUpdateFeatureRequest | Feature update data
 
     try:
         # Update a feature
@@ -372,15 +372,15 @@ Create a new feature
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_feature_request import DtoCreateFeatureRequest
-from flexprice_client.models.dto_feature_response import DtoFeatureResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_feature_request import DtoCreateFeatureRequest
+from flexprice.models.dto_feature_response import DtoFeatureResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -396,10 +396,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.FeaturesApi(api_client)
-    feature = flexprice_client.DtoCreateFeatureRequest() # DtoCreateFeatureRequest | Feature to create
+    api_instance = flexprice.FeaturesApi(api_client)
+    feature = flexprice.DtoCreateFeatureRequest() # DtoCreateFeatureRequest | Feature to create
 
     try:
         # Create a new feature

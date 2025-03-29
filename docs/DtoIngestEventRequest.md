@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_ingest_event_request import DtoIngestEventRequest
+from flexprice.models.dto_ingest_event_request import DtoIngestEventRequest
 
 # TODO update the JSON string below
 json = "{}"

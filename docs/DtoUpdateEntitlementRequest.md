@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_update_entitlement_request import DtoUpdateEntitlementRequest
+from flexprice.models.dto_update_entitlement_request import DtoUpdateEntitlementRequest
 
 # TODO update the JSON string below
 json = "{}"

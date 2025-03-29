@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_get_preview_invoice_request import DtoGetPreviewInvoiceRequest
+from flexprice.models.dto_get_preview_invoice_request import DtoGetPreviewInvoiceRequest
 
 # TODO update the JSON string below
 json = "{}"

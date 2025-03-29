@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.subscription_subscription_line_item import SubscriptionSubscriptionLineItem
+from flexprice.models.subscription_subscription_line_item import SubscriptionSubscriptionLineItem
 
 # TODO update the JSON string below
 json = "{}"

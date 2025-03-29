@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_event import DtoEvent
+from flexprice.models.dto_event import DtoEvent
 
 # TODO update the JSON string below
 json = "{}"

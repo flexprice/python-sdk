@@ -1,4 +1,4 @@
-# flexprice_client.EventsApi
+# flexprice.EventsApi
 
 All URIs are relative to */v1*
 
@@ -23,14 +23,14 @@ Ingest bulk events into the system
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_bulk_ingest_event_request import DtoBulkIngestEventRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_bulk_ingest_event_request import DtoBulkIngestEventRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -46,10 +46,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EventsApi(api_client)
-    event = flexprice_client.DtoBulkIngestEventRequest() # DtoBulkIngestEventRequest | Event data
+    api_instance = flexprice.EventsApi(api_client)
+    event = flexprice.DtoBulkIngestEventRequest() # DtoBulkIngestEventRequest | Event data
 
     try:
         # Bulk Ingest events
@@ -104,14 +104,14 @@ Retrieve raw events with pagination and filtering
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_get_events_response import DtoGetEventsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_get_events_response import DtoGetEventsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -127,9 +127,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EventsApi(api_client)
+    api_instance = flexprice.EventsApi(api_client)
     external_customer_id = 'external_customer_id_example' # str | External Customer ID (optional)
     event_name = 'event_name_example' # str | Event Name (optional)
     start_time = 'start_time_example' # str | Start Time (RFC3339) (optional)
@@ -197,14 +197,14 @@ Ingest a new event into the system
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_ingest_event_request import DtoIngestEventRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_ingest_event_request import DtoIngestEventRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -220,10 +220,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EventsApi(api_client)
-    event = flexprice_client.DtoIngestEventRequest() # DtoIngestEventRequest | Event data
+    api_instance = flexprice.EventsApi(api_client)
+    event = flexprice.DtoIngestEventRequest() # DtoIngestEventRequest | Event data
 
     try:
         # Ingest event
@@ -278,15 +278,15 @@ Retrieve aggregated usage statistics using meter configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_get_usage_by_meter_request import DtoGetUsageByMeterRequest
-from flexprice_client.models.dto_get_usage_response import DtoGetUsageResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_get_usage_by_meter_request import DtoGetUsageByMeterRequest
+from flexprice.models.dto_get_usage_response import DtoGetUsageResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -302,10 +302,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EventsApi(api_client)
-    request = flexprice_client.DtoGetUsageByMeterRequest() # DtoGetUsageByMeterRequest | Request body
+    api_instance = flexprice.EventsApi(api_client)
+    request = flexprice.DtoGetUsageByMeterRequest() # DtoGetUsageByMeterRequest | Request body
 
     try:
         # Get usage by meter
@@ -361,15 +361,15 @@ Retrieve aggregated usage statistics for events
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_get_usage_request import DtoGetUsageRequest
-from flexprice_client.models.dto_get_usage_response import DtoGetUsageResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_get_usage_request import DtoGetUsageRequest
+from flexprice.models.dto_get_usage_response import DtoGetUsageResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -385,10 +385,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EventsApi(api_client)
-    request = flexprice_client.DtoGetUsageRequest() # DtoGetUsageRequest | Request body
+    api_instance = flexprice.EventsApi(api_client)
+    request = flexprice.DtoGetUsageRequest() # DtoGetUsageRequest | Request body
 
     try:
         # Get usage statistics

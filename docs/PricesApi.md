@@ -1,4 +1,4 @@
-# flexprice_client.PricesApi
+# flexprice.PricesApi
 
 All URIs are relative to */v1*
 
@@ -23,14 +23,14 @@ Get prices with the specified filter
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_prices_response import DtoListPricesResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_prices_response import DtoListPricesResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -46,9 +46,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PricesApi(api_client)
+    api_instance = flexprice.PricesApi(api_client)
     end_time = 'end_time_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
     limit = 56 # int |  (optional)
@@ -122,13 +122,13 @@ Delete a price
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -144,9 +144,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PricesApi(api_client)
+    api_instance = flexprice.PricesApi(api_client)
     id = 'id_example' # str | Price ID
 
     try:
@@ -202,14 +202,14 @@ Get a price by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_price_response import DtoPriceResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_price_response import DtoPriceResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -225,9 +225,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PricesApi(api_client)
+    api_instance = flexprice.PricesApi(api_client)
     id = 'id_example' # str | Price ID
 
     try:
@@ -283,15 +283,15 @@ Update a price with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_price_response import DtoPriceResponse
-from flexprice_client.models.dto_update_price_request import DtoUpdatePriceRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_price_response import DtoPriceResponse
+from flexprice.models.dto_update_price_request import DtoUpdatePriceRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -307,11 +307,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PricesApi(api_client)
+    api_instance = flexprice.PricesApi(api_client)
     id = 'id_example' # str | Price ID
-    price = flexprice_client.DtoUpdatePriceRequest() # DtoUpdatePriceRequest | Price configuration
+    price = flexprice.DtoUpdatePriceRequest() # DtoUpdatePriceRequest | Price configuration
 
     try:
         # Update a price
@@ -367,15 +367,15 @@ Create a new price with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_price_request import DtoCreatePriceRequest
-from flexprice_client.models.dto_price_response import DtoPriceResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_price_request import DtoCreatePriceRequest
+from flexprice.models.dto_price_response import DtoPriceResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -391,10 +391,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.PricesApi(api_client)
-    price = flexprice_client.DtoCreatePriceRequest() # DtoCreatePriceRequest | Price configuration
+    api_instance = flexprice.PricesApi(api_client)
+    price = flexprice.DtoCreatePriceRequest() # DtoCreatePriceRequest | Price configuration
 
     try:
         # Create a new price

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_create_invoice_line_item_request import DtoCreateInvoiceLineItemRequest
+from flexprice.models.dto_create_invoice_line_item_request import DtoCreateInvoiceLineItemRequest
 
 # TODO update the JSON string below
 json = "{}"

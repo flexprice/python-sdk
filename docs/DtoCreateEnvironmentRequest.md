@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_create_environment_request import DtoCreateEnvironmentRequest
+from flexprice.models.dto_create_environment_request import DtoCreateEnvironmentRequest
 
 # TODO update the JSON string below
 json = "{}"

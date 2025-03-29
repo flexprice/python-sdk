@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from flexprice_client.models.dto_create_feature_request import DtoCreateFeatureRequest
+from flexprice.models.dto_create_feature_request import DtoCreateFeatureRequest
 
 # TODO update the JSON string below
 json = "{}"

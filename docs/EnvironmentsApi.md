@@ -1,4 +1,4 @@
-# flexprice_client.EnvironmentsApi
+# flexprice.EnvironmentsApi
 
 All URIs are relative to */v1*
 
@@ -22,14 +22,14 @@ Get environments
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_list_environments_response import DtoListEnvironmentsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_list_environments_response import DtoListEnvironmentsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -45,9 +45,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EnvironmentsApi(api_client)
+    api_instance = flexprice.EnvironmentsApi(api_client)
     expand = 'expand_example' # str |  (optional)
     limit = 56 # int |  (optional)
     offset = 56 # int |  (optional)
@@ -113,14 +113,14 @@ Get an environment
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_environment_response import DtoEnvironmentResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_environment_response import DtoEnvironmentResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -136,9 +136,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EnvironmentsApi(api_client)
+    api_instance = flexprice.EnvironmentsApi(api_client)
     id = 'id_example' # str | Environment ID
 
     try:
@@ -195,15 +195,15 @@ Update an environment
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_environment_response import DtoEnvironmentResponse
-from flexprice_client.models.dto_update_environment_request import DtoUpdateEnvironmentRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_environment_response import DtoEnvironmentResponse
+from flexprice.models.dto_update_environment_request import DtoUpdateEnvironmentRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -219,11 +219,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EnvironmentsApi(api_client)
+    api_instance = flexprice.EnvironmentsApi(api_client)
     id = 'id_example' # str | Environment ID
-    environment = flexprice_client.DtoUpdateEnvironmentRequest() # DtoUpdateEnvironmentRequest | Environment
+    environment = flexprice.DtoUpdateEnvironmentRequest() # DtoUpdateEnvironmentRequest | Environment
 
     try:
         # Update an environment
@@ -280,15 +280,15 @@ Create an environment
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_environment_request import DtoCreateEnvironmentRequest
-from flexprice_client.models.dto_environment_response import DtoEnvironmentResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_environment_request import DtoCreateEnvironmentRequest
+from flexprice.models.dto_environment_response import DtoEnvironmentResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -304,10 +304,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.EnvironmentsApi(api_client)
-    environment = flexprice_client.DtoCreateEnvironmentRequest() # DtoCreateEnvironmentRequest | Environment
+    api_instance = flexprice.EnvironmentsApi(api_client)
+    environment = flexprice.DtoCreateEnvironmentRequest() # DtoCreateEnvironmentRequest | Environment
 
     try:
         # Create an environment

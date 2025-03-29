@@ -1,4 +1,4 @@
-# flexprice_client.IntegrationsApi
+# flexprice.IntegrationsApi
 
 All URIs are relative to */v1*
 
@@ -21,21 +21,21 @@ Delete integration credentials
 
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.IntegrationsApi(api_client)
+    api_instance = flexprice.IntegrationsApi(api_client)
     id = 'id_example' # str | Integration ID
 
     try:
@@ -88,22 +88,22 @@ Get a list of unique providers which have a valid linked integration secret
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_linked_integrations_response import DtoLinkedIntegrationsResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_linked_integrations_response import DtoLinkedIntegrationsResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.IntegrationsApi(api_client)
+    api_instance = flexprice.IntegrationsApi(api_client)
 
     try:
         # List linked integrations
@@ -153,22 +153,22 @@ Get details of a specific integration
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_secret_response import DtoSecretResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_secret_response import DtoSecretResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.IntegrationsApi(api_client)
+    api_instance = flexprice.IntegrationsApi(api_client)
     provider = 'provider_example' # str | Integration provider
 
     try:
@@ -223,25 +223,25 @@ Create or update integration credentials
 
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_integration_request import DtoCreateIntegrationRequest
-from flexprice_client.models.dto_secret_response import DtoSecretResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_integration_request import DtoCreateIntegrationRequest
+from flexprice.models.dto_secret_response import DtoSecretResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.IntegrationsApi(api_client)
+    api_instance = flexprice.IntegrationsApi(api_client)
     provider = 'provider_example' # str | Integration provider
-    request = flexprice_client.DtoCreateIntegrationRequest() # DtoCreateIntegrationRequest | Integration creation request
+    request = flexprice.DtoCreateIntegrationRequest() # DtoCreateIntegrationRequest | Integration creation request
 
     try:
         # Create or update an integration

@@ -1,4 +1,4 @@
-# flexprice_client.MetersApi
+# flexprice.MetersApi
 
 All URIs are relative to */v1*
 
@@ -24,14 +24,14 @@ Get all meters
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_meter_response import DtoMeterResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -47,9 +47,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.MetersApi(api_client)
+    api_instance = flexprice.MetersApi(api_client)
     end_time = 'end_time_example' # str |  (optional)
     event_name = 'event_name_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
@@ -122,13 +122,13 @@ Delete an existing meter
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -144,9 +144,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.MetersApi(api_client)
+    api_instance = flexprice.MetersApi(api_client)
     id = 'id_example' # str | Meter ID
 
     try:
@@ -202,13 +202,13 @@ Disable an existing meter
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -224,9 +224,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.MetersApi(api_client)
+    api_instance = flexprice.MetersApi(api_client)
     id = 'id_example' # str | Meter ID
 
     try:
@@ -282,14 +282,14 @@ Get a specific meter by ID
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_meter_response import DtoMeterResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -305,9 +305,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.MetersApi(api_client)
+    api_instance = flexprice.MetersApi(api_client)
     id = 'id_example' # str | Meter ID
 
     try:
@@ -363,15 +363,15 @@ Update an existing meter
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_meter_response import DtoMeterResponse
-from flexprice_client.models.dto_update_meter_request import DtoUpdateMeterRequest
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.models.dto_update_meter_request import DtoUpdateMeterRequest
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -387,11 +387,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.MetersApi(api_client)
+    api_instance = flexprice.MetersApi(api_client)
     id = 'id_example' # str | Meter ID
-    meter = flexprice_client.DtoUpdateMeterRequest() # DtoUpdateMeterRequest | Meter configuration
+    meter = flexprice.DtoUpdateMeterRequest() # DtoUpdateMeterRequest | Meter configuration
 
     try:
         # Update meter
@@ -448,15 +448,15 @@ Create a new meter with the specified configuration
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import flexprice_client
-from flexprice_client.models.dto_create_meter_request import DtoCreateMeterRequest
-from flexprice_client.models.dto_meter_response import DtoMeterResponse
-from flexprice_client.rest import ApiException
+import flexprice
+from flexprice.models.dto_create_meter_request import DtoCreateMeterRequest
+from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to /v1
 # See configuration.py for a list of all supported configuration parameters.
-configuration = flexprice_client.Configuration(
+configuration = flexprice.Configuration(
     host = "/v1"
 )
 
@@ -472,10 +472,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with flexprice_client.ApiClient(configuration) as api_client:
+with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = flexprice_client.MetersApi(api_client)
-    meter = flexprice_client.DtoCreateMeterRequest() # DtoCreateMeterRequest | Meter configuration
+    api_instance = flexprice.MetersApi(api_client)
+    meter = flexprice.DtoCreateMeterRequest() # DtoCreateMeterRequest | Meter configuration
 
     try:
         # Create meter
