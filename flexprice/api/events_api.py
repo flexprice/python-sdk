@@ -16,6 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+import threading
 from pydantic import Field, StrictInt, StrictStr
 from typing import Dict, Optional
 from typing_extensions import Annotated
@@ -971,6 +972,61 @@ class EventsApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+
+    def events_post_async(
+        self,
+        event,
+        callback=None
+    ):
+        """Send an event asynchronously with automatic retries.
+        
+        This is a fire-and-forget method that queues the event for processing
+        and returns immediately. The event will be processed in a background thread.
+        
+        Args:
+            event: Event data to send
+            callback: Optional callback function with signature (result, error, success)
+            
+        Returns:
+            bool: True if the event was queued successfully, False otherwise
+            
+        Example:
+            ```python
+            from flexprice import Configuration, ApiClient, EventsApi
+            from flexprice.models import DtoIngestEventRequest
+            
+            # Configure API key authorization
+            configuration = Configuration(api_key={'ApiKeyAuth': 'YOUR_API_KEY'})
+            
+            # Create API client
+            api_client = ApiClient(configuration)
+            events_api = EventsApi(api_client)
+            
+            # Create event
+            event = DtoIngestEventRequest(
+                external_customer_id="customer123",
+                event_name="api_call",
+                properties={"region": "us-west", "method": "GET"},
+                timestamp="2023-01-01T12:00:00Z"
+            )
+            
+            # Send event asynchronously
+            events_api.events_post_async(event)
+            
+            # Or with a callback
+            def on_complete(result, error, success):
+                if success:
+                    print(f"Event sent successfully: {result}")
+                else:
+                    print(f"Event failed: {error}")
+            
+            events_api.events_post_async(event, callback=on_complete)
+            ```
+        """
+        from flexprice.async_utils import submit_event_async
+        return submit_event_async(event, self, callback)
+
 
 
 
