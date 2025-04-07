@@ -85,6 +85,7 @@ from flexprice.models.dto_environment_response import DtoEnvironmentResponse
 from flexprice.models.dto_event import DtoEvent
 from flexprice.models.dto_feature_response import DtoFeatureResponse
 from flexprice.models.dto_feature_usage_summary import DtoFeatureUsageSummary
+from flexprice.models.dto_get_events_request import DtoGetEventsRequest
 from flexprice.models.dto_get_events_response import DtoGetEventsResponse
 from flexprice.models.dto_get_preview_invoice_request import DtoGetPreviewInvoiceRequest
 from flexprice.models.dto_get_usage_by_meter_request import DtoGetUsageByMeterRequest

@@ -17,28 +17,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DtoCreateInvoiceLineItemRequest(BaseModel):
+class DtoGetEventsRequest(BaseModel):
     """
-    DtoCreateInvoiceLineItemRequest
+    DtoGetEventsRequest
     """ # noqa: E501
-    amount: Union[StrictFloat, StrictInt]
-    display_name: Optional[StrictStr] = None
-    metadata: Optional[Dict[str, StrictStr]] = None
-    meter_display_name: Optional[StrictStr] = None
-    meter_id: Optional[StrictStr] = None
-    period_end: Optional[StrictStr] = None
-    period_start: Optional[StrictStr] = None
-    plan_display_name: Optional[StrictStr] = None
-    plan_id: Optional[StrictStr] = None
-    price_id: Optional[StrictStr] = None
-    price_type: Optional[StrictStr] = None
-    quantity: Union[StrictFloat, StrictInt]
-    __properties: ClassVar[List[str]] = ["amount", "display_name", "metadata", "meter_display_name", "meter_id", "period_end", "period_start", "plan_display_name", "plan_id", "price_id", "price_type", "quantity"]
+    count_total: Optional[StrictBool] = None
+    end_time: Optional[StrictStr] = None
+    event_id: Optional[StrictStr] = None
+    event_name: StrictStr
+    external_customer_id: Optional[StrictStr] = None
+    iter_first_key: Optional[StrictStr] = None
+    iter_last_key: Optional[StrictStr] = None
+    offset: Optional[StrictInt] = None
+    page_size: Optional[StrictInt] = None
+    property_filters: Optional[Dict[str, List[StrictStr]]] = None
+    start_time: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["count_total", "end_time", "event_id", "event_name", "external_customer_id", "iter_first_key", "iter_last_key", "offset", "page_size", "property_filters", "start_time"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +57,7 @@ class DtoCreateInvoiceLineItemRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DtoCreateInvoiceLineItemRequest from a JSON string"""
+        """Create an instance of DtoGetEventsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,7 +82,7 @@ class DtoCreateInvoiceLineItemRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DtoCreateInvoiceLineItemRequest from a dict"""
+        """Create an instance of DtoGetEventsRequest from a dict"""
         if obj is None:
             return None
 
@@ -91,18 +90,17 @@ class DtoCreateInvoiceLineItemRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "amount": obj.get("amount"),
-            "display_name": obj.get("display_name"),
-            "metadata": obj.get("metadata"),
-            "meter_display_name": obj.get("meter_display_name"),
-            "meter_id": obj.get("meter_id"),
-            "period_end": obj.get("period_end"),
-            "period_start": obj.get("period_start"),
-            "plan_display_name": obj.get("plan_display_name"),
-            "plan_id": obj.get("plan_id"),
-            "price_id": obj.get("price_id"),
-            "price_type": obj.get("price_type"),
-            "quantity": obj.get("quantity")
+            "count_total": obj.get("count_total"),
+            "end_time": obj.get("end_time"),
+            "event_id": obj.get("event_id"),
+            "event_name": obj.get("event_name"),
+            "external_customer_id": obj.get("external_customer_id"),
+            "iter_first_key": obj.get("iter_first_key"),
+            "iter_last_key": obj.get("iter_last_key"),
+            "offset": obj.get("offset"),
+            "page_size": obj.get("page_size"),
+            "property_filters": obj.get("property_filters"),
+            "start_time": obj.get("start_time")
         })
         return _obj
 

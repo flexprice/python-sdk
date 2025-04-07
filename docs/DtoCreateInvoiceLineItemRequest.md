@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **period_start** | **str** |  | [optional] 
 **plan_display_name** | **str** |  | [optional] 
 **plan_id** | **str** |  | [optional] 
-**price_id** | **str** |  | 
+**price_id** | **str** |  | [optional] 
 **price_type** | **str** |  | [optional] 
 **quantity** | **float** |  | 
 

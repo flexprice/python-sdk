@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **has_more** | **bool** |  | [optional] 
 **iter_first_key** | **str** |  | [optional] 
 **iter_last_key** | **str** |  | [optional] 
+**offset** | **int** |  | [optional] 
+**total_count** | **int** |  | [optional] 
 
 ## Example
 

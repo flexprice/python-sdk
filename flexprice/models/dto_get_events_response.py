@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from flexprice.models.dto_event import DtoEvent
 from typing import Optional, Set
@@ -31,7 +31,9 @@ class DtoGetEventsResponse(BaseModel):
     has_more: Optional[StrictBool] = None
     iter_first_key: Optional[StrictStr] = None
     iter_last_key: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["events", "has_more", "iter_first_key", "iter_last_key"]
+    offset: Optional[StrictInt] = None
+    total_count: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["events", "has_more", "iter_first_key", "iter_last_key", "offset", "total_count"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,7 +96,9 @@ class DtoGetEventsResponse(BaseModel):
             "events": [DtoEvent.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
             "has_more": obj.get("has_more"),
             "iter_first_key": obj.get("iter_first_key"),
-            "iter_last_key": obj.get("iter_last_key")
+            "iter_last_key": obj.get("iter_last_key"),
+            "offset": obj.get("offset"),
+            "total_count": obj.get("total_count")
         })
         return _obj
 
