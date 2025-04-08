@@ -17,27 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.models.types_pagination_response import TypesPaginationResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DtoGetEventsRequest(BaseModel):
+class DtoListMetersResponse(BaseModel):
     """
-    DtoGetEventsRequest
+    DtoListMetersResponse
     """ # noqa: E501
-    count_total: Optional[StrictBool] = None
-    end_time: Optional[StrictStr] = None
-    event_id: Optional[StrictStr] = None
-    event_name: Optional[StrictStr] = None
-    external_customer_id: Optional[StrictStr] = None
-    iter_first_key: Optional[StrictStr] = None
-    iter_last_key: Optional[StrictStr] = None
-    offset: Optional[StrictInt] = None
-    page_size: Optional[StrictInt] = None
-    property_filters: Optional[Dict[str, List[StrictStr]]] = None
-    start_time: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["count_total", "end_time", "event_id", "event_name", "external_customer_id", "iter_first_key", "iter_last_key", "offset", "page_size", "property_filters", "start_time"]
+    items: Optional[List[DtoMeterResponse]] = None
+    pagination: Optional[TypesPaginationResponse] = None
+    __properties: ClassVar[List[str]] = ["items", "pagination"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +50,7 @@ class DtoGetEventsRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DtoGetEventsRequest from a JSON string"""
+        """Create an instance of DtoListMetersResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,11 +71,21 @@ class DtoGetEventsRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in items (list)
+        _items = []
+        if self.items:
+            for _item_items in self.items:
+                if _item_items:
+                    _items.append(_item_items.to_dict())
+            _dict['items'] = _items
+        # override the default output from pydantic by calling `to_dict()` of pagination
+        if self.pagination:
+            _dict['pagination'] = self.pagination.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DtoGetEventsRequest from a dict"""
+        """Create an instance of DtoListMetersResponse from a dict"""
         if obj is None:
             return None
 
@@ -90,17 +93,8 @@ class DtoGetEventsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "count_total": obj.get("count_total"),
-            "end_time": obj.get("end_time"),
-            "event_id": obj.get("event_id"),
-            "event_name": obj.get("event_name"),
-            "external_customer_id": obj.get("external_customer_id"),
-            "iter_first_key": obj.get("iter_first_key"),
-            "iter_last_key": obj.get("iter_last_key"),
-            "offset": obj.get("offset"),
-            "page_size": obj.get("page_size"),
-            "property_filters": obj.get("property_filters"),
-            "start_time": obj.get("start_time")
+            "items": [DtoMeterResponse.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "pagination": TypesPaginationResponse.from_dict(obj["pagination"]) if obj.get("pagination") is not None else None
         })
         return _obj
 

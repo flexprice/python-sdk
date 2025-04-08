@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **meters_get**
-> List[DtoMeterResponse] meters_get(end_time=end_time, event_name=event_name, expand=expand, limit=limit, meter_ids=meter_ids, offset=offset, order=order, sort=sort, start_time=start_time, status=status)
+> DtoListMetersResponse meters_get(end_time=end_time, event_name=event_name, expand=expand, limit=limit, meter_ids=meter_ids, offset=offset, order=order, sort=sort, start_time=start_time, status=status)
 
 List meters
 
@@ -25,7 +25,7 @@ Get all meters
 
 ```python
 import flexprice
-from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.models.dto_list_meters_response import DtoListMetersResponse
 from flexprice.rest import ApiException
 from pprint import pprint
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[DtoMeterResponse]**](DtoMeterResponse.md)
+[**DtoListMetersResponse**](DtoListMetersResponse.md)
 
 ### Authorization
 

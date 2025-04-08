@@ -20,6 +20,7 @@ from pydantic import Field, StrictStr, field_validator
 from typing import Dict, List, Optional
 from typing_extensions import Annotated
 from flexprice.models.dto_create_meter_request import DtoCreateMeterRequest
+from flexprice.models.dto_list_meters_response import DtoListMetersResponse
 from flexprice.models.dto_meter_response import DtoMeterResponse
 from flexprice.models.dto_update_meter_request import DtoUpdateMeterRequest
 
@@ -66,7 +67,7 @@ class MetersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[DtoMeterResponse]:
+    ) -> DtoListMetersResponse:
         """List meters
 
         Get all meters
@@ -131,7 +132,7 @@ class MetersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[DtoMeterResponse]",
+            '200': "DtoListMetersResponse",
             '500': "ErrorsErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -170,7 +171,7 @@ class MetersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[DtoMeterResponse]]:
+    ) -> ApiResponse[DtoListMetersResponse]:
         """List meters
 
         Get all meters
@@ -235,7 +236,7 @@ class MetersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[DtoMeterResponse]",
+            '200': "DtoListMetersResponse",
             '500': "ErrorsErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -339,7 +340,7 @@ class MetersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[DtoMeterResponse]",
+            '200': "DtoListMetersResponse",
             '500': "ErrorsErrorResponse",
         }
         response_data = self.api_client.call_api(

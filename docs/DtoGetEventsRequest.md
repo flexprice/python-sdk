@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **count_total** | **bool** |  | [optional] 
 **end_time** | **str** |  | [optional] 
 **event_id** | **str** |  | [optional] 
-**event_name** | **str** |  | 
+**event_name** | **str** |  | [optional] 
 **external_customer_id** | **str** |  | [optional] 
 **iter_first_key** | **str** |  | [optional] 
 **iter_last_key** | **str** |  | [optional] 
