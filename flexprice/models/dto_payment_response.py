@@ -41,7 +41,6 @@ class DtoPaymentResponse(BaseModel):
     failed_at: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
     idempotency_key: Optional[StrictStr] = None
-    invoice_number: Optional[StrictStr] = None
     metadata: Optional[Dict[str, StrictStr]] = None
     payment_method_id: Optional[StrictStr] = None
     payment_method_type: Optional[TypesPaymentMethodType] = None
@@ -52,7 +51,7 @@ class DtoPaymentResponse(BaseModel):
     track_attempts: Optional[StrictBool] = None
     updated_at: Optional[StrictStr] = None
     updated_by: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["amount", "attempts", "created_at", "created_by", "currency", "destination_id", "destination_type", "error_message", "failed_at", "id", "idempotency_key", "invoice_number", "metadata", "payment_method_id", "payment_method_type", "payment_status", "refunded_at", "succeeded_at", "tenant_id", "track_attempts", "updated_at", "updated_by"]
+    __properties: ClassVar[List[str]] = ["amount", "attempts", "created_at", "created_by", "currency", "destination_id", "destination_type", "error_message", "failed_at", "id", "idempotency_key", "metadata", "payment_method_id", "payment_method_type", "payment_status", "refunded_at", "succeeded_at", "tenant_id", "track_attempts", "updated_at", "updated_by"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -123,7 +122,6 @@ class DtoPaymentResponse(BaseModel):
             "failed_at": obj.get("failed_at"),
             "id": obj.get("id"),
             "idempotency_key": obj.get("idempotency_key"),
-            "invoice_number": obj.get("invoice_number"),
             "metadata": obj.get("metadata"),
             "payment_method_id": obj.get("payment_method_id"),
             "payment_method_type": obj.get("payment_method_type"),

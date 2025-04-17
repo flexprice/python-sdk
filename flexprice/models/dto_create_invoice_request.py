@@ -41,7 +41,6 @@ class DtoCreateInvoiceRequest(BaseModel):
     due_date: Optional[StrictStr] = None
     environment_id: Optional[StrictStr] = None
     idempotency_key: Optional[StrictStr] = None
-    invoice_number: Optional[StrictStr] = None
     invoice_status: Optional[TypesInvoiceStatus] = None
     invoice_type: Optional[TypesInvoiceType] = None
     line_items: Optional[List[DtoCreateInvoiceLineItemRequest]] = None
@@ -50,7 +49,7 @@ class DtoCreateInvoiceRequest(BaseModel):
     period_end: Optional[StrictStr] = None
     period_start: Optional[StrictStr] = None
     subscription_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["amount_due", "amount_paid", "billing_period", "billing_reason", "currency", "customer_id", "description", "due_date", "environment_id", "idempotency_key", "invoice_number", "invoice_status", "invoice_type", "line_items", "metadata", "payment_status", "period_end", "period_start", "subscription_id"]
+    __properties: ClassVar[List[str]] = ["amount_due", "amount_paid", "billing_period", "billing_reason", "currency", "customer_id", "description", "due_date", "environment_id", "idempotency_key", "invoice_status", "invoice_type", "line_items", "metadata", "payment_status", "period_end", "period_start", "subscription_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -120,7 +119,6 @@ class DtoCreateInvoiceRequest(BaseModel):
             "due_date": obj.get("due_date"),
             "environment_id": obj.get("environment_id"),
             "idempotency_key": obj.get("idempotency_key"),
-            "invoice_number": obj.get("invoice_number"),
             "invoice_status": obj.get("invoice_status"),
             "invoice_type": obj.get("invoice_type"),
             "line_items": [DtoCreateInvoiceLineItemRequest.from_dict(_item) for _item in obj["line_items"]] if obj.get("line_items") is not None else None,

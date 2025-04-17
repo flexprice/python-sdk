@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **lookup_key** | **str** |  | [optional] 
 **metadata** | **Dict[str, str]** |  | [optional] 
-**meter** | [**DtoCreateMeterRequest**](DtoCreateMeterRequest.md) |  | [optional] 
 **meter_id** | **str** |  | [optional] 
 **name** | **str** |  | 
 **type** | [**TypesFeatureType**](TypesFeatureType.md) |  | 

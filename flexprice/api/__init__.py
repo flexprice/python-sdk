@@ -9,6 +9,7 @@ from flexprice.api.events_api import EventsApi
 from flexprice.api.features_api import FeaturesApi
 from flexprice.api.integrations_api import IntegrationsApi
 from flexprice.api.invoices_api import InvoicesApi
+from flexprice.api.meters_api import MetersApi
 from flexprice.api.payments_api import PaymentsApi
 from flexprice.api.plans_api import PlansApi
 from flexprice.api.prices_api import PricesApi

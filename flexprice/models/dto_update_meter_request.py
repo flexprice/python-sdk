@@ -17,25 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from flexprice.models.types_feature_type import TypesFeatureType
+from flexprice.models.meter_filter import MeterFilter
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DtoCreateFeatureRequest(BaseModel):
+class DtoUpdateMeterRequest(BaseModel):
     """
-    DtoCreateFeatureRequest
+    DtoUpdateMeterRequest
     """ # noqa: E501
-    description: Optional[StrictStr] = None
-    lookup_key: Optional[StrictStr] = None
-    metadata: Optional[Dict[str, StrictStr]] = None
-    meter_id: Optional[StrictStr] = None
-    name: StrictStr
-    type: TypesFeatureType
-    unit_plural: Optional[StrictStr] = None
-    unit_singular: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["description", "lookup_key", "metadata", "meter_id", "name", "type", "unit_plural", "unit_singular"]
+    filters: Optional[List[MeterFilter]] = None
+    __properties: ClassVar[List[str]] = ["filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +48,7 @@ class DtoCreateFeatureRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DtoCreateFeatureRequest from a JSON string"""
+        """Create an instance of DtoUpdateMeterRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,11 +69,18 @@ class DtoCreateFeatureRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in filters (list)
+        _items = []
+        if self.filters:
+            for _item_filters in self.filters:
+                if _item_filters:
+                    _items.append(_item_filters.to_dict())
+            _dict['filters'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DtoCreateFeatureRequest from a dict"""
+        """Create an instance of DtoUpdateMeterRequest from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +88,7 @@ class DtoCreateFeatureRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "lookup_key": obj.get("lookup_key"),
-            "metadata": obj.get("metadata"),
-            "meter_id": obj.get("meter_id"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "unit_plural": obj.get("unit_plural"),
-            "unit_singular": obj.get("unit_singular")
+            "filters": [MeterFilter.from_dict(_item) for _item in obj["filters"]] if obj.get("filters") is not None else None
         })
         return _obj
 

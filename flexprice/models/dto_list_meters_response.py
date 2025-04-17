@@ -17,25 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from flexprice.models.types_feature_type import TypesFeatureType
+from flexprice.models.dto_meter_response import DtoMeterResponse
+from flexprice.models.types_pagination_response import TypesPaginationResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DtoCreateFeatureRequest(BaseModel):
+class DtoListMetersResponse(BaseModel):
     """
-    DtoCreateFeatureRequest
+    DtoListMetersResponse
     """ # noqa: E501
-    description: Optional[StrictStr] = None
-    lookup_key: Optional[StrictStr] = None
-    metadata: Optional[Dict[str, StrictStr]] = None
-    meter_id: Optional[StrictStr] = None
-    name: StrictStr
-    type: TypesFeatureType
-    unit_plural: Optional[StrictStr] = None
-    unit_singular: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["description", "lookup_key", "metadata", "meter_id", "name", "type", "unit_plural", "unit_singular"]
+    items: Optional[List[DtoMeterResponse]] = None
+    pagination: Optional[TypesPaginationResponse] = None
+    __properties: ClassVar[List[str]] = ["items", "pagination"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +50,7 @@ class DtoCreateFeatureRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DtoCreateFeatureRequest from a JSON string"""
+        """Create an instance of DtoListMetersResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,11 +71,21 @@ class DtoCreateFeatureRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in items (list)
+        _items = []
+        if self.items:
+            for _item_items in self.items:
+                if _item_items:
+                    _items.append(_item_items.to_dict())
+            _dict['items'] = _items
+        # override the default output from pydantic by calling `to_dict()` of pagination
+        if self.pagination:
+            _dict['pagination'] = self.pagination.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DtoCreateFeatureRequest from a dict"""
+        """Create an instance of DtoListMetersResponse from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +93,8 @@ class DtoCreateFeatureRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "lookup_key": obj.get("lookup_key"),
-            "metadata": obj.get("metadata"),
-            "meter_id": obj.get("meter_id"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "unit_plural": obj.get("unit_plural"),
-            "unit_singular": obj.get("unit_singular")
+            "items": [DtoMeterResponse.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "pagination": TypesPaginationResponse.from_dict(obj["pagination"]) if obj.get("pagination") is not None else None
         })
         return _obj
 

@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **failed_at** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **idempotency_key** | **str** |  | [optional] 
-**invoice_number** | **str** |  | [optional] 
 **metadata** | **Dict[str, str]** |  | [optional] 
 **payment_method_id** | **str** |  | [optional] 
 **payment_method_type** | [**TypesPaymentMethodType**](TypesPaymentMethodType.md) |  | [optional] 

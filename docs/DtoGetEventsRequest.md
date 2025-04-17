@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**end_time** | **str** | End time of the events to be fetched in ISO 8601 format Defaults to now if not provided | [optional] 
-**event_id** | **str** | Event ID is the idempotency key for the event | [optional] 
-**event_name** | **str** | Event name / Unique identifier for the event in your system | [optional] 
-**external_customer_id** | **str** | Customer ID in your system that was sent with the event | [optional] 
-**iter_first_key** | **str** | First key to iterate over the events | [optional] 
-**iter_last_key** | **str** | Last key to iterate over the events | [optional] 
-**offset** | **int** | Offset to fetch the events and is set to 0 by default | [optional] 
-**page_size** | **int** | Page size to fetch the events and is set to 50 by default | [optional] 
-**property_filters** | **Dict[str, List[str]]** | Property filters to filter the events by the keys in &#x60;properties&#x60; field of the event | [optional] 
-**source** | **str** | Source to filter the events by the source | [optional] 
-**start_time** | **str** | Start time of the events to be fetched in ISO 8601 format Defaults to last 7 days from now if not provided | [optional] 
+**count_total** | **bool** |  | [optional] 
+**end_time** | **str** |  | [optional] 
+**event_id** | **str** |  | [optional] 
+**event_name** | **str** |  | [optional] 
+**external_customer_id** | **str** |  | [optional] 
+**iter_first_key** | **str** |  | [optional] 
+**iter_last_key** | **str** |  | [optional] 
+**offset** | **int** |  | [optional] 
+**page_size** | **int** |  | [optional] 
+**property_filters** | **Dict[str, List[str]]** |  | [optional] 
+**start_time** | **str** |  | [optional] 
 
 ## Example
 
