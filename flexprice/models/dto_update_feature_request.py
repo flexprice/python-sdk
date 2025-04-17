@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from flexprice.models.meter_filter import MeterFilter
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,11 +28,12 @@ class DtoUpdateFeatureRequest(BaseModel):
     DtoUpdateFeatureRequest
     """ # noqa: E501
     description: Optional[StrictStr] = None
+    filters: Optional[List[MeterFilter]] = None
     metadata: Optional[Dict[str, StrictStr]] = None
     name: Optional[StrictStr] = None
     unit_plural: Optional[StrictStr] = None
     unit_singular: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["description", "metadata", "name", "unit_plural", "unit_singular"]
+    __properties: ClassVar[List[str]] = ["description", "filters", "metadata", "name", "unit_plural", "unit_singular"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,6 +74,13 @@ class DtoUpdateFeatureRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in filters (list)
+        _items = []
+        if self.filters:
+            for _item_filters in self.filters:
+                if _item_filters:
+                    _items.append(_item_filters.to_dict())
+            _dict['filters'] = _items
         return _dict
 
     @classmethod
@@ -85,6 +94,7 @@ class DtoUpdateFeatureRequest(BaseModel):
 
         _obj = cls.model_validate({
             "description": obj.get("description"),
+            "filters": [MeterFilter.from_dict(_item) for _item in obj["filters"]] if obj.get("filters") is not None else None,
             "metadata": obj.get("metadata"),
             "name": obj.get("name"),
             "unit_plural": obj.get("unit_plural"),

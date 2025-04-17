@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from flexprice.models.dto_create_meter_request import DtoCreateMeterRequest
 from flexprice.models.types_feature_type import TypesFeatureType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,12 +31,13 @@ class DtoCreateFeatureRequest(BaseModel):
     description: Optional[StrictStr] = None
     lookup_key: Optional[StrictStr] = None
     metadata: Optional[Dict[str, StrictStr]] = None
+    meter: Optional[DtoCreateMeterRequest] = None
     meter_id: Optional[StrictStr] = None
     name: StrictStr
     type: TypesFeatureType
     unit_plural: Optional[StrictStr] = None
     unit_singular: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["description", "lookup_key", "metadata", "meter_id", "name", "type", "unit_plural", "unit_singular"]
+    __properties: ClassVar[List[str]] = ["description", "lookup_key", "metadata", "meter", "meter_id", "name", "type", "unit_plural", "unit_singular"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +78,9 @@ class DtoCreateFeatureRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of meter
+        if self.meter:
+            _dict['meter'] = self.meter.to_dict()
         return _dict
 
     @classmethod
@@ -91,6 +96,7 @@ class DtoCreateFeatureRequest(BaseModel):
             "description": obj.get("description"),
             "lookup_key": obj.get("lookup_key"),
             "metadata": obj.get("metadata"),
+            "meter": DtoCreateMeterRequest.from_dict(obj["meter"]) if obj.get("meter") is not None else None,
             "meter_id": obj.get("meter_id"),
             "name": obj.get("name"),
             "type": obj.get("type"),

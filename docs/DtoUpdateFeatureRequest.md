@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** |  | [optional] 
+**filters** | [**List[MeterFilter]**](MeterFilter.md) |  | [optional] 
 **metadata** | **Dict[str, str]** |  | [optional] 
 **name** | **str** |  | [optional] 
 **unit_plural** | **str** |  | [optional] 

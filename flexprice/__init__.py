@@ -25,7 +25,6 @@ from flexprice.api.events_api import EventsApi
 from flexprice.api.features_api import FeaturesApi
 from flexprice.api.integrations_api import IntegrationsApi
 from flexprice.api.invoices_api import InvoicesApi
-from flexprice.api.meters_api import MetersApi
 from flexprice.api.payments_api import PaymentsApi
 from flexprice.api.plans_api import PlansApi
 from flexprice.api.prices_api import PricesApi
@@ -102,7 +101,6 @@ from flexprice.models.dto_list_entitlements_response import DtoListEntitlementsR
 from flexprice.models.dto_list_environments_response import DtoListEnvironmentsResponse
 from flexprice.models.dto_list_features_response import DtoListFeaturesResponse
 from flexprice.models.dto_list_invoices_response import DtoListInvoicesResponse
-from flexprice.models.dto_list_meters_response import DtoListMetersResponse
 from flexprice.models.dto_list_payments_response import DtoListPaymentsResponse
 from flexprice.models.dto_list_plans_response import DtoListPlansResponse
 from flexprice.models.dto_list_prices_response import DtoListPricesResponse
@@ -133,7 +131,6 @@ from flexprice.models.dto_update_customer_request import DtoUpdateCustomerReques
 from flexprice.models.dto_update_entitlement_request import DtoUpdateEntitlementRequest
 from flexprice.models.dto_update_environment_request import DtoUpdateEnvironmentRequest
 from flexprice.models.dto_update_feature_request import DtoUpdateFeatureRequest
-from flexprice.models.dto_update_meter_request import DtoUpdateMeterRequest
 from flexprice.models.dto_update_payment_request import DtoUpdatePaymentRequest
 from flexprice.models.dto_update_payment_status_request import DtoUpdatePaymentStatusRequest
 from flexprice.models.dto_update_plan_entitlement_request import DtoUpdatePlanEntitlementRequest

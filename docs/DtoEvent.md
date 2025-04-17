@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **customer_id** | **str** |  | [optional] 
+**environment_id** | **str** |  | [optional] 
 **event_name** | **str** |  | [optional] 
 **external_customer_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 

@@ -27,13 +27,14 @@ class DtoEvent(BaseModel):
     DtoEvent
     """ # noqa: E501
     customer_id: Optional[StrictStr] = None
+    environment_id: Optional[StrictStr] = None
     event_name: Optional[StrictStr] = None
     external_customer_id: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
     properties: Optional[Dict[str, Any]] = None
     source: Optional[StrictStr] = None
     timestamp: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["customer_id", "event_name", "external_customer_id", "id", "properties", "source", "timestamp"]
+    __properties: ClassVar[List[str]] = ["customer_id", "environment_id", "event_name", "external_customer_id", "id", "properties", "source", "timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +88,7 @@ class DtoEvent(BaseModel):
 
         _obj = cls.model_validate({
             "customer_id": obj.get("customer_id"),
+            "environment_id": obj.get("environment_id"),
             "event_name": obj.get("event_name"),
             "external_customer_id": obj.get("external_customer_id"),
             "id": obj.get("id"),

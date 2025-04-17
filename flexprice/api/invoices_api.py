@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictBool, StrictBytes, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from flexprice.models.dto_create_invoice_request import DtoCreateInvoiceRequest
@@ -319,6 +319,7 @@ class InvoicesApi:
         customer_id: Optional[StrictStr] = None,
         end_time: Optional[StrictStr] = None,
         expand: Optional[StrictStr] = None,
+        invoice_ids: Optional[List[StrictStr]] = None,
         invoice_status: Optional[List[StrictStr]] = None,
         invoice_type: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
@@ -356,6 +357,8 @@ class InvoicesApi:
         :type end_time: str
         :param expand:
         :type expand: str
+        :param invoice_ids:
+        :type invoice_ids: List[str]
         :param invoice_status:
         :type invoice_status: List[str]
         :param invoice_type:
@@ -404,6 +407,7 @@ class InvoicesApi:
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
+            invoice_ids=invoice_ids,
             invoice_status=invoice_status,
             invoice_type=invoice_type,
             limit=limit,
@@ -444,6 +448,7 @@ class InvoicesApi:
         customer_id: Optional[StrictStr] = None,
         end_time: Optional[StrictStr] = None,
         expand: Optional[StrictStr] = None,
+        invoice_ids: Optional[List[StrictStr]] = None,
         invoice_status: Optional[List[StrictStr]] = None,
         invoice_type: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
@@ -481,6 +486,8 @@ class InvoicesApi:
         :type end_time: str
         :param expand:
         :type expand: str
+        :param invoice_ids:
+        :type invoice_ids: List[str]
         :param invoice_status:
         :type invoice_status: List[str]
         :param invoice_type:
@@ -529,6 +536,7 @@ class InvoicesApi:
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
+            invoice_ids=invoice_ids,
             invoice_status=invoice_status,
             invoice_type=invoice_type,
             limit=limit,
@@ -569,6 +577,7 @@ class InvoicesApi:
         customer_id: Optional[StrictStr] = None,
         end_time: Optional[StrictStr] = None,
         expand: Optional[StrictStr] = None,
+        invoice_ids: Optional[List[StrictStr]] = None,
         invoice_status: Optional[List[StrictStr]] = None,
         invoice_type: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
@@ -606,6 +615,8 @@ class InvoicesApi:
         :type end_time: str
         :param expand:
         :type expand: str
+        :param invoice_ids:
+        :type invoice_ids: List[str]
         :param invoice_status:
         :type invoice_status: List[str]
         :param invoice_type:
@@ -654,6 +665,7 @@ class InvoicesApi:
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
+            invoice_ids=invoice_ids,
             invoice_status=invoice_status,
             invoice_type=invoice_type,
             limit=limit,
@@ -689,6 +701,7 @@ class InvoicesApi:
         customer_id,
         end_time,
         expand,
+        invoice_ids,
         invoice_status,
         invoice_type,
         limit,
@@ -708,6 +721,7 @@ class InvoicesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'invoice_ids': 'csv',
             'invoice_status': 'csv',
             'payment_status': 'csv',
         }
@@ -742,6 +756,10 @@ class InvoicesApi:
         if expand is not None:
             
             _query_params.append(('expand', expand))
+            
+        if invoice_ids is not None:
+            
+            _query_params.append(('invoice_ids', invoice_ids))
             
         if invoice_status is not None:
             
@@ -1922,6 +1940,7 @@ class InvoicesApi:
     def invoices_id_pdf_get(
         self,
         id: Annotated[StrictStr, Field(description="Invoice ID")],
+        url: Annotated[Optional[StrictBool], Field(description="Return presigned URL from s3 instead of PDF")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1941,6 +1960,8 @@ class InvoicesApi:
 
         :param id: Invoice ID (required)
         :type id: str
+        :param url: Return presigned URL from s3 instead of PDF
+        :type url: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1965,6 +1986,7 @@ class InvoicesApi:
 
         _param = self._invoices_id_pdf_get_serialize(
             id=id,
+            url=url,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1992,6 +2014,7 @@ class InvoicesApi:
     def invoices_id_pdf_get_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Invoice ID")],
+        url: Annotated[Optional[StrictBool], Field(description="Return presigned URL from s3 instead of PDF")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2011,6 +2034,8 @@ class InvoicesApi:
 
         :param id: Invoice ID (required)
         :type id: str
+        :param url: Return presigned URL from s3 instead of PDF
+        :type url: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2035,6 +2060,7 @@ class InvoicesApi:
 
         _param = self._invoices_id_pdf_get_serialize(
             id=id,
+            url=url,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2062,6 +2088,7 @@ class InvoicesApi:
     def invoices_id_pdf_get_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Invoice ID")],
+        url: Annotated[Optional[StrictBool], Field(description="Return presigned URL from s3 instead of PDF")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2081,6 +2108,8 @@ class InvoicesApi:
 
         :param id: Invoice ID (required)
         :type id: str
+        :param url: Return presigned URL from s3 instead of PDF
+        :type url: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2105,6 +2134,7 @@ class InvoicesApi:
 
         _param = self._invoices_id_pdf_get_serialize(
             id=id,
+            url=url,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2127,6 +2157,7 @@ class InvoicesApi:
     def _invoices_id_pdf_get_serialize(
         self,
         id,
+        url,
         _request_auth,
         _content_type,
         _headers,
@@ -2151,6 +2182,10 @@ class InvoicesApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if url is not None:
+            
+            _query_params.append(('url', url))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

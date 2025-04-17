@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invoices_get**
-> DtoListInvoicesResponse invoices_get(amount_due_gt=amount_due_gt, amount_remaining_gt=amount_remaining_gt, customer_id=customer_id, end_time=end_time, expand=expand, invoice_status=invoice_status, invoice_type=invoice_type, limit=limit, offset=offset, order=order, payment_status=payment_status, sort=sort, start_time=start_time, status=status, subscription_id=subscription_id)
+> DtoListInvoicesResponse invoices_get(amount_due_gt=amount_due_gt, amount_remaining_gt=amount_remaining_gt, customer_id=customer_id, end_time=end_time, expand=expand, invoice_ids=invoice_ids, invoice_status=invoice_status, invoice_type=invoice_type, limit=limit, offset=offset, order=order, payment_status=payment_status, sort=sort, start_time=start_time, status=status, subscription_id=subscription_id)
 
 List invoices
 
@@ -129,6 +129,7 @@ with flexprice.ApiClient(configuration) as api_client:
     customer_id = 'customer_id_example' # str |  (optional)
     end_time = 'end_time_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
+    invoice_ids = ['invoice_ids_example'] # List[str] |  (optional)
     invoice_status = ['invoice_status_example'] # List[str] |  (optional)
     invoice_type = 'invoice_type_example' # str |  (optional)
     limit = 56 # int |  (optional)
@@ -142,7 +143,7 @@ with flexprice.ApiClient(configuration) as api_client:
 
     try:
         # List invoices
-        api_response = api_instance.invoices_get(amount_due_gt=amount_due_gt, amount_remaining_gt=amount_remaining_gt, customer_id=customer_id, end_time=end_time, expand=expand, invoice_status=invoice_status, invoice_type=invoice_type, limit=limit, offset=offset, order=order, payment_status=payment_status, sort=sort, start_time=start_time, status=status, subscription_id=subscription_id)
+        api_response = api_instance.invoices_get(amount_due_gt=amount_due_gt, amount_remaining_gt=amount_remaining_gt, customer_id=customer_id, end_time=end_time, expand=expand, invoice_ids=invoice_ids, invoice_status=invoice_status, invoice_type=invoice_type, limit=limit, offset=offset, order=order, payment_status=payment_status, sort=sort, start_time=start_time, status=status, subscription_id=subscription_id)
         print("The response of InvoicesApi->invoices_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -161,6 +162,7 @@ Name | Type | Description  | Notes
  **customer_id** | **str**|  | [optional] 
  **end_time** | **str**|  | [optional] 
  **expand** | **str**|  | [optional] 
+ **invoice_ids** | [**List[str]**](str.md)|  | [optional] 
  **invoice_status** | [**List[str]**](str.md)|  | [optional] 
  **invoice_type** | **str**|  | [optional] 
  **limit** | **int**|  | [optional] 
@@ -490,7 +492,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invoices_id_pdf_get**
-> bytearray invoices_id_pdf_get(id)
+> bytearray invoices_id_pdf_get(id, url=url)
 
 Get PDF for an invoice
 
@@ -516,10 +518,11 @@ with flexprice.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = flexprice.InvoicesApi(api_client)
     id = 'id_example' # str | Invoice ID
+    url = True # bool | Return presigned URL from s3 instead of PDF (optional)
 
     try:
         # Get PDF for an invoice
-        api_response = api_instance.invoices_id_pdf_get(id)
+        api_response = api_instance.invoices_id_pdf_get(id, url=url)
         print("The response of InvoicesApi->invoices_id_pdf_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -534,6 +537,7 @@ with flexprice.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Invoice ID | 
+ **url** | **bool**| Return presigned URL from s3 instead of PDF | [optional] 
 
 ### Return type
 
