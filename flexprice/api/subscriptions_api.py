@@ -56,7 +56,6 @@ class SubscriptionsApi:
         customer_id: Annotated[Optional[StrictStr], Field(description="CustomerID filters by customer ID")] = None,
         end_time: Optional[StrictStr] = None,
         expand: Optional[StrictStr] = None,
-        include_canceled: Annotated[Optional[StrictBool], Field(description="IncludeCanceled includes canceled subscriptions if true")] = None,
         limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
         order: Optional[StrictStr] = None,
@@ -95,8 +94,6 @@ class SubscriptionsApi:
         :type end_time: str
         :param expand:
         :type expand: str
-        :param include_canceled: IncludeCanceled includes canceled subscriptions if true
-        :type include_canceled: bool
         :param limit:
         :type limit: int
         :param offset:
@@ -144,7 +141,6 @@ class SubscriptionsApi:
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
-            include_canceled=include_canceled,
             limit=limit,
             offset=offset,
             order=order,
@@ -185,7 +181,6 @@ class SubscriptionsApi:
         customer_id: Annotated[Optional[StrictStr], Field(description="CustomerID filters by customer ID")] = None,
         end_time: Optional[StrictStr] = None,
         expand: Optional[StrictStr] = None,
-        include_canceled: Annotated[Optional[StrictBool], Field(description="IncludeCanceled includes canceled subscriptions if true")] = None,
         limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
         order: Optional[StrictStr] = None,
@@ -224,8 +219,6 @@ class SubscriptionsApi:
         :type end_time: str
         :param expand:
         :type expand: str
-        :param include_canceled: IncludeCanceled includes canceled subscriptions if true
-        :type include_canceled: bool
         :param limit:
         :type limit: int
         :param offset:
@@ -273,7 +266,6 @@ class SubscriptionsApi:
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
-            include_canceled=include_canceled,
             limit=limit,
             offset=offset,
             order=order,
@@ -314,7 +306,6 @@ class SubscriptionsApi:
         customer_id: Annotated[Optional[StrictStr], Field(description="CustomerID filters by customer ID")] = None,
         end_time: Optional[StrictStr] = None,
         expand: Optional[StrictStr] = None,
-        include_canceled: Annotated[Optional[StrictBool], Field(description="IncludeCanceled includes canceled subscriptions if true")] = None,
         limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
         order: Optional[StrictStr] = None,
@@ -353,8 +344,6 @@ class SubscriptionsApi:
         :type end_time: str
         :param expand:
         :type expand: str
-        :param include_canceled: IncludeCanceled includes canceled subscriptions if true
-        :type include_canceled: bool
         :param limit:
         :type limit: int
         :param offset:
@@ -402,7 +391,6 @@ class SubscriptionsApi:
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
-            include_canceled=include_canceled,
             limit=limit,
             offset=offset,
             order=order,
@@ -438,7 +426,6 @@ class SubscriptionsApi:
         customer_id,
         end_time,
         expand,
-        include_canceled,
         limit,
         offset,
         order,
@@ -496,10 +483,6 @@ class SubscriptionsApi:
         if expand is not None:
             
             _query_params.append(('expand', expand))
-            
-        if include_canceled is not None:
-            
-            _query_params.append(('include_canceled', include_canceled))
             
         if limit is not None:
             

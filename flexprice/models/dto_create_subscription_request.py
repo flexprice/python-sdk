@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from flexprice.models.types_billing_cadence import TypesBillingCadence
+from flexprice.models.types_billing_cycle import TypesBillingCycle
 from flexprice.models.types_billing_period import TypesBillingPeriod
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,6 +31,7 @@ class DtoCreateSubscriptionRequest(BaseModel):
     DtoCreateSubscriptionRequest
     """ # noqa: E501
     billing_cadence: TypesBillingCadence
+    billing_cycle: Optional[TypesBillingCycle] = None
     billing_period: TypesBillingPeriod
     billing_period_count: Annotated[int, Field(strict=True, ge=1)]
     currency: StrictStr
@@ -41,7 +43,7 @@ class DtoCreateSubscriptionRequest(BaseModel):
     start_date: StrictStr
     trial_end: Optional[StrictStr] = None
     trial_start: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["billing_cadence", "billing_period", "billing_period_count", "currency", "customer_id", "end_date", "lookup_key", "metadata", "plan_id", "start_date", "trial_end", "trial_start"]
+    __properties: ClassVar[List[str]] = ["billing_cadence", "billing_cycle", "billing_period", "billing_period_count", "currency", "customer_id", "end_date", "lookup_key", "metadata", "plan_id", "start_date", "trial_end", "trial_start"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,6 +97,7 @@ class DtoCreateSubscriptionRequest(BaseModel):
 
         _obj = cls.model_validate({
             "billing_cadence": obj.get("billing_cadence"),
+            "billing_cycle": obj.get("billing_cycle"),
             "billing_period": obj.get("billing_period"),
             "billing_period_count": obj.get("billing_period_count"),
             "currency": obj.get("currency"),

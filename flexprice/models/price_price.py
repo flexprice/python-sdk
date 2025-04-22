@@ -46,7 +46,6 @@ class PricePrice(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Description of the price")
     display_amount: Optional[StrictStr] = Field(default=None, description="DisplayAmount is the formatted amount with currency symbol For USD: $12.50")
     environment_id: Optional[StrictStr] = Field(default=None, description="EnvironmentID is the environment identifier for the price")
-    filter_values: Optional[Dict[str, List[StrictStr]]] = None
     id: Optional[StrictStr] = Field(default=None, description="ID uuid identifier for the price")
     invoice_cadence: Optional[TypesInvoiceCadence] = None
     lookup_key: Optional[StrictStr] = Field(default=None, description="LookupKey used for looking up the price in the database")
@@ -62,7 +61,7 @@ class PricePrice(BaseModel):
     type: Optional[TypesPriceType] = None
     updated_at: Optional[StrictStr] = None
     updated_by: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["amount", "billing_cadence", "billing_model", "billing_period", "billing_period_count", "created_at", "created_by", "currency", "description", "display_amount", "environment_id", "filter_values", "id", "invoice_cadence", "lookup_key", "metadata", "meter_id", "plan_id", "status", "tenant_id", "tier_mode", "tiers", "transform_quantity", "trial_period", "type", "updated_at", "updated_by"]
+    __properties: ClassVar[List[str]] = ["amount", "billing_cadence", "billing_model", "billing_period", "billing_period_count", "created_at", "created_by", "currency", "description", "display_amount", "environment_id", "id", "invoice_cadence", "lookup_key", "metadata", "meter_id", "plan_id", "status", "tenant_id", "tier_mode", "tiers", "transform_quantity", "trial_period", "type", "updated_at", "updated_by"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -136,7 +135,6 @@ class PricePrice(BaseModel):
             "description": obj.get("description"),
             "display_amount": obj.get("display_amount"),
             "environment_id": obj.get("environment_id"),
-            "filter_values": obj.get("filter_values"),
             "id": obj.get("id"),
             "invoice_cadence": obj.get("invoice_cadence"),
             "lookup_key": obj.get("lookup_key"),

@@ -24,6 +24,7 @@ from flexprice.models.dto_plan_response import DtoPlanResponse
 from flexprice.models.subscription_subscription_line_item import SubscriptionSubscriptionLineItem
 from flexprice.models.subscription_subscription_pause import SubscriptionSubscriptionPause
 from flexprice.models.types_billing_cadence import TypesBillingCadence
+from flexprice.models.types_billing_cycle import TypesBillingCycle
 from flexprice.models.types_billing_period import TypesBillingPeriod
 from flexprice.models.types_pause_status import TypesPauseStatus
 from flexprice.models.types_status import TypesStatus
@@ -38,6 +39,7 @@ class DtoSubscriptionResponse(BaseModel):
     active_pause_id: Optional[StrictStr] = Field(default=None, description="ActivePauseID references the current active pause configuration This will be null if no pause is active or scheduled")
     billing_anchor: Optional[StrictStr] = Field(default=None, description="BillingAnchor is the reference point that aligns future billing cycle dates. It sets the day of week for week intervals, the day of month for month and year intervals, and the month of year for year intervals. The timestamp is in UTC format.")
     billing_cadence: Optional[TypesBillingCadence] = None
+    billing_cycle: Optional[TypesBillingCycle] = None
     billing_period: Optional[TypesBillingPeriod] = None
     billing_period_count: Optional[StrictInt] = Field(default=None, description="BillingPeriodCount is the total number units of the billing period.")
     cancel_at: Optional[StrictStr] = Field(default=None, description="CancelAt is the date the subscription will be canceled")
@@ -69,7 +71,7 @@ class DtoSubscriptionResponse(BaseModel):
     updated_at: Optional[StrictStr] = None
     updated_by: Optional[StrictStr] = None
     version: Optional[StrictInt] = Field(default=None, description="Version is used for optimistic locking")
-    __properties: ClassVar[List[str]] = ["active_pause_id", "billing_anchor", "billing_cadence", "billing_period", "billing_period_count", "cancel_at", "cancel_at_period_end", "cancelled_at", "created_at", "created_by", "currency", "current_period_end", "current_period_start", "customer", "customer_id", "end_date", "environment_id", "id", "line_items", "lookup_key", "metadata", "pause_status", "pauses", "plan", "plan_id", "start_date", "status", "subscription_status", "tenant_id", "trial_end", "trial_start", "updated_at", "updated_by", "version"]
+    __properties: ClassVar[List[str]] = ["active_pause_id", "billing_anchor", "billing_cadence", "billing_cycle", "billing_period", "billing_period_count", "cancel_at", "cancel_at_period_end", "cancelled_at", "created_at", "created_by", "currency", "current_period_end", "current_period_start", "customer", "customer_id", "end_date", "environment_id", "id", "line_items", "lookup_key", "metadata", "pause_status", "pauses", "plan", "plan_id", "start_date", "status", "subscription_status", "tenant_id", "trial_end", "trial_start", "updated_at", "updated_by", "version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -145,6 +147,7 @@ class DtoSubscriptionResponse(BaseModel):
             "active_pause_id": obj.get("active_pause_id"),
             "billing_anchor": obj.get("billing_anchor"),
             "billing_cadence": obj.get("billing_cadence"),
+            "billing_cycle": obj.get("billing_cycle"),
             "billing_period": obj.get("billing_period"),
             "billing_period_count": obj.get("billing_period_count"),
             "cancel_at": obj.get("cancel_at"),

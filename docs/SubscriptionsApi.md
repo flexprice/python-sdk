@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **subscriptions_get**
-> DtoListSubscriptionsResponse subscriptions_get(active_at=active_at, billing_cadence=billing_cadence, billing_period=billing_period, customer_id=customer_id, end_time=end_time, expand=expand, include_canceled=include_canceled, limit=limit, offset=offset, order=order, plan_id=plan_id, sort=sort, start_time=start_time, status=status, subscription_status=subscription_status, with_line_items=with_line_items)
+> DtoListSubscriptionsResponse subscriptions_get(active_at=active_at, billing_cadence=billing_cadence, billing_period=billing_period, customer_id=customer_id, end_time=end_time, expand=expand, limit=limit, offset=offset, order=order, plan_id=plan_id, sort=sort, start_time=start_time, status=status, subscription_status=subscription_status, with_line_items=with_line_items)
 
 List subscriptions
 
@@ -58,7 +58,6 @@ with flexprice.ApiClient(configuration) as api_client:
     customer_id = 'customer_id_example' # str | CustomerID filters by customer ID (optional)
     end_time = 'end_time_example' # str |  (optional)
     expand = 'expand_example' # str |  (optional)
-    include_canceled = True # bool | IncludeCanceled includes canceled subscriptions if true (optional)
     limit = 56 # int |  (optional)
     offset = 56 # int |  (optional)
     order = 'order_example' # str |  (optional)
@@ -71,7 +70,7 @@ with flexprice.ApiClient(configuration) as api_client:
 
     try:
         # List subscriptions
-        api_response = api_instance.subscriptions_get(active_at=active_at, billing_cadence=billing_cadence, billing_period=billing_period, customer_id=customer_id, end_time=end_time, expand=expand, include_canceled=include_canceled, limit=limit, offset=offset, order=order, plan_id=plan_id, sort=sort, start_time=start_time, status=status, subscription_status=subscription_status, with_line_items=with_line_items)
+        api_response = api_instance.subscriptions_get(active_at=active_at, billing_cadence=billing_cadence, billing_period=billing_period, customer_id=customer_id, end_time=end_time, expand=expand, limit=limit, offset=offset, order=order, plan_id=plan_id, sort=sort, start_time=start_time, status=status, subscription_status=subscription_status, with_line_items=with_line_items)
         print("The response of SubscriptionsApi->subscriptions_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -91,7 +90,6 @@ Name | Type | Description  | Notes
  **customer_id** | **str**| CustomerID filters by customer ID | [optional] 
  **end_time** | **str**|  | [optional] 
  **expand** | **str**|  | [optional] 
- **include_canceled** | **bool**| IncludeCanceled includes canceled subscriptions if true | [optional] 
  **limit** | **int**|  | [optional] 
  **offset** | **int**|  | [optional] 
  **order** | **str**|  | [optional] 

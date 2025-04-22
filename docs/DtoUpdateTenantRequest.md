@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **billing_details** | [**DtoTenantBillingDetails**](DtoTenantBillingDetails.md) |  | [optional] 
+**name** | **str** |  | [optional] 
 
 ## Example
 

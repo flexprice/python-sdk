@@ -18,21 +18,20 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class TypesWalletTxReferenceType(str, Enum):
+class TypesBillingCycle(str, Enum):
     """
-    TypesWalletTxReferenceType
+    TypesBillingCycle
     """
 
     """
     allowed enum values
     """
-    PAYMENT = 'PAYMENT'
-    EXTERNAL = 'EXTERNAL'
-    REQUEST = 'REQUEST'
+    ANNIVERSARY = 'anniversary'
+    CALENDAR = 'calendar'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of TypesWalletTxReferenceType from a JSON string"""
+        """Create an instance of TypesBillingCycle from a JSON string"""
         return cls(json.loads(json_str))
 
 

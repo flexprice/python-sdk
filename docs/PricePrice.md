@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the price | [optional] 
 **display_amount** | **str** | DisplayAmount is the formatted amount with currency symbol For USD: $12.50 | [optional] 
 **environment_id** | **str** | EnvironmentID is the environment identifier for the price | [optional] 
-**filter_values** | **Dict[str, List[str]]** |  | [optional] 
 **id** | **str** | ID uuid identifier for the price | [optional] 
 **invoice_cadence** | [**TypesInvoiceCadence**](TypesInvoiceCadence.md) |  | [optional] 
 **lookup_key** | **str** | LookupKey used for looking up the price in the database | [optional] 

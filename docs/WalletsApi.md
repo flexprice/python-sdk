@@ -5,6 +5,7 @@ All URIs are relative to */v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**customers_id_wallets_get**](WalletsApi.md#customers_id_wallets_get) | **GET** /customers/{id}/wallets | Get wallets by customer ID
+[**customers_wallets_get**](WalletsApi.md#customers_wallets_get) | **GET** /customers/wallets | Get Customer Wallets
 [**wallets_id_balance_real_time_get**](WalletsApi.md#wallets_id_balance_real_time_get) | **GET** /wallets/{id}/balance/real-time | Get wallet balance
 [**wallets_id_get**](WalletsApi.md#wallets_id_get) | **GET** /wallets/{id} | Get wallet by ID
 [**wallets_id_put**](WalletsApi.md#wallets_id_put) | **PUT** /wallets/{id} | Update a wallet
@@ -91,6 +92,92 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customers_wallets_get**
+> List[DtoWalletResponse] customers_wallets_get(id=id, include_real_time_balance=include_real_time_balance, lookup_key=lookup_key)
+
+Get Customer Wallets
+
+Get all wallets for a customer by lookup key or id
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import flexprice
+from flexprice.models.dto_wallet_response import DtoWalletResponse
+from flexprice.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flexprice.Configuration(
+    host = "/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with flexprice.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flexprice.WalletsApi(api_client)
+    id = 'id_example' # str |  (optional)
+    include_real_time_balance = False # bool |  (optional) (default to False)
+    lookup_key = 'lookup_key_example' # str |  (optional)
+
+    try:
+        # Get Customer Wallets
+        api_response = api_instance.customers_wallets_get(id=id, include_real_time_balance=include_real_time_balance, lookup_key=lookup_key)
+        print("The response of WalletsApi->customers_wallets_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletsApi->customers_wallets_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | [optional] 
+ **include_real_time_balance** | **bool**|  | [optional] [default to False]
+ **lookup_key** | **str**|  | [optional] 
+
+### Return type
+
+[**List[DtoWalletResponse]**](DtoWalletResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**404** | Not Found |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from flexprice.models.dto_tenant_billing_details import DtoTenantBillingDetails
 from typing import Optional, Set
@@ -28,7 +28,8 @@ class DtoUpdateTenantRequest(BaseModel):
     DtoUpdateTenantRequest
     """ # noqa: E501
     billing_details: Optional[DtoTenantBillingDetails] = None
-    __properties: ClassVar[List[str]] = ["billing_details"]
+    name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["billing_details", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,7 +85,8 @@ class DtoUpdateTenantRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "billing_details": DtoTenantBillingDetails.from_dict(obj["billing_details"]) if obj.get("billing_details") is not None else None
+            "billing_details": DtoTenantBillingDetails.from_dict(obj["billing_details"]) if obj.get("billing_details") is not None else None,
+            "name": obj.get("name")
         })
         return _obj
 

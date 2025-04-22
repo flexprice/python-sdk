@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -26,18 +26,18 @@ class DtoGetEventsRequest(BaseModel):
     """
     DtoGetEventsRequest
     """ # noqa: E501
-    count_total: Optional[StrictBool] = None
-    end_time: Optional[StrictStr] = None
-    event_id: Optional[StrictStr] = None
-    event_name: Optional[StrictStr] = None
-    external_customer_id: Optional[StrictStr] = None
-    iter_first_key: Optional[StrictStr] = None
-    iter_last_key: Optional[StrictStr] = None
-    offset: Optional[StrictInt] = None
-    page_size: Optional[StrictInt] = None
-    property_filters: Optional[Dict[str, List[StrictStr]]] = None
-    start_time: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["count_total", "end_time", "event_id", "event_name", "external_customer_id", "iter_first_key", "iter_last_key", "offset", "page_size", "property_filters", "start_time"]
+    end_time: Optional[StrictStr] = Field(default=None, description="End time of the events to be fetched in ISO 8601 format Defaults to now if not provided")
+    event_id: Optional[StrictStr] = Field(default=None, description="Event ID is the idempotency key for the event")
+    event_name: Optional[StrictStr] = Field(default=None, description="Event name / Unique identifier for the event in your system")
+    external_customer_id: Optional[StrictStr] = Field(default=None, description="Customer ID in your system that was sent with the event")
+    iter_first_key: Optional[StrictStr] = Field(default=None, description="First key to iterate over the events")
+    iter_last_key: Optional[StrictStr] = Field(default=None, description="Last key to iterate over the events")
+    offset: Optional[StrictInt] = Field(default=None, description="Offset to fetch the events and is set to 0 by default")
+    page_size: Optional[StrictInt] = Field(default=None, description="Page size to fetch the events and is set to 50 by default")
+    property_filters: Optional[Dict[str, List[StrictStr]]] = Field(default=None, description="Property filters to filter the events by the keys in `properties` field of the event")
+    source: Optional[StrictStr] = Field(default=None, description="Source to filter the events by the source")
+    start_time: Optional[StrictStr] = Field(default=None, description="Start time of the events to be fetched in ISO 8601 format Defaults to last 7 days from now if not provided")
+    __properties: ClassVar[List[str]] = ["end_time", "event_id", "event_name", "external_customer_id", "iter_first_key", "iter_last_key", "offset", "page_size", "property_filters", "source", "start_time"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,7 +90,6 @@ class DtoGetEventsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "count_total": obj.get("count_total"),
             "end_time": obj.get("end_time"),
             "event_id": obj.get("event_id"),
             "event_name": obj.get("event_name"),
@@ -100,6 +99,7 @@ class DtoGetEventsRequest(BaseModel):
             "offset": obj.get("offset"),
             "page_size": obj.get("page_size"),
             "property_filters": obj.get("property_filters"),
+            "source": obj.get("source"),
             "start_time": obj.get("start_time")
         })
         return _obj

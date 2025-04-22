@@ -1,13 +1,11 @@
-# TypesWalletTxReferenceType
+# TypesBillingCycle
 
 
 ## Enum
 
-* `PAYMENT` (value: `'PAYMENT'`)
+* `ANNIVERSARY` (value: `'anniversary'`)
 
-* `EXTERNAL` (value: `'EXTERNAL'`)
-
-* `REQUEST` (value: `'REQUEST'`)
+* `CALENDAR` (value: `'calendar'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

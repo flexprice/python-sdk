@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from flexprice.models.types_transaction_reason import TypesTransactionReason
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,15 +27,14 @@ class DtoTopUpWalletRequest(BaseModel):
     """
     DtoTopUpWalletRequest
     """ # noqa: E501
-    amount: Union[StrictFloat, StrictInt] = Field(description="amount is the number of credits to add to the wallet")
+    amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="amount is the amount in the currency of the wallet to be added NOTE: this is not the number of credits to add, but the amount in the currency amount = credits_to_add * conversion_rate if both amount and credits_to_add are provided, amount will be ignored ex if the wallet has a conversion_rate of 2 then adding an amount of 10 USD in the wallet wil add 5 credits in the wallet")
+    credits_to_add: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="credits_to_add is the number of credits to add to the wallet")
     description: Optional[StrictStr] = Field(default=None, description="description to add any specific details about the transaction")
-    expiry_date: Optional[StrictInt] = Field(default=None, description="expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC")
-    generate_invoice: Optional[StrictBool] = Field(default=None, description="generate_invoice when true, an invoice will be generated for the transaction")
+    expiry_date_utc: Optional[StrictStr] = Field(default=None, description="expiry_date_utc is the expiry date in UTC timezone ex 2025-01-01 00:00:00 UTC")
+    idempotency_key: StrictStr = Field(description="idempotency_key is a unique key for the transaction")
     metadata: Optional[Dict[str, StrictStr]] = None
-    purchased_credits: Optional[StrictBool] = Field(default=None, description="purchased_credits when true, the credits are added as purchased credits")
-    reference_id: Optional[StrictStr] = Field(default=None, description="reference_id is the ID of the reference ex payment ID, invoice ID, request ID")
-    reference_type: Optional[StrictStr] = Field(default=None, description="reference_type is the type of the reference ex payment, invoice, request")
-    __properties: ClassVar[List[str]] = ["amount", "description", "expiry_date", "generate_invoice", "metadata", "purchased_credits", "reference_id", "reference_type"]
+    transaction_reason: TypesTransactionReason
+    __properties: ClassVar[List[str]] = ["amount", "credits_to_add", "description", "expiry_date_utc", "idempotency_key", "metadata", "transaction_reason"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,13 +88,12 @@ class DtoTopUpWalletRequest(BaseModel):
 
         _obj = cls.model_validate({
             "amount": obj.get("amount"),
+            "credits_to_add": obj.get("credits_to_add"),
             "description": obj.get("description"),
-            "expiry_date": obj.get("expiry_date"),
-            "generate_invoice": obj.get("generate_invoice"),
+            "expiry_date_utc": obj.get("expiry_date_utc"),
+            "idempotency_key": obj.get("idempotency_key"),
             "metadata": obj.get("metadata"),
-            "purchased_credits": obj.get("purchased_credits"),
-            "reference_id": obj.get("reference_id"),
-            "reference_type": obj.get("reference_type")
+            "transaction_reason": obj.get("transaction_reason")
         })
         return _obj
 

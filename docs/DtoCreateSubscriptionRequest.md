@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **billing_cadence** | [**TypesBillingCadence**](TypesBillingCadence.md) |  | 
+**billing_cycle** | [**TypesBillingCycle**](TypesBillingCycle.md) |  | [optional] 
 **billing_period** | [**TypesBillingPeriod**](TypesBillingPeriod.md) |  | 
 **billing_period_count** | **int** |  | 
 **currency** | **str** |  | 

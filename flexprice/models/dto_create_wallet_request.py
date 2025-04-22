@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from flexprice.models.types_auto_topup_trigger import TypesAutoTopupTrigger
 from flexprice.models.types_wallet_config import TypesWalletConfig
@@ -33,14 +33,16 @@ class DtoCreateWalletRequest(BaseModel):
     auto_topup_min_balance: Optional[Union[StrictFloat, StrictInt]] = None
     auto_topup_trigger: Optional[TypesAutoTopupTrigger] = None
     config: Optional[TypesWalletConfig] = None
-    conversion_rate: Optional[Union[StrictFloat, StrictInt]] = None
+    conversion_rate: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="amount in the currency =  number of credits * conversion_rate ex if conversion_rate is 1, then 1 USD = 1 credit ex if conversion_rate is 2, then 1 USD = 0.5 credits ex if conversion_rate is 0.5, then 1 USD = 2 credits")
     currency: StrictStr
     customer_id: StrictStr
     description: Optional[StrictStr] = None
+    initial_credits_to_load: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits")
+    initial_credits_to_load_expiry_date: Optional[StrictInt] = Field(default=None, description="initial_credits_to_load_expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC")
     metadata: Optional[Dict[str, StrictStr]] = None
     name: Optional[StrictStr] = None
     wallet_type: Optional[TypesWalletType] = None
-    __properties: ClassVar[List[str]] = ["auto_topup_amount", "auto_topup_min_balance", "auto_topup_trigger", "config", "conversion_rate", "currency", "customer_id", "description", "metadata", "name", "wallet_type"]
+    __properties: ClassVar[List[str]] = ["auto_topup_amount", "auto_topup_min_balance", "auto_topup_trigger", "config", "conversion_rate", "currency", "customer_id", "description", "initial_credits_to_load", "initial_credits_to_load_expiry_date", "metadata", "name", "wallet_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,6 +106,8 @@ class DtoCreateWalletRequest(BaseModel):
             "currency": obj.get("currency"),
             "customer_id": obj.get("customer_id"),
             "description": obj.get("description"),
+            "initial_credits_to_load": obj.get("initial_credits_to_load"),
+            "initial_credits_to_load_expiry_date": obj.get("initial_credits_to_load_expiry_date"),
             "metadata": obj.get("metadata"),
             "name": obj.get("name"),
             "wallet_type": obj.get("wallet_type")
