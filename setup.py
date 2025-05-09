@@ -27,7 +27,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 NAME = "flexprice"
-VERSION = "1.0.15"
+VERSION = "1.0.16"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
     "urllib3 >=2.0.0, <3.0.0",
@@ -38,7 +38,7 @@ REQUIRES = [
 
 setup(
     name=NAME,
-    version='1.0.15',
+    version='1.0.16',
     description="Official FlexPrice Python SDK",
     author="FlexPrice Team",
     author_email="tech@flexprice.io",

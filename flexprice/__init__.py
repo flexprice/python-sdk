@@ -87,6 +87,8 @@ from flexprice.models.dto_feature_usage_summary import DtoFeatureUsageSummary
 from flexprice.models.dto_get_events_request import DtoGetEventsRequest
 from flexprice.models.dto_get_events_response import DtoGetEventsResponse
 from flexprice.models.dto_get_preview_invoice_request import DtoGetPreviewInvoiceRequest
+from flexprice.models.dto_get_usage_analytics_request import DtoGetUsageAnalyticsRequest
+from flexprice.models.dto_get_usage_analytics_response import DtoGetUsageAnalyticsResponse
 from flexprice.models.dto_get_usage_by_meter_request import DtoGetUsageByMeterRequest
 from flexprice.models.dto_get_usage_by_subscription_request import DtoGetUsageBySubscriptionRequest
 from flexprice.models.dto_get_usage_by_subscription_response import DtoGetUsageBySubscriptionResponse
@@ -140,6 +142,8 @@ from flexprice.models.dto_update_price_request import DtoUpdatePriceRequest
 from flexprice.models.dto_update_task_status_request import DtoUpdateTaskStatusRequest
 from flexprice.models.dto_update_tenant_request import DtoUpdateTenantRequest
 from flexprice.models.dto_update_wallet_request import DtoUpdateWalletRequest
+from flexprice.models.dto_usage_analytic_item import DtoUsageAnalyticItem
+from flexprice.models.dto_usage_analytic_point import DtoUsageAnalyticPoint
 from flexprice.models.dto_usage_result import DtoUsageResult
 from flexprice.models.dto_user_response import DtoUserResponse
 from flexprice.models.dto_wallet_balance_response import DtoWalletBalanceResponse
@@ -147,6 +151,7 @@ from flexprice.models.dto_wallet_response import DtoWalletResponse
 from flexprice.models.dto_wallet_transaction_response import DtoWalletTransactionResponse
 from flexprice.models.errors_error_detail import ErrorsErrorDetail
 from flexprice.models.errors_error_response import ErrorsErrorResponse
+from flexprice.models.github_com_flexprice_flexprice_internal_types_value import GithubComFlexpriceFlexpriceInternalTypesValue
 from flexprice.models.meter_aggregation import MeterAggregation
 from flexprice.models.meter_filter import MeterFilter
 from flexprice.models.price_jsonb_transform_quantity import PriceJSONBTransformQuantity
@@ -162,9 +167,14 @@ from flexprice.models.types_billing_cycle import TypesBillingCycle
 from flexprice.models.types_billing_model import TypesBillingModel
 from flexprice.models.types_billing_period import TypesBillingPeriod
 from flexprice.models.types_billing_tier import TypesBillingTier
+from flexprice.models.types_customer_filter import TypesCustomerFilter
+from flexprice.models.types_data_type import TypesDataType
 from flexprice.models.types_entity_type import TypesEntityType
+from flexprice.models.types_feature_filter import TypesFeatureFilter
 from flexprice.models.types_feature_type import TypesFeatureType
 from flexprice.models.types_file_type import TypesFileType
+from flexprice.models.types_filter_condition import TypesFilterCondition
+from flexprice.models.types_filter_operator_type import TypesFilterOperatorType
 from flexprice.models.types_invoice_billing_reason import TypesInvoiceBillingReason
 from flexprice.models.types_invoice_cadence import TypesInvoiceCadence
 from flexprice.models.types_invoice_status import TypesInvoiceStatus
@@ -180,6 +190,8 @@ from flexprice.models.types_reset_usage import TypesResetUsage
 from flexprice.models.types_resume_mode import TypesResumeMode
 from flexprice.models.types_secret_provider import TypesSecretProvider
 from flexprice.models.types_secret_type import TypesSecretType
+from flexprice.models.types_sort_condition import TypesSortCondition
+from flexprice.models.types_sort_direction import TypesSortDirection
 from flexprice.models.types_status import TypesStatus
 from flexprice.models.types_subscription_status import TypesSubscriptionStatus
 from flexprice.models.types_task_status import TypesTaskStatus

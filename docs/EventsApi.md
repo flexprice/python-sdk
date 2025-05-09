@@ -4,12 +4,95 @@ All URIs are relative to */v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**events_analytics_post**](EventsApi.md#events_analytics_post) | **POST** /events/analytics | Get usage analytics
 [**events_bulk_post**](EventsApi.md#events_bulk_post) | **POST** /events/bulk | Bulk Ingest events
 [**events_post**](EventsApi.md#events_post) | **POST** /events | Ingest event
 [**events_query_post**](EventsApi.md#events_query_post) | **POST** /events/query | List raw events
 [**events_usage_meter_post**](EventsApi.md#events_usage_meter_post) | **POST** /events/usage/meter | Get usage by meter
 [**events_usage_post**](EventsApi.md#events_usage_post) | **POST** /events/usage | Get usage statistics
 
+
+# **events_analytics_post**
+> DtoGetUsageAnalyticsResponse events_analytics_post(request)
+
+Get usage analytics
+
+Retrieve comprehensive usage analytics with filtering, grouping, and time-series data
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import flexprice
+from flexprice.models.dto_get_usage_analytics_request import DtoGetUsageAnalyticsRequest
+from flexprice.models.dto_get_usage_analytics_response import DtoGetUsageAnalyticsResponse
+from flexprice.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flexprice.Configuration(
+    host = "/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with flexprice.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flexprice.EventsApi(api_client)
+    request = flexprice.DtoGetUsageAnalyticsRequest() # DtoGetUsageAnalyticsRequest | Request body
+
+    try:
+        # Get usage analytics
+        api_response = api_instance.events_analytics_post(request)
+        print("The response of EventsApi->events_analytics_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EventsApi->events_analytics_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**DtoGetUsageAnalyticsRequest**](DtoGetUsageAnalyticsRequest.md)| Request body | 
+
+### Return type
+
+[**DtoGetUsageAnalyticsResponse**](DtoGetUsageAnalyticsResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **events_bulk_post**
 > Dict[str, str] events_bulk_post(event)

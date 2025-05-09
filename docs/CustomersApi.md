@@ -12,10 +12,11 @@ Method | HTTP request | Description
 [**customers_id_usage_get**](CustomersApi.md#customers_id_usage_get) | **GET** /customers/{id}/usage | Get customer usage summary
 [**customers_lookup_lookup_key_get**](CustomersApi.md#customers_lookup_lookup_key_get) | **GET** /customers/lookup/{lookup_key} | Get a customer by lookup key
 [**customers_post**](CustomersApi.md#customers_post) | **POST** /customers | Create a customer
+[**customers_search_post**](CustomersApi.md#customers_search_post) | **POST** /customers/search | List customers by filter
 
 
 # **customers_get**
-> DtoListCustomersResponse customers_get(customer_ids=customer_ids, email=email, end_time=end_time, expand=expand, external_id=external_id, limit=limit, offset=offset, order=order, sort=sort, start_time=start_time, status=status)
+> DtoListCustomersResponse customers_get(customer_ids=customer_ids, email=email, end_time=end_time, expand=expand, external_id=external_id, limit=limit, offset=offset, order=order, start_time=start_time, status=status)
 
 Get customers
 
@@ -60,13 +61,12 @@ with flexprice.ApiClient(configuration) as api_client:
     limit = 56 # int |  (optional)
     offset = 56 # int |  (optional)
     order = 'order_example' # str |  (optional)
-    sort = 'sort_example' # str |  (optional)
     start_time = 'start_time_example' # str |  (optional)
     status = 'status_example' # str |  (optional)
 
     try:
         # Get customers
-        api_response = api_instance.customers_get(customer_ids=customer_ids, email=email, end_time=end_time, expand=expand, external_id=external_id, limit=limit, offset=offset, order=order, sort=sort, start_time=start_time, status=status)
+        api_response = api_instance.customers_get(customer_ids=customer_ids, email=email, end_time=end_time, expand=expand, external_id=external_id, limit=limit, offset=offset, order=order, start_time=start_time, status=status)
         print("The response of CustomersApi->customers_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -88,7 +88,6 @@ Name | Type | Description  | Notes
  **limit** | **int**|  | [optional] 
  **offset** | **int**|  | [optional] 
  **order** | **str**|  | [optional] 
- **sort** | **str**|  | [optional] 
  **start_time** | **str**|  | [optional] 
  **status** | **str**|  | [optional] 
 
@@ -687,6 +686,88 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **customers_search_post**
+> DtoListCustomersResponse customers_search_post(filter)
+
+List customers by filter
+
+List customers by filter
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import flexprice
+from flexprice.models.dto_list_customers_response import DtoListCustomersResponse
+from flexprice.models.types_customer_filter import TypesCustomerFilter
+from flexprice.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flexprice.Configuration(
+    host = "/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with flexprice.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flexprice.CustomersApi(api_client)
+    filter = flexprice.TypesCustomerFilter() # TypesCustomerFilter | Filter
+
+    try:
+        # List customers by filter
+        api_response = api_instance.customers_search_post(filter)
+        print("The response of CustomersApi->customers_search_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CustomersApi->customers_search_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**TypesCustomerFilter**](TypesCustomerFilter.md)| Filter | 
+
+### Return type
+
+[**DtoListCustomersResponse**](DtoListCustomersResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **500** | Internal Server Error |  -  |
 
