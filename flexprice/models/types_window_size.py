@@ -27,8 +27,14 @@ class TypesWindowSize(str, Enum):
     allowed enum values
     """
     MINUTE = 'MINUTE'
+    ENUM_15MIN = '15MIN'
+    ENUM_30MIN = '30MIN'
     HOUR = 'HOUR'
+    ENUM_3HOUR = '3HOUR'
+    ENUM_6HOUR = '6HOUR'
+    ENUM_12HOUR = '12HOUR'
     DAY = 'DAY'
+    WEEK = 'WEEK'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

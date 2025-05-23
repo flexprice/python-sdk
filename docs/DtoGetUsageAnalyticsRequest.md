@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **group_by** | **List[str]** | allowed values: \&quot;source\&quot;, \&quot;feature_id\&quot; | [optional] 
 **sources** | **List[str]** |  | [optional] 
 **start_time** | **str** |  | [optional] 
-**window_size** | **str** | e.g., \&quot;MINUTE\&quot;, \&quot;HOUR\&quot;, \&quot;DAY\&quot; | [optional] 
+**window_size** | [**TypesWindowSize**](TypesWindowSize.md) |  | [optional] 
 
 ## Example
 

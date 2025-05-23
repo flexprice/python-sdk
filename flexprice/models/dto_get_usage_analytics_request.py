@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from flexprice.models.types_window_size import TypesWindowSize
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +33,7 @@ class DtoGetUsageAnalyticsRequest(BaseModel):
     group_by: Optional[List[StrictStr]] = Field(default=None, description="allowed values: \"source\", \"feature_id\"")
     sources: Optional[List[StrictStr]] = None
     start_time: Optional[StrictStr] = None
-    window_size: Optional[StrictStr] = Field(default=None, description="e.g., \"MINUTE\", \"HOUR\", \"DAY\"")
+    window_size: Optional[TypesWindowSize] = None
     __properties: ClassVar[List[str]] = ["end_time", "external_customer_id", "feature_ids", "group_by", "sources", "start_time", "window_size"]
 
     model_config = ConfigDict(

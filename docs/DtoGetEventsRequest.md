@@ -12,8 +12,10 @@ Name | Type | Description | Notes
 **iter_first_key** | **str** | First key to iterate over the events | [optional] 
 **iter_last_key** | **str** | Last key to iterate over the events | [optional] 
 **offset** | **int** | Offset to fetch the events and is set to 0 by default | [optional] 
+**order** | **str** | Order by condition. Allowed values (case sensitive): asc, desc (default: desc) | [optional] 
 **page_size** | **int** | Page size to fetch the events and is set to 50 by default | [optional] 
 **property_filters** | **Dict[str, List[str]]** | Property filters to filter the events by the keys in &#x60;properties&#x60; field of the event | [optional] 
+**sort** | **str** | Sort by the field. Allowed values (case sensitive): timestamp, event_name (default: timestamp) | [optional] 
 **source** | **str** | Source to filter the events by the source | [optional] 
 **start_time** | **str** | Start time of the events to be fetched in ISO 8601 format Defaults to last 7 days from now if not provided | [optional] 
 
