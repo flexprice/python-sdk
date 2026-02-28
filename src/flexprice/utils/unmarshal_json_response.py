@@ -5,7 +5,7 @@ from typing import Any, Optional, Type, TypeVar, overload
 import httpx
 
 from .serializers import unmarshal_json
-from flexprice import errors
+from flexprice import models
 
 T = TypeVar("T")
 
@@ -30,7 +30,7 @@ def unmarshal_json_response(
     try:
         return unmarshal_json(body, typ)
     except Exception as e:
-        raise errors.ResponseValidationError(
+        raise models.errors.ResponseValidationError(
             "Response validation failed",
             http_res,
             e,

@@ -9,7 +9,7 @@ from ._version import (
 from .httpclient import AsyncHttpClient, HttpClient
 from .utils import Logger, RetryConfig, remove_suffix
 from dataclasses import dataclass
-from flexprice import types
+from flexprice import models
 from flexprice.types import OptionalNullable, UNSET
 from pydantic import Field
 from typing import Callable, Dict, Optional, Tuple, Union
@@ -22,7 +22,7 @@ class SDKConfiguration:
     async_client: Union[AsyncHttpClient, None]
     async_client_supplied: bool
     debug_logger: Logger
-    security: Optional[Union[types.Security, Callable[[], types.Security]]] = None
+    security: Optional[Union[models.Security, Callable[[], models.Security]]] = None
     server_url: str = ""
     language: str = "python"
     openapi_doc_version: str = __openapi_doc_version__
