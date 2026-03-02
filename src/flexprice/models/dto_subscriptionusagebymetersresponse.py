@@ -21,6 +21,8 @@ class DtoSubscriptionUsageByMetersResponseTypedDict(TypedDict):
     r"""Factor applied to this charge if in overage"""
     price: NotRequired[PricePriceTypedDict]
     quantity: NotRequired[float]
+    subscription_line_item_id: NotRequired[str]
+    r"""For feature_usage: direct match by sub_line_item_id"""
 
 
 class DtoSubscriptionUsageByMetersResponse(BaseModel):
@@ -46,6 +48,9 @@ class DtoSubscriptionUsageByMetersResponse(BaseModel):
 
     quantity: Optional[float] = None
 
+    subscription_line_item_id: Optional[str] = None
+    r"""For feature_usage: direct match by sub_line_item_id"""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
@@ -60,6 +65,7 @@ class DtoSubscriptionUsageByMetersResponse(BaseModel):
                 "overage_factor",
                 "price",
                 "quantity",
+                "subscription_line_item_id",
             ]
         )
         serialized = handler(self)

@@ -11,9 +11,14 @@ from typing_extensions import NotRequired, TypedDict
 
 class MeterAggregationTypedDict(TypedDict):
     bucket_size: NotRequired[WindowSize]
+    expression: NotRequired[str]
+    r"""Expression is an optional CEL expression to compute per-event quantity from event.properties.
+    When set, it replaces Field-based extraction. Property names are used directly (e.g., token * duration * pixel).
+    """
     field: NotRequired[str]
     r"""Field is the key in $event.properties on which the aggregation is to be applied
     For ex if the aggregation type is sum for API usage, the field could be \"duration_ms\" 
+    Ignored when Expression is set.
     """
     group_by: NotRequired[str]
     r"""GroupBy is the property name in event.properties to group by before aggregating.
@@ -32,9 +37,15 @@ class MeterAggregationTypedDict(TypedDict):
 class MeterAggregation(BaseModel):
     bucket_size: Optional[WindowSize] = None
 
+    expression: Optional[str] = None
+    r"""Expression is an optional CEL expression to compute per-event quantity from event.properties.
+    When set, it replaces Field-based extraction. Property names are used directly (e.g., token * duration * pixel).
+    """
+
     field: Optional[str] = None
     r"""Field is the key in $event.properties on which the aggregation is to be applied
     For ex if the aggregation type is sum for API usage, the field could be \"duration_ms\" 
+    Ignored when Expression is set.
     """
 
     group_by: Optional[str] = None
@@ -55,7 +66,7 @@ class MeterAggregation(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["bucket_size", "field", "group_by", "multiplier", "type"]
+            ["bucket_size", "expression", "field", "group_by", "multiplier", "type"]
         )
         serialized = handler(self)
         m = {}
