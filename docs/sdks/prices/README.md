@@ -24,7 +24,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
@@ -91,7 +90,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
@@ -133,7 +131,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
@@ -175,7 +172,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
@@ -234,7 +230,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
@@ -276,7 +271,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
@@ -331,7 +325,6 @@ from flexprice import Flexprice
 
 
 with Flexprice(
-    "https://api.example.com",
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 

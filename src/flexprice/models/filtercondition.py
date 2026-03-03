@@ -3,10 +3,7 @@
 from __future__ import annotations
 from .datatype import DataType
 from .filteroperatortype import FilterOperatorType
-from .github_com_flexprice_flexprice_internal_types_value import (
-    GithubComFlexpriceFlexpriceInternalTypesValue,
-    GithubComFlexpriceFlexpriceInternalTypesValueTypedDict,
-)
+from .value import Value, ValueTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -17,7 +14,7 @@ class FilterConditionTypedDict(TypedDict):
     data_type: NotRequired[DataType]
     field: NotRequired[str]
     operator: NotRequired[FilterOperatorType]
-    value: NotRequired[GithubComFlexpriceFlexpriceInternalTypesValueTypedDict]
+    value: NotRequired[ValueTypedDict]
 
 
 class FilterCondition(BaseModel):
@@ -27,7 +24,7 @@ class FilterCondition(BaseModel):
 
     operator: Optional[FilterOperatorType] = None
 
-    value: Optional[GithubComFlexpriceFlexpriceInternalTypesValue] = None
+    value: Optional[Value] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

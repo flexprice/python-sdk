@@ -8,7 +8,7 @@ from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class GithubComFlexpriceFlexpriceInternalTypesValueTypedDict(TypedDict):
+class ValueTypedDict(TypedDict):
     array: NotRequired[List[str]]
     boolean: NotRequired[bool]
     date_: NotRequired[str]
@@ -16,7 +16,7 @@ class GithubComFlexpriceFlexpriceInternalTypesValueTypedDict(TypedDict):
     string: NotRequired[str]
 
 
-class GithubComFlexpriceFlexpriceInternalTypesValue(BaseModel):
+class Value(BaseModel):
     array: Optional[List[str]] = None
 
     boolean: Optional[bool] = None
@@ -45,6 +45,6 @@ class GithubComFlexpriceFlexpriceInternalTypesValue(BaseModel):
 
 
 try:
-    GithubComFlexpriceFlexpriceInternalTypesValue.model_rebuild()
+    Value.model_rebuild()
 except NameError:
     pass

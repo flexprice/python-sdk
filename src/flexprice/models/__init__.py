@@ -1058,10 +1058,6 @@ if TYPE_CHECKING:
         GithubComFlexpriceFlexpriceInternalDomainPlanPlan,
         GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict,
     )
-    from .github_com_flexprice_flexprice_internal_types_value import (
-        GithubComFlexpriceFlexpriceInternalTypesValue,
-        GithubComFlexpriceFlexpriceInternalTypesValueTypedDict,
-    )
     from .groupfilter import GroupFilter, GroupFilterOrder, GroupFilterTypedDict
     from .handlechargebeewebhookop import (
         HandleChargebeeWebhookRequest,
@@ -1325,6 +1321,7 @@ if TYPE_CHECKING:
     from .updatewalletop import UpdateWalletRequest, UpdateWalletRequestTypedDict
     from .userfilter import UserFilter, UserFilterOrder, UserFilterTypedDict
     from .usertype import UserType
+    from .value import Value, ValueTypedDict
     from .voidcreditnoteop import VoidCreditNoteRequest, VoidCreditNoteRequestTypedDict
     from .voidinvoiceop import VoidInvoiceRequest, VoidInvoiceRequestTypedDict
     from .walletconfig import WalletConfig, WalletConfigTypedDict
@@ -2042,8 +2039,6 @@ __all__ = [
     "GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlan",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict",
-    "GithubComFlexpriceFlexpriceInternalTypesValue",
-    "GithubComFlexpriceFlexpriceInternalTypesValueTypedDict",
     "GroupFilter",
     "GroupFilterOrder",
     "GroupFilterTypedDict",
@@ -2258,6 +2253,8 @@ __all__ = [
     "UserFilterOrder",
     "UserFilterTypedDict",
     "UserType",
+    "Value",
+    "ValueTypedDict",
     "VoidCreditNoteRequest",
     "VoidCreditNoteRequestTypedDict",
     "VoidInvoiceRequest",
@@ -2960,8 +2957,6 @@ _dynamic_imports: dict[str, str] = {
     "GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict": ".github_com_flexprice_flexprice_internal_domain_feature_feature",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlan": ".github_com_flexprice_flexprice_internal_domain_plan_plan",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict": ".github_com_flexprice_flexprice_internal_domain_plan_plan",
-    "GithubComFlexpriceFlexpriceInternalTypesValue": ".github_com_flexprice_flexprice_internal_types_value",
-    "GithubComFlexpriceFlexpriceInternalTypesValueTypedDict": ".github_com_flexprice_flexprice_internal_types_value",
     "GroupFilter": ".groupfilter",
     "GroupFilterOrder": ".groupfilter",
     "GroupFilterTypedDict": ".groupfilter",
@@ -3173,6 +3168,8 @@ _dynamic_imports: dict[str, str] = {
     "UserFilterOrder": ".userfilter",
     "UserFilterTypedDict": ".userfilter",
     "UserType": ".usertype",
+    "Value": ".value",
+    "ValueTypedDict": ".value",
     "VoidCreditNoteRequest": ".voidcreditnoteop",
     "VoidCreditNoteRequestTypedDict": ".voidcreditnoteop",
     "VoidInvoiceRequest": ".voidinvoiceop",

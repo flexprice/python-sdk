@@ -5,13 +5,13 @@ from .httpclient import AsyncHttpClient, ClientOwner, HttpClient, close_clients
 from .sdkconfiguration import SDKConfiguration
 from .utils.logger import Logger, get_default_logger
 from .utils.retries import RetryConfig
-from flexprice import models
+from flexprice import models, utils
 from flexprice._hooks import SDKHooks
 from flexprice.types import OptionalNullable, UNSET
 import httpx
 import importlib
 import sys
-from typing import Any, Callable, Optional, TYPE_CHECKING, Union, cast
+from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
@@ -49,7 +49,7 @@ if TYPE_CHECKING:
 
 
 class Flexprice(BaseSDK):
-    r"""Flexprice API: Flexprice API provides billing, metering, and subscription management for SaaS and usage-based products. Use it to manage customers, plans, invoices, payments, usage events, and entitlements. Authenticate with an API key in the x-api-key header."""
+    r"""Flexprice API: Flexprice API Service"""
 
     addons: "Addons"
     entitlements: "Entitlements"
@@ -121,8 +121,10 @@ class Flexprice(BaseSDK):
 
     def __init__(
         self,
-        server_url: str,
         api_key_auth: Union[str, Callable[[], str]],
+        server_idx: Optional[int] = None,
+        url_params: Optional[Dict[str, str]] = None,
+        server_url: Optional[str] = None,
         client: Optional[HttpClient] = None,
         async_client: Optional[AsyncHttpClient] = None,
         retry_config: OptionalNullable[RetryConfig] = UNSET,
@@ -168,6 +170,10 @@ class Flexprice(BaseSDK):
         else:
             security = models.Security(api_key_auth=api_key_auth)
 
+        if server_url is not None:
+            if url_params is not None:
+                server_url = utils.template_url(server_url, url_params)
+
         BaseSDK.__init__(
             self,
             SDKConfiguration(
@@ -177,6 +183,7 @@ class Flexprice(BaseSDK):
                 async_client_supplied=async_client_supplied,
                 security=security,
                 server_url=server_url,
+                server_idx=server_idx,
                 retry_config=retry_config,
                 timeout_ms=timeout_ms,
                 debug_logger=debug_logger,
