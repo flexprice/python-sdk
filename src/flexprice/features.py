@@ -24,9 +24,6 @@ class Features(BaseSDK):
             Union[models.DtoCreateMeterRequest, models.DtoCreateMeterRequestTypedDict]
         ] = None,
         meter_id: Optional[str] = None,
-        reporting_unit: Optional[
-            Union[models.ReportingUnit, models.ReportingUnitTypedDict]
-        ] = None,
         unit_plural: Optional[str] = None,
         unit_singular: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -46,7 +43,6 @@ class Features(BaseSDK):
         :param metadata:
         :param meter:
         :param meter_id:
-        :param reporting_unit:
         :param unit_plural:
         :param unit_singular:
         :param retries: Override the default retry configuration for this method
@@ -76,9 +72,6 @@ class Features(BaseSDK):
             ),
             meter_id=meter_id,
             name=name,
-            reporting_unit=utils.get_pydantic_model(
-                reporting_unit, Optional[models.ReportingUnit]
-            ),
             type=type_,
             unit_plural=unit_plural,
             unit_singular=unit_singular,
@@ -168,9 +161,6 @@ class Features(BaseSDK):
             Union[models.DtoCreateMeterRequest, models.DtoCreateMeterRequestTypedDict]
         ] = None,
         meter_id: Optional[str] = None,
-        reporting_unit: Optional[
-            Union[models.ReportingUnit, models.ReportingUnitTypedDict]
-        ] = None,
         unit_plural: Optional[str] = None,
         unit_singular: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -190,7 +180,6 @@ class Features(BaseSDK):
         :param metadata:
         :param meter:
         :param meter_id:
-        :param reporting_unit:
         :param unit_plural:
         :param unit_singular:
         :param retries: Override the default retry configuration for this method
@@ -220,9 +209,6 @@ class Features(BaseSDK):
             ),
             meter_id=meter_id,
             name=name,
-            reporting_unit=utils.get_pydantic_model(
-                reporting_unit, Optional[models.ReportingUnit]
-            ),
             type=type_,
             unit_plural=unit_plural,
             unit_singular=unit_singular,
@@ -604,9 +590,6 @@ class Features(BaseSDK):
         ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
-        reporting_unit: Optional[
-            Union[models.ReportingUnit, models.ReportingUnitTypedDict]
-        ] = None,
         unit_plural: Optional[str] = None,
         unit_singular: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -624,7 +607,6 @@ class Features(BaseSDK):
         :param filters:
         :param metadata:
         :param name:
-        :param reporting_unit:
         :param unit_plural:
         :param unit_singular:
         :param retries: Override the default retry configuration for this method
@@ -654,9 +636,6 @@ class Features(BaseSDK):
                 ),
                 metadata=metadata,
                 name=name,
-                reporting_unit=utils.get_pydantic_model(
-                    reporting_unit, Optional[models.ReportingUnit]
-                ),
                 unit_plural=unit_plural,
                 unit_singular=unit_singular,
             ),
@@ -744,9 +723,6 @@ class Features(BaseSDK):
         ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
-        reporting_unit: Optional[
-            Union[models.ReportingUnit, models.ReportingUnitTypedDict]
-        ] = None,
         unit_plural: Optional[str] = None,
         unit_singular: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -764,7 +740,6 @@ class Features(BaseSDK):
         :param filters:
         :param metadata:
         :param name:
-        :param reporting_unit:
         :param unit_plural:
         :param unit_singular:
         :param retries: Override the default retry configuration for this method
@@ -794,9 +769,6 @@ class Features(BaseSDK):
                 ),
                 metadata=metadata,
                 name=name,
-                reporting_unit=utils.get_pydantic_model(
-                    reporting_unit, Optional[models.ReportingUnit]
-                ),
                 unit_plural=unit_plural,
                 unit_singular=unit_singular,
             ),

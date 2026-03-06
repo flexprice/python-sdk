@@ -7,7 +7,6 @@ from .dto_createmeterrequest import (
     DtoCreateMeterRequestTypedDict,
 )
 from .featuretype import FeatureType
-from .reportingunit import ReportingUnit, ReportingUnitTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Optional
@@ -23,7 +22,6 @@ class DtoCreateFeatureRequestTypedDict(TypedDict):
     metadata: NotRequired[Dict[str, str]]
     meter: NotRequired[DtoCreateMeterRequestTypedDict]
     meter_id: NotRequired[str]
-    reporting_unit: NotRequired[ReportingUnitTypedDict]
     unit_plural: NotRequired[str]
     unit_singular: NotRequired[str]
 
@@ -45,8 +43,6 @@ class DtoCreateFeatureRequest(BaseModel):
 
     meter_id: Optional[str] = None
 
-    reporting_unit: Optional[ReportingUnit] = None
-
     unit_plural: Optional[str] = None
 
     unit_singular: Optional[str] = None
@@ -61,7 +57,6 @@ class DtoCreateFeatureRequest(BaseModel):
                 "metadata",
                 "meter",
                 "meter_id",
-                "reporting_unit",
                 "unit_plural",
                 "unit_singular",
             ]
