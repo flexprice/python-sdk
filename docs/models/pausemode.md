@@ -1,5 +1,14 @@
 # PauseMode
 
+## Example Usage
+
+```python
+from flexprice.models import PauseMode
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: PauseMode = "immediate"
+```
+
 
 ## Values
 

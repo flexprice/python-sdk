@@ -1,5 +1,14 @@
 # PaymentStatus
 
+## Example Usage
+
+```python
+from flexprice.models import PaymentStatus
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: PaymentStatus = "INITIATED"
+```
+
 
 ## Values
 

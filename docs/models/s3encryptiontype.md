@@ -1,5 +1,14 @@
 # S3EncryptionType
 
+## Example Usage
+
+```python
+from flexprice.models import S3EncryptionType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: S3EncryptionType = "AES256"
+```
+
 
 ## Values
 

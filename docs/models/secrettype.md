@@ -1,5 +1,14 @@
 # SecretType
 
+## Example Usage
+
+```python
+from flexprice.models import SecretType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: SecretType = "private_key"
+```
+
 
 ## Values
 

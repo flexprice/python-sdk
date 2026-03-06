@@ -1,5 +1,12 @@
 # FilterOperatorType
 
+## Example Usage
+
+```python
+from flexprice.models import FilterOperatorType
+value: FilterOperatorType = "eq"
+```
+
 
 ## Values
 

@@ -1,5 +1,14 @@
 # CreditGrantPeriod
 
+## Example Usage
+
+```python
+from flexprice.models import CreditGrantPeriod
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: CreditGrantPeriod = "DAILY"
+```
+
 
 ## Values
 

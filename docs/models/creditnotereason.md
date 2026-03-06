@@ -1,5 +1,14 @@
 # CreditNoteReason
 
+## Example Usage
+
+```python
+from flexprice.models import CreditNoteReason
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: CreditNoteReason = "DUPLICATE"
+```
+
 
 ## Values
 

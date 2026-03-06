@@ -1,5 +1,14 @@
 # FailurePointType
 
+## Example Usage
+
+```python
+from flexprice.models import FailurePointType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: FailurePointType = "customer_lookup"
+```
+
 
 ## Values
 

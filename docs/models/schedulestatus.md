@@ -1,5 +1,14 @@
 # ScheduleStatus
 
+## Example Usage
+
+```python
+from flexprice.models import ScheduleStatus
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: ScheduleStatus = "pending"
+```
+
 
 ## Values
 

@@ -1,5 +1,12 @@
 # PaymentBehavior
 
+## Example Usage
+
+```python
+from flexprice.models import PaymentBehavior
+value: PaymentBehavior = "allow_incomplete"
+```
+
 
 ## Values
 

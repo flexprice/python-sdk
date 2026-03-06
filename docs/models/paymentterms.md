@@ -1,5 +1,14 @@
 # PaymentTerms
 
+## Example Usage
+
+```python
+from flexprice.models import PaymentTerms
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: PaymentTerms = "15 NET"
+```
+
 
 ## Values
 

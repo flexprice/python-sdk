@@ -1,5 +1,14 @@
 # AlertState
 
+## Example Usage
+
+```python
+from flexprice.models import AlertState
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: AlertState = "ok"
+```
+
 
 ## Values
 

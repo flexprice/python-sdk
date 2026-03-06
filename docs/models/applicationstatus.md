@@ -1,5 +1,14 @@
 # ApplicationStatus
 
+## Example Usage
+
+```python
+from flexprice.models import ApplicationStatus
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: ApplicationStatus = "applied"
+```
+
 
 ## Values
 

@@ -1,5 +1,14 @@
 # WalletType
 
+## Example Usage
+
+```python
+from flexprice.models import WalletType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: WalletType = "PRE_PAID"
+```
+
 
 ## Values
 

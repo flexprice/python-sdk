@@ -1,5 +1,12 @@
 # GetWalletTransactionsTransactionReason
 
+## Example Usage
+
+```python
+from flexprice.models import GetWalletTransactionsTransactionReason
+value: GetWalletTransactionsTransactionReason = "INVOICE_PAYMENT"
+```
+
 
 ## Values
 

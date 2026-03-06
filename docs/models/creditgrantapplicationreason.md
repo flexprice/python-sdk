@@ -1,5 +1,14 @@
 # CreditGrantApplicationReason
 
+## Example Usage
+
+```python
+from flexprice.models import CreditGrantApplicationReason
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: CreditGrantApplicationReason = "first_time_recurring_credit_grant"
+```
+
 
 ## Values
 

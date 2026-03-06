@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .alertsettings import AlertSettings, AlertSettingsTypedDict
 from .featuretype import FeatureType
+from .reportingunit import ReportingUnit, ReportingUnitTypedDict
 from .status import Status
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -21,6 +22,7 @@ class GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict(TypedDict
     metadata: NotRequired[Dict[str, str]]
     meter_id: NotRequired[str]
     name: NotRequired[str]
+    reporting_unit: NotRequired[ReportingUnitTypedDict]
     status: NotRequired[Status]
     tenant_id: NotRequired[str]
     type: NotRequired[FeatureType]
@@ -51,6 +53,8 @@ class GithubComFlexpriceFlexpriceInternalDomainFeatureFeature(BaseModel):
 
     name: Optional[str] = None
 
+    reporting_unit: Optional[ReportingUnit] = None
+
     status: Optional[Status] = None
 
     tenant_id: Optional[str] = None
@@ -79,6 +83,7 @@ class GithubComFlexpriceFlexpriceInternalDomainFeatureFeature(BaseModel):
                 "metadata",
                 "meter_id",
                 "name",
+                "reporting_unit",
                 "status",
                 "tenant_id",
                 "type",

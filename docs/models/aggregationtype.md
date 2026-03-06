@@ -1,5 +1,14 @@
 # AggregationType
 
+## Example Usage
+
+```python
+from flexprice.models import AggregationType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: AggregationType = "COUNT"
+```
+
 
 ## Values
 

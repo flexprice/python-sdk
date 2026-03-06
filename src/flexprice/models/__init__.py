@@ -1198,6 +1198,7 @@ if TYPE_CHECKING:
         RecalculateInvoiceRequest,
         RecalculateInvoiceRequestTypedDict,
     )
+    from .reportingunit import ReportingUnit, ReportingUnitTypedDict
     from .resetusage import ResetUsage
     from .resumemode import ResumeMode
     from .resumesubscriptionop import (
@@ -2148,6 +2149,8 @@ __all__ = [
     "QueryFilterTypedDict",
     "RecalculateInvoiceRequest",
     "RecalculateInvoiceRequestTypedDict",
+    "ReportingUnit",
+    "ReportingUnitTypedDict",
     "ResetUsage",
     "ResumeMode",
     "ResumeSubscriptionRequest",
@@ -3065,6 +3068,8 @@ _dynamic_imports: dict[str, str] = {
     "QueryFilterTypedDict": ".queryfilter",
     "RecalculateInvoiceRequest": ".recalculateinvoiceop",
     "RecalculateInvoiceRequestTypedDict": ".recalculateinvoiceop",
+    "ReportingUnit": ".reportingunit",
+    "ReportingUnitTypedDict": ".reportingunit",
     "ResetUsage": ".resetusage",
     "ResumeMode": ".resumemode",
     "ResumeSubscriptionRequest": ".resumesubscriptionop",

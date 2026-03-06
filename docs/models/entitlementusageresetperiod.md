@@ -1,5 +1,14 @@
 # EntitlementUsageResetPeriod
 
+## Example Usage
+
+```python
+from flexprice.models import EntitlementUsageResetPeriod
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: EntitlementUsageResetPeriod = "MONTHLY"
+```
+
 
 ## Values
 

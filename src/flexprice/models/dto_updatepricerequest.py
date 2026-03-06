@@ -22,7 +22,11 @@ class DtoUpdatePriceRequestTypedDict(TypedDict):
     display_name: NotRequired[str]
     effective_from: NotRequired[str]
     group_id: NotRequired[str]
-    r"""GroupID is the id of the group to update the price in"""
+    r"""GroupID is the id of the group to update the price in.
+    If not provided (nil), the group will not be changed
+    If provided as empty string (\"\"), the group will be removed (price will be ungrouped)
+    If provided as a group ID, the price will be assigned to that group (must exist and be published)
+    """
     lookup_key: NotRequired[str]
     r"""All price fields that can be updated
     Non-critical fields (can be updated directly)
@@ -51,7 +55,11 @@ class DtoUpdatePriceRequest(BaseModel):
     effective_from: Optional[str] = None
 
     group_id: Optional[str] = None
-    r"""GroupID is the id of the group to update the price in"""
+    r"""GroupID is the id of the group to update the price in.
+    If not provided (nil), the group will not be changed
+    If provided as empty string (\"\"), the group will be removed (price will be ungrouped)
+    If provided as a group ID, the price will be assigned to that group (must exist and be published)
+    """
 
     lookup_key: Optional[str] = None
     r"""All price fields that can be updated

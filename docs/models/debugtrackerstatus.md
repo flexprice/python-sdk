@@ -1,5 +1,14 @@
 # DebugTrackerStatus
 
+## Example Usage
+
+```python
+from flexprice.models import DebugTrackerStatus
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: DebugTrackerStatus = "unprocessed"
+```
+
 
 ## Values
 

@@ -1,5 +1,14 @@
 # PaymentMethodType
 
+## Example Usage
+
+```python
+from flexprice.models import PaymentMethodType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: PaymentMethodType = "CARD"
+```
+
 
 ## Values
 

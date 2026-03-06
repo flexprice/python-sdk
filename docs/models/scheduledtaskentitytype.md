@@ -1,5 +1,14 @@
 # ScheduledTaskEntityType
 
+## Example Usage
+
+```python
+from flexprice.models import ScheduledTaskEntityType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: ScheduledTaskEntityType = "events"
+```
+
 
 ## Values
 

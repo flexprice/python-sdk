@@ -1,5 +1,14 @@
 # WindowSize
 
+## Example Usage
+
+```python
+from flexprice.models import WindowSize
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: WindowSize = "MONTH"
+```
+
 
 ## Values
 

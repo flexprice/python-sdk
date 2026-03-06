@@ -1,5 +1,14 @@
 # BillingPeriod
 
+## Example Usage
+
+```python
+from flexprice.models import BillingPeriod
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: BillingPeriod = "MONTHLY"
+```
+
 
 ## Values
 

@@ -1,5 +1,14 @@
 # TransactionReason
 
+## Example Usage
+
+```python
+from flexprice.models import TransactionReason
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: TransactionReason = "INVOICE_PAYMENT"
+```
+
 
 ## Values
 

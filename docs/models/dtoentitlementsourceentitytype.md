@@ -1,5 +1,14 @@
 # DtoEntitlementSourceEntityType
 
+## Example Usage
+
+```python
+from flexprice.models import DtoEntitlementSourceEntityType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: DtoEntitlementSourceEntityType = "plan"
+```
+
 
 ## Values
 

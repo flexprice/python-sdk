@@ -1,5 +1,14 @@
 # SecretProvider
 
+## Example Usage
+
+```python
+from flexprice.models import SecretProvider
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: SecretProvider = "flexprice"
+```
+
 
 ## Values
 

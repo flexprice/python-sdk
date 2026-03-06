@@ -1,5 +1,12 @@
 # ListTasksEntityType
 
+## Example Usage
+
+```python
+from flexprice.models import ListTasksEntityType
+value: ListTasksEntityType = "EVENTS"
+```
+
 
 ## Values
 

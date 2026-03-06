@@ -1,5 +1,12 @@
 # InvoiceBillingReason
 
+## Example Usage
+
+```python
+from flexprice.models import InvoiceBillingReason
+value: InvoiceBillingReason = "SUBSCRIPTION_CREATE"
+```
+
 
 ## Values
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .alertsettings import AlertSettings, AlertSettingsTypedDict
 from .meter_filter import MeterFilter, MeterFilterTypedDict
+from .reportingunit import ReportingUnit, ReportingUnitTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Optional
@@ -15,6 +16,7 @@ class DtoUpdateFeatureRequestTypedDict(TypedDict):
     filters: NotRequired[List[MeterFilterTypedDict]]
     metadata: NotRequired[Dict[str, str]]
     name: NotRequired[str]
+    reporting_unit: NotRequired[ReportingUnitTypedDict]
     unit_plural: NotRequired[str]
     unit_singular: NotRequired[str]
 
@@ -30,6 +32,8 @@ class DtoUpdateFeatureRequest(BaseModel):
 
     name: Optional[str] = None
 
+    reporting_unit: Optional[ReportingUnit] = None
+
     unit_plural: Optional[str] = None
 
     unit_singular: Optional[str] = None
@@ -43,6 +47,7 @@ class DtoUpdateFeatureRequest(BaseModel):
                 "filters",
                 "metadata",
                 "name",
+                "reporting_unit",
                 "unit_plural",
                 "unit_singular",
             ]

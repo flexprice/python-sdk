@@ -1357,7 +1357,10 @@ class Prices(BaseSDK):
         :param description:
         :param display_name:
         :param effective_from:
-        :param group_id: GroupID is the id of the group to update the price in
+        :param group_id: GroupID is the id of the group to update the price in.
+            If not provided (nil), the group will not be changed
+            If provided as empty string (\"\"), the group will be removed (price will be ungrouped)
+            If provided as a group ID, the price will be assigned to that group (must exist and be published)
         :param lookup_key: All price fields that can be updated
             Non-critical fields (can be updated directly)
         :param metadata:
@@ -1519,7 +1522,10 @@ class Prices(BaseSDK):
         :param description:
         :param display_name:
         :param effective_from:
-        :param group_id: GroupID is the id of the group to update the price in
+        :param group_id: GroupID is the id of the group to update the price in.
+            If not provided (nil), the group will not be changed
+            If provided as empty string (\"\"), the group will be removed (price will be ungrouped)
+            If provided as a group ID, the price will be assigned to that group (must exist and be published)
         :param lookup_key: All price fields that can be updated
             Non-critical fields (can be updated directly)
         :param metadata:

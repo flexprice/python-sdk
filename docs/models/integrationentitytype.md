@@ -1,5 +1,14 @@
 # IntegrationEntityType
 
+## Example Usage
+
+```python
+from flexprice.models import IntegrationEntityType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+value: IntegrationEntityType = "customer"
+```
+
 
 ## Values
 

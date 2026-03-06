@@ -1,5 +1,12 @@
 # PaymentGatewayType
 
+## Example Usage
+
+```python
+from flexprice.models import PaymentGatewayType
+value: PaymentGatewayType = "stripe"
+```
+
 
 ## Values
 
