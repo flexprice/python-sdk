@@ -12,8 +12,8 @@ value: SecretType = "private_key"
 
 ## Values
 
-| Name              | Value             |
-| ----------------- | ----------------- |
-| `PRIVATE_KEY`     | private_key       |
-| `PUBLISHABLE_KEY` | publishable_key   |
-| `INTEGRATION`     | integration       |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"private_key"`
+- `"publishable_key"`
+- `"integration"`

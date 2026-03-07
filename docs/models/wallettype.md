@@ -12,7 +12,7 @@ value: WalletType = "PRE_PAID"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `PRE_PAID`  | PRE_PAID    |
-| `POST_PAID` | POST_PAID   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"PRE_PAID"`
+- `"POST_PAID"`

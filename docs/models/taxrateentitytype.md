@@ -12,9 +12,9 @@ value: TaxRateEntityType = "customer"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `CUSTOMER`     | customer       |
-| `SUBSCRIPTION` | subscription   |
-| `INVOICE`      | invoice        |
-| `TENANT`       | tenant         |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"customer"`
+- `"subscription"`
+- `"invoice"`
+- `"tenant"`

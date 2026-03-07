@@ -12,8 +12,8 @@ value: AddonStatus = "active"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `ACTIVE`    | active      |
-| `CANCELLED` | cancelled   |
-| `PAUSED`    | paused      |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"active"`
+- `"cancelled"`
+- `"paused"`

@@ -10,9 +10,7 @@ value: PaymentBehavior = "allow_incomplete"
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `ALLOW_INCOMPLETE`    | allow_incomplete      |
-| `DEFAULT_INCOMPLETE`  | default_incomplete    |
-| `ERROR_IF_INCOMPLETE` | error_if_incomplete   |
-| `DEFAULT_ACTIVE`      | default_active        |
+- `"allow_incomplete"`
+- `"default_incomplete"`
+- `"error_if_incomplete"`
+- `"default_active"`

@@ -12,7 +12,7 @@ value: CreditNoteType = "ADJUSTMENT"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `ADJUSTMENT` | ADJUSTMENT   |
-| `REFUND`     | REFUND       |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"ADJUSTMENT"`
+- `"REFUND"`

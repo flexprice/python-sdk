@@ -12,8 +12,8 @@ value: EntitlementEntityType = "PLAN"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `PLAN`         | PLAN           |
-| `SUBSCRIPTION` | SUBSCRIPTION   |
-| `ADDON`        | ADDON          |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"PLAN"`
+- `"SUBSCRIPTION"`
+- `"ADDON"`

@@ -17,6 +17,7 @@ TransactionReason = Union[
         "WALLET_TERMINATION",
         "MANUAL_BALANCE_DEBIT",
         "CREDIT_ADJUSTMENT",
+        "INVOICE_VOID_REFUND",
     ],
     UnrecognizedStr,
 ]

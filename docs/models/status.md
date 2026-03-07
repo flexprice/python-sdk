@@ -12,8 +12,8 @@ value: Status = "published"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `PUBLISHED` | published   |
-| `DELETED`   | deleted     |
-| `ARCHIVED`  | archived    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"published"`
+- `"deleted"`
+- `"archived"`

@@ -12,10 +12,10 @@ value: ScheduleStatus = "pending"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `PENDING`   | pending     |
-| `EXECUTING` | executing   |
-| `EXECUTED`  | executed    |
-| `CANCELLED` | cancelled   |
-| `FAILED`    | failed      |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"pending"`
+- `"executing"`
+- `"executed"`
+- `"cancelled"`
+- `"failed"`

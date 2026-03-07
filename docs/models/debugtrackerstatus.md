@@ -12,9 +12,9 @@ value: DebugTrackerStatus = "unprocessed"
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `UNPROCESSED` | unprocessed   |
-| `NOT_FOUND`   | not_found     |
-| `FOUND`       | found         |
-| `ERROR`       | error         |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"unprocessed"`
+- `"not_found"`
+- `"found"`
+- `"error"`

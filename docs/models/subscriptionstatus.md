@@ -12,11 +12,11 @@ value: SubscriptionStatus = "active"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `ACTIVE`     | active       |
-| `PAUSED`     | paused       |
-| `CANCELLED`  | cancelled    |
-| `INCOMPLETE` | incomplete   |
-| `TRIALING`   | trialing     |
-| `DRAFT`      | draft        |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"active"`
+- `"paused"`
+- `"cancelled"`
+- `"incomplete"`
+- `"trialing"`
+- `"draft"`

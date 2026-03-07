@@ -12,9 +12,9 @@ value: CreditGrantExpiryDurationUnit = "DAY"
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `DAY`   | DAY     |
-| `WEEK`  | WEEK    |
-| `MONTH` | MONTH   |
-| `YEAR`  | YEAR    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"DAY"`
+- `"WEEK"`
+- `"MONTH"`
+- `"YEAR"`

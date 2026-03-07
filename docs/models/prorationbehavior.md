@@ -12,7 +12,7 @@ value: ProrationBehavior = "create_prorations"
 
 ## Values
 
-| Name                | Value               |
-| ------------------- | ------------------- |
-| `CREATE_PRORATIONS` | create_prorations   |
-| `NONE`              | none                |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"create_prorations"`
+- `"none"`

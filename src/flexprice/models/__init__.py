@@ -277,10 +277,6 @@ if TYPE_CHECKING:
         DtoCreateEntityIntegrationMappingRequest,
         DtoCreateEntityIntegrationMappingRequestTypedDict,
     )
-    from .dto_createenvironmentrequest import (
-        DtoCreateEnvironmentRequest,
-        DtoCreateEnvironmentRequestTypedDict,
-    )
     from .dto_createfeaturerequest import (
         DtoCreateFeatureRequest,
         DtoCreateFeatureRequestTypedDict,
@@ -354,6 +350,10 @@ if TYPE_CHECKING:
         DtoCreateUserRequest,
         DtoCreateUserRequestTypedDict,
     )
+    from .dto_createuserresponse import (
+        DtoCreateUserResponse,
+        DtoCreateUserResponseTypedDict,
+    )
     from .dto_createwalletrequest import (
         DtoCreateWalletRequest,
         DtoCreateWalletRequestTypedDict,
@@ -420,10 +420,6 @@ if TYPE_CHECKING:
     from .dto_entityintegrationmappingresponse import (
         DtoEntityIntegrationMappingResponse,
         DtoEntityIntegrationMappingResponseTypedDict,
-    )
-    from .dto_environmentresponse import (
-        DtoEnvironmentResponse,
-        DtoEnvironmentResponseTypedDict,
     )
     from .dto_event import DtoEvent, DtoEventTypedDict
     from .dto_eventcostinfo import DtoEventCostInfo, DtoEventCostInfoTypedDict
@@ -798,10 +794,6 @@ if TYPE_CHECKING:
     from .dto_updateentitlementrequest import (
         DtoUpdateEntitlementRequest,
         DtoUpdateEntitlementRequestTypedDict,
-    )
-    from .dto_updateenvironmentrequest import (
-        DtoUpdateEnvironmentRequest,
-        DtoUpdateEnvironmentRequestTypedDict,
     )
     from .dto_updatefeaturerequest import (
         DtoUpdateFeatureRequest,
@@ -1198,6 +1190,11 @@ if TYPE_CHECKING:
         RecalculateInvoiceRequest,
         RecalculateInvoiceRequestTypedDict,
     )
+    from .recalculateinvoicev2op import (
+        RecalculateInvoiceV2Request,
+        RecalculateInvoiceV2RequestTypedDict,
+    )
+    from .reportingunit import ReportingUnit, ReportingUnitTypedDict
     from .resetusage import ResetUsage
     from .resumemode import ResumeMode
     from .resumesubscriptionop import (
@@ -1279,10 +1276,6 @@ if TYPE_CHECKING:
     from .updateentitlementop import (
         UpdateEntitlementRequest,
         UpdateEntitlementRequestTypedDict,
-    )
-    from .updateenvironmentop import (
-        UpdateEnvironmentRequest,
-        UpdateEnvironmentRequestTypedDict,
     )
     from .updatefeatureop import UpdateFeatureRequest, UpdateFeatureRequestTypedDict
     from .updateinvoiceop import UpdateInvoiceRequest, UpdateInvoiceRequestTypedDict
@@ -1546,8 +1539,6 @@ __all__ = [
     "DtoCreateEntitlementRequestTypedDict",
     "DtoCreateEntityIntegrationMappingRequest",
     "DtoCreateEntityIntegrationMappingRequestTypedDict",
-    "DtoCreateEnvironmentRequest",
-    "DtoCreateEnvironmentRequestTypedDict",
     "DtoCreateFeatureRequest",
     "DtoCreateFeatureRequestTypedDict",
     "DtoCreateGroupRequest",
@@ -1586,6 +1577,8 @@ __all__ = [
     "DtoCreateTaxRateRequestTypedDict",
     "DtoCreateUserRequest",
     "DtoCreateUserRequestTypedDict",
+    "DtoCreateUserResponse",
+    "DtoCreateUserResponseTypedDict",
     "DtoCreateWalletRequest",
     "DtoCreateWalletRequestTypedDict",
     "DtoCreditGrantApplicationResponse",
@@ -1625,8 +1618,6 @@ __all__ = [
     "DtoEntitlementSourceTypedDict",
     "DtoEntityIntegrationMappingResponse",
     "DtoEntityIntegrationMappingResponseTypedDict",
-    "DtoEnvironmentResponse",
-    "DtoEnvironmentResponseTypedDict",
     "DtoEvent",
     "DtoEventCostInfo",
     "DtoEventCostInfoTypedDict",
@@ -1857,8 +1848,6 @@ __all__ = [
     "DtoUpdateCustomerRequestTypedDict",
     "DtoUpdateEntitlementRequest",
     "DtoUpdateEntitlementRequestTypedDict",
-    "DtoUpdateEnvironmentRequest",
-    "DtoUpdateEnvironmentRequestTypedDict",
     "DtoUpdateFeatureRequest",
     "DtoUpdateFeatureRequestTypedDict",
     "DtoUpdateInvoiceRequest",
@@ -2148,6 +2137,10 @@ __all__ = [
     "QueryFilterTypedDict",
     "RecalculateInvoiceRequest",
     "RecalculateInvoiceRequestTypedDict",
+    "RecalculateInvoiceV2Request",
+    "RecalculateInvoiceV2RequestTypedDict",
+    "ReportingUnit",
+    "ReportingUnitTypedDict",
     "ResetUsage",
     "ResumeMode",
     "ResumeSubscriptionRequest",
@@ -2219,8 +2212,6 @@ __all__ = [
     "UpdateCustomerRequestTypedDict",
     "UpdateEntitlementRequest",
     "UpdateEntitlementRequestTypedDict",
-    "UpdateEnvironmentRequest",
-    "UpdateEnvironmentRequestTypedDict",
     "UpdateFeatureRequest",
     "UpdateFeatureRequestTypedDict",
     "UpdateInvoicePaymentStatusRequest",
@@ -2467,8 +2458,6 @@ _dynamic_imports: dict[str, str] = {
     "DtoCreateEntitlementRequestTypedDict": ".dto_createentitlementrequest",
     "DtoCreateEntityIntegrationMappingRequest": ".dto_createentityintegrationmappingrequest",
     "DtoCreateEntityIntegrationMappingRequestTypedDict": ".dto_createentityintegrationmappingrequest",
-    "DtoCreateEnvironmentRequest": ".dto_createenvironmentrequest",
-    "DtoCreateEnvironmentRequestTypedDict": ".dto_createenvironmentrequest",
     "DtoCreateFeatureRequest": ".dto_createfeaturerequest",
     "DtoCreateFeatureRequestTypedDict": ".dto_createfeaturerequest",
     "DtoCreateGroupRequest": ".dto_creategrouprequest",
@@ -2507,6 +2496,8 @@ _dynamic_imports: dict[str, str] = {
     "DtoCreateTaxRateRequestTypedDict": ".dto_createtaxraterequest",
     "DtoCreateUserRequest": ".dto_createuserrequest",
     "DtoCreateUserRequestTypedDict": ".dto_createuserrequest",
+    "DtoCreateUserResponse": ".dto_createuserresponse",
+    "DtoCreateUserResponseTypedDict": ".dto_createuserresponse",
     "DtoCreateWalletRequest": ".dto_createwalletrequest",
     "DtoCreateWalletRequestTypedDict": ".dto_createwalletrequest",
     "DtoCreditGrantApplicationResponse": ".dto_creditgrantapplicationresponse",
@@ -2544,8 +2535,6 @@ _dynamic_imports: dict[str, str] = {
     "DtoEntitlementSourceEntityType": ".dto_entitlementsourceentitytype",
     "DtoEntityIntegrationMappingResponse": ".dto_entityintegrationmappingresponse",
     "DtoEntityIntegrationMappingResponseTypedDict": ".dto_entityintegrationmappingresponse",
-    "DtoEnvironmentResponse": ".dto_environmentresponse",
-    "DtoEnvironmentResponseTypedDict": ".dto_environmentresponse",
     "DtoEvent": ".dto_event",
     "DtoEventTypedDict": ".dto_event",
     "DtoEventCostInfo": ".dto_eventcostinfo",
@@ -2773,8 +2762,6 @@ _dynamic_imports: dict[str, str] = {
     "DtoUpdateCustomerRequestTypedDict": ".dto_updatecustomerrequest",
     "DtoUpdateEntitlementRequest": ".dto_updateentitlementrequest",
     "DtoUpdateEntitlementRequestTypedDict": ".dto_updateentitlementrequest",
-    "DtoUpdateEnvironmentRequest": ".dto_updateenvironmentrequest",
-    "DtoUpdateEnvironmentRequestTypedDict": ".dto_updateenvironmentrequest",
     "DtoUpdateFeatureRequest": ".dto_updatefeaturerequest",
     "DtoUpdateFeatureRequestTypedDict": ".dto_updatefeaturerequest",
     "DtoUpdateInvoiceRequest": ".dto_updateinvoicerequest",
@@ -3065,6 +3052,10 @@ _dynamic_imports: dict[str, str] = {
     "QueryFilterTypedDict": ".queryfilter",
     "RecalculateInvoiceRequest": ".recalculateinvoiceop",
     "RecalculateInvoiceRequestTypedDict": ".recalculateinvoiceop",
+    "RecalculateInvoiceV2Request": ".recalculateinvoicev2op",
+    "RecalculateInvoiceV2RequestTypedDict": ".recalculateinvoicev2op",
+    "ReportingUnit": ".reportingunit",
+    "ReportingUnitTypedDict": ".reportingunit",
     "ResetUsage": ".resetusage",
     "ResumeMode": ".resumemode",
     "ResumeSubscriptionRequest": ".resumesubscriptionop",
@@ -3134,8 +3125,6 @@ _dynamic_imports: dict[str, str] = {
     "UpdateCustomerRequestTypedDict": ".updatecustomerop",
     "UpdateEntitlementRequest": ".updateentitlementop",
     "UpdateEntitlementRequestTypedDict": ".updateentitlementop",
-    "UpdateEnvironmentRequest": ".updateenvironmentop",
-    "UpdateEnvironmentRequestTypedDict": ".updateenvironmentop",
     "UpdateFeatureRequest": ".updatefeatureop",
     "UpdateFeatureRequestTypedDict": ".updatefeatureop",
     "UpdateInvoiceRequest": ".updateinvoiceop",

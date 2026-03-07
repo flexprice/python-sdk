@@ -12,7 +12,7 @@ value: TaskType = "IMPORT"
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `IMPORT` | IMPORT   |
-| `EXPORT` | EXPORT   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"IMPORT"`
+- `"EXPORT"`

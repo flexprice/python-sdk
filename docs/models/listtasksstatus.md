@@ -10,8 +10,6 @@ value: ListTasksStatus = "published"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `PUBLISHED` | published   |
-| `DELETED`   | deleted     |
-| `ARCHIVED`  | archived    |
+- `"published"`
+- `"deleted"`
+- `"archived"`

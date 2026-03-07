@@ -12,7 +12,7 @@ value: TaxRateType = "percentage"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `PERCENTAGE` | percentage   |
-| `FIXED`      | fixed        |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"percentage"`
+- `"fixed"`

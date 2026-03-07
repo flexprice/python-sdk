@@ -12,7 +12,7 @@ value: S3CompressionType = "none"
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `NONE` | none   |
-| `GZIP` | gzip   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"none"`
+- `"gzip"`

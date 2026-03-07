@@ -12,7 +12,7 @@ value: PriceUnitType = "FIAT"
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `FIAT`   | FIAT     |
-| `CUSTOM` | CUSTOM   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"FIAT"`
+- `"CUSTOM"`

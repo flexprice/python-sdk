@@ -12,8 +12,8 @@ value: TransactionStatus = "pending"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `PENDING`   | pending     |
-| `COMPLETED` | completed   |
-| `FAILED`    | failed      |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"pending"`
+- `"completed"`
+- `"failed"`

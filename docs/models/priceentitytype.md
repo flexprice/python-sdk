@@ -12,10 +12,10 @@ value: PriceEntityType = "PLAN"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `PLAN`         | PLAN           |
-| `SUBSCRIPTION` | SUBSCRIPTION   |
-| `ADDON`        | ADDON          |
-| `PRICE`        | PRICE          |
-| `COSTSHEET`    | COSTSHEET      |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"PLAN"`
+- `"SUBSCRIPTION"`
+- `"ADDON"`
+- `"PRICE"`
+- `"COSTSHEET"`

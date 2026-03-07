@@ -12,8 +12,8 @@ value: InvoiceType = "SUBSCRIPTION"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `SUBSCRIPTION` | SUBSCRIPTION   |
-| `ONE_OFF`      | ONE_OFF        |
-| `CREDIT`       | CREDIT         |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"SUBSCRIPTION"`
+- `"ONE_OFF"`
+- `"CREDIT"`

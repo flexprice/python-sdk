@@ -12,10 +12,10 @@ value: PaymentMethodType = "CARD"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `CARD`         | CARD           |
-| `ACH`          | ACH            |
-| `OFFLINE`      | OFFLINE        |
-| `CREDITS`      | CREDITS        |
-| `PAYMENT_LINK` | PAYMENT_LINK   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"CARD"`
+- `"ACH"`
+- `"OFFLINE"`
+- `"CREDITS"`
+- `"PAYMENT_LINK"`

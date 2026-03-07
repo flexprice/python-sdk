@@ -12,7 +12,7 @@ value: TransactionType = "credit"
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `CREDIT` | credit   |
-| `DEBIT`  | debit    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"credit"`
+- `"debit"`

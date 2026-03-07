@@ -12,8 +12,8 @@ value: DtoEntitlementSourceEntityType = "plan"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `PLAN`         | plan           |
-| `ADDON`        | addon          |
-| `SUBSCRIPTION` | subscription   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"plan"`
+- `"addon"`
+- `"subscription"`

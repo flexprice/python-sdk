@@ -12,13 +12,13 @@ value: PaymentStatus = "INITIATED"
 
 ## Values
 
-| Name                 | Value                |
-| -------------------- | -------------------- |
-| `INITIATED`          | INITIATED            |
-| `PENDING`            | PENDING              |
-| `PROCESSING`         | PROCESSING           |
-| `SUCCEEDED`          | SUCCEEDED            |
-| `OVERPAID`           | OVERPAID             |
-| `FAILED`             | FAILED               |
-| `REFUNDED`           | REFUNDED             |
-| `PARTIALLY_REFUNDED` | PARTIALLY_REFUNDED   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"INITIATED"`
+- `"PENDING"`
+- `"PROCESSING"`
+- `"SUCCEEDED"`
+- `"OVERPAID"`
+- `"FAILED"`
+- `"REFUNDED"`
+- `"PARTIALLY_REFUNDED"`

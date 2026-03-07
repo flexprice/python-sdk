@@ -12,9 +12,9 @@ value: ScheduledTaskEntityType = "events"
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `EVENTS`        | events          |
-| `INVOICE`       | invoice         |
-| `CREDIT_TOPUPS` | credit_topups   |
-| `CREDIT_USAGE`  | credit_usage    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"events"`
+- `"invoice"`
+- `"credit_topups"`
+- `"credit_usage"`

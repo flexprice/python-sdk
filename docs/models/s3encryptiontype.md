@@ -12,8 +12,8 @@ value: S3EncryptionType = "AES256"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `AES256`       | AES256         |
-| `AWS_KMS`      | aws:kms        |
-| `AWS_KMS_DSSE` | aws:kms:dsse   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"AES256"`
+- `"aws:kms"`
+- `"aws:kms:dsse"`

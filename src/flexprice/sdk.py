@@ -24,7 +24,6 @@ if TYPE_CHECKING:
     from flexprice.customers import Customers
     from flexprice.entitlements import Entitlements
     from flexprice.entity_integration_mappings import EntityIntegrationMappings
-    from flexprice.environments import Environments
     from flexprice.events import Events
     from flexprice.features import Features
     from flexprice.groups import Groups
@@ -62,7 +61,6 @@ class Flexprice(BaseSDK):
     wallets: "Wallets"
     invoices: "Invoices"
     entity_integration_mappings: "EntityIntegrationMappings"
-    environments: "Environments"
     events: "Events"
     features: "Features"
     groups: "Groups"
@@ -97,7 +95,6 @@ class Flexprice(BaseSDK):
             "flexprice.entity_integration_mappings",
             "EntityIntegrationMappings",
         ),
-        "environments": ("flexprice.environments", "Environments"),
         "events": ("flexprice.events", "Events"),
         "features": ("flexprice.features", "Features"),
         "groups": ("flexprice.groups", "Groups"),

@@ -21,6 +21,7 @@ from .github_com_flexprice_flexprice_internal_domain_plan_plan import (
     GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict,
 )
 from .meter_meter import MeterMeter, MeterMeterTypedDict
+from .reportingunit import ReportingUnit, ReportingUnitTypedDict
 from .subscription_subscriptionlineitem import (
     SubscriptionSubscriptionLineItem,
     SubscriptionSubscriptionLineItemTypedDict,
@@ -57,6 +58,7 @@ class DtoUsageAnalyticItemTypedDict(TypedDict):
     r"""Price ID used for this usage"""
     properties: NotRequired[Dict[str, str]]
     r"""Stores property values for flexible grouping (e.g., org_id -> \"org123\")"""
+    reporting_unit: NotRequired[ReportingUnitTypedDict]
     source: NotRequired[str]
     sources: NotRequired[List[str]]
     r"""List of sources when not grouping by source"""
@@ -67,6 +69,8 @@ class DtoUsageAnalyticItemTypedDict(TypedDict):
     subscription_line_item: NotRequired[SubscriptionSubscriptionLineItemTypedDict]
     total_cost: NotRequired[str]
     total_usage: NotRequired[str]
+    total_usage_display: NotRequired[str]
+    r"""Empty string when feature has no reporting unit; otherwise the value in reporting units"""
     unit: NotRequired[str]
     unit_plural: NotRequired[str]
     window_size: NotRequired[WindowSize]
@@ -113,6 +117,8 @@ class DtoUsageAnalyticItem(BaseModel):
     properties: Optional[Dict[str, str]] = None
     r"""Stores property values for flexible grouping (e.g., org_id -> \"org123\")"""
 
+    reporting_unit: Optional[ReportingUnit] = None
+
     source: Optional[str] = None
 
     sources: Optional[List[str]] = None
@@ -129,6 +135,9 @@ class DtoUsageAnalyticItem(BaseModel):
     total_cost: Optional[str] = None
 
     total_usage: Optional[str] = None
+
+    total_usage_display: Optional[str] = None
+    r"""Empty string when feature has no reporting unit; otherwise the value in reporting units"""
 
     unit: Optional[str] = None
 
@@ -158,6 +167,7 @@ class DtoUsageAnalyticItem(BaseModel):
                 "price",
                 "price_id",
                 "properties",
+                "reporting_unit",
                 "source",
                 "sources",
                 "sub_line_item_id",
@@ -165,6 +175,7 @@ class DtoUsageAnalyticItem(BaseModel):
                 "subscription_line_item",
                 "total_cost",
                 "total_usage",
+                "total_usage_display",
                 "unit",
                 "unit_plural",
                 "window_size",
@@ -175,7 +186,7 @@ class DtoUsageAnalyticItem(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

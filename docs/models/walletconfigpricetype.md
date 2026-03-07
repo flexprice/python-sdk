@@ -12,8 +12,8 @@ value: WalletConfigPriceType = "ALL"
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `ALL`   | ALL     |
-| `USAGE` | USAGE   |
-| `FIXED` | FIXED   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"ALL"`
+- `"USAGE"`
+- `"FIXED"`

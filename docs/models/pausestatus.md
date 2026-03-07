@@ -12,10 +12,10 @@ value: PauseStatus = "none"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `NONE`      | none        |
-| `ACTIVE`    | active      |
-| `SCHEDULED` | scheduled   |
-| `COMPLETED` | completed   |
-| `CANCELLED` | cancelled   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"none"`
+- `"active"`
+- `"scheduled"`
+- `"completed"`
+- `"cancelled"`

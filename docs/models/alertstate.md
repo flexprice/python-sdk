@@ -12,9 +12,9 @@ value: AlertState = "ok"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `OK`       | ok         |
-| `INFO`     | info       |
-| `WARNING`  | warning    |
-| `IN_ALARM` | in_alarm   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"ok"`
+- `"info"`
+- `"warning"`
+- `"in_alarm"`

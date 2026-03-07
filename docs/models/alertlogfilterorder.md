@@ -10,7 +10,5 @@ value: AlertLogFilterOrder = "asc"
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `ASC`  | asc    |
-| `DESC` | desc   |
+- `"asc"`
+- `"desc"`

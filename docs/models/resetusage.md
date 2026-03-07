@@ -12,7 +12,7 @@ value: ResetUsage = "BILLING_PERIOD"
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `BILLING_PERIOD` | BILLING_PERIOD   |
-| `NEVER`          | NEVER            |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"BILLING_PERIOD"`
+- `"NEVER"`

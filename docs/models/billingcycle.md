@@ -12,7 +12,7 @@ value: BillingCycle = "anniversary"
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `ANNIVERSARY` | anniversary   |
-| `CALENDAR`    | calendar      |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"anniversary"`
+- `"calendar"`

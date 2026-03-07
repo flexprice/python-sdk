@@ -12,8 +12,8 @@ value: WalletStatus = "active"
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `ACTIVE` | active   |
-| `FROZEN` | frozen   |
-| `CLOSED` | closed   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"active"`
+- `"frozen"`
+- `"closed"`

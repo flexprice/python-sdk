@@ -10,7 +10,5 @@ value: CollectionMethod = "charge_automatically"
 
 ## Values
 
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `CHARGE_AUTOMATICALLY` | charge_automatically   |
-| `SEND_INVOICE`         | send_invoice           |
+- `"charge_automatically"`
+- `"send_invoice"`

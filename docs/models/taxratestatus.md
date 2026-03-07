@@ -12,7 +12,7 @@ value: TaxRateStatus = "ACTIVE"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `ACTIVE`   | ACTIVE     |
-| `INACTIVE` | INACTIVE   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"ACTIVE"`
+- `"INACTIVE"`

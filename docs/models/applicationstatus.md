@@ -12,10 +12,10 @@ value: ApplicationStatus = "applied"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `APPLIED`   | applied     |
-| `FAILED`    | failed      |
-| `PENDING`   | pending     |
-| `SKIPPED`   | skipped     |
-| `CANCELLED` | cancelled   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"applied"`
+- `"failed"`
+- `"pending"`
+- `"skipped"`
+- `"cancelled"`

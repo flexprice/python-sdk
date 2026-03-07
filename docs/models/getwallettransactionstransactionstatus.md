@@ -10,8 +10,6 @@ value: GetWalletTransactionsTransactionStatus = "pending"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `PENDING`   | pending     |
-| `COMPLETED` | completed   |
-| `FAILED`    | failed      |
+- `"pending"`
+- `"completed"`
+- `"failed"`

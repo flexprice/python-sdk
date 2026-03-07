@@ -12,7 +12,7 @@ value: SubscriptionScheduleChangeType = "plan_change"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `PLAN_CHANGE`  | plan_change    |
-| `CANCELLATION` | cancellation   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"plan_change"`
+- `"cancellation"`

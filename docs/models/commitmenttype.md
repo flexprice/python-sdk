@@ -12,7 +12,7 @@ value: CommitmentType = "amount"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `AMOUNT`   | amount     |
-| `QUANTITY` | quantity   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"amount"`
+- `"quantity"`

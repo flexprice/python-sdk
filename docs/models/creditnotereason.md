@@ -12,12 +12,12 @@ value: CreditNoteReason = "DUPLICATE"
 
 ## Values
 
-| Name                        | Value                       |
-| --------------------------- | --------------------------- |
-| `DUPLICATE`                 | DUPLICATE                   |
-| `FRAUDULENT`                | FRAUDULENT                  |
-| `ORDER_CHANGE`              | ORDER_CHANGE                |
-| `UNSATISFACTORY`            | UNSATISFACTORY              |
-| `SERVICE_ISSUE`             | SERVICE_ISSUE               |
-| `BILLING_ERROR`             | BILLING_ERROR               |
-| `SUBSCRIPTION_CANCELLATION` | SUBSCRIPTION_CANCELLATION   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"DUPLICATE"`
+- `"FRAUDULENT"`
+- `"ORDER_CHANGE"`
+- `"UNSATISFACTORY"`
+- `"SERVICE_ISSUE"`
+- `"BILLING_ERROR"`
+- `"SUBSCRIPTION_CANCELLATION"`

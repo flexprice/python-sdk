@@ -10,9 +10,7 @@ value: ListTasksTaskStatus = "PENDING"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `PENDING`    | PENDING      |
-| `PROCESSING` | PROCESSING   |
-| `COMPLETED`  | COMPLETED    |
-| `FAILED`     | FAILED       |
+- `"PENDING"`
+- `"PROCESSING"`
+- `"COMPLETED"`
+- `"FAILED"`

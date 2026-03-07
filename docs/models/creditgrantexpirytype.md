@@ -12,8 +12,8 @@ value: CreditGrantExpiryType = "NEVER"
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `NEVER`         | NEVER           |
-| `DURATION`      | DURATION        |
-| `BILLING_CYCLE` | BILLING_CYCLE   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"NEVER"`
+- `"DURATION"`
+- `"BILLING_CYCLE"`

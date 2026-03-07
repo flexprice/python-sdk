@@ -12,9 +12,9 @@ value: TaskStatus = "PENDING"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `PENDING`    | PENDING      |
-| `PROCESSING` | PROCESSING   |
-| `COMPLETED`  | COMPLETED    |
-| `FAILED`     | FAILED       |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"PENDING"`
+- `"PROCESSING"`
+- `"COMPLETED"`
+- `"FAILED"`

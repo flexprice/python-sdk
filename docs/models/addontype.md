@@ -12,7 +12,7 @@ value: AddonType = "onetime"
 
 ## Values
 
-| Name                | Value               |
-| ------------------- | ------------------- |
-| `ONETIME`           | onetime             |
-| `MULTIPLE_INSTANCE` | multiple_instance   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"onetime"`
+- `"multiple_instance"`

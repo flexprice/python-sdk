@@ -10,7 +10,5 @@ value: CancelImmediatelyInvoicePolicy = "generate_invoice"
 
 ## Values
 
-| Name               | Value              |
-| ------------------ | ------------------ |
-| `GENERATE_INVOICE` | generate_invoice   |
-| `SKIP`             | skip               |
+- `"generate_invoice"`
+- `"skip"`

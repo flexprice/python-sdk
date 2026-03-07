@@ -12,8 +12,8 @@ value: TaxRateScope = "INTERNAL"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `INTERNAL` | INTERNAL   |
-| `EXTERNAL` | EXTERNAL   |
-| `ONETIME`  | ONETIME    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"INTERNAL"`
+- `"EXTERNAL"`
+- `"ONETIME"`

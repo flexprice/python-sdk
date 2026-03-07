@@ -12,7 +12,7 @@ value: BillingCadence = "RECURRING"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `RECURRING` | RECURRING   |
-| `ONETIME`   | ONETIME     |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"RECURRING"`
+- `"ONETIME"`

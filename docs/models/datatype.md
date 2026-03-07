@@ -10,9 +10,7 @@ value: DataType = "string"
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `STRING` | string   |
-| `NUMBER` | number   |
-| `DATE`   | date     |
-| `ARRAY`  | array    |
+- `"string"`
+- `"number"`
+- `"date"`
+- `"array"`

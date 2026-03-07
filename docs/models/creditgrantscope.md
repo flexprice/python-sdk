@@ -12,7 +12,7 @@ value: CreditGrantScope = "PLAN"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `PLAN`         | PLAN           |
-| `SUBSCRIPTION` | SUBSCRIPTION   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"PLAN"`
+- `"SUBSCRIPTION"`

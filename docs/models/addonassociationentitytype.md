@@ -12,8 +12,8 @@ value: AddonAssociationEntityType = "subscription"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `SUBSCRIPTION` | subscription   |
-| `PLAN`         | plan           |
-| `ADDON`        | addon          |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"subscription"`
+- `"plan"`
+- `"addon"`

@@ -12,8 +12,8 @@ value: FeatureType = "metered"
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `METERED` | metered   |
-| `BOOLEAN` | boolean   |
-| `STATIC`  | static    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"metered"`
+- `"boolean"`
+- `"static"`

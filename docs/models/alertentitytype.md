@@ -12,7 +12,7 @@ value: AlertEntityType = "wallet"
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `WALLET`  | wallet    |
-| `FEATURE` | feature   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"wallet"`
+- `"feature"`

@@ -12,9 +12,9 @@ value: WalletTxReferenceType = "PAYMENT"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `PAYMENT`  | PAYMENT    |
-| `EXTERNAL` | EXTERNAL   |
-| `REQUEST`  | REQUEST    |
-| `INVOICE`  | INVOICE    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"PAYMENT"`
+- `"EXTERNAL"`
+- `"REQUEST"`
+- `"INVOICE"`

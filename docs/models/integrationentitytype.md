@@ -12,15 +12,15 @@ value: IntegrationEntityType = "customer"
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `CUSTOMER`     | customer       |
-| `PLAN`         | plan           |
-| `INVOICE`      | invoice        |
-| `SUBSCRIPTION` | subscription   |
-| `PAYMENT`      | payment        |
-| `CREDIT_NOTE`  | credit_note    |
-| `ADDON`        | addon          |
-| `ITEM`         | item           |
-| `ITEM_PRICE`   | item_price     |
-| `PRICE`        | price          |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"customer"`
+- `"plan"`
+- `"invoice"`
+- `"subscription"`
+- `"payment"`
+- `"credit_note"`
+- `"addon"`
+- `"item"`
+- `"item_price"`
+- `"price"`

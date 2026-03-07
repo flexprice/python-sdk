@@ -12,11 +12,11 @@ value: BillingPeriod = "MONTHLY"
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `MONTHLY`     | MONTHLY       |
-| `ANNUAL`      | ANNUAL        |
-| `WEEKLY`      | WEEKLY        |
-| `DAILY`       | DAILY         |
-| `QUARTERLY`   | QUARTERLY     |
-| `HALF_YEARLY` | HALF_YEARLY   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"MONTHLY"`
+- `"ANNUAL"`
+- `"WEEKLY"`
+- `"DAILY"`
+- `"QUARTERLY"`
+- `"HALF_YEARLY"`

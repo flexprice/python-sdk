@@ -12,7 +12,7 @@ value: CancellationType = "immediate"
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `IMMEDIATE`     | immediate       |
-| `END_OF_PERIOD` | end_of_period   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"immediate"`
+- `"end_of_period"`

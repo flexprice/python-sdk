@@ -12,7 +12,7 @@ value: CouponType = "fixed"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `FIXED`      | fixed        |
-| `PERCENTAGE` | percentage   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"fixed"`
+- `"percentage"`

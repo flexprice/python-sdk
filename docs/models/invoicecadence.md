@@ -12,7 +12,7 @@ value: InvoiceCadence = "ARREAR"
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `ARREAR`  | ARREAR    |
-| `ADVANCE` | ADVANCE   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"ARREAR"`
+- `"ADVANCE"`

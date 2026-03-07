@@ -12,8 +12,8 @@ value: InvoiceStatus = "DRAFT"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `DRAFT`     | DRAFT       |
-| `FINALIZED` | FINALIZED   |
-| `VOIDED`    | VOIDED      |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"DRAFT"`
+- `"FINALIZED"`
+- `"VOIDED"`

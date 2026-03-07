@@ -6,21 +6,21 @@
 from flexprice.models import WindowSize
 
 # Open enum: unrecognized values are captured as UnrecognizedStr
-value: WindowSize = "MONTH"
+value: WindowSize = "MINUTE"
 ```
 
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `MONTH`       | MONTH         |
-| `MINUTE`      | MINUTE        |
-| `FIFTEEN_MIN` | 15MIN         |
-| `THIRTY_MIN`  | 30MIN         |
-| `HOUR`        | HOUR          |
-| `THREE_HOUR`  | 3HOUR         |
-| `SIX_HOUR`    | 6HOUR         |
-| `TWELVE_HOUR` | 12HOUR        |
-| `DAY`         | DAY           |
-| `WEEK`        | WEEK          |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"MINUTE"`
+- `"15MIN"`
+- `"30MIN"`
+- `"HOUR"`
+- `"3HOUR"`
+- `"6HOUR"`
+- `"12HOUR"`
+- `"DAY"`
+- `"WEEK"`
+- `"MONTH"`

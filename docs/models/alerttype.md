@@ -12,8 +12,8 @@ value: AlertType = "low_ongoing_balance"
 
 ## Values
 
-| Name                     | Value                    |
-| ------------------------ | ------------------------ |
-| `LOW_ONGOING_BALANCE`    | low_ongoing_balance      |
-| `LOW_CREDIT_BALANCE`     | low_credit_balance       |
-| `FEATURE_WALLET_BALANCE` | feature_wallet_balance   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"low_ongoing_balance"`
+- `"low_credit_balance"`
+- `"feature_wallet_balance"`

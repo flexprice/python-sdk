@@ -12,7 +12,7 @@ value: AlertCondition = "above"
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `ABOVE` | above   |
-| `BELOW` | below   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"above"`
+- `"below"`

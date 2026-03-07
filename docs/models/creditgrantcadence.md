@@ -12,7 +12,7 @@ value: CreditGrantCadence = "ONETIME"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `ONETIME`   | ONETIME     |
-| `RECURRING` | RECURRING   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"ONETIME"`
+- `"RECURRING"`

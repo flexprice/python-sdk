@@ -12,19 +12,21 @@ class Users(BaseSDK):
     def create_user(
         self,
         *,
-        roles: List[str],
         type_: models.UserType,
+        email: Optional[str] = None,
+        roles: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoUserResponse:
-        r"""Create service account
+    ) -> models.DtoCreateUserResponse:
+        r"""Create user or service account
 
-        Use when provisioning API access for automation, CI/CD pipelines, or headless integrations that need scoped API keys.
+        Create a user account (type=user, email required; returns user + password for login) or a service account (type=service_account, roles required) for API/automation access.
 
-        :param roles: Roles are required
         :param type:
+        :param email: Required when type is \"user\"
+        :param roles: Required when type is \"service_account\"
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -41,6 +43,7 @@ class Users(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.DtoCreateUserRequest(
+            email=email,
             roles=roles,
             type=type_,
         )
@@ -88,7 +91,7 @@ class Users(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoUserResponse, http_res)
+            return unmarshal_json_response(models.DtoCreateUserResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorsErrorResponseData, http_res
@@ -117,19 +120,21 @@ class Users(BaseSDK):
     async def create_user_async(
         self,
         *,
-        roles: List[str],
         type_: models.UserType,
+        email: Optional[str] = None,
+        roles: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoUserResponse:
-        r"""Create service account
+    ) -> models.DtoCreateUserResponse:
+        r"""Create user or service account
 
-        Use when provisioning API access for automation, CI/CD pipelines, or headless integrations that need scoped API keys.
+        Create a user account (type=user, email required; returns user + password for login) or a service account (type=service_account, roles required) for API/automation access.
 
-        :param roles: Roles are required
         :param type:
+        :param email: Required when type is \"user\"
+        :param roles: Required when type is \"service_account\"
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -146,6 +151,7 @@ class Users(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.DtoCreateUserRequest(
+            email=email,
             roles=roles,
             type=type_,
         )
@@ -193,7 +199,7 @@ class Users(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoUserResponse, http_res)
+            return unmarshal_json_response(models.DtoCreateUserResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorsErrorResponseData, http_res

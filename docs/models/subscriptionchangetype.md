@@ -12,8 +12,8 @@ value: SubscriptionChangeType = "upgrade"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `UPGRADE`   | upgrade     |
-| `DOWNGRADE` | downgrade   |
-| `LATERAL`   | lateral     |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"upgrade"`
+- `"downgrade"`
+- `"lateral"`

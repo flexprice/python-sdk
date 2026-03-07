@@ -12,8 +12,8 @@ value: CouponCadence = "once"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `ONCE`     | once       |
-| `REPEATED` | repeated   |
-| `FOREVER`  | forever    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"once"`
+- `"repeated"`
+- `"forever"`

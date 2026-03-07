@@ -10,6 +10,4 @@ value: PaymentDestinationType = "INVOICE"
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `INVOICE` | INVOICE   |
+- `"INVOICE"`

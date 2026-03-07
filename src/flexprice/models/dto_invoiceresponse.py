@@ -87,6 +87,10 @@ class DtoInvoiceResponseTypedDict(TypedDict):
     r"""period_end is the end date of the billing period covered by this invoice"""
     period_start: NotRequired[str]
     r"""period_start is the start date of the billing period covered by this invoice"""
+    recalculated_invoice_id: NotRequired[str]
+    r"""recalculated_invoice_id is the ID of the replacement invoice created when this invoice was voided and recalculated.
+    When set, it forms a parent→child link from this (voided) invoice to the new replacement invoice.
+    """
     refunded_amount: NotRequired[str]
     r"""refunded_amount is the total sum of credit notes of type \"refund\".
     These are actual refunds issued to the customer.
@@ -203,6 +207,11 @@ class DtoInvoiceResponse(BaseModel):
     period_start: Optional[str] = None
     r"""period_start is the start date of the billing period covered by this invoice"""
 
+    recalculated_invoice_id: Optional[str] = None
+    r"""recalculated_invoice_id is the ID of the replacement invoice created when this invoice was voided and recalculated.
+    When set, it forms a parent→child link from this (voided) invoice to the new replacement invoice.
+    """
+
     refunded_amount: Optional[str] = None
     r"""refunded_amount is the total sum of credit notes of type \"refund\".
     These are actual refunds issued to the customer.
@@ -279,6 +288,7 @@ class DtoInvoiceResponse(BaseModel):
                 "payment_status",
                 "period_end",
                 "period_start",
+                "recalculated_invoice_id",
                 "refunded_amount",
                 "status",
                 "subscription",
@@ -301,7 +311,7 @@ class DtoInvoiceResponse(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

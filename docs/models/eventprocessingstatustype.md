@@ -12,8 +12,8 @@ value: EventProcessingStatusType = "processed"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `PROCESSED`  | processed    |
-| `PROCESSING` | processing   |
-| `FAILED`     | failed       |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"processed"`
+- `"processing"`
+- `"failed"`

@@ -12,7 +12,7 @@ value: FileType = "CSV"
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `CSV`  | CSV    |
-| `JSON` | JSON   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"CSV"`
+- `"JSON"`

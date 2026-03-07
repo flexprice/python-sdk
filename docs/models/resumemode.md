@@ -12,8 +12,8 @@ value: ResumeMode = "immediate"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `IMMEDIATE` | immediate   |
-| `SCHEDULED` | scheduled   |
-| `AUTO`      | auto        |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"immediate"`
+- `"scheduled"`
+- `"auto"`

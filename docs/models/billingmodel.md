@@ -12,8 +12,8 @@ value: BillingModel = "FLAT_FEE"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `FLAT_FEE` | FLAT_FEE   |
-| `PACKAGE`  | PACKAGE    |
-| `TIERED`   | TIERED     |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"FLAT_FEE"`
+- `"PACKAGE"`
+- `"TIERED"`

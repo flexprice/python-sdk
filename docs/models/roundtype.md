@@ -12,7 +12,7 @@ value: RoundType = "up"
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `UP`   | up     |
-| `DOWN` | down   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"up"`
+- `"down"`

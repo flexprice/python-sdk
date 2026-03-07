@@ -15,7 +15,8 @@
 * [update_invoice_payment_status](#update_invoice_payment_status) - Update invoice payment status
 * [attempt_invoice_payment](#attempt_invoice_payment) - Attempt invoice payment
 * [get_invoice_pdf](#get_invoice_pdf) - Get invoice PDF
-* [recalculate_invoice](#recalculate_invoice) - Recalculate invoice
+* [recalculate_invoice](#recalculate_invoice) - Recalculate invoice (default: voided invoice)
+* [recalculate_invoice_v2](#recalculate_invoice_v2) - Recalculate draft invoice (v2)
 * [void_invoice](#void_invoice) - Void invoice
 
 ## get_customer_invoice_summary
@@ -528,7 +529,7 @@ with Flexprice(
 
 ## recalculate_invoice
 
-Use when subscription or usage data changed and you need to refresh a draft invoice before finalizing. Optional finalize=true to lock after recalc.
+Creates a fresh replacement invoice for a voided SUBSCRIPTION invoice covering the same billing period. The original voided invoice is linked to the new invoice via recalculated_invoice_id. Can only be called once per voided invoice.
 
 ### Example Usage
 
@@ -542,6 +543,47 @@ with Flexprice(
 ) as f_client:
 
     res = f_client.invoices.recalculate_invoice(id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | Invoice ID                                                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
+| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## recalculate_invoice_v2
+
+Recalculates a draft SUBSCRIPTION invoice in-place (replaces line items, reapplies credits/coupons/taxes). Use when subscription or usage data changed before finalizing.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="recalculateInvoiceV2" method="post" path="/invoices/{id}/recalculate-v2" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.invoices.recalculate_invoice_v2(id="<id>")
 
     # Handle response
     print(res)

@@ -12,11 +12,11 @@ value: CreditGrantPeriod = "DAILY"
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `DAILY`       | DAILY         |
-| `WEEKLY`      | WEEKLY        |
-| `MONTHLY`     | MONTHLY       |
-| `ANNUAL`      | ANNUAL        |
-| `QUARTERLY`   | QUARTERLY     |
-| `HALF_YEARLY` | HALF_YEARLY   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"DAILY"`
+- `"WEEKLY"`
+- `"MONTHLY"`
+- `"ANNUAL"`
+- `"QUARTERLY"`
+- `"HALF_YEARLY"`

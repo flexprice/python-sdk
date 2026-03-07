@@ -12,9 +12,9 @@ value: EntityType = "EVENTS"
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `EVENTS`    | EVENTS      |
-| `PRICES`    | PRICES      |
-| `CUSTOMERS` | CUSTOMERS   |
-| `FEATURES`  | FEATURES    |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"EVENTS"`
+- `"PRICES"`
+- `"CUSTOMERS"`
+- `"FEATURES"`

@@ -12,7 +12,7 @@ value: PriceType = "USAGE"
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `USAGE` | USAGE   |
-| `FIXED` | FIXED   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"USAGE"`
+- `"FIXED"`

@@ -12,8 +12,6 @@ value: Provider = "stripe"
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `STRIPE`   | stripe     |
-| `RAZORPAY` | razorpay   |
-| `PAYPAL`   | paypal     |
+- `"stripe"`
+- `"razorpay"`
+- `"paypal"`

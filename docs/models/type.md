@@ -10,7 +10,5 @@ value: Type = "credit"
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `CREDIT` | credit   |
-| `DEBIT`  | debit    |
+- `"credit"`
+- `"debit"`

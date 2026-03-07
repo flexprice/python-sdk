@@ -12,7 +12,7 @@ value: UserType = "user"
 
 ## Values
 
-| Name              | Value             |
-| ----------------- | ----------------- |
-| `USER`            | user              |
-| `SERVICE_ACCOUNT` | service_account   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"user"`
+- `"service_account"`

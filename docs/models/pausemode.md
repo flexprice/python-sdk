@@ -12,8 +12,8 @@ value: PauseMode = "immediate"
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `IMMEDIATE`  | immediate    |
-| `SCHEDULED`  | scheduled    |
-| `PERIOD_END` | period_end   |
+This is an open enum. Unrecognized values will not fail type checks.
+
+- `"immediate"`
+- `"scheduled"`
+- `"period_end"`

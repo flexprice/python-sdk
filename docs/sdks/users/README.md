@@ -4,13 +4,13 @@
 
 ### Available Operations
 
-* [create_user](#create_user) - Create service account
+* [create_user](#create_user) - Create user or service account
 * [get_user_info](#get_user_info) - Get current user
 * [query_user](#query_user) - Query users
 
 ## create_user
 
-Use when provisioning API access for automation, CI/CD pipelines, or headless integrations that need scoped API keys.
+Create a user account (type=user, email required; returns user + password for login) or a service account (type=service_account, roles required) for API/automation access.
 
 ### Example Usage
 
@@ -23,7 +23,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.users.create_user(roles=[], type_="user")
+    res = f_client.users.create_user(type_="user")
 
     # Handle response
     print(res)
@@ -34,13 +34,14 @@ with Flexprice(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `roles`                                                             | List[*str*]                                                         | :heavy_check_mark:                                                  | Roles are required                                                  |
 | `type`                                                              | [models.UserType](../../models/usertype.md)                         | :heavy_check_mark:                                                  | N/A                                                                 |
+| `email`                                                             | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | Required when type is "user"                                        |
+| `roles`                                                             | List[*str*]                                                         | :heavy_minus_sign:                                                  | Required when type is "service_account"                             |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.DtoUserResponse](../../models/dtouserresponse.md)**
+**[models.DtoCreateUserResponse](../../models/dtocreateuserresponse.md)**
 
 ### Errors
 

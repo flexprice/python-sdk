@@ -10,7 +10,5 @@ value: GetTaxRatesOrder = "asc"
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `ASC`  | asc    |
-| `DESC` | desc   |
+- `"asc"`
+- `"desc"`

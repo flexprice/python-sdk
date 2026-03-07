@@ -10,7 +10,5 @@ value: CustomerFilterOrder = "asc"
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `ASC`  | asc    |
-| `DESC` | desc   |
+- `"asc"`
+- `"desc"`
