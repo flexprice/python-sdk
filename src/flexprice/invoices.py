@@ -2666,10 +2666,10 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoInvoiceResponse:
-        r"""Recalculate invoice (default: voided invoice)
+    ) -> models.ModelsTemporalWorkflowResult:
+        r"""Recalculate invoice (voided invoice)
 
-        Creates a fresh replacement invoice for a voided SUBSCRIPTION invoice covering the same billing period. The original voided invoice is linked to the new invoice via recalculated_invoice_id. Can only be called once per voided invoice.
+        Starts an async workflow that creates a fresh replacement invoice for a voided SUBSCRIPTION invoice (same billing period). Returns workflow_id and run_id; poll workflow status or GET the new invoice via recalculated_invoice_id after completion.
 
         :param id: Invoice ID
         :param retries: Override the default retry configuration for this method
@@ -2730,8 +2730,10 @@ class Invoices(BaseSDK):
         )
 
         response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoInvoiceResponse, http_res)
+        if utils.match_response(http_res, "202", "application/json"):
+            return unmarshal_json_response(
+                models.ModelsTemporalWorkflowResult, http_res
+            )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorsErrorResponseData, http_res
@@ -2765,10 +2767,10 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoInvoiceResponse:
-        r"""Recalculate invoice (default: voided invoice)
+    ) -> models.ModelsTemporalWorkflowResult:
+        r"""Recalculate invoice (voided invoice)
 
-        Creates a fresh replacement invoice for a voided SUBSCRIPTION invoice covering the same billing period. The original voided invoice is linked to the new invoice via recalculated_invoice_id. Can only be called once per voided invoice.
+        Starts an async workflow that creates a fresh replacement invoice for a voided SUBSCRIPTION invoice (same billing period). Returns workflow_id and run_id; poll workflow status or GET the new invoice via recalculated_invoice_id after completion.
 
         :param id: Invoice ID
         :param retries: Override the default retry configuration for this method
@@ -2829,8 +2831,10 @@ class Invoices(BaseSDK):
         )
 
         response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoInvoiceResponse, http_res)
+        if utils.match_response(http_res, "202", "application/json"):
+            return unmarshal_json_response(
+                models.ModelsTemporalWorkflowResult, http_res
+            )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorsErrorResponseData, http_res

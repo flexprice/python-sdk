@@ -19,6 +19,8 @@ class DtoCreateFeatureRequestTypedDict(TypedDict):
     type: FeatureType
     alert_settings: NotRequired[AlertSettingsTypedDict]
     description: NotRequired[str]
+    group_id: NotRequired[str]
+    r"""GroupID is the id of the group to add the feature to"""
     lookup_key: NotRequired[str]
     metadata: NotRequired[Dict[str, str]]
     meter: NotRequired[DtoCreateMeterRequestTypedDict]
@@ -36,6 +38,9 @@ class DtoCreateFeatureRequest(BaseModel):
     alert_settings: Optional[AlertSettings] = None
 
     description: Optional[str] = None
+
+    group_id: Optional[str] = None
+    r"""GroupID is the id of the group to add the feature to"""
 
     lookup_key: Optional[str] = None
 
@@ -57,6 +62,7 @@ class DtoCreateFeatureRequest(BaseModel):
             [
                 "alert_settings",
                 "description",
+                "group_id",
                 "lookup_key",
                 "metadata",
                 "meter",

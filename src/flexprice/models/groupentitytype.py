@@ -5,18 +5,10 @@ from flexprice.types import UnrecognizedStr
 from typing import Literal, Union
 
 
-WindowSize = Union[
+GroupEntityType = Union[
     Literal[
-        "MONTH",
-        "MINUTE",
-        "15MIN",
-        "30MIN",
-        "HOUR",
-        "3HOUR",
-        "6HOUR",
-        "12HOUR",
-        "DAY",
-        "WEEK",
+        "price",
+        "feature",
     ],
     UnrecognizedStr,
 ]

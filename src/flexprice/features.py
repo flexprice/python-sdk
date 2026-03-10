@@ -18,6 +18,7 @@ class Features(BaseSDK):
             Union[models.AlertSettings, models.AlertSettingsTypedDict]
         ] = None,
         description: Optional[str] = None,
+        group_id: Optional[str] = None,
         lookup_key: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         meter: Optional[
@@ -42,6 +43,7 @@ class Features(BaseSDK):
         :param type:
         :param alert_settings:
         :param description:
+        :param group_id: GroupID is the id of the group to add the feature to
         :param lookup_key:
         :param metadata:
         :param meter:
@@ -69,6 +71,7 @@ class Features(BaseSDK):
                 alert_settings, Optional[models.AlertSettings]
             ),
             description=description,
+            group_id=group_id,
             lookup_key=lookup_key,
             metadata=metadata,
             meter=utils.get_pydantic_model(
@@ -162,6 +165,7 @@ class Features(BaseSDK):
             Union[models.AlertSettings, models.AlertSettingsTypedDict]
         ] = None,
         description: Optional[str] = None,
+        group_id: Optional[str] = None,
         lookup_key: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         meter: Optional[
@@ -186,6 +190,7 @@ class Features(BaseSDK):
         :param type:
         :param alert_settings:
         :param description:
+        :param group_id: GroupID is the id of the group to add the feature to
         :param lookup_key:
         :param metadata:
         :param meter:
@@ -213,6 +218,7 @@ class Features(BaseSDK):
                 alert_settings, Optional[models.AlertSettings]
             ),
             description=description,
+            group_id=group_id,
             lookup_key=lookup_key,
             metadata=metadata,
             meter=utils.get_pydantic_model(
@@ -602,6 +608,7 @@ class Features(BaseSDK):
         filters: Optional[
             Union[List[models.MeterFilter], List[models.MeterFilterTypedDict]]
         ] = None,
+        group_id: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
         reporting_unit: Optional[
@@ -622,6 +629,7 @@ class Features(BaseSDK):
         :param alert_settings:
         :param description:
         :param filters:
+        :param group_id: GroupID is the id of the group to assign the feature to. Pass empty string to clear.
         :param metadata:
         :param name:
         :param reporting_unit:
@@ -652,6 +660,7 @@ class Features(BaseSDK):
                 filters=utils.get_pydantic_model(
                     filters, Optional[List[models.MeterFilter]]
                 ),
+                group_id=group_id,
                 metadata=metadata,
                 name=name,
                 reporting_unit=utils.get_pydantic_model(
@@ -742,6 +751,7 @@ class Features(BaseSDK):
         filters: Optional[
             Union[List[models.MeterFilter], List[models.MeterFilterTypedDict]]
         ] = None,
+        group_id: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
         reporting_unit: Optional[
@@ -762,6 +772,7 @@ class Features(BaseSDK):
         :param alert_settings:
         :param description:
         :param filters:
+        :param group_id: GroupID is the id of the group to assign the feature to. Pass empty string to clear.
         :param metadata:
         :param name:
         :param reporting_unit:
@@ -792,6 +803,7 @@ class Features(BaseSDK):
                 filters=utils.get_pydantic_model(
                     filters, Optional[List[models.MeterFilter]]
                 ),
+                group_id=group_id,
                 metadata=metadata,
                 name=name,
                 reporting_unit=utils.get_pydantic_model(

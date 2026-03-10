@@ -14,6 +14,8 @@ class DtoUpdateFeatureRequestTypedDict(TypedDict):
     alert_settings: NotRequired[AlertSettingsTypedDict]
     description: NotRequired[str]
     filters: NotRequired[List[MeterFilterTypedDict]]
+    group_id: NotRequired[str]
+    r"""GroupID is the id of the group to assign the feature to. Pass empty string to clear."""
     metadata: NotRequired[Dict[str, str]]
     name: NotRequired[str]
     reporting_unit: NotRequired[ReportingUnitTypedDict]
@@ -27,6 +29,9 @@ class DtoUpdateFeatureRequest(BaseModel):
     description: Optional[str] = None
 
     filters: Optional[List[MeterFilter]] = None
+
+    group_id: Optional[str] = None
+    r"""GroupID is the id of the group to assign the feature to. Pass empty string to clear."""
 
     metadata: Optional[Dict[str, str]] = None
 
@@ -45,6 +50,7 @@ class DtoUpdateFeatureRequest(BaseModel):
                 "alert_settings",
                 "description",
                 "filters",
+                "group_id",
                 "metadata",
                 "name",
                 "reporting_unit",

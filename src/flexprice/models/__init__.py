@@ -1050,6 +1050,8 @@ if TYPE_CHECKING:
         GithubComFlexpriceFlexpriceInternalDomainPlanPlan,
         GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict,
     )
+    from .group_group import GroupGroup, GroupGroupTypedDict
+    from .groupentitytype import GroupEntityType
     from .groupfilter import GroupFilter, GroupFilterOrder, GroupFilterTypedDict
     from .handlechargebeewebhookop import (
         HandleChargebeeWebhookRequest,
@@ -2028,9 +2030,12 @@ __all__ = [
     "GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlan",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict",
+    "GroupEntityType",
     "GroupFilter",
     "GroupFilterOrder",
     "GroupFilterTypedDict",
+    "GroupGroup",
+    "GroupGroupTypedDict",
     "HandleChargebeeWebhookRequest",
     "HandleChargebeeWebhookRequestTypedDict",
     "HandleHubspotWebhookRequest",
@@ -2944,6 +2949,9 @@ _dynamic_imports: dict[str, str] = {
     "GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict": ".github_com_flexprice_flexprice_internal_domain_feature_feature",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlan": ".github_com_flexprice_flexprice_internal_domain_plan_plan",
     "GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict": ".github_com_flexprice_flexprice_internal_domain_plan_plan",
+    "GroupGroup": ".group_group",
+    "GroupGroupTypedDict": ".group_group",
+    "GroupEntityType": ".groupentitytype",
     "GroupFilter": ".groupfilter",
     "GroupFilterOrder": ".groupfilter",
     "GroupFilterTypedDict": ".groupfilter",

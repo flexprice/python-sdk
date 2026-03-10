@@ -15,7 +15,7 @@
 * [update_invoice_payment_status](#update_invoice_payment_status) - Update invoice payment status
 * [attempt_invoice_payment](#attempt_invoice_payment) - Attempt invoice payment
 * [get_invoice_pdf](#get_invoice_pdf) - Get invoice PDF
-* [recalculate_invoice](#recalculate_invoice) - Recalculate invoice (default: voided invoice)
+* [recalculate_invoice](#recalculate_invoice) - Recalculate invoice (voided invoice)
 * [recalculate_invoice_v2](#recalculate_invoice_v2) - Recalculate draft invoice (v2)
 * [void_invoice](#void_invoice) - Void invoice
 
@@ -529,7 +529,7 @@ with Flexprice(
 
 ## recalculate_invoice
 
-Creates a fresh replacement invoice for a voided SUBSCRIPTION invoice covering the same billing period. The original voided invoice is linked to the new invoice via recalculated_invoice_id. Can only be called once per voided invoice.
+Starts an async workflow that creates a fresh replacement invoice for a voided SUBSCRIPTION invoice (same billing period). Returns workflow_id and run_id; poll workflow status or GET the new invoice via recalculated_invoice_id after completion.
 
 ### Example Usage
 
@@ -558,7 +558,7 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.ModelsTemporalWorkflowResult](../../models/modelstemporalworkflowresult.md)**
 
 ### Errors
 

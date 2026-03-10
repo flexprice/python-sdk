@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .alertsettings import AlertSettings, AlertSettingsTypedDict
 from .featuretype import FeatureType
+from .group_group import GroupGroup, GroupGroupTypedDict
 from .reportingunit import ReportingUnit, ReportingUnitTypedDict
 from .status import Status
 from flexprice.types import BaseModel, UNSET_SENTINEL
@@ -17,6 +18,8 @@ class GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict(TypedDict
     created_by: NotRequired[str]
     description: NotRequired[str]
     environment_id: NotRequired[str]
+    group: NotRequired[GroupGroupTypedDict]
+    group_id: NotRequired[str]
     id: NotRequired[str]
     lookup_key: NotRequired[str]
     metadata: NotRequired[Dict[str, str]]
@@ -42,6 +45,10 @@ class GithubComFlexpriceFlexpriceInternalDomainFeatureFeature(BaseModel):
     description: Optional[str] = None
 
     environment_id: Optional[str] = None
+
+    group: Optional[GroupGroup] = None
+
+    group_id: Optional[str] = None
 
     id: Optional[str] = None
 
@@ -78,6 +85,8 @@ class GithubComFlexpriceFlexpriceInternalDomainFeatureFeature(BaseModel):
                 "created_by",
                 "description",
                 "environment_id",
+                "group",
+                "group_id",
                 "id",
                 "lookup_key",
                 "metadata",
