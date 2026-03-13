@@ -646,6 +646,7 @@ class Invoices(BaseSDK):
         self,
         *,
         subscription_id: str,
+        hide_zero_charges_line_items: Optional[bool] = False,
         period_end: Optional[str] = None,
         period_start: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -658,6 +659,7 @@ class Invoices(BaseSDK):
         Use when showing a customer what they will be charged (e.g. preview before checkout or plan change). No invoice is created.
 
         :param subscription_id: subscription_id is the unique identifier of the subscription to preview invoice for
+        :param hide_zero_charges_line_items: hide_zero_charges_line_items indicates whether to hide line items with zero cost
         :param period_end: period_end is the optional end date of the period to preview
         :param period_start: period_start is the optional start date of the period to preview
         :param retries: Override the default retry configuration for this method
@@ -676,6 +678,7 @@ class Invoices(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.DtoGetPreviewInvoiceRequest(
+            hide_zero_charges_line_items=hide_zero_charges_line_items,
             period_end=period_end,
             period_start=period_start,
             subscription_id=subscription_id,
@@ -754,6 +757,7 @@ class Invoices(BaseSDK):
         self,
         *,
         subscription_id: str,
+        hide_zero_charges_line_items: Optional[bool] = False,
         period_end: Optional[str] = None,
         period_start: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -766,6 +770,7 @@ class Invoices(BaseSDK):
         Use when showing a customer what they will be charged (e.g. preview before checkout or plan change). No invoice is created.
 
         :param subscription_id: subscription_id is the unique identifier of the subscription to preview invoice for
+        :param hide_zero_charges_line_items: hide_zero_charges_line_items indicates whether to hide line items with zero cost
         :param period_end: period_end is the optional end date of the period to preview
         :param period_start: period_start is the optional start date of the period to preview
         :param retries: Override the default retry configuration for this method
@@ -784,6 +789,7 @@ class Invoices(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.DtoGetPreviewInvoiceRequest(
+            hide_zero_charges_line_items=hide_zero_charges_line_items,
             period_end=period_end,
             period_start=period_start,
             subscription_id=subscription_id,

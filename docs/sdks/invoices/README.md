@@ -143,7 +143,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.invoices.get_invoice_preview(subscription_id="<id>")
+    res = f_client.invoices.get_invoice_preview(subscription_id="<id>", hide_zero_charges_line_items=False)
 
     # Handle response
     print(res)
@@ -155,6 +155,7 @@ with Flexprice(
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `subscription_id`                                                                   | *str*                                                                               | :heavy_check_mark:                                                                  | subscription_id is the unique identifier of the subscription to preview invoice for |
+| `hide_zero_charges_line_items`                                                      | *Optional[bool]*                                                                    | :heavy_minus_sign:                                                                  | hide_zero_charges_line_items indicates whether to hide line items with zero cost    |
 | `period_end`                                                                        | *Optional[str]*                                                                     | :heavy_minus_sign:                                                                  | period_end is the optional end date of the period to preview                        |
 | `period_start`                                                                      | *Optional[str]*                                                                     | :heavy_minus_sign:                                                                  | period_start is the optional start date of the period to preview                    |
 | `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |

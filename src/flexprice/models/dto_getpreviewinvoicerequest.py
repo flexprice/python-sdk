@@ -10,6 +10,8 @@ from typing_extensions import NotRequired, TypedDict
 class DtoGetPreviewInvoiceRequestTypedDict(TypedDict):
     subscription_id: str
     r"""subscription_id is the unique identifier of the subscription to preview invoice for"""
+    hide_zero_charges_line_items: NotRequired[bool]
+    r"""hide_zero_charges_line_items indicates whether to hide line items with zero cost"""
     period_end: NotRequired[str]
     r"""period_end is the optional end date of the period to preview"""
     period_start: NotRequired[str]
@@ -20,6 +22,9 @@ class DtoGetPreviewInvoiceRequest(BaseModel):
     subscription_id: str
     r"""subscription_id is the unique identifier of the subscription to preview invoice for"""
 
+    hide_zero_charges_line_items: Optional[bool] = False
+    r"""hide_zero_charges_line_items indicates whether to hide line items with zero cost"""
+
     period_end: Optional[str] = None
     r"""period_end is the optional end date of the period to preview"""
 
@@ -28,7 +33,9 @@ class DtoGetPreviewInvoiceRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["period_end", "period_start"])
+        optional_fields = set(
+            ["hide_zero_charges_line_items", "period_end", "period_start"]
+        )
         serialized = handler(self)
         m = {}
 

@@ -20,6 +20,7 @@ from .github_com_flexprice_flexprice_internal_domain_plan_plan import (
     GithubComFlexpriceFlexpriceInternalDomainPlanPlan,
     GithubComFlexpriceFlexpriceInternalDomainPlanPlanTypedDict,
 )
+from .group_group import GroupGroup, GroupGroupTypedDict
 from .meter_meter import MeterMeter, MeterMeterTypedDict
 from .reportingunit import ReportingUnit, ReportingUnitTypedDict
 from .subscription_subscriptionlineitem import (
@@ -46,6 +47,7 @@ class DtoUsageAnalyticItemTypedDict(TypedDict):
         GithubComFlexpriceFlexpriceInternalDomainFeatureFeatureTypedDict
     ]
     feature_id: NotRequired[str]
+    group: NotRequired[GroupGroupTypedDict]
     meter: NotRequired[MeterMeterTypedDict]
     meter_id: NotRequired[str]
     r"""Meter ID"""
@@ -95,6 +97,8 @@ class DtoUsageAnalyticItem(BaseModel):
     feature: Optional[GithubComFlexpriceFlexpriceInternalDomainFeatureFeature] = None
 
     feature_id: Optional[str] = None
+
+    group: Optional[GroupGroup] = None
 
     meter: Optional[MeterMeter] = None
 
@@ -158,6 +162,7 @@ class DtoUsageAnalyticItem(BaseModel):
                 "event_name",
                 "feature",
                 "feature_id",
+                "group",
                 "meter",
                 "meter_id",
                 "name",
