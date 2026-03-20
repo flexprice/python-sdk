@@ -9,4 +9,5 @@ PaymentGatewayType = Literal[
     "razorpay",
     "nomod",
     "moyasar",
+    "paddle",
 ]

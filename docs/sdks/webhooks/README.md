@@ -8,6 +8,7 @@
 * [handle_hubspot_webhook](#handle_hubspot_webhook) - Handle HubSpot webhook events
 * [handle_moyasar_webhook](#handle_moyasar_webhook) - Handle Moyasar webhook events
 * [handle_nomod_webhook](#handle_nomod_webhook) - Handle Nomod webhook events
+* [handle_paddle_webhook](#handle_paddle_webhook) - Handle Paddle webhook events
 * [handle_quickbooks_webhook](#handle_quickbooks_webhook) - Handle QuickBooks webhook events
 * [handle_razorpay_webhook](#handle_razorpay_webhook) - Handle Razorpay webhook events
 * [handle_stripe_webhook](#handle_stripe_webhook) - Handle Stripe webhook events
@@ -163,6 +164,47 @@ with Flexprice(
 | `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | Tenant ID                                                           |
 | `environment_id`                                                    | *str*                                                               | :heavy_check_mark:                                                  | Environment ID                                                      |
 | `x_api_key`                                                         | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | Nomod webhook secret (if configured)                                |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[Dict[str, Any]](../../models/.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## handle_paddle_webhook
+
+Use as the Paddle webhook endpoint URL. Receives transaction.completed events from Paddle to update payment status in FlexPrice.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="handlePaddleWebhook" method="post" path="/webhooks/paddle/{tenant_id}/{environment_id}" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.webhooks.handle_paddle_webhook(tenant_id="<id>", environment_id="<id>", paddle_signature="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `tenant_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | Tenant ID                                                           |
+| `environment_id`                                                    | *str*                                                               | :heavy_check_mark:                                                  | Environment ID                                                      |
+| `paddle_signature`                                                  | *str*                                                               | :heavy_check_mark:                                                  | Paddle webhook signature                                            |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response

@@ -67,7 +67,7 @@ with Flexprice(
 
     res = f_client.integrations.create_or_update_integration(provider_param="<value>", credentials={
         "key": "<value>",
-    }, name="<value>", provider="chargebee")
+    }, name="<value>", provider="quickbooks")
 
     # Handle response
     print(res)

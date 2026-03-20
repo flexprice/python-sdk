@@ -14,3 +14,4 @@ value: PaymentGatewayType = "stripe"
 - `"razorpay"`
 - `"nomod"`
 - `"moyasar"`
+- `"paddle"`

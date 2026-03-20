@@ -1069,6 +1069,10 @@ if TYPE_CHECKING:
         HandleNomodWebhookRequest,
         HandleNomodWebhookRequestTypedDict,
     )
+    from .handlepaddlewebhookop import (
+        HandlePaddleWebhookRequest,
+        HandlePaddleWebhookRequestTypedDict,
+    )
     from .handlequickbookswebhookop import (
         HandleQuickbooksWebhookRequest,
         HandleQuickbooksWebhookRequestTypedDict,
@@ -2044,6 +2048,8 @@ __all__ = [
     "HandleMoyasarWebhookRequestTypedDict",
     "HandleNomodWebhookRequest",
     "HandleNomodWebhookRequestTypedDict",
+    "HandlePaddleWebhookRequest",
+    "HandlePaddleWebhookRequestTypedDict",
     "HandleQuickbooksWebhookRequest",
     "HandleQuickbooksWebhookRequestTypedDict",
     "HandleRazorpayWebhookRequest",
@@ -2963,6 +2969,8 @@ _dynamic_imports: dict[str, str] = {
     "HandleMoyasarWebhookRequestTypedDict": ".handlemoyasarwebhookop",
     "HandleNomodWebhookRequest": ".handlenomodwebhookop",
     "HandleNomodWebhookRequestTypedDict": ".handlenomodwebhookop",
+    "HandlePaddleWebhookRequest": ".handlepaddlewebhookop",
+    "HandlePaddleWebhookRequestTypedDict": ".handlepaddlewebhookop",
     "HandleQuickbooksWebhookRequest": ".handlequickbookswebhookop",
     "HandleQuickbooksWebhookRequestTypedDict": ".handlequickbookswebhookop",
     "HandleRazorpayWebhookRequest": ".handlerazorpaywebhookop",
