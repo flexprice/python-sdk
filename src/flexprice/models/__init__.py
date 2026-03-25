@@ -1354,6 +1354,7 @@ if TYPE_CHECKING:
         WebhookDtoWalletWebhookPayload,
         WebhookDtoWalletWebhookPayloadTypedDict,
     )
+    from .webhookeventname import WebhookEventName
     from .windowsize import WindowSize
     from .workflowexecutionfilter import (
         WorkflowExecutionFilter,
@@ -2303,6 +2304,7 @@ __all__ = [
     "WebhookDtoWalletAlertInfoTypedDict",
     "WebhookDtoWalletWebhookPayload",
     "WebhookDtoWalletWebhookPayloadTypedDict",
+    "WebhookEventName",
     "WindowSize",
     "WorkflowExecutionFilter",
     "WorkflowExecutionFilterOrder",
@@ -3231,6 +3233,7 @@ _dynamic_imports: dict[str, str] = {
     "WebhookDtoWalletAlertInfoTypedDict": ".webhookdto_walletalertinfo",
     "WebhookDtoWalletWebhookPayload": ".webhookdto_walletwebhookpayload",
     "WebhookDtoWalletWebhookPayloadTypedDict": ".webhookdto_walletwebhookpayload",
+    "WebhookEventName": ".webhookeventname",
     "WindowSize": ".windowsize",
     "WorkflowExecutionFilter": ".workflowexecutionfilter",
     "WorkflowExecutionFilterOrder": ".workflowexecutionfilter",

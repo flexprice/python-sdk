@@ -5,6 +5,7 @@ from .dto_creditnoteresponse import (
     DtoCreditNoteResponse,
     DtoCreditNoteResponseTypedDict,
 )
+from .webhookeventname import WebhookEventName
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -13,13 +14,13 @@ from typing_extensions import NotRequired, TypedDict
 
 class WebhookDtoCreditNoteWebhookPayloadTypedDict(TypedDict):
     credit_note: NotRequired[DtoCreditNoteResponseTypedDict]
-    event_type: NotRequired[str]
+    event_type: NotRequired[WebhookEventName]
 
 
 class WebhookDtoCreditNoteWebhookPayload(BaseModel):
     credit_note: Optional[DtoCreditNoteResponse] = None
 
-    event_type: Optional[str] = None
+    event_type: Optional[WebhookEventName] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

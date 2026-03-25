@@ -5,6 +5,7 @@ from .dto_subscriptionphaseresponse import (
     DtoSubscriptionPhaseResponse,
     DtoSubscriptionPhaseResponseTypedDict,
 )
+from .webhookeventname import WebhookEventName
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -12,12 +13,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class WebhookDtoSubscriptionPhaseWebhookPayloadTypedDict(TypedDict):
-    event_type: NotRequired[str]
+    event_type: NotRequired[WebhookEventName]
     phase: NotRequired[DtoSubscriptionPhaseResponseTypedDict]
 
 
 class WebhookDtoSubscriptionPhaseWebhookPayload(BaseModel):
-    event_type: Optional[str] = None
+    event_type: Optional[WebhookEventName] = None
 
     phase: Optional[DtoSubscriptionPhaseResponse] = None
 

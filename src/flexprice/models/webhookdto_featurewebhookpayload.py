@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .dto_featureresponse import DtoFeatureResponse, DtoFeatureResponseTypedDict
+from .webhookeventname import WebhookEventName
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -9,12 +10,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class WebhookDtoFeatureWebhookPayloadTypedDict(TypedDict):
-    event_type: NotRequired[str]
+    event_type: NotRequired[WebhookEventName]
     feature: NotRequired[DtoFeatureResponseTypedDict]
 
 
 class WebhookDtoFeatureWebhookPayload(BaseModel):
-    event_type: Optional[str] = None
+    event_type: Optional[WebhookEventName] = None
 
     feature: Optional[DtoFeatureResponse] = None
 

@@ -6,6 +6,7 @@ from .dto_wallettransactionresponse import (
     DtoWalletTransactionResponse,
     DtoWalletTransactionResponseTypedDict,
 )
+from .webhookeventname import WebhookEventName
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -13,13 +14,13 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class WebhookDtoTransactionWebhookPayloadTypedDict(TypedDict):
-    event_type: NotRequired[str]
+    event_type: NotRequired[WebhookEventName]
     transaction: NotRequired[DtoWalletTransactionResponseTypedDict]
     wallet: NotRequired[DtoWalletResponseTypedDict]
 
 
 class WebhookDtoTransactionWebhookPayload(BaseModel):
-    event_type: Optional[str] = None
+    event_type: Optional[WebhookEventName] = None
 
     transaction: Optional[DtoWalletTransactionResponse] = None
 

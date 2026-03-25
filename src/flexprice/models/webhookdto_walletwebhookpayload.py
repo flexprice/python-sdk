@@ -7,6 +7,7 @@ from .webhookdto_walletalertinfo import (
     WebhookDtoWalletAlertInfo,
     WebhookDtoWalletAlertInfoTypedDict,
 )
+from .webhookeventname import WebhookEventName
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -17,7 +18,7 @@ class WebhookDtoWalletWebhookPayloadTypedDict(TypedDict):
     alert: NotRequired[WebhookDtoWalletAlertInfoTypedDict]
     customer: NotRequired[DtoCustomerResponseTypedDict]
     r"""Customer response object containing all customer information"""
-    event_type: NotRequired[str]
+    event_type: NotRequired[WebhookEventName]
     wallet: NotRequired[DtoWalletResponseTypedDict]
 
 
@@ -27,7 +28,7 @@ class WebhookDtoWalletWebhookPayload(BaseModel):
     customer: Optional[DtoCustomerResponse] = None
     r"""Customer response object containing all customer information"""
 
-    event_type: Optional[str] = None
+    event_type: Optional[WebhookEventName] = None
 
     wallet: Optional[DtoWalletResponse] = None
 

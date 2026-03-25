@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .dto_invoiceresponse import DtoInvoiceResponse, DtoInvoiceResponseTypedDict
+from .webhookeventname import WebhookEventName
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -9,12 +10,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class WebhookDtoInvoiceWebhookPayloadTypedDict(TypedDict):
-    event_type: NotRequired[str]
+    event_type: NotRequired[WebhookEventName]
     invoice: NotRequired[DtoInvoiceResponseTypedDict]
 
 
 class WebhookDtoInvoiceWebhookPayload(BaseModel):
-    event_type: Optional[str] = None
+    event_type: Optional[WebhookEventName] = None
 
     invoice: Optional[DtoInvoiceResponse] = None
 
