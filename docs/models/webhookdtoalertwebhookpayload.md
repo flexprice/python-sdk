@@ -1,0 +1,13 @@
+# WebhookDtoAlertWebhookPayload
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `alert_status`                                                           | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `alert_type`                                                             | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `customer`                                                               | [Optional[models.DtoCustomerResponse]](../models/dtocustomerresponse.md) | :heavy_minus_sign:                                                       | Customer response object containing all customer information             |
+| `event_type`                                                             | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `feature`                                                                | [Optional[models.DtoFeatureResponse]](../models/dtofeatureresponse.md)   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `wallet`                                                                 | [Optional[models.DtoWalletResponse]](../models/dtowalletresponse.md)     | :heavy_minus_sign:                                                       | N/A                                                                      |

@@ -36,7 +36,10 @@ class GithubComFlexpriceFlexpriceInternalDomainCustomerCustomerTypedDict(TypedDi
     name: NotRequired[str]
     r"""Name is the name of the customer"""
     parent_customer_id: NotRequired[str]
-    r"""ParentCustomerID is the parent customer identifier for the customer"""
+    r"""Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+    Retained for backward compatibility; no hierarchy rules are enforced at the service layer.
+    ParentCustomerID is the parent customer identifier for the customer.
+    """
     status: NotRequired[Status]
     tenant_id: NotRequired[str]
     updated_at: NotRequired[str]
@@ -85,7 +88,10 @@ class GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer(BaseModel):
     r"""Name is the name of the customer"""
 
     parent_customer_id: Optional[str] = None
-    r"""ParentCustomerID is the parent customer identifier for the customer"""
+    r"""Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+    Retained for backward compatibility; no hierarchy rules are enforced at the service layer.
+    ParentCustomerID is the parent customer identifier for the customer.
+    """
 
     status: Optional[Status] = None
 

@@ -16,3 +16,4 @@ This is an open enum. Unrecognized values will not fail type checks.
 
 - `"immediate"`
 - `"end_of_period"`
+- `"scheduled_date"`

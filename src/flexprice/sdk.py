@@ -43,7 +43,7 @@ if TYPE_CHECKING:
     from flexprice.tenants import Tenants
     from flexprice.users import Users
     from flexprice.wallets import Wallets
-    from flexprice.webhooks import Webhooks
+    from flexprice.webhook_events import WebhookEvents
     from flexprice.workflows import Workflows
 
 
@@ -78,7 +78,7 @@ class Flexprice(BaseSDK):
     tax_rates: "TaxRates"
     tenants: "Tenants"
     users: "Users"
-    webhooks: "Webhooks"
+    webhook_events: "WebhookEvents"
     workflows: "Workflows"
     _sub_sdk_map = {
         "addons": ("flexprice.addons", "Addons"),
@@ -112,7 +112,7 @@ class Flexprice(BaseSDK):
         "tax_rates": ("flexprice.tax_rates", "TaxRates"),
         "tenants": ("flexprice.tenants", "Tenants"),
         "users": ("flexprice.users", "Users"),
-        "webhooks": ("flexprice.webhooks", "Webhooks"),
+        "webhook_events": ("flexprice.webhook_events", "WebhookEvents"),
         "workflows": ("flexprice.workflows", "Workflows"),
     }
 

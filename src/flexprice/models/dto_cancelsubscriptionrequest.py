@@ -12,6 +12,10 @@ from typing_extensions import NotRequired, TypedDict
 
 class DtoCancelSubscriptionRequestTypedDict(TypedDict):
     cancellation_type: CancellationType
+    cancel_at: NotRequired[str]
+    r"""CancelAt is the custom date to cancel the subscription.
+    Required when CancellationType is \"scheduled_date\". Must be in the future.
+    """
     cancel_immediately_inovice_policy: NotRequired[CancelImmediatelyInvoicePolicy]
     proration_behavior: NotRequired[ProrationBehavior]
     reason: NotRequired[str]
@@ -20,6 +24,11 @@ class DtoCancelSubscriptionRequestTypedDict(TypedDict):
 
 class DtoCancelSubscriptionRequest(BaseModel):
     cancellation_type: CancellationType
+
+    cancel_at: Optional[str] = None
+    r"""CancelAt is the custom date to cancel the subscription.
+    Required when CancellationType is \"scheduled_date\". Must be in the future.
+    """
 
     cancel_immediately_inovice_policy: Optional[CancelImmediatelyInvoicePolicy] = None
 
@@ -31,7 +40,12 @@ class DtoCancelSubscriptionRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["cancel_immediately_inovice_policy", "proration_behavior", "reason"]
+            [
+                "cancel_at",
+                "cancel_immediately_inovice_policy",
+                "proration_behavior",
+                "reason",
+            ]
         )
         serialized = handler(self)
         m = {}

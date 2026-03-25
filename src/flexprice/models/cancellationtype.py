@@ -9,6 +9,7 @@ CancellationType = Union[
     Literal[
         "immediate",
         "end_of_period",
+        "scheduled_date",
     ],
     UnrecognizedStr,
 ]

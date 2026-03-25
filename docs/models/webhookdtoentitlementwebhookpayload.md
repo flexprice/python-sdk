@@ -1,0 +1,9 @@
+# WebhookDtoEntitlementWebhookPayload
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `entitlement`                                                                  | [Optional[models.DtoEntitlementResponse]](../models/dtoentitlementresponse.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `event_type`                                                                   | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |

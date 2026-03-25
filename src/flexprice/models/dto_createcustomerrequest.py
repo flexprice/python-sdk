@@ -38,11 +38,15 @@ class DtoCreateCustomerRequestTypedDict(TypedDict):
     name: NotRequired[str]
     r"""name is the full name or company name of the customer"""
     parent_customer_external_id: NotRequired[str]
-    r"""parent_customer_external_id is the external ID of the parent customer from your system
-    Exactly one of parent_customer_id or parent_customer_external_id may be provided
+    r"""Deprecated: See ParentCustomerID.
+    parent_customer_external_id is the external ID of the parent customer from your system.
+    Exactly one of parent_customer_id or parent_customer_external_id may be provided.
     """
     parent_customer_id: NotRequired[str]
-    r"""parent_customer_id is the internal FlexPrice ID of the parent customer"""
+    r"""Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+    This field is accepted for backward compatibility but no hierarchy validations are enforced.
+    parent_customer_id is the internal FlexPrice ID of the parent customer.
+    """
     skip_onboarding_workflow: NotRequired[bool]
     r"""skip_onboarding_workflow when true, prevents the customer onboarding workflow from being triggered
     This is used internally when a customer is created via a workflow to prevent infinite loops
@@ -89,12 +93,16 @@ class DtoCreateCustomerRequest(BaseModel):
     r"""name is the full name or company name of the customer"""
 
     parent_customer_external_id: Optional[str] = None
-    r"""parent_customer_external_id is the external ID of the parent customer from your system
-    Exactly one of parent_customer_id or parent_customer_external_id may be provided
+    r"""Deprecated: See ParentCustomerID.
+    parent_customer_external_id is the external ID of the parent customer from your system.
+    Exactly one of parent_customer_id or parent_customer_external_id may be provided.
     """
 
     parent_customer_id: Optional[str] = None
-    r"""parent_customer_id is the internal FlexPrice ID of the parent customer"""
+    r"""Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+    This field is accepted for backward compatibility but no hierarchy validations are enforced.
+    parent_customer_id is the internal FlexPrice ID of the parent customer.
+    """
 
     skip_onboarding_workflow: Optional[bool] = None
     r"""skip_onboarding_workflow when true, prevents the customer onboarding workflow from being triggered

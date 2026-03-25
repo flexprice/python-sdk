@@ -41,6 +41,8 @@ class Subscriptions(BaseSDK):
         external_customer_id: Optional[str] = None,
         gateway_payment_method_id: Optional[str] = None,
         invoice_billing: Optional[models.InvoiceBilling] = None,
+        invoicing_customer_external_id: Optional[str] = None,
+        invoicing_customer_id: Optional[str] = None,
         line_item_commitments: Optional[
             Union[
                 Dict[str, models.DtoLineItemCommitmentConfig],
@@ -120,6 +122,12 @@ class Subscriptions(BaseSDK):
             and must be same as what you provided as external_id while creating the customer in flexprice.
         :param gateway_payment_method_id:
         :param invoice_billing:
+        :param invoicing_customer_external_id: invoicing_customer_external_id is the external ID of the customer to use for invoicing.
+            Resolved internally to an internal customer ID via external ID lookup.
+            Mutually exclusive with invoicing_customer_id.
+        :param invoicing_customer_id: invoicing_customer_id is the FlexPrice customer ID to use for invoicing.
+            This can differ from the subscription customer (e.g., a billing entity invoicing on behalf of another customer).
+            Mutually exclusive with invoicing_customer_external_id.
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)
         :param line_item_coupons:
         :param line_items: LineItems are extra line items to add at creation (each with price_id or price), in addition to plan prices
@@ -176,6 +184,8 @@ class Subscriptions(BaseSDK):
             external_customer_id=external_customer_id,
             gateway_payment_method_id=gateway_payment_method_id,
             invoice_billing=invoice_billing,
+            invoicing_customer_external_id=invoicing_customer_external_id,
+            invoicing_customer_id=invoicing_customer_id,
             line_item_commitments=utils.get_pydantic_model(
                 line_item_commitments,
                 Optional[Dict[str, models.DtoLineItemCommitmentConfig]],
@@ -312,6 +322,8 @@ class Subscriptions(BaseSDK):
         external_customer_id: Optional[str] = None,
         gateway_payment_method_id: Optional[str] = None,
         invoice_billing: Optional[models.InvoiceBilling] = None,
+        invoicing_customer_external_id: Optional[str] = None,
+        invoicing_customer_id: Optional[str] = None,
         line_item_commitments: Optional[
             Union[
                 Dict[str, models.DtoLineItemCommitmentConfig],
@@ -391,6 +403,12 @@ class Subscriptions(BaseSDK):
             and must be same as what you provided as external_id while creating the customer in flexprice.
         :param gateway_payment_method_id:
         :param invoice_billing:
+        :param invoicing_customer_external_id: invoicing_customer_external_id is the external ID of the customer to use for invoicing.
+            Resolved internally to an internal customer ID via external ID lookup.
+            Mutually exclusive with invoicing_customer_id.
+        :param invoicing_customer_id: invoicing_customer_id is the FlexPrice customer ID to use for invoicing.
+            This can differ from the subscription customer (e.g., a billing entity invoicing on behalf of another customer).
+            Mutually exclusive with invoicing_customer_external_id.
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)
         :param line_item_coupons:
         :param line_items: LineItems are extra line items to add at creation (each with price_id or price), in addition to plan prices
@@ -447,6 +465,8 @@ class Subscriptions(BaseSDK):
             external_customer_id=external_customer_id,
             gateway_payment_method_id=gateway_payment_method_id,
             invoice_billing=invoice_billing,
+            invoicing_customer_external_id=invoicing_customer_external_id,
+            invoicing_customer_id=invoicing_customer_id,
             line_item_commitments=utils.get_pydantic_model(
                 line_item_commitments,
                 Optional[Dict[str, models.DtoLineItemCommitmentConfig]],
@@ -2976,6 +2996,7 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         cancellation_type: models.CancellationType,
+        cancel_at: Optional[str] = None,
         cancel_immediately_inovice_policy: Optional[
             models.CancelImmediatelyInvoicePolicy
         ] = None,
@@ -2992,6 +3013,8 @@ class Subscriptions(BaseSDK):
 
         :param id: Subscription ID
         :param cancellation_type:
+        :param cancel_at: CancelAt is the custom date to cancel the subscription.
+            Required when CancellationType is \"scheduled_date\". Must be in the future.
         :param cancel_immediately_inovice_policy:
         :param proration_behavior:
         :param reason: Reason for cancellation (for audit and business intelligence)
@@ -3013,6 +3036,7 @@ class Subscriptions(BaseSDK):
         request = models.CancelSubscriptionRequest(
             id=id,
             body=models.DtoCancelSubscriptionRequest(
+                cancel_at=cancel_at,
                 cancel_immediately_inovice_policy=cancel_immediately_inovice_policy,
                 cancellation_type=cancellation_type,
                 proration_behavior=proration_behavior,
@@ -3096,6 +3120,7 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         cancellation_type: models.CancellationType,
+        cancel_at: Optional[str] = None,
         cancel_immediately_inovice_policy: Optional[
             models.CancelImmediatelyInvoicePolicy
         ] = None,
@@ -3112,6 +3137,8 @@ class Subscriptions(BaseSDK):
 
         :param id: Subscription ID
         :param cancellation_type:
+        :param cancel_at: CancelAt is the custom date to cancel the subscription.
+            Required when CancellationType is \"scheduled_date\". Must be in the future.
         :param cancel_immediately_inovice_policy:
         :param proration_behavior:
         :param reason: Reason for cancellation (for audit and business intelligence)
@@ -3133,6 +3160,7 @@ class Subscriptions(BaseSDK):
         request = models.CancelSubscriptionRequest(
             id=id,
             body=models.DtoCancelSubscriptionRequest(
+                cancel_at=cancel_at,
                 cancel_immediately_inovice_policy=cancel_immediately_inovice_policy,
                 cancellation_type=cancellation_type,
                 proration_behavior=proration_behavior,

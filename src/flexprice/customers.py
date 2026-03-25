@@ -54,10 +54,13 @@ class Customers(BaseSDK):
         :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains updated key-value pairs that will replace existing metadata
         :param name: name is the updated name or company name for the customer
-        :param parent_customer_external_id: parent_customer_external_id is the external ID of the parent customer from your system
-            Exactly one of parent_customer_id or parent_customer_external_id may be provided
-            If you provide the external ID, the parent customer value will be ignored
-        :param parent_customer_id: parent_customer_id is the internal FlexPrice ID of the parent customer
+        :param parent_customer_external_id: Deprecated: See ParentCustomerID.
+            parent_customer_external_id is the external ID of the parent customer from your system.
+            Exactly one of parent_customer_id or parent_customer_external_id may be provided.
+            If you provide the external ID, the parent customer value will be ignored.
+        :param parent_customer_id: Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+            This field is accepted for backward compatibility but no hierarchy validations are enforced.
+            parent_customer_id is the internal FlexPrice ID of the parent customer.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -210,10 +213,13 @@ class Customers(BaseSDK):
         :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains updated key-value pairs that will replace existing metadata
         :param name: name is the updated name or company name for the customer
-        :param parent_customer_external_id: parent_customer_external_id is the external ID of the parent customer from your system
-            Exactly one of parent_customer_id or parent_customer_external_id may be provided
-            If you provide the external ID, the parent customer value will be ignored
-        :param parent_customer_id: parent_customer_id is the internal FlexPrice ID of the parent customer
+        :param parent_customer_external_id: Deprecated: See ParentCustomerID.
+            parent_customer_external_id is the external ID of the parent customer from your system.
+            Exactly one of parent_customer_id or parent_customer_external_id may be provided.
+            If you provide the external ID, the parent customer value will be ignored.
+        :param parent_customer_id: Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+            This field is accepted for backward compatibility but no hierarchy validations are enforced.
+            parent_customer_id is the internal FlexPrice ID of the parent customer.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -369,9 +375,12 @@ class Customers(BaseSDK):
         :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains additional key-value pairs for storing extra information
         :param name: name is the full name or company name of the customer
-        :param parent_customer_external_id: parent_customer_external_id is the external ID of the parent customer from your system
-            Exactly one of parent_customer_id or parent_customer_external_id may be provided
-        :param parent_customer_id: parent_customer_id is the internal FlexPrice ID of the parent customer
+        :param parent_customer_external_id: Deprecated: See ParentCustomerID.
+            parent_customer_external_id is the external ID of the parent customer from your system.
+            Exactly one of parent_customer_id or parent_customer_external_id may be provided.
+        :param parent_customer_id: Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+            This field is accepted for backward compatibility but no hierarchy validations are enforced.
+            parent_customer_id is the internal FlexPrice ID of the parent customer.
         :param skip_onboarding_workflow: skip_onboarding_workflow when true, prevents the customer onboarding workflow from being triggered
             This is used internally when a customer is created via a workflow to prevent infinite loops
             Default: false
@@ -531,9 +540,12 @@ class Customers(BaseSDK):
         :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains additional key-value pairs for storing extra information
         :param name: name is the full name or company name of the customer
-        :param parent_customer_external_id: parent_customer_external_id is the external ID of the parent customer from your system
-            Exactly one of parent_customer_id or parent_customer_external_id may be provided
-        :param parent_customer_id: parent_customer_id is the internal FlexPrice ID of the parent customer
+        :param parent_customer_external_id: Deprecated: See ParentCustomerID.
+            parent_customer_external_id is the external ID of the parent customer from your system.
+            Exactly one of parent_customer_id or parent_customer_external_id may be provided.
+        :param parent_customer_id: Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+            This field is accepted for backward compatibility but no hierarchy validations are enforced.
+            parent_customer_id is the internal FlexPrice ID of the parent customer.
         :param skip_onboarding_workflow: skip_onboarding_workflow when true, prevents the customer onboarding workflow from being triggered
             This is used internally when a customer is created via a workflow to prevent infinite loops
             Default: false

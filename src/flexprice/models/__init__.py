@@ -1053,38 +1053,6 @@ if TYPE_CHECKING:
     from .group_group import GroupGroup, GroupGroupTypedDict
     from .groupentitytype import GroupEntityType
     from .groupfilter import GroupFilter, GroupFilterOrder, GroupFilterTypedDict
-    from .handlechargebeewebhookop import (
-        HandleChargebeeWebhookRequest,
-        HandleChargebeeWebhookRequestTypedDict,
-    )
-    from .handlehubspotwebhookop import (
-        HandleHubspotWebhookRequest,
-        HandleHubspotWebhookRequestTypedDict,
-    )
-    from .handlemoyasarwebhookop import (
-        HandleMoyasarWebhookRequest,
-        HandleMoyasarWebhookRequestTypedDict,
-    )
-    from .handlenomodwebhookop import (
-        HandleNomodWebhookRequest,
-        HandleNomodWebhookRequestTypedDict,
-    )
-    from .handlepaddlewebhookop import (
-        HandlePaddleWebhookRequest,
-        HandlePaddleWebhookRequestTypedDict,
-    )
-    from .handlequickbookswebhookop import (
-        HandleQuickbooksWebhookRequest,
-        HandleQuickbooksWebhookRequestTypedDict,
-    )
-    from .handlerazorpaywebhookop import (
-        HandleRazorpayWebhookRequest,
-        HandleRazorpayWebhookRequestTypedDict,
-    )
-    from .handlestripewebhookop import (
-        HandleStripeWebhookRequest,
-        HandleStripeWebhookRequestTypedDict,
-    )
     from .integrationentitytype import IntegrationEntityType
     from .invoicebilling import InvoiceBilling
     from .invoicebillingreason import InvoiceBillingReason
@@ -1334,6 +1302,58 @@ if TYPE_CHECKING:
     )
     from .wallettxreferencetype import WalletTxReferenceType
     from .wallettype import WalletType
+    from .webhookdto_alertwebhookpayload import (
+        WebhookDtoAlertWebhookPayload,
+        WebhookDtoAlertWebhookPayloadTypedDict,
+    )
+    from .webhookdto_communicationwebhookpayload import (
+        WebhookDtoCommunicationWebhookPayload,
+        WebhookDtoCommunicationWebhookPayloadTypedDict,
+    )
+    from .webhookdto_creditnotewebhookpayload import (
+        WebhookDtoCreditNoteWebhookPayload,
+        WebhookDtoCreditNoteWebhookPayloadTypedDict,
+    )
+    from .webhookdto_customerwebhookpayload import (
+        WebhookDtoCustomerWebhookPayload,
+        WebhookDtoCustomerWebhookPayloadTypedDict,
+    )
+    from .webhookdto_entitlementwebhookpayload import (
+        WebhookDtoEntitlementWebhookPayload,
+        WebhookDtoEntitlementWebhookPayloadTypedDict,
+    )
+    from .webhookdto_featurewebhookpayload import (
+        WebhookDtoFeatureWebhookPayload,
+        WebhookDtoFeatureWebhookPayloadTypedDict,
+    )
+    from .webhookdto_invoicewebhookpayload import (
+        WebhookDtoInvoiceWebhookPayload,
+        WebhookDtoInvoiceWebhookPayloadTypedDict,
+    )
+    from .webhookdto_paymentwebhookpayload import (
+        WebhookDtoPaymentWebhookPayload,
+        WebhookDtoPaymentWebhookPayloadTypedDict,
+    )
+    from .webhookdto_subscriptionphasewebhookpayload import (
+        WebhookDtoSubscriptionPhaseWebhookPayload,
+        WebhookDtoSubscriptionPhaseWebhookPayloadTypedDict,
+    )
+    from .webhookdto_subscriptionwebhookpayload import (
+        WebhookDtoSubscriptionWebhookPayload,
+        WebhookDtoSubscriptionWebhookPayloadTypedDict,
+    )
+    from .webhookdto_transactionwebhookpayload import (
+        WebhookDtoTransactionWebhookPayload,
+        WebhookDtoTransactionWebhookPayloadTypedDict,
+    )
+    from .webhookdto_walletalertinfo import (
+        WebhookDtoWalletAlertInfo,
+        WebhookDtoWalletAlertInfoTypedDict,
+    )
+    from .webhookdto_walletwebhookpayload import (
+        WebhookDtoWalletWebhookPayload,
+        WebhookDtoWalletWebhookPayloadTypedDict,
+    )
     from .windowsize import WindowSize
     from .workflowexecutionfilter import (
         WorkflowExecutionFilter,
@@ -2040,22 +2060,6 @@ __all__ = [
     "GroupFilterTypedDict",
     "GroupGroup",
     "GroupGroupTypedDict",
-    "HandleChargebeeWebhookRequest",
-    "HandleChargebeeWebhookRequestTypedDict",
-    "HandleHubspotWebhookRequest",
-    "HandleHubspotWebhookRequestTypedDict",
-    "HandleMoyasarWebhookRequest",
-    "HandleMoyasarWebhookRequestTypedDict",
-    "HandleNomodWebhookRequest",
-    "HandleNomodWebhookRequestTypedDict",
-    "HandlePaddleWebhookRequest",
-    "HandlePaddleWebhookRequestTypedDict",
-    "HandleQuickbooksWebhookRequest",
-    "HandleQuickbooksWebhookRequestTypedDict",
-    "HandleRazorpayWebhookRequest",
-    "HandleRazorpayWebhookRequestTypedDict",
-    "HandleStripeWebhookRequest",
-    "HandleStripeWebhookRequestTypedDict",
     "IntegrationEntityType",
     "InvoiceBilling",
     "InvoiceBillingReason",
@@ -2273,6 +2277,32 @@ __all__ = [
     "WalletTransactionFilterTypedDict",
     "WalletTxReferenceType",
     "WalletType",
+    "WebhookDtoAlertWebhookPayload",
+    "WebhookDtoAlertWebhookPayloadTypedDict",
+    "WebhookDtoCommunicationWebhookPayload",
+    "WebhookDtoCommunicationWebhookPayloadTypedDict",
+    "WebhookDtoCreditNoteWebhookPayload",
+    "WebhookDtoCreditNoteWebhookPayloadTypedDict",
+    "WebhookDtoCustomerWebhookPayload",
+    "WebhookDtoCustomerWebhookPayloadTypedDict",
+    "WebhookDtoEntitlementWebhookPayload",
+    "WebhookDtoEntitlementWebhookPayloadTypedDict",
+    "WebhookDtoFeatureWebhookPayload",
+    "WebhookDtoFeatureWebhookPayloadTypedDict",
+    "WebhookDtoInvoiceWebhookPayload",
+    "WebhookDtoInvoiceWebhookPayloadTypedDict",
+    "WebhookDtoPaymentWebhookPayload",
+    "WebhookDtoPaymentWebhookPayloadTypedDict",
+    "WebhookDtoSubscriptionPhaseWebhookPayload",
+    "WebhookDtoSubscriptionPhaseWebhookPayloadTypedDict",
+    "WebhookDtoSubscriptionWebhookPayload",
+    "WebhookDtoSubscriptionWebhookPayloadTypedDict",
+    "WebhookDtoTransactionWebhookPayload",
+    "WebhookDtoTransactionWebhookPayloadTypedDict",
+    "WebhookDtoWalletAlertInfo",
+    "WebhookDtoWalletAlertInfoTypedDict",
+    "WebhookDtoWalletWebhookPayload",
+    "WebhookDtoWalletWebhookPayloadTypedDict",
     "WindowSize",
     "WorkflowExecutionFilter",
     "WorkflowExecutionFilterOrder",
@@ -2961,22 +2991,6 @@ _dynamic_imports: dict[str, str] = {
     "GroupFilter": ".groupfilter",
     "GroupFilterOrder": ".groupfilter",
     "GroupFilterTypedDict": ".groupfilter",
-    "HandleChargebeeWebhookRequest": ".handlechargebeewebhookop",
-    "HandleChargebeeWebhookRequestTypedDict": ".handlechargebeewebhookop",
-    "HandleHubspotWebhookRequest": ".handlehubspotwebhookop",
-    "HandleHubspotWebhookRequestTypedDict": ".handlehubspotwebhookop",
-    "HandleMoyasarWebhookRequest": ".handlemoyasarwebhookop",
-    "HandleMoyasarWebhookRequestTypedDict": ".handlemoyasarwebhookop",
-    "HandleNomodWebhookRequest": ".handlenomodwebhookop",
-    "HandleNomodWebhookRequestTypedDict": ".handlenomodwebhookop",
-    "HandlePaddleWebhookRequest": ".handlepaddlewebhookop",
-    "HandlePaddleWebhookRequestTypedDict": ".handlepaddlewebhookop",
-    "HandleQuickbooksWebhookRequest": ".handlequickbookswebhookop",
-    "HandleQuickbooksWebhookRequestTypedDict": ".handlequickbookswebhookop",
-    "HandleRazorpayWebhookRequest": ".handlerazorpaywebhookop",
-    "HandleRazorpayWebhookRequestTypedDict": ".handlerazorpaywebhookop",
-    "HandleStripeWebhookRequest": ".handlestripewebhookop",
-    "HandleStripeWebhookRequestTypedDict": ".handlestripewebhookop",
     "IntegrationEntityType": ".integrationentitytype",
     "InvoiceBilling": ".invoicebilling",
     "InvoiceBillingReason": ".invoicebillingreason",
@@ -3191,6 +3205,32 @@ _dynamic_imports: dict[str, str] = {
     "WalletTransactionFilterTypedDict": ".wallettransactionfilter",
     "WalletTxReferenceType": ".wallettxreferencetype",
     "WalletType": ".wallettype",
+    "WebhookDtoAlertWebhookPayload": ".webhookdto_alertwebhookpayload",
+    "WebhookDtoAlertWebhookPayloadTypedDict": ".webhookdto_alertwebhookpayload",
+    "WebhookDtoCommunicationWebhookPayload": ".webhookdto_communicationwebhookpayload",
+    "WebhookDtoCommunicationWebhookPayloadTypedDict": ".webhookdto_communicationwebhookpayload",
+    "WebhookDtoCreditNoteWebhookPayload": ".webhookdto_creditnotewebhookpayload",
+    "WebhookDtoCreditNoteWebhookPayloadTypedDict": ".webhookdto_creditnotewebhookpayload",
+    "WebhookDtoCustomerWebhookPayload": ".webhookdto_customerwebhookpayload",
+    "WebhookDtoCustomerWebhookPayloadTypedDict": ".webhookdto_customerwebhookpayload",
+    "WebhookDtoEntitlementWebhookPayload": ".webhookdto_entitlementwebhookpayload",
+    "WebhookDtoEntitlementWebhookPayloadTypedDict": ".webhookdto_entitlementwebhookpayload",
+    "WebhookDtoFeatureWebhookPayload": ".webhookdto_featurewebhookpayload",
+    "WebhookDtoFeatureWebhookPayloadTypedDict": ".webhookdto_featurewebhookpayload",
+    "WebhookDtoInvoiceWebhookPayload": ".webhookdto_invoicewebhookpayload",
+    "WebhookDtoInvoiceWebhookPayloadTypedDict": ".webhookdto_invoicewebhookpayload",
+    "WebhookDtoPaymentWebhookPayload": ".webhookdto_paymentwebhookpayload",
+    "WebhookDtoPaymentWebhookPayloadTypedDict": ".webhookdto_paymentwebhookpayload",
+    "WebhookDtoSubscriptionPhaseWebhookPayload": ".webhookdto_subscriptionphasewebhookpayload",
+    "WebhookDtoSubscriptionPhaseWebhookPayloadTypedDict": ".webhookdto_subscriptionphasewebhookpayload",
+    "WebhookDtoSubscriptionWebhookPayload": ".webhookdto_subscriptionwebhookpayload",
+    "WebhookDtoSubscriptionWebhookPayloadTypedDict": ".webhookdto_subscriptionwebhookpayload",
+    "WebhookDtoTransactionWebhookPayload": ".webhookdto_transactionwebhookpayload",
+    "WebhookDtoTransactionWebhookPayloadTypedDict": ".webhookdto_transactionwebhookpayload",
+    "WebhookDtoWalletAlertInfo": ".webhookdto_walletalertinfo",
+    "WebhookDtoWalletAlertInfoTypedDict": ".webhookdto_walletalertinfo",
+    "WebhookDtoWalletWebhookPayload": ".webhookdto_walletwebhookpayload",
+    "WebhookDtoWalletWebhookPayloadTypedDict": ".webhookdto_walletwebhookpayload",
     "WindowSize": ".windowsize",
     "WorkflowExecutionFilter": ".workflowexecutionfilter",
     "WorkflowExecutionFilterOrder": ".workflowexecutionfilter",

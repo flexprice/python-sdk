@@ -37,12 +37,16 @@ class DtoUpdateCustomerRequestTypedDict(TypedDict):
     name: NotRequired[str]
     r"""name is the updated name or company name for the customer"""
     parent_customer_external_id: NotRequired[str]
-    r"""parent_customer_external_id is the external ID of the parent customer from your system
-    Exactly one of parent_customer_id or parent_customer_external_id may be provided
-    If you provide the external ID, the parent customer value will be ignored
+    r"""Deprecated: See ParentCustomerID.
+    parent_customer_external_id is the external ID of the parent customer from your system.
+    Exactly one of parent_customer_id or parent_customer_external_id may be provided.
+    If you provide the external ID, the parent customer value will be ignored.
     """
     parent_customer_id: NotRequired[str]
-    r"""parent_customer_id is the internal FlexPrice ID of the parent customer"""
+    r"""Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+    This field is accepted for backward compatibility but no hierarchy validations are enforced.
+    parent_customer_id is the internal FlexPrice ID of the parent customer.
+    """
 
 
 class DtoUpdateCustomerRequest(BaseModel):
@@ -82,13 +86,17 @@ class DtoUpdateCustomerRequest(BaseModel):
     r"""name is the updated name or company name for the customer"""
 
     parent_customer_external_id: Optional[str] = None
-    r"""parent_customer_external_id is the external ID of the parent customer from your system
-    Exactly one of parent_customer_id or parent_customer_external_id may be provided
-    If you provide the external ID, the parent customer value will be ignored
+    r"""Deprecated: See ParentCustomerID.
+    parent_customer_external_id is the external ID of the parent customer from your system.
+    Exactly one of parent_customer_id or parent_customer_external_id may be provided.
+    If you provide the external ID, the parent customer value will be ignored.
     """
 
     parent_customer_id: Optional[str] = None
-    r"""parent_customer_id is the internal FlexPrice ID of the parent customer"""
+    r"""Deprecated: Customer parent hierarchy is deprecated in favor of subscription-level hierarchy.
+    This field is accepted for backward compatibility but no hierarchy validations are enforced.
+    parent_customer_id is the internal FlexPrice ID of the parent customer.
+    """
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

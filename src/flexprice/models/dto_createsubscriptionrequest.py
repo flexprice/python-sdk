@@ -78,6 +78,16 @@ class DtoCreateSubscriptionRequestTypedDict(TypedDict):
     """
     gateway_payment_method_id: NotRequired[str]
     invoice_billing: NotRequired[InvoiceBilling]
+    invoicing_customer_external_id: NotRequired[str]
+    r"""invoicing_customer_external_id is the external ID of the customer to use for invoicing.
+    Resolved internally to an internal customer ID via external ID lookup.
+    Mutually exclusive with invoicing_customer_id.
+    """
+    invoicing_customer_id: NotRequired[str]
+    r"""invoicing_customer_id is the FlexPrice customer ID to use for invoicing.
+    This can differ from the subscription customer (e.g., a billing entity invoicing on behalf of another customer).
+    Mutually exclusive with invoicing_customer_external_id.
+    """
     line_item_commitments: NotRequired[Dict[str, DtoLineItemCommitmentConfigTypedDict]]
     r"""LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)"""
     line_item_coupons: NotRequired[Dict[str, List[str]]]
@@ -158,6 +168,18 @@ class DtoCreateSubscriptionRequest(BaseModel):
 
     invoice_billing: Optional[InvoiceBilling] = None
 
+    invoicing_customer_external_id: Optional[str] = None
+    r"""invoicing_customer_external_id is the external ID of the customer to use for invoicing.
+    Resolved internally to an internal customer ID via external ID lookup.
+    Mutually exclusive with invoicing_customer_id.
+    """
+
+    invoicing_customer_id: Optional[str] = None
+    r"""invoicing_customer_id is the FlexPrice customer ID to use for invoicing.
+    This can differ from the subscription customer (e.g., a billing entity invoicing on behalf of another customer).
+    Mutually exclusive with invoicing_customer_external_id.
+    """
+
     line_item_commitments: Optional[Dict[str, DtoLineItemCommitmentConfig]] = None
     r"""LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)"""
 
@@ -221,6 +243,8 @@ class DtoCreateSubscriptionRequest(BaseModel):
                 "external_customer_id",
                 "gateway_payment_method_id",
                 "invoice_billing",
+                "invoicing_customer_external_id",
+                "invoicing_customer_id",
                 "line_item_commitments",
                 "line_item_coupons",
                 "line_items",
