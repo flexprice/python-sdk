@@ -1584,6 +1584,7 @@ class Subscriptions(BaseSDK):
         billing_cadence: Optional[List[models.BillingCadence]] = None,
         billing_period: Optional[List[models.BillingPeriod]] = None,
         customer_id: Optional[str] = None,
+        effective_date_for_update: Optional[str] = None,
         end_time: Optional[str] = None,
         expand: Optional[str] = None,
         external_customer_id: Optional[str] = None,
@@ -1617,6 +1618,9 @@ class Subscriptions(BaseSDK):
         :param billing_cadence: BillingCadence filters by billing cadence
         :param billing_period: BillingPeriod filters by billing period
         :param customer_id: CustomerID filters by customer ID
+        :param effective_date_for_update: EffectiveDateForUpdate selects subscriptions that need a billing-period pass on or before this time:
+            current_period_end <= date OR (cancel_at IS NOT NULL AND cancel_at <= date).
+            When nil, period/cancel cutoff logic is not applied by this field (see TimeRangeFilter for legacy period-end filtering).
         :param end_time:
         :param expand:
         :param external_customer_id: ExternalCustomerID filters by external customer ID
@@ -1653,6 +1657,7 @@ class Subscriptions(BaseSDK):
             billing_cadence=billing_cadence,
             billing_period=billing_period,
             customer_id=customer_id,
+            effective_date_for_update=effective_date_for_update,
             end_time=end_time,
             expand=expand,
             external_customer_id=external_customer_id,
@@ -1751,6 +1756,7 @@ class Subscriptions(BaseSDK):
         billing_cadence: Optional[List[models.BillingCadence]] = None,
         billing_period: Optional[List[models.BillingPeriod]] = None,
         customer_id: Optional[str] = None,
+        effective_date_for_update: Optional[str] = None,
         end_time: Optional[str] = None,
         expand: Optional[str] = None,
         external_customer_id: Optional[str] = None,
@@ -1784,6 +1790,9 @@ class Subscriptions(BaseSDK):
         :param billing_cadence: BillingCadence filters by billing cadence
         :param billing_period: BillingPeriod filters by billing period
         :param customer_id: CustomerID filters by customer ID
+        :param effective_date_for_update: EffectiveDateForUpdate selects subscriptions that need a billing-period pass on or before this time:
+            current_period_end <= date OR (cancel_at IS NOT NULL AND cancel_at <= date).
+            When nil, period/cancel cutoff logic is not applied by this field (see TimeRangeFilter for legacy period-end filtering).
         :param end_time:
         :param expand:
         :param external_customer_id: ExternalCustomerID filters by external customer ID
@@ -1820,6 +1829,7 @@ class Subscriptions(BaseSDK):
             billing_cadence=billing_cadence,
             billing_period=billing_period,
             customer_id=customer_id,
+            effective_date_for_update=effective_date_for_update,
             end_time=end_time,
             expand=expand,
             external_customer_id=external_customer_id,

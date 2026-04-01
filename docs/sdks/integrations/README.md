@@ -12,7 +12,7 @@ Link a FlexPrice entity to provider entity with provider-specific side effects.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="linkIntegrationMapping" method="post" path="/integrations/mappings/link" -->
+<!-- UsageSnippet language="python" operationID="linkIntegrationMapping" method="post" path="/integrations/link" -->
 ```python
 from flexprice import Flexprice
 

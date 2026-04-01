@@ -28,6 +28,11 @@ class SubscriptionFilterTypedDict(TypedDict):
     r"""BillingPeriod filters by billing period"""
     customer_id: NotRequired[str]
     r"""CustomerID filters by customer ID"""
+    effective_date_for_update: NotRequired[str]
+    r"""EffectiveDateForUpdate selects subscriptions that need a billing-period pass on or before this time:
+    current_period_end <= date OR (cancel_at IS NOT NULL AND cancel_at <= date).
+    When nil, period/cancel cutoff logic is not applied by this field (see TimeRangeFilter for legacy period-end filtering).
+    """
     end_time: NotRequired[str]
     expand: NotRequired[str]
     external_customer_id: NotRequired[str]
@@ -64,6 +69,12 @@ class SubscriptionFilter(BaseModel):
 
     customer_id: Optional[str] = None
     r"""CustomerID filters by customer ID"""
+
+    effective_date_for_update: Optional[str] = None
+    r"""EffectiveDateForUpdate selects subscriptions that need a billing-period pass on or before this time:
+    current_period_end <= date OR (cancel_at IS NOT NULL AND cancel_at <= date).
+    When nil, period/cancel cutoff logic is not applied by this field (see TimeRangeFilter for legacy period-end filtering).
+    """
 
     end_time: Optional[str] = None
 
@@ -111,6 +122,7 @@ class SubscriptionFilter(BaseModel):
                 "billing_cadence",
                 "billing_period",
                 "customer_id",
+                "effective_date_for_update",
                 "end_time",
                 "expand",
                 "external_customer_id",

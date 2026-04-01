@@ -7,7 +7,6 @@ from typing import Literal, Union
 
 WebhookEventName = Union[
     Literal[
-        "invoice.create.drafted",
         "subscription.created",
         "subscription.draft.created",
         "subscription.activated",

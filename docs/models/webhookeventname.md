@@ -6,7 +6,7 @@
 from flexprice.models import WebhookEventName
 
 # Open enum: unrecognized values are captured as UnrecognizedStr
-value: WebhookEventName = "invoice.create.drafted"
+value: WebhookEventName = "subscription.created"
 ```
 
 
@@ -14,7 +14,6 @@ value: WebhookEventName = "invoice.create.drafted"
 
 This is an open enum. Unrecognized values will not fail type checks.
 
-- `"invoice.create.drafted"`
 - `"subscription.created"`
 - `"subscription.draft.created"`
 - `"subscription.activated"`

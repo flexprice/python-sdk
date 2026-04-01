@@ -56,7 +56,7 @@ class Integrations(BaseSDK):
 
         req = self._build_request(
             method="POST",
-            path="/integrations/mappings/link",
+            path="/integrations/link",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -172,7 +172,7 @@ class Integrations(BaseSDK):
 
         req = self._build_request_async(
             method="POST",
-            path="/integrations/mappings/link",
+            path="/integrations/link",
             base_url=base_url,
             url_variables=url_variables,
             request=request,

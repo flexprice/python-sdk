@@ -17,7 +17,6 @@
 * [post_webhook_events_feature_updated](#post_webhook_events_feature_updated) - feature.updated
 * [post_webhook_events_feature_wallet_balance_alert](#post_webhook_events_feature_wallet_balance_alert) - feature.wallet_balance.alert
 * [post_webhook_events_invoice_communication_triggered](#post_webhook_events_invoice_communication_triggered) - invoice.communication.triggered
-* [post_webhook_events_invoice_create_drafted](#post_webhook_events_invoice_create_drafted) - invoice.create.drafted
 * [post_webhook_events_invoice_payment_overdue](#post_webhook_events_invoice_payment_overdue) - invoice.payment.overdue
 * [post_webhook_events_invoice_update](#post_webhook_events_invoice_update) - invoice.update
 * [post_webhook_events_invoice_update_finalized](#post_webhook_events_invoice_update_finalized) - invoice.update.finalized
@@ -535,44 +534,6 @@ with Flexprice(
 ### Response
 
 **[models.WebhookDtoCommunicationWebhookPayload](../../models/webhookdtocommunicationwebhookpayload.md)**
-
-### Errors
-
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
-
-## post_webhook_events_invoice_create_drafted
-
-Fired when a new invoice is created in draft status. Doc-only for parsing.
-
-### Example Usage
-
-<!-- UsageSnippet language="python" operationID="post_/webhook-events/invoice.create.drafted" method="post" path="/webhook-events/invoice.create.drafted" -->
-```python
-from flexprice import Flexprice
-
-
-with Flexprice(
-    api_key_auth="<YOUR_API_KEY_HERE>",
-) as f_client:
-
-    res = f_client.webhook_events.post_webhook_events_invoice_create_drafted()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[models.WebhookDtoInvoiceWebhookPayload](../../models/webhookdtoinvoicewebhookpayload.md)**
 
 ### Errors
 
