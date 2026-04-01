@@ -66,10 +66,6 @@ if TYPE_CHECKING:
     from .couponcadence import CouponCadence
     from .couponfilter import CouponFilter, CouponFilterOrder, CouponFilterTypedDict
     from .coupontype import CouponType
-    from .createorupdateintegrationop import (
-        CreateOrUpdateIntegrationRequest,
-        CreateOrUpdateIntegrationRequestTypedDict,
-    )
     from .createsubscriptionlineitemop import (
         CreateSubscriptionLineItemRequest,
         CreateSubscriptionLineItemRequestTypedDict,
@@ -111,16 +107,8 @@ if TYPE_CHECKING:
         DeleteEntitlementRequest,
         DeleteEntitlementRequestTypedDict,
     )
-    from .deleteentityintegrationmappingop import (
-        DeleteEntityIntegrationMappingRequest,
-        DeleteEntityIntegrationMappingRequestTypedDict,
-    )
     from .deletefeatureop import DeleteFeatureRequest, DeleteFeatureRequestTypedDict
     from .deletegroupop import DeleteGroupRequest, DeleteGroupRequestTypedDict
-    from .deleteintegrationop import (
-        DeleteIntegrationRequest,
-        DeleteIntegrationRequestTypedDict,
-    )
     from .deletepaymentop import DeletePaymentRequest, DeletePaymentRequestTypedDict
     from .deleteplanop import DeletePlanRequest, DeletePlanRequestTypedDict
     from .deletepriceop import DeletePriceRequest, DeletePriceRequestTypedDict
@@ -273,10 +261,6 @@ if TYPE_CHECKING:
         DtoCreateEntitlementRequest,
         DtoCreateEntitlementRequestTypedDict,
     )
-    from .dto_createentityintegrationmappingrequest import (
-        DtoCreateEntityIntegrationMappingRequest,
-        DtoCreateEntityIntegrationMappingRequestTypedDict,
-    )
     from .dto_createfeaturerequest import (
         DtoCreateFeatureRequest,
         DtoCreateFeatureRequestTypedDict,
@@ -284,10 +268,6 @@ if TYPE_CHECKING:
     from .dto_creategrouprequest import (
         DtoCreateGroupRequest,
         DtoCreateGroupRequestTypedDict,
-    )
-    from .dto_createintegrationrequest import (
-        DtoCreateIntegrationRequest,
-        DtoCreateIntegrationRequestTypedDict,
     )
     from .dto_createinvoicelineitemrequest import (
         DtoCreateInvoiceLineItemRequest,
@@ -489,11 +469,6 @@ if TYPE_CHECKING:
         DtoIngestEventRequest,
         DtoIngestEventRequestTypedDict,
     )
-    from .dto_integrationentitymapping import (
-        DtoIntegrationEntityMapping,
-        DtoIntegrationEntityMappingTypedDict,
-        Provider,
-    )
     from .dto_invoicecoupon import DtoInvoiceCoupon, DtoInvoiceCouponTypedDict
     from .dto_invoicelineitemcoupon import (
         DtoInvoiceLineItemCoupon,
@@ -512,9 +487,13 @@ if TYPE_CHECKING:
         DtoLineItemCommitmentConfig,
         DtoLineItemCommitmentConfigTypedDict,
     )
-    from .dto_linkedintegrationsresponse import (
-        DtoLinkedIntegrationsResponse,
-        DtoLinkedIntegrationsResponseTypedDict,
+    from .dto_linkintegrationmappingrequest import (
+        DtoLinkIntegrationMappingRequest,
+        DtoLinkIntegrationMappingRequestTypedDict,
+    )
+    from .dto_linkintegrationmappingresponse import (
+        DtoLinkIntegrationMappingResponse,
+        DtoLinkIntegrationMappingResponseTypedDict,
     )
     from .dto_listaddonsresponse import (
         DtoListAddonsResponse,
@@ -945,7 +924,6 @@ if TYPE_CHECKING:
     from .getentitlementop import GetEntitlementRequest, GetEntitlementRequestTypedDict
     from .geteventop import GetEventRequest, GetEventRequestTypedDict
     from .getgroupop import GetGroupRequest, GetGroupRequestTypedDict
-    from .getintegrationop import GetIntegrationRequest, GetIntegrationRequestTypedDict
     from .getinvoiceop import GetInvoiceRequest, GetInvoiceRequestTypedDict
     from .getinvoicepdfop import GetInvoicePdfRequest, GetInvoicePdfRequestTypedDict
     from .getpaymentop import GetPaymentRequest, GetPaymentRequestTypedDict
@@ -1179,6 +1157,10 @@ if TYPE_CHECKING:
     from .s3compressiontype import S3CompressionType
     from .s3encryptiontype import S3EncryptionType
     from .s3jobconfig import S3JobConfig, S3JobConfigTypedDict
+    from .scheduledraftfinalizationop import (
+        ScheduleDraftFinalizationResponse,
+        ScheduleDraftFinalizationResponseTypedDict,
+    )
     from .scheduledtaskentitytype import ScheduledTaskEntityType
     from .scheduledtaskinterval import ScheduledTaskInterval
     from .schedulestatus import ScheduleStatus
@@ -1422,8 +1404,6 @@ __all__ = [
     "CouponFilterOrder",
     "CouponFilterTypedDict",
     "CouponType",
-    "CreateOrUpdateIntegrationRequest",
-    "CreateOrUpdateIntegrationRequestTypedDict",
     "CreateSubscriptionLineItemRequest",
     "CreateSubscriptionLineItemRequestTypedDict",
     "CreditBreakdown",
@@ -1460,14 +1440,10 @@ __all__ = [
     "DeleteCustomerRequestTypedDict",
     "DeleteEntitlementRequest",
     "DeleteEntitlementRequestTypedDict",
-    "DeleteEntityIntegrationMappingRequest",
-    "DeleteEntityIntegrationMappingRequestTypedDict",
     "DeleteFeatureRequest",
     "DeleteFeatureRequestTypedDict",
     "DeleteGroupRequest",
     "DeleteGroupRequestTypedDict",
-    "DeleteIntegrationRequest",
-    "DeleteIntegrationRequestTypedDict",
     "DeletePaymentRequest",
     "DeletePaymentRequestTypedDict",
     "DeletePlanRequest",
@@ -1564,14 +1540,10 @@ __all__ = [
     "DtoCreateCustomerRequestTypedDict",
     "DtoCreateEntitlementRequest",
     "DtoCreateEntitlementRequestTypedDict",
-    "DtoCreateEntityIntegrationMappingRequest",
-    "DtoCreateEntityIntegrationMappingRequestTypedDict",
     "DtoCreateFeatureRequest",
     "DtoCreateFeatureRequestTypedDict",
     "DtoCreateGroupRequest",
     "DtoCreateGroupRequestTypedDict",
-    "DtoCreateIntegrationRequest",
-    "DtoCreateIntegrationRequestTypedDict",
     "DtoCreateInvoiceLineItemRequest",
     "DtoCreateInvoiceLineItemRequestTypedDict",
     "DtoCreateInvoiceRequest",
@@ -1691,8 +1663,6 @@ __all__ = [
     "DtoGroupResponseTypedDict",
     "DtoIngestEventRequest",
     "DtoIngestEventRequestTypedDict",
-    "DtoIntegrationEntityMapping",
-    "DtoIntegrationEntityMappingTypedDict",
     "DtoInvoiceCoupon",
     "DtoInvoiceCouponTypedDict",
     "DtoInvoiceLineItemCoupon",
@@ -1707,8 +1677,10 @@ __all__ = [
     "DtoInvoiceResponseTypedDict",
     "DtoLineItemCommitmentConfig",
     "DtoLineItemCommitmentConfigTypedDict",
-    "DtoLinkedIntegrationsResponse",
-    "DtoLinkedIntegrationsResponseTypedDict",
+    "DtoLinkIntegrationMappingRequest",
+    "DtoLinkIntegrationMappingRequestTypedDict",
+    "DtoLinkIntegrationMappingResponse",
+    "DtoLinkIntegrationMappingResponseTypedDict",
     "DtoListAddonsResponse",
     "DtoListAddonsResponseTypedDict",
     "DtoListAlertLogsResponse",
@@ -1981,8 +1953,6 @@ __all__ = [
     "GetEventRequestTypedDict",
     "GetGroupRequest",
     "GetGroupRequestTypedDict",
-    "GetIntegrationRequest",
-    "GetIntegrationRequestTypedDict",
     "GetInvoicePdfRequest",
     "GetInvoicePdfRequestTypedDict",
     "GetInvoiceRequest",
@@ -2147,7 +2117,6 @@ __all__ = [
     "ProcessPaymentRequest",
     "ProcessPaymentRequestTypedDict",
     "ProrationBehavior",
-    "Provider",
     "QueryFilter",
     "QueryFilterOrder",
     "QueryFilterTypedDict",
@@ -2166,6 +2135,8 @@ __all__ = [
     "S3EncryptionType",
     "S3JobConfig",
     "S3JobConfigTypedDict",
+    "ScheduleDraftFinalizationResponse",
+    "ScheduleDraftFinalizationResponseTypedDict",
     "ScheduleStatus",
     "ScheduleType",
     "ScheduleUpdateBillingPeriodRequest",
@@ -2361,8 +2332,6 @@ _dynamic_imports: dict[str, str] = {
     "CouponFilterOrder": ".couponfilter",
     "CouponFilterTypedDict": ".couponfilter",
     "CouponType": ".coupontype",
-    "CreateOrUpdateIntegrationRequest": ".createorupdateintegrationop",
-    "CreateOrUpdateIntegrationRequestTypedDict": ".createorupdateintegrationop",
     "CreateSubscriptionLineItemRequest": ".createsubscriptionlineitemop",
     "CreateSubscriptionLineItemRequestTypedDict": ".createsubscriptionlineitemop",
     "CreditBreakdown": ".creditbreakdown",
@@ -2397,14 +2366,10 @@ _dynamic_imports: dict[str, str] = {
     "DeleteCustomerRequestTypedDict": ".deletecustomerop",
     "DeleteEntitlementRequest": ".deleteentitlementop",
     "DeleteEntitlementRequestTypedDict": ".deleteentitlementop",
-    "DeleteEntityIntegrationMappingRequest": ".deleteentityintegrationmappingop",
-    "DeleteEntityIntegrationMappingRequestTypedDict": ".deleteentityintegrationmappingop",
     "DeleteFeatureRequest": ".deletefeatureop",
     "DeleteFeatureRequestTypedDict": ".deletefeatureop",
     "DeleteGroupRequest": ".deletegroupop",
     "DeleteGroupRequestTypedDict": ".deletegroupop",
-    "DeleteIntegrationRequest": ".deleteintegrationop",
-    "DeleteIntegrationRequestTypedDict": ".deleteintegrationop",
     "DeletePaymentRequest": ".deletepaymentop",
     "DeletePaymentRequestTypedDict": ".deletepaymentop",
     "DeletePlanRequest": ".deleteplanop",
@@ -2499,14 +2464,10 @@ _dynamic_imports: dict[str, str] = {
     "DtoCreateCustomerRequestTypedDict": ".dto_createcustomerrequest",
     "DtoCreateEntitlementRequest": ".dto_createentitlementrequest",
     "DtoCreateEntitlementRequestTypedDict": ".dto_createentitlementrequest",
-    "DtoCreateEntityIntegrationMappingRequest": ".dto_createentityintegrationmappingrequest",
-    "DtoCreateEntityIntegrationMappingRequestTypedDict": ".dto_createentityintegrationmappingrequest",
     "DtoCreateFeatureRequest": ".dto_createfeaturerequest",
     "DtoCreateFeatureRequestTypedDict": ".dto_createfeaturerequest",
     "DtoCreateGroupRequest": ".dto_creategrouprequest",
     "DtoCreateGroupRequestTypedDict": ".dto_creategrouprequest",
-    "DtoCreateIntegrationRequest": ".dto_createintegrationrequest",
-    "DtoCreateIntegrationRequestTypedDict": ".dto_createintegrationrequest",
     "DtoCreateInvoiceLineItemRequest": ".dto_createinvoicelineitemrequest",
     "DtoCreateInvoiceLineItemRequestTypedDict": ".dto_createinvoicelineitemrequest",
     "DtoCreateInvoiceRequest": ".dto_createinvoicerequest",
@@ -2624,9 +2585,6 @@ _dynamic_imports: dict[str, str] = {
     "DtoGroupResponseTypedDict": ".dto_groupresponse",
     "DtoIngestEventRequest": ".dto_ingesteventrequest",
     "DtoIngestEventRequestTypedDict": ".dto_ingesteventrequest",
-    "DtoIntegrationEntityMapping": ".dto_integrationentitymapping",
-    "DtoIntegrationEntityMappingTypedDict": ".dto_integrationentitymapping",
-    "Provider": ".dto_integrationentitymapping",
     "DtoInvoiceCoupon": ".dto_invoicecoupon",
     "DtoInvoiceCouponTypedDict": ".dto_invoicecoupon",
     "DtoInvoiceLineItemCoupon": ".dto_invoicelineitemcoupon",
@@ -2639,8 +2597,10 @@ _dynamic_imports: dict[str, str] = {
     "DtoInvoicePreviewTypedDict": ".dto_invoicepreview",
     "DtoLineItemCommitmentConfig": ".dto_lineitemcommitmentconfig",
     "DtoLineItemCommitmentConfigTypedDict": ".dto_lineitemcommitmentconfig",
-    "DtoLinkedIntegrationsResponse": ".dto_linkedintegrationsresponse",
-    "DtoLinkedIntegrationsResponseTypedDict": ".dto_linkedintegrationsresponse",
+    "DtoLinkIntegrationMappingRequest": ".dto_linkintegrationmappingrequest",
+    "DtoLinkIntegrationMappingRequestTypedDict": ".dto_linkintegrationmappingrequest",
+    "DtoLinkIntegrationMappingResponse": ".dto_linkintegrationmappingresponse",
+    "DtoLinkIntegrationMappingResponseTypedDict": ".dto_linkintegrationmappingresponse",
     "DtoListAddonsResponse": ".dto_listaddonsresponse",
     "DtoListAddonsResponseTypedDict": ".dto_listaddonsresponse",
     "DtoListAlertLogsResponse": ".dto_listalertlogsresponse",
@@ -2911,8 +2871,6 @@ _dynamic_imports: dict[str, str] = {
     "GetEventRequestTypedDict": ".geteventop",
     "GetGroupRequest": ".getgroupop",
     "GetGroupRequestTypedDict": ".getgroupop",
-    "GetIntegrationRequest": ".getintegrationop",
-    "GetIntegrationRequestTypedDict": ".getintegrationop",
     "GetInvoiceRequest": ".getinvoiceop",
     "GetInvoiceRequestTypedDict": ".getinvoiceop",
     "GetInvoicePdfRequest": ".getinvoicepdfop",
@@ -3097,6 +3055,8 @@ _dynamic_imports: dict[str, str] = {
     "S3EncryptionType": ".s3encryptiontype",
     "S3JobConfig": ".s3jobconfig",
     "S3JobConfigTypedDict": ".s3jobconfig",
+    "ScheduleDraftFinalizationResponse": ".scheduledraftfinalizationop",
+    "ScheduleDraftFinalizationResponseTypedDict": ".scheduledraftfinalizationop",
     "ScheduledTaskEntityType": ".scheduledtaskentitytype",
     "ScheduledTaskInterval": ".scheduledtaskinterval",
     "ScheduleStatus": ".schedulestatus",

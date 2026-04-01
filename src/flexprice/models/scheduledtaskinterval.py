@@ -8,6 +8,7 @@ from typing import Literal, Union
 ScheduledTaskInterval = Union[
     Literal[
         "15MIN",
+        "30MIN",
         "custom",
         "hourly",
         "daily",

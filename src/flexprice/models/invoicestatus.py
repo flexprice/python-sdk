@@ -10,6 +10,7 @@ InvoiceStatus = Union[
         "DRAFT",
         "FINALIZED",
         "VOIDED",
+        "SKIPPED",
     ],
     UnrecognizedStr,
 ]

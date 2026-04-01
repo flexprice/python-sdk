@@ -22,12 +22,6 @@ class Customers(BaseSDK):
         address_state: Optional[str] = None,
         email: Optional[str] = None,
         external_id: Optional[str] = None,
-        integration_entity_mapping: Optional[
-            Union[
-                List[models.DtoIntegrationEntityMapping],
-                List[models.DtoIntegrationEntityMappingTypedDict],
-            ]
-        ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
         parent_customer_external_id: Optional[str] = None,
@@ -51,7 +45,6 @@ class Customers(BaseSDK):
         :param address_state: address_state is the updated state, province, or region name with maximum 100 characters
         :param email: email is the updated email address and must be a valid email format if provided
         :param external_id: external_id is the updated external identifier for the customer
-        :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains updated key-value pairs that will replace existing metadata
         :param name: name is the updated name or company name for the customer
         :param parent_customer_external_id: Deprecated: See ParentCustomerID.
@@ -88,10 +81,6 @@ class Customers(BaseSDK):
                 address_state=address_state,
                 email=email,
                 external_id=external_id,
-                integration_entity_mapping=utils.get_pydantic_model(
-                    integration_entity_mapping,
-                    Optional[List[models.DtoIntegrationEntityMapping]],
-                ),
                 metadata=metadata,
                 name=name,
                 parent_customer_external_id=parent_customer_external_id,
@@ -181,12 +170,6 @@ class Customers(BaseSDK):
         address_state: Optional[str] = None,
         email: Optional[str] = None,
         external_id: Optional[str] = None,
-        integration_entity_mapping: Optional[
-            Union[
-                List[models.DtoIntegrationEntityMapping],
-                List[models.DtoIntegrationEntityMappingTypedDict],
-            ]
-        ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
         parent_customer_external_id: Optional[str] = None,
@@ -210,7 +193,6 @@ class Customers(BaseSDK):
         :param address_state: address_state is the updated state, province, or region name with maximum 100 characters
         :param email: email is the updated email address and must be a valid email format if provided
         :param external_id: external_id is the updated external identifier for the customer
-        :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains updated key-value pairs that will replace existing metadata
         :param name: name is the updated name or company name for the customer
         :param parent_customer_external_id: Deprecated: See ParentCustomerID.
@@ -247,10 +229,6 @@ class Customers(BaseSDK):
                 address_state=address_state,
                 email=email,
                 external_id=external_id,
-                integration_entity_mapping=utils.get_pydantic_model(
-                    integration_entity_mapping,
-                    Optional[List[models.DtoIntegrationEntityMapping]],
-                ),
                 metadata=metadata,
                 name=name,
                 parent_customer_external_id=parent_customer_external_id,
@@ -338,12 +316,6 @@ class Customers(BaseSDK):
         address_postal_code: Optional[str] = None,
         address_state: Optional[str] = None,
         email: Optional[str] = None,
-        integration_entity_mapping: Optional[
-            Union[
-                List[models.DtoIntegrationEntityMapping],
-                List[models.DtoIntegrationEntityMappingTypedDict],
-            ]
-        ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
         parent_customer_external_id: Optional[str] = None,
@@ -372,7 +344,6 @@ class Customers(BaseSDK):
         :param address_postal_code: address_postal_code is the ZIP code or postal code with maximum 20 characters
         :param address_state: address_state is the state, province, or region name with maximum 100 characters
         :param email: email is the customer's email address and must be a valid email format if provided
-        :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains additional key-value pairs for storing extra information
         :param name: name is the full name or company name of the customer
         :param parent_customer_external_id: Deprecated: See ParentCustomerID.
@@ -409,10 +380,6 @@ class Customers(BaseSDK):
             address_state=address_state,
             email=email,
             external_id=external_id,
-            integration_entity_mapping=utils.get_pydantic_model(
-                integration_entity_mapping,
-                Optional[List[models.DtoIntegrationEntityMapping]],
-            ),
             metadata=metadata,
             name=name,
             parent_customer_external_id=parent_customer_external_id,
@@ -503,12 +470,6 @@ class Customers(BaseSDK):
         address_postal_code: Optional[str] = None,
         address_state: Optional[str] = None,
         email: Optional[str] = None,
-        integration_entity_mapping: Optional[
-            Union[
-                List[models.DtoIntegrationEntityMapping],
-                List[models.DtoIntegrationEntityMappingTypedDict],
-            ]
-        ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
         parent_customer_external_id: Optional[str] = None,
@@ -537,7 +498,6 @@ class Customers(BaseSDK):
         :param address_postal_code: address_postal_code is the ZIP code or postal code with maximum 20 characters
         :param address_state: address_state is the state, province, or region name with maximum 100 characters
         :param email: email is the customer's email address and must be a valid email format if provided
-        :param integration_entity_mapping: integration_entity_mapping contains provider integration mappings for this customer
         :param metadata: metadata contains additional key-value pairs for storing extra information
         :param name: name is the full name or company name of the customer
         :param parent_customer_external_id: Deprecated: See ParentCustomerID.
@@ -574,10 +534,6 @@ class Customers(BaseSDK):
             address_state=address_state,
             email=email,
             external_id=external_id,
-            integration_entity_mapping=utils.get_pydantic_model(
-                integration_entity_mapping,
-                Optional[List[models.DtoIntegrationEntityMapping]],
-            ),
             metadata=metadata,
             name=name,
             parent_customer_external_id=parent_customer_external_id,

@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class DtoCreateEntityIntegrationMappingRequestTypedDict(TypedDict):
+class DtoLinkIntegrationMappingRequestTypedDict(TypedDict):
     entity_id: str
     entity_type: IntegrationEntityType
     provider_entity_id: str
@@ -16,7 +16,7 @@ class DtoCreateEntityIntegrationMappingRequestTypedDict(TypedDict):
     metadata: NotRequired[Dict[str, Any]]
 
 
-class DtoCreateEntityIntegrationMappingRequest(BaseModel):
+class DtoLinkIntegrationMappingRequest(BaseModel):
     entity_id: str
 
     entity_type: IntegrationEntityType

@@ -23,7 +23,6 @@ if TYPE_CHECKING:
     from flexprice.credit_notes import CreditNotes
     from flexprice.customers import Customers
     from flexprice.entitlements import Entitlements
-    from flexprice.entity_integration_mappings import EntityIntegrationMappings
     from flexprice.events import Events
     from flexprice.features import Features
     from flexprice.groups import Groups
@@ -60,17 +59,16 @@ class Flexprice(BaseSDK):
     customers: "Customers"
     wallets: "Wallets"
     invoices: "Invoices"
-    entity_integration_mappings: "EntityIntegrationMappings"
     events: "Events"
     features: "Features"
     groups: "Groups"
+    integrations: "Integrations"
     payments: "Payments"
     plans: "Plans"
     prices: "Prices"
     price_units: "PriceUnits"
     rbac: "Rbac"
     secrets: "Secrets"
-    integrations: "Integrations"
     subscriptions: "Subscriptions"
     tasks: "Tasks"
     scheduled_tasks: "ScheduledTasks"
@@ -91,20 +89,16 @@ class Flexprice(BaseSDK):
         "customers": ("flexprice.customers", "Customers"),
         "wallets": ("flexprice.wallets", "Wallets"),
         "invoices": ("flexprice.invoices", "Invoices"),
-        "entity_integration_mappings": (
-            "flexprice.entity_integration_mappings",
-            "EntityIntegrationMappings",
-        ),
         "events": ("flexprice.events", "Events"),
         "features": ("flexprice.features", "Features"),
         "groups": ("flexprice.groups", "Groups"),
+        "integrations": ("flexprice.integrations", "Integrations"),
         "payments": ("flexprice.payments", "Payments"),
         "plans": ("flexprice.plans", "Plans"),
         "prices": ("flexprice.prices", "Prices"),
         "price_units": ("flexprice.price_units", "PriceUnits"),
         "rbac": ("flexprice.rbac", "Rbac"),
         "secrets": ("flexprice.secrets", "Secrets"),
-        "integrations": ("flexprice.integrations", "Integrations"),
         "subscriptions": ("flexprice.subscriptions", "Subscriptions"),
         "tasks": ("flexprice.tasks", "Tasks"),
         "scheduled_tasks": ("flexprice.scheduled_tasks", "ScheduledTasks"),

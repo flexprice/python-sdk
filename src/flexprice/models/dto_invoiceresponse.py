@@ -75,6 +75,8 @@ class DtoInvoiceResponseTypedDict(TypedDict):
     r"""invoice_pdf_url is the URL where customers can download the PDF version of this invoice"""
     invoice_status: NotRequired[InvoiceStatus]
     invoice_type: NotRequired[InvoiceType]
+    last_computed_at: NotRequired[str]
+    r"""last_computed_at is the timestamp when this invoice was last computed by ComputeInvoice"""
     line_items: NotRequired[List[DtoInvoiceLineItemResponseTypedDict]]
     r"""line_items contains the individual items that make up this invoice (overrides embedded field)"""
     metadata: NotRequired[Dict[str, str]]
@@ -188,6 +190,9 @@ class DtoInvoiceResponse(BaseModel):
 
     invoice_type: Optional[InvoiceType] = None
 
+    last_computed_at: Optional[str] = None
+    r"""last_computed_at is the timestamp when this invoice was last computed by ComputeInvoice"""
+
     line_items: Optional[List[DtoInvoiceLineItemResponse]] = None
     r"""line_items contains the individual items that make up this invoice (overrides embedded field)"""
 
@@ -281,6 +286,7 @@ class DtoInvoiceResponse(BaseModel):
                 "invoice_pdf_url",
                 "invoice_status",
                 "invoice_type",
+                "last_computed_at",
                 "line_items",
                 "metadata",
                 "overpaid_amount",

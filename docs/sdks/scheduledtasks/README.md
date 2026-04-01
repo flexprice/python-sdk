@@ -6,6 +6,7 @@
 
 * [list_scheduled_tasks](#list_scheduled_tasks) - List scheduled tasks
 * [create_scheduled_task](#create_scheduled_task) - Create scheduled task
+* [schedule_draft_finalization](#schedule_draft_finalization) - Schedule draft finalization
 * [schedule_update_billing_period](#schedule_update_billing_period) - Schedule update billing period
 * [get_scheduled_task](#get_scheduled_task) - Get scheduled task
 * [update_scheduled_task](#update_scheduled_task) - Update a scheduled task
@@ -73,7 +74,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.scheduled_tasks.create_scheduled_task(connection_id="<id>", entity_type="credit_topups", interval="hourly", job_config={})
+    res = f_client.scheduled_tasks.create_scheduled_task(connection_id="<id>", entity_type="credit_topups", interval="custom", job_config={})
 
     # Handle response
     print(res)
@@ -94,6 +95,46 @@ with Flexprice(
 ### Response
 
 **[models.DtoScheduledTaskResponse](../../models/dtoscheduledtaskresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
+| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## schedule_draft_finalization
+
+Triggers the draft invoice finalization workflow that scans computed draft invoices whose finalization delay has elapsed and finalizes them (assign invoice number, sync to vendors, attempt payment).
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="scheduleDraftFinalization" method="post" path="/tasks/scheduled/schedule-draft-finalization" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.scheduled_tasks.schedule_draft_finalization()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.ScheduleDraftFinalizationResponse](../../models/scheduledraftfinalizationresponse.md)**
 
 ### Errors
 

@@ -34,6 +34,8 @@ class CreditNotes(BaseSDK):
 
         Use when issuing a refund or adjustment (e.g. customer dispute or proration). Links to an invoice; create as draft then finalize.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param invoice_id: invoice_id is the unique identifier of the invoice this credit note is applied to
         :param reason:
         :param credit_note_number: credit_note_number is an optional human-readable identifier for the credit note
@@ -87,6 +89,7 @@ class CreditNotes(BaseSDK):
                 request, False, False, "json", models.DtoCreateCreditNoteRequest
             ),
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -166,6 +169,8 @@ class CreditNotes(BaseSDK):
 
         Use when issuing a refund or adjustment (e.g. customer dispute or proration). Links to an invoice; create as draft then finalize.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param invoice_id: invoice_id is the unique identifier of the invoice this credit note is applied to
         :param reason:
         :param credit_note_number: credit_note_number is an optional human-readable identifier for the credit note
@@ -219,6 +224,7 @@ class CreditNotes(BaseSDK):
                 request, False, False, "json", models.DtoCreateCreditNoteRequest
             ),
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -484,6 +490,8 @@ class CreditNotes(BaseSDK):
 
         Use when locking a draft credit note and applying the credit (e.g. after approval). Once finalized, applied per billing provider.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Credit note ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -518,6 +526,7 @@ class CreditNotes(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -585,6 +594,8 @@ class CreditNotes(BaseSDK):
 
         Use when locking a draft credit note and applying the credit (e.g. after approval). Once finalized, applied per billing provider.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Credit note ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -619,6 +630,7 @@ class CreditNotes(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -686,6 +698,8 @@ class CreditNotes(BaseSDK):
 
         Use when cancelling a draft credit note (e.g. created by mistake). Only draft credit notes can be voided.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Credit note ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -720,6 +734,7 @@ class CreditNotes(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -787,6 +802,8 @@ class CreditNotes(BaseSDK):
 
         Use when cancelling a draft credit note (e.g. created by mistake). Only draft credit notes can be voided.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Credit note ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -821,6 +838,7 @@ class CreditNotes(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 

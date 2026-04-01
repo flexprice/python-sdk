@@ -15,6 +15,7 @@ value: ScheduledTaskInterval = "15MIN"
 This is an open enum. Unrecognized values will not fail type checks.
 
 - `"15MIN"`
+- `"30MIN"`
 - `"custom"`
 - `"hourly"`
 - `"daily"`

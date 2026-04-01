@@ -33,6 +33,8 @@ class Coupons(BaseSDK):
 
         Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param cadence:
         :param name:
         :param type:
@@ -92,6 +94,7 @@ class Coupons(BaseSDK):
                 request, False, False, "json", models.DtoCreateCouponRequest
             ),
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -170,6 +173,8 @@ class Coupons(BaseSDK):
 
         Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param cadence:
         :param name:
         :param type:
@@ -229,6 +234,7 @@ class Coupons(BaseSDK):
                 request, False, False, "json", models.DtoCreateCouponRequest
             ),
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -754,6 +760,8 @@ class Coupons(BaseSDK):
 
         Use when changing coupon config (e.g. value, validity, or usage limits).
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Coupon ID
         :param metadata:
         :param name:
@@ -797,6 +805,7 @@ class Coupons(BaseSDK):
                 request.body, False, False, "json", models.DtoUpdateCouponRequest
             ),
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -866,6 +875,8 @@ class Coupons(BaseSDK):
 
         Use when changing coupon config (e.g. value, validity, or usage limits).
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Coupon ID
         :param metadata:
         :param name:
@@ -909,6 +920,7 @@ class Coupons(BaseSDK):
                 request.body, False, False, "json", models.DtoUpdateCouponRequest
             ),
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -976,6 +988,8 @@ class Coupons(BaseSDK):
 
         Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Coupon ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1010,6 +1024,7 @@ class Coupons(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
@@ -1077,6 +1092,8 @@ class Coupons(BaseSDK):
 
         Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
 
+        This operation requires either `api_key_auth` or `api_key_auth` to be set on the `security` parameter when initializing the SDK.
+
         :param id: Coupon ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1111,6 +1128,7 @@ class Coupons(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             allow_empty_value=None,
+            allowed_fields=["api_key_auth", "api_key_auth"],
             timeout_ms=timeout_ms,
         )
 
