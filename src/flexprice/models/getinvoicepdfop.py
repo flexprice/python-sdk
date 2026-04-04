@@ -13,6 +13,8 @@ class GetInvoicePdfRequestTypedDict(TypedDict):
     r"""Invoice ID"""
     url: NotRequired[bool]
     r"""Return presigned URL from s3 instead of PDF"""
+    force_generate: NotRequired[bool]
+    r"""Force regeneration of the PDF even if one already exists in S3 (default: false). Note: force_generate has no effect if invoice_pdf_url is already set on the invoice."""
 
 
 class GetInvoicePdfRequest(BaseModel):
@@ -27,9 +29,15 @@ class GetInvoicePdfRequest(BaseModel):
     ] = None
     r"""Return presigned URL from s3 instead of PDF"""
 
+    force_generate: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
+    r"""Force regeneration of the PDF even if one already exists in S3 (default: false). Note: force_generate has no effect if invoice_pdf_url is already set on the invoice."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["url"])
+        optional_fields = set(["url", "force_generate"])
         serialized = handler(self)
         m = {}
 

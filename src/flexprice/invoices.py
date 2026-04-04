@@ -2483,6 +2483,7 @@ class Invoices(BaseSDK):
         *,
         id: str,
         url: Optional[bool] = None,
+        force_generate: Optional[bool] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -2490,10 +2491,11 @@ class Invoices(BaseSDK):
     ) -> httpx.Response:
         r"""Get invoice PDF
 
-        Use when delivering an invoice PDF to the customer (e.g. email attachment or download). Use url=true for a presigned URL instead of binary.
+        Use when delivering an invoice PDF to the customer (e.g. email attachment or download). Use url=true for a presigned URL instead of binary. Use force_generate=true to regenerate and re-upload the PDF even if one already exists in S3.
 
         :param id: Invoice ID
         :param url: Return presigned URL from s3 instead of PDF
+        :param force_generate: Force regeneration of the PDF even if one already exists in S3 (default: false). Note: force_generate has no effect if invoice_pdf_url is already set on the invoice.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2512,6 +2514,7 @@ class Invoices(BaseSDK):
         request = models.GetInvoicePdfRequest(
             id=id,
             url=url,
+            force_generate=force_generate,
         )
 
         req = self._build_request(
@@ -2576,6 +2579,7 @@ class Invoices(BaseSDK):
         *,
         id: str,
         url: Optional[bool] = None,
+        force_generate: Optional[bool] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -2583,10 +2587,11 @@ class Invoices(BaseSDK):
     ) -> httpx.Response:
         r"""Get invoice PDF
 
-        Use when delivering an invoice PDF to the customer (e.g. email attachment or download). Use url=true for a presigned URL instead of binary.
+        Use when delivering an invoice PDF to the customer (e.g. email attachment or download). Use url=true for a presigned URL instead of binary. Use force_generate=true to regenerate and re-upload the PDF even if one already exists in S3.
 
         :param id: Invoice ID
         :param url: Return presigned URL from s3 instead of PDF
+        :param force_generate: Force regeneration of the PDF even if one already exists in S3 (default: false). Note: force_generate has no effect if invoice_pdf_url is already set on the invoice.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2605,6 +2610,7 @@ class Invoices(BaseSDK):
         request = models.GetInvoicePdfRequest(
             id=id,
             url=url,
+            force_generate=force_generate,
         )
 
         req = self._build_request_async(

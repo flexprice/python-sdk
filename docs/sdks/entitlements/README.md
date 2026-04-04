@@ -367,7 +367,7 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoPlanResponse](../../models/dtoplanresponse.md)**
+**[models.DtoListEntitlementsResponse](../../models/dtolistentitlementsresponse.md)**
 
 ### Errors
 

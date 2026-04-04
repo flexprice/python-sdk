@@ -1643,7 +1643,7 @@ class Entitlements(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoPlanResponse:
+    ) -> models.DtoListEntitlementsResponse:
         r"""Get plan entitlements
 
         Use when checking what a plan includes (e.g. feature list or limits for display or gating).
@@ -1708,7 +1708,7 @@ class Entitlements(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoPlanResponse, http_res)
+            return unmarshal_json_response(models.DtoListEntitlementsResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorsErrorResponseData, http_res
@@ -1742,7 +1742,7 @@ class Entitlements(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoPlanResponse:
+    ) -> models.DtoListEntitlementsResponse:
         r"""Get plan entitlements
 
         Use when checking what a plan includes (e.g. feature list or limits for display or gating).
@@ -1807,7 +1807,7 @@ class Entitlements(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoPlanResponse, http_res)
+            return unmarshal_json_response(models.DtoListEntitlementsResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorsErrorResponseData, http_res
