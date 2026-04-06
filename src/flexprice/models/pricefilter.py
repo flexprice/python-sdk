@@ -4,6 +4,7 @@ from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .priceentitytype import PriceEntityType
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -18,7 +19,7 @@ PriceFilterOrder = Literal[
 
 class PriceFilterTypedDict(TypedDict):
     allow_expired_prices: NotRequired[bool]
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     entity_ids: NotRequired[List[str]]
     entity_type: NotRequired[PriceEntityType]
     expand: NotRequired[str]
@@ -34,7 +35,7 @@ class PriceFilterTypedDict(TypedDict):
     price_ids: NotRequired[List[str]]
     sort: NotRequired[str]
     start_date_lt: NotRequired[str]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
     subscription_id: NotRequired[str]
 
@@ -42,7 +43,7 @@ class PriceFilterTypedDict(TypedDict):
 class PriceFilter(BaseModel):
     allow_expired_prices: Optional[bool] = False
 
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     entity_ids: Optional[List[str]] = None
 
@@ -72,7 +73,7 @@ class PriceFilter(BaseModel):
 
     start_date_lt: Optional[str] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

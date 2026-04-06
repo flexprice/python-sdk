@@ -41,12 +41,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoLinkIntegrationMappingResponse](../../models/dtolinkintegrationmappingresponse.md)**
+**[models.LinkIntegrationMappingResponse](../../models/linkintegrationmappingresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

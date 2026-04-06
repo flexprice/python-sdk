@@ -8,6 +8,7 @@ from .price_price import PricePrice, PricePriceTypedDict
 from .pricetype import PriceType
 from .status import Status
 from .subscriptionlineitementitytype import SubscriptionLineItemEntityType
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Optional
@@ -26,12 +27,12 @@ class SubscriptionSubscriptionLineItemTypedDict(TypedDict):
     commitment_true_up_enabled: NotRequired[bool]
     commitment_type: NotRequired[CommitmentType]
     commitment_windowed: NotRequired[bool]
-    created_at: NotRequired[str]
+    created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     currency: NotRequired[str]
     customer_id: NotRequired[str]
     display_name: NotRequired[str]
-    end_date: NotRequired[str]
+    end_date: NotRequired[datetime]
     entity_id: NotRequired[str]
     entity_type: NotRequired[SubscriptionLineItemEntityType]
     environment_id: NotRequired[str]
@@ -47,13 +48,13 @@ class SubscriptionSubscriptionLineItemTypedDict(TypedDict):
     price_unit: NotRequired[str]
     price_unit_id: NotRequired[str]
     quantity: NotRequired[str]
-    start_date: NotRequired[str]
+    start_date: NotRequired[datetime]
     status: NotRequired[Status]
     subscription_id: NotRequired[str]
     subscription_phase_id: NotRequired[str]
     tenant_id: NotRequired[str]
     trial_period: NotRequired[int]
-    updated_at: NotRequired[str]
+    updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
 
 
@@ -78,7 +79,7 @@ class SubscriptionSubscriptionLineItem(BaseModel):
 
     commitment_windowed: Optional[bool] = None
 
-    created_at: Optional[str] = None
+    created_at: Optional[datetime] = None
 
     created_by: Optional[str] = None
 
@@ -88,7 +89,7 @@ class SubscriptionSubscriptionLineItem(BaseModel):
 
     display_name: Optional[str] = None
 
-    end_date: Optional[str] = None
+    end_date: Optional[datetime] = None
 
     entity_id: Optional[str] = None
 
@@ -120,7 +121,7 @@ class SubscriptionSubscriptionLineItem(BaseModel):
 
     quantity: Optional[str] = None
 
-    start_date: Optional[str] = None
+    start_date: Optional[datetime] = None
 
     status: Optional[Status] = None
 
@@ -132,7 +133,7 @@ class SubscriptionSubscriptionLineItem(BaseModel):
 
     trial_period: Optional[int] = None
 
-    updated_at: Optional[str] = None
+    updated_at: Optional[datetime] = None
 
     updated_by: Optional[str] = None
 

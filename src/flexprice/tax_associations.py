@@ -20,7 +20,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoListTaxAssociationsResponse:
+    ) -> models.ListTaxAssociationsResponse:
         r"""List tax associations
 
         Use when listing tax associations (e.g. tax config or audit). Returns list with optional filtering.
@@ -91,19 +91,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                models.DtoListTaxAssociationsResponse, http_res
-            )
+            return unmarshal_json_response(models.ListTaxAssociationsResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -130,7 +128,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoListTaxAssociationsResponse:
+    ) -> models.ListTaxAssociationsResponse:
         r"""List tax associations
 
         Use when listing tax associations (e.g. tax config or audit). Returns list with optional filtering.
@@ -201,19 +199,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                models.DtoListTaxAssociationsResponse, http_res
-            )
+            return unmarshal_json_response(models.ListTaxAssociationsResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -244,7 +240,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Create Tax Association
 
         Use when linking a tax rate to an entity (e.g. customer, product, or region) so that rate applies on invoices.
@@ -272,7 +268,7 @@ class TaxAssociations(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateTaxAssociationRequest(
+        request = models.CreateTaxAssociationRequest(
             auto_apply=auto_apply,
             currency=currency,
             entity_id=entity_id,
@@ -297,7 +293,7 @@ class TaxAssociations(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateTaxAssociationRequest
+                request, False, False, "json", models.CreateTaxAssociationRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -326,17 +322,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -367,7 +363,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Create Tax Association
 
         Use when linking a tax rate to an entity (e.g. customer, product, or region) so that rate applies on invoices.
@@ -395,7 +391,7 @@ class TaxAssociations(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateTaxAssociationRequest(
+        request = models.CreateTaxAssociationRequest(
             auto_apply=auto_apply,
             currency=currency,
             entity_id=entity_id,
@@ -420,7 +416,7 @@ class TaxAssociations(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateTaxAssociationRequest
+                request, False, False, "json", models.CreateTaxAssociationRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -449,17 +445,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -483,7 +479,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Get Tax Association
 
         Use when you need to load a single tax association (e.g. for display or editing).
@@ -548,17 +544,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -582,7 +578,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Get Tax Association
 
         Use when you need to load a single tax association (e.g. for display or editing).
@@ -647,17 +643,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -684,7 +680,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Update tax association
 
         Use when changing a tax association (e.g. switch rate or entity). Request body contains the fields to update.
@@ -710,7 +706,7 @@ class TaxAssociations(BaseSDK):
 
         request = models.UpdateTaxAssociationRequest(
             id=id,
-            body=models.DtoTaxAssociationUpdateRequest(
+            body=models.TaxAssociationUpdateRequest(
                 auto_apply=auto_apply,
                 metadata=metadata,
                 priority=priority,
@@ -731,11 +727,7 @@ class TaxAssociations(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body,
-                False,
-                False,
-                "json",
-                models.DtoTaxAssociationUpdateRequest,
+                request.body, False, False, "json", models.TaxAssociationUpdateRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -764,17 +756,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -801,7 +793,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Update tax association
 
         Use when changing a tax association (e.g. switch rate or entity). Request body contains the fields to update.
@@ -827,7 +819,7 @@ class TaxAssociations(BaseSDK):
 
         request = models.UpdateTaxAssociationRequest(
             id=id,
-            body=models.DtoTaxAssociationUpdateRequest(
+            body=models.TaxAssociationUpdateRequest(
                 auto_apply=auto_apply,
                 metadata=metadata,
                 priority=priority,
@@ -848,11 +840,7 @@ class TaxAssociations(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body,
-                False,
-                False,
-                "json",
-                models.DtoTaxAssociationUpdateRequest,
+                request.body, False, False, "json", models.TaxAssociationUpdateRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -881,17 +869,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -915,7 +903,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Delete tax association
 
         Use when removing a tax association (e.g. entity no longer subject to that rate).
@@ -980,17 +968,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1014,7 +1002,7 @@ class TaxAssociations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxAssociationResponse:
+    ) -> models.TaxAssociationResponse:
         r"""Delete tax association
 
         Use when removing a tax association (e.g. entity no longer subject to that rate).
@@ -1079,17 +1067,17 @@ class TaxAssociations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxAssociationResponse, http_res)
+            return unmarshal_json_response(models.TaxAssociationResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(

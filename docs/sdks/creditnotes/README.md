@@ -33,28 +33,28 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `invoice_id`                                                                                          | *str*                                                                                                 | :heavy_check_mark:                                                                                    | invoice_id is the unique identifier of the invoice this credit note is applied to                     |
-| `reason`                                                                                              | [models.CreditNoteReason](../../models/creditnotereason.md)                                           | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
-| `credit_note_number`                                                                                  | *Optional[str]*                                                                                       | :heavy_minus_sign:                                                                                    | credit_note_number is an optional human-readable identifier for the credit note                       |
-| `idempotency_key`                                                                                     | *Optional[str]*                                                                                       | :heavy_minus_sign:                                                                                    | idempotency_key is an optional key used to prevent duplicate credit note creation                     |
-| `line_items`                                                                                          | List[[models.DtoCreateCreditNoteLineItemRequest](../../models/dtocreatecreditnotelineitemrequest.md)] | :heavy_minus_sign:                                                                                    | line_items contains the individual line items that make up this credit note (minimum 1 required)      |
-| `memo`                                                                                                | *Optional[str]*                                                                                       | :heavy_minus_sign:                                                                                    | memo is an optional free-text field for additional notes about the credit note                        |
-| `metadata`                                                                                            | Dict[str, *str*]                                                                                      | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
-| `process_credit_note`                                                                                 | *Optional[bool]*                                                                                      | :heavy_minus_sign:                                                                                    | process_credit_note is a flag to process the credit note after creation                               |
-| `retries`                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                      | :heavy_minus_sign:                                                                                    | Configuration to override the default retry behavior of the client.                                   |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `invoice_id`                                                                                     | *str*                                                                                            | :heavy_check_mark:                                                                               | invoice_id is the unique identifier of the invoice this credit note is applied to                |
+| `reason`                                                                                         | [models.CreditNoteReason](../../models/creditnotereason.md)                                      | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `credit_note_number`                                                                             | *Optional[str]*                                                                                  | :heavy_minus_sign:                                                                               | credit_note_number is an optional human-readable identifier for the credit note                  |
+| `idempotency_key`                                                                                | *Optional[str]*                                                                                  | :heavy_minus_sign:                                                                               | idempotency_key is an optional key used to prevent duplicate credit note creation                |
+| `line_items`                                                                                     | List[[models.CreateCreditNoteLineItemRequest](../../models/createcreditnotelineitemrequest.md)]  | :heavy_minus_sign:                                                                               | line_items contains the individual line items that make up this credit note (minimum 1 required) |
+| `memo`                                                                                           | *Optional[str]*                                                                                  | :heavy_minus_sign:                                                                               | memo is an optional free-text field for additional notes about the credit note                   |
+| `metadata`                                                                                       | Dict[str, *str*]                                                                                 | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `process_credit_note`                                                                            | *Optional[bool]*                                                                                 | :heavy_minus_sign:                                                                               | process_credit_note is a flag to process the credit note after creation                          |
+| `retries`                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                 | :heavy_minus_sign:                                                                               | Configuration to override the default retry behavior of the client.                              |
 
 ### Response
 
-**[models.DtoCreditNoteResponse](../../models/dtocreditnoteresponse.md)**
+**[models.CreditNoteResponse](../../models/creditnoteresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 401, 403, 404                  | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 401, 403, 404                  | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_credit_note
@@ -88,14 +88,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCreditNoteResponse](../../models/dtocreditnoteresponse.md)**
+**[models.CreditNoteResponse](../../models/creditnoteresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## process_credit_note
@@ -129,14 +129,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCreditNoteResponse](../../models/dtocreditnoteresponse.md)**
+**[models.CreditNoteResponse](../../models/creditnoteresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 401, 403, 404                  | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 401, 403, 404                  | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## void_credit_note
@@ -170,12 +170,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCreditNoteResponse](../../models/dtocreditnoteresponse.md)**
+**[models.CreditNoteResponse](../../models/creditnoteresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 401, 403, 404                  | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 401, 403, 404                  | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

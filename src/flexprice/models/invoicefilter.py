@@ -7,6 +7,7 @@ from .invoicetype import InvoiceType
 from .paymentstatus import PaymentStatus
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -32,7 +33,7 @@ class InvoiceFilterTypedDict(TypedDict):
     r"""customer_id filters invoices for a specific customer using FlexPrice's internal customer ID
     This is the ID returned by FlexPrice when creating or retrieving customers
     """
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     expand: NotRequired[str]
     external_customer_id: NotRequired[str]
     r"""external_customer_id filters invoices for a customer using your system's customer identifier
@@ -66,7 +67,7 @@ class InvoiceFilterTypedDict(TypedDict):
     skip_line_items: NotRequired[bool]
     r"""SkipLineItems if true, will not include line items in the response"""
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
     subscription_id: NotRequired[str]
     r"""subscription_id filters invoices generated for a specific subscription
@@ -90,7 +91,7 @@ class InvoiceFilter(BaseModel):
     This is the ID returned by FlexPrice when creating or retrieving customers
     """
 
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     expand: Optional[str] = None
 
@@ -141,7 +142,7 @@ class InvoiceFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

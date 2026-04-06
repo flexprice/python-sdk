@@ -29,7 +29,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoListTasksResponse:
+    ) -> models.ListTasksResponse:
         r"""List tasks
 
         Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
@@ -118,17 +118,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoListTasksResponse, http_res)
+            return unmarshal_json_response(models.ListTasksResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -164,7 +164,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoListTasksResponse:
+    ) -> models.ListTasksResponse:
         r"""List tasks
 
         Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
@@ -253,17 +253,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoListTasksResponse, http_res)
+            return unmarshal_json_response(models.ListTasksResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -292,7 +292,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaskResponse:
+    ) -> models.TaskResponse:
         r"""Create a new task
 
         Use when submitting a file or job for async processing (e.g. export or import). Returns task ID to poll for status and result.
@@ -318,7 +318,7 @@ class Tasks(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateTaskRequest(
+        request = models.CreateTaskRequest(
             entity_type=entity_type,
             file_name=file_name,
             file_type=file_type,
@@ -341,7 +341,7 @@ class Tasks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateTaskRequest
+                request, False, False, "json", models.CreateTaskRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -370,17 +370,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
-            return unmarshal_json_response(models.DtoTaskResponse, http_res)
+            return unmarshal_json_response(models.TaskResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -409,7 +409,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaskResponse:
+    ) -> models.TaskResponse:
         r"""Create a new task
 
         Use when submitting a file or job for async processing (e.g. export or import). Returns task ID to poll for status and result.
@@ -435,7 +435,7 @@ class Tasks(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateTaskRequest(
+        request = models.CreateTaskRequest(
             entity_type=entity_type,
             file_name=file_name,
             file_type=file_type,
@@ -458,7 +458,7 @@ class Tasks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateTaskRequest
+                request, False, False, "json", models.CreateTaskRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -487,17 +487,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
-            return unmarshal_json_response(models.DtoTaskResponse, http_res)
+            return unmarshal_json_response(models.TaskResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -591,14 +591,14 @@ class Tasks(BaseSDK):
             )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -692,14 +692,14 @@ class Tasks(BaseSDK):
             )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -723,7 +723,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaskResponse:
+    ) -> models.TaskResponse:
         r"""Get a task
 
         Use when checking task status or progress (e.g. polling after create). Returns task by ID.
@@ -788,17 +788,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaskResponse, http_res)
+            return unmarshal_json_response(models.TaskResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -822,7 +822,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaskResponse:
+    ) -> models.TaskResponse:
         r"""Get a task
 
         Use when checking task status or progress (e.g. polling after create). Returns task by ID.
@@ -887,17 +887,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaskResponse, http_res)
+            return unmarshal_json_response(models.TaskResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -989,14 +989,14 @@ class Tasks(BaseSDK):
             return unmarshal_json_response(Dict[str, str], http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1088,14 +1088,14 @@ class Tasks(BaseSDK):
             return unmarshal_json_response(Dict[str, str], http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1120,7 +1120,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoSuccessResponse:
+    ) -> models.SuccessResponse:
         r"""Update task status
 
         Use when updating task status (e.g. marking complete or failed from a worker). Typically called by backend processors.
@@ -1142,9 +1142,9 @@ class Tasks(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.UpdateTaskStatusRequest(
+        request = models.UpdateTaskStatusRequestRequest(
             id=id,
-            body=models.DtoUpdateTaskStatusRequest(
+            body=models.UpdateTaskStatusRequest(
                 task_status=task_status,
             ),
         )
@@ -1163,7 +1163,7 @@ class Tasks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.DtoUpdateTaskStatusRequest
+                request.body, False, False, "json", models.UpdateTaskStatusRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1192,17 +1192,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoSuccessResponse, http_res)
+            return unmarshal_json_response(models.SuccessResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1227,7 +1227,7 @@ class Tasks(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoSuccessResponse:
+    ) -> models.SuccessResponse:
         r"""Update task status
 
         Use when updating task status (e.g. marking complete or failed from a worker). Typically called by backend processors.
@@ -1249,9 +1249,9 @@ class Tasks(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.UpdateTaskStatusRequest(
+        request = models.UpdateTaskStatusRequestRequest(
             id=id,
-            body=models.DtoUpdateTaskStatusRequest(
+            body=models.UpdateTaskStatusRequest(
                 task_status=task_status,
             ),
         )
@@ -1270,7 +1270,7 @@ class Tasks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.DtoUpdateTaskStatusRequest
+                request.body, False, False, "json", models.UpdateTaskStatusRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1299,17 +1299,17 @@ class Tasks(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoSuccessResponse, http_res)
+            return unmarshal_json_response(models.SuccessResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(

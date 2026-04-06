@@ -50,14 +50,14 @@ with Flexprice(
 
 ### Response
 
-**[List[models.DtoTaxRateResponse]](../../models/.md)**
+**[List[models.TaxRateResponse]](../../models/.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## create_tax_rate
@@ -98,14 +98,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoTaxRateResponse](../../models/dtotaxrateresponse.md)**
+**[models.TaxRateResponse](../../models/taxrateresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_tax_rate
@@ -139,14 +139,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoTaxRateResponse](../../models/dtotaxrateresponse.md)**
+**[models.TaxRateResponse](../../models/taxrateresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_tax_rate
@@ -185,14 +185,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoTaxRateResponse](../../models/dtotaxrateresponse.md)**
+**[models.TaxRateResponse](../../models/taxrateresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## delete_tax_rate
@@ -227,6 +227,6 @@ with Flexprice(
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

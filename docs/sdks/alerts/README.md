@@ -35,7 +35,7 @@ with Flexprice(
 | `alert_status`                                                              | [Optional[models.AlertState]](../../models/alertstate.md)                   | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `alert_type`                                                                | [Optional[models.AlertType]](../../models/alerttype.md)                     | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `customer_id`                                                               | *Optional[str]*                                                             | :heavy_minus_sign:                                                          | N/A                                                                         |
-| `end_time`                                                                  | *Optional[str]*                                                             | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `end_time`                                                                  | [date](https://docs.python.org/3/library/datetime.html#date-objects)        | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `entity_id`                                                                 | *Optional[str]*                                                             | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `entity_type`                                                               | [Optional[models.AlertEntityType]](../../models/alertentitytype.md)         | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `expand`                                                                    | *Optional[str]*                                                             | :heavy_minus_sign:                                                          | N/A                                                                         |
@@ -44,18 +44,18 @@ with Flexprice(
 | `offset`                                                                    | *Optional[int]*                                                             | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `order`                                                                     | [Optional[models.AlertLogFilterOrder]](../../models/alertlogfilterorder.md) | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `sort`                                                                      | List[[models.SortCondition](../../models/sortcondition.md)]                 | :heavy_minus_sign:                                                          | N/A                                                                         |
-| `start_time`                                                                | *Optional[str]*                                                             | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `start_time`                                                                | [date](https://docs.python.org/3/library/datetime.html#date-objects)        | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `status`                                                                    | [Optional[models.Status]](../../models/status.md)                           | :heavy_minus_sign:                                                          | N/A                                                                         |
 | `retries`                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)            | :heavy_minus_sign:                                                          | Configuration to override the default retry behavior of the client.         |
 
 ### Response
 
-**[models.DtoListAlertLogsResponse](../../models/dtolistalertlogsresponse.md)**
+**[models.ListAlertLogsResponse](../../models/listalertlogsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

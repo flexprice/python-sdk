@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `id`                                                                           | *str*                                                                          | :heavy_check_mark:                                                             | Credit Grant ID                                                                |
-| `body`                                                                         | [models.DtoUpdateCreditGrantRequest](../models/dtoupdatecreditgrantrequest.md) | :heavy_check_mark:                                                             | Credit Grant configuration                                                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `metadata`         | Dict[str, *str*]   | :heavy_minus_sign: | N/A                |
+| `name`             | *Optional[str]*    | :heavy_minus_sign: | N/A                |

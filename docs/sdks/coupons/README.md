@@ -52,14 +52,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCouponResponse](../../models/dtocouponresponse.md)**
+**[models.Coupon](../../models/coupon.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 401, 403, 404                  | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 401, 403, 404                  | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_coupon
@@ -100,14 +100,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoListCouponsResponse](../../models/dtolistcouponsresponse.md)**
+**[models.ListCouponsResponse](../../models/listcouponsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_coupon
@@ -141,14 +141,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCouponResponse](../../models/dtocouponresponse.md)**
+**[models.Coupon](../../models/coupon.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_coupon
@@ -184,14 +184,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCouponResponse](../../models/dtocouponresponse.md)**
+**[models.Coupon](../../models/coupon.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 401, 403, 404                  | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 401, 403, 404                  | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## delete_coupon
@@ -231,6 +231,6 @@ with Flexprice(
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 401, 403, 404                  | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 401, 403, 404                  | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

@@ -1,0 +1,9 @@
+# ExecuteSubscriptionModifyRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `id`                                                                                               | *str*                                                                                              | :heavy_check_mark:                                                                                 | Subscription ID                                                                                    |
+| `body`                                                                                             | [models.ExecuteSubscriptionInheritanceRequest](../models/executesubscriptioninheritancerequest.md) | :heavy_check_mark:                                                                                 | External customer IDs to inherit                                                                   |

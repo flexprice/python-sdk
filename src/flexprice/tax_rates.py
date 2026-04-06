@@ -26,7 +26,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.DtoTaxRateResponse]:
+    ) -> List[models.TaxRateResponse]:
         r"""Get tax rates
 
         Use when listing tax rates (e.g. tax config UI). Returns tax rates with optional filters.
@@ -109,17 +109,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(List[models.DtoTaxRateResponse], http_res)
+            return unmarshal_json_response(List[models.TaxRateResponse], http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -152,7 +152,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.DtoTaxRateResponse]:
+    ) -> List[models.TaxRateResponse]:
         r"""Get tax rates
 
         Use when listing tax rates (e.g. tax config UI). Returns tax rates with optional filters.
@@ -235,17 +235,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(List[models.DtoTaxRateResponse], http_res)
+            return unmarshal_json_response(List[models.TaxRateResponse], http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -276,7 +276,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxRateResponse:
+    ) -> models.TaxRateResponse:
         r"""Create a tax rate
 
         Use when defining a new tax rate (e.g. VAT or sales tax) for use in invoices. Attach to customers or products via tax associations.
@@ -304,7 +304,7 @@ class TaxRates(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateTaxRateRequest(
+        request = models.CreateTaxRateRequest(
             code=code,
             description=description,
             fixed_value=fixed_value,
@@ -329,7 +329,7 @@ class TaxRates(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateTaxRateRequest
+                request, False, False, "json", models.CreateTaxRateRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -358,17 +358,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoTaxRateResponse, http_res)
+            return unmarshal_json_response(models.TaxRateResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -399,7 +399,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxRateResponse:
+    ) -> models.TaxRateResponse:
         r"""Create a tax rate
 
         Use when defining a new tax rate (e.g. VAT or sales tax) for use in invoices. Attach to customers or products via tax associations.
@@ -427,7 +427,7 @@ class TaxRates(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateTaxRateRequest(
+        request = models.CreateTaxRateRequest(
             code=code,
             description=description,
             fixed_value=fixed_value,
@@ -452,7 +452,7 @@ class TaxRates(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateTaxRateRequest
+                request, False, False, "json", models.CreateTaxRateRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -481,17 +481,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoTaxRateResponse, http_res)
+            return unmarshal_json_response(models.TaxRateResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -515,7 +515,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxRateResponse:
+    ) -> models.TaxRateResponse:
         r"""Get a tax rate
 
         Use when you need to load a single tax rate (e.g. for display or when creating an association).
@@ -580,17 +580,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxRateResponse, http_res)
+            return unmarshal_json_response(models.TaxRateResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -614,7 +614,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxRateResponse:
+    ) -> models.TaxRateResponse:
         r"""Get a tax rate
 
         Use when you need to load a single tax rate (e.g. for display or when creating an association).
@@ -679,17 +679,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxRateResponse, http_res)
+            return unmarshal_json_response(models.TaxRateResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -718,7 +718,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxRateResponse:
+    ) -> models.TaxRateResponse:
         r"""Update a tax rate
 
         Use when changing a tax rate (e.g. rate value or name). Request body contains the fields to update.
@@ -744,9 +744,9 @@ class TaxRates(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.UpdateTaxRateRequest(
+        request = models.UpdateTaxRateRequestRequest(
             id=id,
-            body=models.DtoUpdateTaxRateRequest(
+            body=models.UpdateTaxRateRequest(
                 code=code,
                 description=description,
                 metadata=metadata,
@@ -769,7 +769,7 @@ class TaxRates(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.DtoUpdateTaxRateRequest
+                request.body, False, False, "json", models.UpdateTaxRateRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -798,17 +798,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxRateResponse, http_res)
+            return unmarshal_json_response(models.TaxRateResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -837,7 +837,7 @@ class TaxRates(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTaxRateResponse:
+    ) -> models.TaxRateResponse:
         r"""Update a tax rate
 
         Use when changing a tax rate (e.g. rate value or name). Request body contains the fields to update.
@@ -863,9 +863,9 @@ class TaxRates(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.UpdateTaxRateRequest(
+        request = models.UpdateTaxRateRequestRequest(
             id=id,
-            body=models.DtoUpdateTaxRateRequest(
+            body=models.UpdateTaxRateRequest(
                 code=code,
                 description=description,
                 metadata=metadata,
@@ -888,7 +888,7 @@ class TaxRates(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.DtoUpdateTaxRateRequest
+                request.body, False, False, "json", models.UpdateTaxRateRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -917,17 +917,17 @@ class TaxRates(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTaxRateResponse, http_res)
+            return unmarshal_json_response(models.TaxRateResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1019,14 +1019,14 @@ class TaxRates(BaseSDK):
             return
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1118,14 +1118,14 @@ class TaxRates(BaseSDK):
             return
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(

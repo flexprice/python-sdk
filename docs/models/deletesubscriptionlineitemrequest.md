@@ -3,7 +3,6 @@
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `id`                                                                                             | *str*                                                                                            | :heavy_check_mark:                                                                               | Line Item ID                                                                                     |
-| `body`                                                                                           | [models.DtoDeleteSubscriptionLineItemRequest](../models/dtodeletesubscriptionlineitemrequest.md) | :heavy_check_mark:                                                                               | Delete Line Item Request                                                                         |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `effective_from`   | *Optional[str]*    | :heavy_minus_sign: | N/A                |

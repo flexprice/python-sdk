@@ -47,14 +47,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoListPriceUnitsResponse](../../models/dtolistpriceunitsresponse.md)**
+**[models.ListPriceUnitsResponse](../../models/listpriceunitsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## create_price_unit
@@ -93,14 +93,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCreatePriceUnitResponse](../../models/dtocreatepriceunitresponse.md)**
+**[models.CreatePriceUnitResponse](../../models/createpriceunitresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_price_unit_by_code
@@ -134,14 +134,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoPriceUnitResponse](../../models/dtopriceunitresponse.md)**
+**[models.PriceUnitResponse](../../models/priceunitresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_price_unit
@@ -170,7 +170,7 @@ with Flexprice(
 
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `end_time`                                                                    | *Optional[str]*                                                               | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `end_time`                                                                    | [date](https://docs.python.org/3/library/datetime.html#date-objects)          | :heavy_minus_sign:                                                            | N/A                                                                           |
 | `expand`                                                                      | *Optional[str]*                                                               | :heavy_minus_sign:                                                            | N/A                                                                           |
 | `filters`                                                                     | List[[models.FilterCondition](../../models/filtercondition.md)]               | :heavy_minus_sign:                                                            | filters allows complex filtering based on multiple fields                     |
 | `limit`                                                                       | *Optional[int]*                                                               | :heavy_minus_sign:                                                            | N/A                                                                           |
@@ -178,20 +178,20 @@ with Flexprice(
 | `order`                                                                       | [Optional[models.PriceUnitFilterOrder]](../../models/priceunitfilterorder.md) | :heavy_minus_sign:                                                            | N/A                                                                           |
 | `price_unit_ids`                                                              | List[*str*]                                                                   | :heavy_minus_sign:                                                            | N/A                                                                           |
 | `sort`                                                                        | List[[models.SortCondition](../../models/sortcondition.md)]                   | :heavy_minus_sign:                                                            | N/A                                                                           |
-| `start_time`                                                                  | *Optional[str]*                                                               | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `start_time`                                                                  | [date](https://docs.python.org/3/library/datetime.html#date-objects)          | :heavy_minus_sign:                                                            | N/A                                                                           |
 | `status`                                                                      | [Optional[models.Status]](../../models/status.md)                             | :heavy_minus_sign:                                                            | N/A                                                                           |
 | `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
 
 ### Response
 
-**[models.DtoListPriceUnitsResponse](../../models/dtolistpriceunitsresponse.md)**
+**[models.ListPriceUnitsResponse](../../models/listpriceunitsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_price_unit
@@ -225,13 +225,13 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoPriceUnitResponse](../../models/dtopriceunitresponse.md)**
+**[models.PriceUnitResponse](../../models/priceunitresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_price_unit
@@ -267,13 +267,13 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoPriceUnitResponse](../../models/dtopriceunitresponse.md)**
+**[models.PriceUnitResponse](../../models/priceunitresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## delete_price_unit
@@ -307,11 +307,11 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

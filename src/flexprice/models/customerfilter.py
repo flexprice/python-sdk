@@ -4,6 +4,7 @@ from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -19,7 +20,7 @@ CustomerFilterOrder = Literal[
 class CustomerFilterTypedDict(TypedDict):
     customer_ids: NotRequired[List[str]]
     email: NotRequired[str]
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     expand: NotRequired[str]
     external_id: NotRequired[str]
     external_ids: NotRequired[List[str]]
@@ -27,9 +28,8 @@ class CustomerFilterTypedDict(TypedDict):
     limit: NotRequired[int]
     offset: NotRequired[int]
     order: NotRequired[CustomerFilterOrder]
-    parent_customer_ids: NotRequired[List[str]]
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
 
 
@@ -38,7 +38,7 @@ class CustomerFilter(BaseModel):
 
     email: Optional[str] = None
 
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     expand: Optional[str] = None
 
@@ -54,11 +54,9 @@ class CustomerFilter(BaseModel):
 
     order: Optional[CustomerFilterOrder] = None
 
-    parent_customer_ids: Optional[List[str]] = None
-
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 
@@ -76,7 +74,6 @@ class CustomerFilter(BaseModel):
                 "limit",
                 "offset",
                 "order",
-                "parent_customer_ids",
                 "sort",
                 "start_time",
                 "status",

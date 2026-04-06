@@ -46,14 +46,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCreateAddonResponse](../../models/dtocreateaddonresponse.md)**
+**[models.CreateAddonResponse](../../models/createaddonresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_addon_by_lookup_key
@@ -87,14 +87,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoAddonResponse](../../models/dtoaddonresponse.md)**
+**[models.Addon1](../../models/addon1.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_addon
@@ -125,7 +125,7 @@ with Flexprice(
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `addon_ids`                                                           | List[*str*]                                                           | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `addon_type`                                                          | [Optional[models.AddonType]](../../models/addontype.md)               | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `end_time`                                                            | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `end_time`                                                            | [date](https://docs.python.org/3/library/datetime.html#date-objects)  | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `expand`                                                              | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `filters`                                                             | List[[models.FilterCondition](../../models/filtercondition.md)]       | :heavy_minus_sign:                                                    | filters allows complex filtering based on multiple fields             |
 | `limit`                                                               | *Optional[int]*                                                       | :heavy_minus_sign:                                                    | N/A                                                                   |
@@ -133,20 +133,20 @@ with Flexprice(
 | `offset`                                                              | *Optional[int]*                                                       | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `order`                                                               | [Optional[models.AddonFilterOrder]](../../models/addonfilterorder.md) | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `sort`                                                                | List[[models.SortCondition](../../models/sortcondition.md)]           | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `start_time`                                                          | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `start_time`                                                          | [date](https://docs.python.org/3/library/datetime.html#date-objects)  | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `status`                                                              | [Optional[models.Status]](../../models/status.md)                     | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
 
 ### Response
 
-**[models.DtoListAddonsResponse](../../models/dtolistaddonsresponse.md)**
+**[models.ListAddonsResponse](../../models/listaddonsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_addon
@@ -180,14 +180,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoAddonResponse](../../models/dtoaddonresponse.md)**
+**[models.Addon1](../../models/addon1.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_addon
@@ -224,14 +224,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoAddonResponse](../../models/dtoaddonresponse.md)**
+**[models.Addon1](../../models/addon1.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## delete_addon
@@ -265,12 +265,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

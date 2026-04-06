@@ -7,6 +7,8 @@ from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
 from .subscriptionstatus import SubscriptionStatus
+from .subscriptiontype import SubscriptionType
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -20,7 +22,7 @@ SubscriptionFilterOrder = Literal[
 
 
 class SubscriptionFilterTypedDict(TypedDict):
-    active_at: NotRequired[str]
+    active_at: NotRequired[datetime]
     r"""ActiveAt filters subscriptions that are active at the given time"""
     billing_cadence: NotRequired[List[BillingCadence]]
     r"""BillingCadence filters by billing cadence"""
@@ -28,12 +30,14 @@ class SubscriptionFilterTypedDict(TypedDict):
     r"""BillingPeriod filters by billing period"""
     customer_id: NotRequired[str]
     r"""CustomerID filters by customer ID"""
+    customer_ids: NotRequired[List[str]]
+    r"""CustomerIDs filters by customer IDs"""
     effective_date_for_update: NotRequired[str]
     r"""EffectiveDateForUpdate selects subscriptions that need a billing-period pass on or before this time:
     current_period_end <= date OR (cancel_at IS NOT NULL AND cancel_at <= date).
     When nil, period/cancel cutoff logic is not applied by this field (see TimeRangeFilter for legacy period-end filtering).
     """
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     expand: NotRequired[str]
     external_customer_id: NotRequired[str]
     r"""ExternalCustomerID filters by external customer ID"""
@@ -48,17 +52,19 @@ class SubscriptionFilterTypedDict(TypedDict):
     plan_id: NotRequired[str]
     r"""PlanID filters by plan ID"""
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
     subscription_ids: NotRequired[List[str]]
     subscription_status: NotRequired[List[SubscriptionStatus]]
     r"""SubscriptionStatus filters by subscription status"""
+    subscription_type: NotRequired[List[SubscriptionType]]
+    r"""SubscriptionType filters by subscription type"""
     with_line_items: NotRequired[bool]
     r"""WithLineItems includes line items in the response"""
 
 
 class SubscriptionFilter(BaseModel):
-    active_at: Optional[str] = None
+    active_at: Optional[datetime] = None
     r"""ActiveAt filters subscriptions that are active at the given time"""
 
     billing_cadence: Optional[List[BillingCadence]] = None
@@ -70,13 +76,16 @@ class SubscriptionFilter(BaseModel):
     customer_id: Optional[str] = None
     r"""CustomerID filters by customer ID"""
 
+    customer_ids: Optional[List[str]] = None
+    r"""CustomerIDs filters by customer IDs"""
+
     effective_date_for_update: Optional[str] = None
     r"""EffectiveDateForUpdate selects subscriptions that need a billing-period pass on or before this time:
     current_period_end <= date OR (cancel_at IS NOT NULL AND cancel_at <= date).
     When nil, period/cancel cutoff logic is not applied by this field (see TimeRangeFilter for legacy period-end filtering).
     """
 
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     expand: Optional[str] = None
 
@@ -102,7 +111,7 @@ class SubscriptionFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 
@@ -110,6 +119,9 @@ class SubscriptionFilter(BaseModel):
 
     subscription_status: Optional[List[SubscriptionStatus]] = None
     r"""SubscriptionStatus filters by subscription status"""
+
+    subscription_type: Optional[List[SubscriptionType]] = None
+    r"""SubscriptionType filters by subscription type"""
 
     with_line_items: Optional[bool] = None
     r"""WithLineItems includes line items in the response"""
@@ -122,6 +134,7 @@ class SubscriptionFilter(BaseModel):
                 "billing_cadence",
                 "billing_period",
                 "customer_id",
+                "customer_ids",
                 "effective_date_for_update",
                 "end_time",
                 "expand",
@@ -138,6 +151,7 @@ class SubscriptionFilter(BaseModel):
                 "status",
                 "subscription_ids",
                 "subscription_status",
+                "subscription_type",
                 "with_line_items",
             ]
         )

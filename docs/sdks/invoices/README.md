@@ -50,14 +50,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCustomerMultiCurrencyInvoiceSummary](../../models/dtocustomermulticurrencyinvoicesummary.md)**
+**[models.CustomerMultiCurrencyInvoiceSummary](../../models/customermulticurrencyinvoicesummary.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## create_invoice
@@ -96,36 +96,36 @@ with Flexprice(
 | `billing_reason`                                                                                   | [Optional[models.InvoiceBillingReason]](../../models/invoicebillingreason.md)                      | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `coupons`                                                                                          | List[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | coupons                                                                                            |
 | `description`                                                                                      | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | description is an optional text description of the invoice                                         |
-| `due_date`                                                                                         | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | due_date is the date by which payment is expected                                                  |
+| `due_date`                                                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects)                               | :heavy_minus_sign:                                                                                 | due_date is the date by which payment is expected                                                  |
 | `idempotency_key`                                                                                  | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | idempotency_key is an optional key used to prevent duplicate invoice creation                      |
-| `invoice_coupons`                                                                                  | List[[models.DtoInvoiceCoupon](../../models/dtoinvoicecoupon.md)]                                  | :heavy_minus_sign:                                                                                 | Invoice Coupons                                                                                    |
+| `invoice_coupons`                                                                                  | List[[models.InvoiceCoupon](../../models/invoicecoupon.md)]                                        | :heavy_minus_sign:                                                                                 | Invoice Coupons                                                                                    |
 | `invoice_number`                                                                                   | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | invoice_number is an optional human-readable identifier for the invoice                            |
 | `invoice_pdf_url`                                                                                  | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | invoice_pdf_url is the URL where customers can download the PDF version of this invoice            |
 | `invoice_status`                                                                                   | [Optional[models.InvoiceStatus]](../../models/invoicestatus.md)                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `invoice_type`                                                                                     | [Optional[models.InvoiceType]](../../models/invoicetype.md)                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `line_item_coupons`                                                                                | List[[models.DtoInvoiceLineItemCoupon](../../models/dtoinvoicelineitemcoupon.md)]                  | :heavy_minus_sign:                                                                                 | Invoice Line Item Coupons                                                                          |
-| `line_items`                                                                                       | List[[models.DtoCreateInvoiceLineItemRequest](../../models/dtocreateinvoicelineitemrequest.md)]    | :heavy_minus_sign:                                                                                 | line_items contains the individual items that make up this invoice                                 |
+| `line_item_coupons`                                                                                | List[[models.InvoiceLineItemCoupon](../../models/invoicelineitemcoupon.md)]                        | :heavy_minus_sign:                                                                                 | Invoice Line Item Coupons                                                                          |
+| `line_items`                                                                                       | List[[models.CreateInvoiceLineItemRequest](../../models/createinvoicelineitemrequest.md)]          | :heavy_minus_sign:                                                                                 | line_items contains the individual items that make up this invoice                                 |
 | `metadata`                                                                                         | Dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `payment_status`                                                                                   | [Optional[models.PaymentStatus]](../../models/paymentstatus.md)                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `period_end`                                                                                       | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | period_end is the end date of the billing period                                                   |
-| `period_start`                                                                                     | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | period_start is the start date of the billing period                                               |
-| `prepared_tax_rates`                                                                               | List[[models.DtoTaxRateResponse](../../models/dtotaxrateresponse.md)]                              | :heavy_minus_sign:                                                                                 | prepared_tax_rates contains the tax rates pre-resolved by the caller (e.g., billing service)       |
+| `period_end`                                                                                       | [date](https://docs.python.org/3/library/datetime.html#date-objects)                               | :heavy_minus_sign:                                                                                 | period_end is the end date of the billing period                                                   |
+| `period_start`                                                                                     | [date](https://docs.python.org/3/library/datetime.html#date-objects)                               | :heavy_minus_sign:                                                                                 | period_start is the start date of the billing period                                               |
+| `prepared_tax_rates`                                                                               | List[[models.TaxRateResponse](../../models/taxrateresponse.md)]                                    | :heavy_minus_sign:                                                                                 | prepared_tax_rates contains the tax rates pre-resolved by the caller (e.g., billing service)       |
 | `subscription_id`                                                                                  | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | subscription_id is the optional unique identifier of the subscription associated with this invoice |
-| `tax_rate_overrides`                                                                               | List[[models.DtoTaxRateOverride](../../models/dtotaxrateoverride.md)]                              | :heavy_minus_sign:                                                                                 | tax_rate_overrides is the tax rate overrides to be applied to the invoice                          |
+| `tax_rate_overrides`                                                                               | List[[models.TaxRateOverride](../../models/taxrateoverride.md)]                                    | :heavy_minus_sign:                                                                                 | tax_rate_overrides is the tax rate overrides to be applied to the invoice                          |
 | `tax_rates`                                                                                        | List[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | tax_rates                                                                                          |
 | `total_prepaid_applied`                                                                            | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | total_prepaid_applied is the total amount of prepaid applied to this invoice.                      |
 | `retries`                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                   | :heavy_minus_sign:                                                                                 | Configuration to override the default retry behavior of the client.                                |
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.Invoice](../../models/invoice.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_invoice_preview
@@ -156,20 +156,20 @@ with Flexprice(
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `subscription_id`                                                                   | *str*                                                                               | :heavy_check_mark:                                                                  | subscription_id is the unique identifier of the subscription to preview invoice for |
 | `hide_zero_charges_line_items`                                                      | *Optional[bool]*                                                                    | :heavy_minus_sign:                                                                  | hide_zero_charges_line_items indicates whether to hide line items with zero cost    |
-| `period_end`                                                                        | *Optional[str]*                                                                     | :heavy_minus_sign:                                                                  | period_end is the optional end date of the period to preview                        |
-| `period_start`                                                                      | *Optional[str]*                                                                     | :heavy_minus_sign:                                                                  | period_start is the optional start date of the period to preview                    |
+| `period_end`                                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects)                | :heavy_minus_sign:                                                                  | period_end is the optional end date of the period to preview                        |
+| `period_start`                                                                      | [date](https://docs.python.org/3/library/datetime.html#date-objects)                | :heavy_minus_sign:                                                                  | period_start is the optional start date of the period to preview                    |
 | `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.Invoice](../../models/invoice.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_invoice
@@ -201,7 +201,7 @@ with Flexprice(
 | `amount_due_gt`                                                                                                                                                                  | *Optional[float]*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                               | amount_due_gt filters invoices with a total amount due greater than the specified value<br/>Useful for finding invoices above a certain threshold or identifying high-value invoices |
 | `amount_remaining_gt`                                                                                                                                                            | *Optional[float]*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                               | amount_remaining_gt filters invoices with an outstanding balance greater than the specified value<br/>Useful for finding invoices that still have significant unpaid amounts     |
 | `customer_id`                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | customer_id filters invoices for a specific customer using FlexPrice's internal customer ID<br/>This is the ID returned by FlexPrice when creating or retrieving customers       |
-| `end_time`                                                                                                                                                                       | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `end_time`                                                                                                                                                                       | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                                                             | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `expand`                                                                                                                                                                         | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `external_customer_id`                                                                                                                                                           | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | external_customer_id filters invoices for a customer using your system's customer identifier<br/>This is the ID you provided when creating the customer in FlexPrice             |
 | `filters`                                                                                                                                                                        | List[[models.FilterCondition](../../models/filtercondition.md)]                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
@@ -218,21 +218,21 @@ with Flexprice(
 | `period_start_lte`                                                                                                                                                               | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | period_start_lte filters invoices with period_start <= value                                                                                                                     |
 | `skip_line_items`                                                                                                                                                                | *Optional[bool]*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                               | SkipLineItems if true, will not include line items in the response                                                                                                               |
 | `sort`                                                                                                                                                                           | List[[models.SortCondition](../../models/sortcondition.md)]                                                                                                                      | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
-| `start_time`                                                                                                                                                                     | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `start_time`                                                                                                                                                                     | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                                                             | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `status`                                                                                                                                                                         | [Optional[models.Status]](../../models/status.md)                                                                                                                                | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `subscription_id`                                                                                                                                                                | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | subscription_id filters invoices generated for a specific subscription<br/>Only returns invoices that were created as part of the specified subscription's billing               |
 | `retries`                                                                                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                               | Configuration to override the default retry behavior of the client.                                                                                                              |
 
 ### Response
 
-**[models.DtoListInvoicesResponse](../../models/dtolistinvoicesresponse.md)**
+**[models.ListInvoicesResponse](../../models/listinvoicesresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_invoice
@@ -268,14 +268,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.Invoice](../../models/invoice.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 404                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 404                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_invoice
@@ -305,21 +305,21 @@ with Flexprice(
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `id`                                                                                    | *str*                                                                                   | :heavy_check_mark:                                                                      | Invoice ID                                                                              |
-| `due_date`                                                                              | *Optional[str]*                                                                         | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `due_date`                                                                              | [date](https://docs.python.org/3/library/datetime.html#date-objects)                    | :heavy_minus_sign:                                                                      | N/A                                                                                     |
 | `invoice_pdf_url`                                                                       | *Optional[str]*                                                                         | :heavy_minus_sign:                                                                      | invoice_pdf_url is the URL where customers can download the PDF version of this invoice |
 | `metadata`                                                                              | Dict[str, *str*]                                                                        | :heavy_minus_sign:                                                                      | N/A                                                                                     |
 | `retries`                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                        | :heavy_minus_sign:                                                                      | Configuration to override the default retry behavior of the client.                     |
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.Invoice](../../models/invoice.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## trigger_invoice_comms_webhook
@@ -353,14 +353,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## finalize_invoice
@@ -394,14 +394,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_invoice_payment_status
@@ -437,14 +437,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.Invoice](../../models/invoice.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## attempt_invoice_payment
@@ -478,14 +478,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_invoice_pdf
@@ -566,8 +566,8 @@ with Flexprice(
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## recalculate_invoice_v2
@@ -602,14 +602,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoInvoiceResponse](../../models/dtoinvoiceresponse.md)**
+**[models.Invoice](../../models/invoice.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## void_invoice
@@ -643,12 +643,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

@@ -3,7 +3,9 @@
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `id`                                                                       | *str*                                                                      | :heavy_check_mark:                                                         | Costsheet ID                                                               |
-| `body`                                                                     | [models.DtoUpdateCostsheetRequest](../models/dtoupdatecostsheetrequest.md) | :heavy_check_mark:                                                         | Costsheet configuration                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `description`      | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `lookup_key`       | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `metadata`         | Dict[str, *str*]   | :heavy_minus_sign: | N/A                |
+| `name`             | *Optional[str]*    | :heavy_minus_sign: | N/A                |

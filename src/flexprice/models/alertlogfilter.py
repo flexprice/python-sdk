@@ -7,6 +7,7 @@ from .alerttype import AlertType
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -23,7 +24,7 @@ class AlertLogFilterTypedDict(TypedDict):
     alert_status: NotRequired[AlertState]
     alert_type: NotRequired[AlertType]
     customer_id: NotRequired[str]
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     entity_id: NotRequired[str]
     entity_type: NotRequired[AlertEntityType]
     expand: NotRequired[str]
@@ -33,7 +34,7 @@ class AlertLogFilterTypedDict(TypedDict):
     offset: NotRequired[int]
     order: NotRequired[AlertLogFilterOrder]
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
 
 
@@ -44,7 +45,7 @@ class AlertLogFilter(BaseModel):
 
     customer_id: Optional[str] = None
 
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     entity_id: Optional[str] = None
 
@@ -63,7 +64,7 @@ class AlertLogFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

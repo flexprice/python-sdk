@@ -4,6 +4,7 @@ from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -17,7 +18,7 @@ PriceUnitFilterOrder = Literal[
 
 
 class PriceUnitFilterTypedDict(TypedDict):
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     expand: NotRequired[str]
     filters: NotRequired[List[FilterConditionTypedDict]]
     r"""filters allows complex filtering based on multiple fields"""
@@ -26,12 +27,12 @@ class PriceUnitFilterTypedDict(TypedDict):
     order: NotRequired[PriceUnitFilterOrder]
     price_unit_ids: NotRequired[List[str]]
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
 
 
 class PriceUnitFilter(BaseModel):
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     expand: Optional[str] = None
 
@@ -48,7 +49,7 @@ class PriceUnitFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

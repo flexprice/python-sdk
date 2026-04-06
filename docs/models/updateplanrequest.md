@@ -3,7 +3,10 @@
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `id`                                                             | *str*                                                            | :heavy_check_mark:                                               | Plan ID                                                          |
-| `body`                                                           | [models.DtoUpdatePlanRequest](../models/dtoupdateplanrequest.md) | :heavy_check_mark:                                               | Plan update                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `description`      | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `display_order`    | *Optional[int]*    | :heavy_minus_sign: | N/A                |
+| `lookup_key`       | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `metadata`         | Dict[str, *str*]   | :heavy_minus_sign: | N/A                |
+| `name`             | *Optional[str]*    | :heavy_minus_sign: | N/A                |

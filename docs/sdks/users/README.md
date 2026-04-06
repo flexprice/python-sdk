@@ -41,14 +41,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoCreateUserResponse](../../models/dtocreateuserresponse.md)**
+**[models.CreateUserResponse](../../models/createuserresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_user_info
@@ -81,14 +81,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoUserResponse](../../models/dtouserresponse.md)**
+**[models.UserResponse](../../models/userresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 401                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 401                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_user
@@ -115,30 +115,30 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `end_time`                                                          | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `expand`                                                            | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `filters`                                                           | List[[models.FilterCondition](../../models/filtercondition.md)]     | :heavy_minus_sign:                                                  | filters allows complex filtering based on multiple fields           |
-| `limit`                                                             | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `offset`                                                            | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `order`                                                             | [Optional[models.UserFilterOrder]](../../models/userfilterorder.md) | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `roles`                                                             | List[*str*]                                                         | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `sort`                                                              | List[[models.SortCondition](../../models/sortcondition.md)]         | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `start_time`                                                        | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `status`                                                            | [Optional[models.Status]](../../models/status.md)                   | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `type`                                                              | [Optional[models.UserType]](../../models/usertype.md)               | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `user_ids`                                                          | List[*str*]                                                         | :heavy_minus_sign:                                                  | Specific filters for users                                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `end_time`                                                           | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `expand`                                                             | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `filters`                                                            | List[[models.FilterCondition](../../models/filtercondition.md)]      | :heavy_minus_sign:                                                   | filters allows complex filtering based on multiple fields            |
+| `limit`                                                              | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `offset`                                                             | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `order`                                                              | [Optional[models.UserFilterOrder]](../../models/userfilterorder.md)  | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `roles`                                                              | List[*str*]                                                          | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `sort`                                                               | List[[models.SortCondition](../../models/sortcondition.md)]          | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `start_time`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `status`                                                             | [Optional[models.Status]](../../models/status.md)                    | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `type`                                                               | [Optional[models.UserType]](../../models/usertype.md)                | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `user_ids`                                                           | List[*str*]                                                          | :heavy_minus_sign:                                                   | Specific filters for users                                           |
+| `retries`                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)     | :heavy_minus_sign:                                                   | Configuration to override the default retry behavior of the client.  |
 
 ### Response
 
-**[models.DtoListUsersResponse](../../models/dtolistusersresponse.md)**
+**[models.ListUsersResponse](../../models/listusersresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

@@ -38,14 +38,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoTenantBillingUsage](../../models/dtotenantbillingusage.md)**
+**[models.TenantBillingUsage](../../models/tenantbillingusage.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_tenant
@@ -72,23 +72,23 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `billing_details`                                                                   | [Optional[models.DtoTenantBillingDetails]](../../models/dtotenantbillingdetails.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |
-| `metadata`                                                                          | Dict[str, *str*]                                                                    | :heavy_minus_sign:                                                                  | N/A                                                                                 |
-| `name`                                                                              | *Optional[str]*                                                                     | :heavy_minus_sign:                                                                  | N/A                                                                                 |
-| `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `billing_details`                                                             | [Optional[models.TenantBillingDetails]](../../models/tenantbillingdetails.md) | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `metadata`                                                                    | Dict[str, *str*]                                                              | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `name`                                                                        | *Optional[str]*                                                               | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
 
 ### Response
 
-**[models.DtoTenantResponse](../../models/dtotenantresponse.md)**
+**[models.TenantResponse](../../models/tenantresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_tenant_by_id
@@ -122,12 +122,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoTenantResponse](../../models/dtotenantresponse.md)**
+**[models.TenantResponse](../../models/tenantresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 404                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 404                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

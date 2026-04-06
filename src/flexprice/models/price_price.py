@@ -15,6 +15,7 @@ from .priceentitytype import PriceEntityType
 from .pricetype import PriceType
 from .priceunittype import PriceUnitType
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Optional
@@ -33,7 +34,7 @@ class PricePriceTypedDict(TypedDict):
     r"""BillingPeriodCount is the count of the billing period ex 1, 3, 6, 12"""
     conversion_rate: NotRequired[str]
     r"""ConversionRate is the conversion rate of the price unit to the fiat currency"""
-    created_at: NotRequired[str]
+    created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     currency: NotRequired[str]
     r"""Currency 3 digit ISO currency code in lowercase ex usd, eur, gbp"""
@@ -47,7 +48,7 @@ class PricePriceTypedDict(TypedDict):
     r"""DisplayName is the name of the price"""
     display_price_unit_amount: NotRequired[str]
     r"""DisplayPriceUnitAmount is the formatted amount of the price unit"""
-    end_date: NotRequired[str]
+    end_date: NotRequired[datetime]
     r"""EndDate is the end date of the price"""
     entity_id: NotRequired[str]
     r"""EntityID holds the value of the \"entity_id\" field."""
@@ -77,7 +78,7 @@ class PricePriceTypedDict(TypedDict):
     price_unit_tiers: NotRequired[List[PricePriceTierTypedDict]]
     r"""PriceUnitTiers are the tiers for the price unit when BillingModel is TIERED"""
     price_unit_type: NotRequired[PriceUnitType]
-    start_date: NotRequired[str]
+    start_date: NotRequired[datetime]
     r"""StartDate is the start date of the price"""
     status: NotRequired[Status]
     tenant_id: NotRequired[str]
@@ -89,7 +90,7 @@ class PricePriceTypedDict(TypedDict):
     Note: This is only applicable for recurring prices (BILLING_CADENCE_RECURRING)
     """
     type: NotRequired[PriceType]
-    updated_at: NotRequired[str]
+    updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
 
 
@@ -111,7 +112,7 @@ class PricePrice(BaseModel):
     conversion_rate: Optional[str] = None
     r"""ConversionRate is the conversion rate of the price unit to the fiat currency"""
 
-    created_at: Optional[str] = None
+    created_at: Optional[datetime] = None
 
     created_by: Optional[str] = None
 
@@ -132,7 +133,7 @@ class PricePrice(BaseModel):
     display_price_unit_amount: Optional[str] = None
     r"""DisplayPriceUnitAmount is the formatted amount of the price unit"""
 
-    end_date: Optional[str] = None
+    end_date: Optional[datetime] = None
     r"""EndDate is the end date of the price"""
 
     entity_id: Optional[str] = None
@@ -179,7 +180,7 @@ class PricePrice(BaseModel):
 
     price_unit_type: Optional[PriceUnitType] = None
 
-    start_date: Optional[str] = None
+    start_date: Optional[datetime] = None
     r"""StartDate is the start date of the price"""
 
     status: Optional[Status] = None
@@ -199,7 +200,7 @@ class PricePrice(BaseModel):
 
     type: Optional[PriceType] = None
 
-    updated_at: Optional[str] = None
+    updated_at: Optional[datetime] = None
 
     updated_by: Optional[str] = None
 

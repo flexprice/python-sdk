@@ -4,6 +4,7 @@ from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -17,7 +18,7 @@ WorkflowExecutionFilterOrder = Literal[
 
 
 class WorkflowExecutionFilterTypedDict(TypedDict):
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     entity: NotRequired[str]
     r"""e.g. plan, invoice, subscription"""
     entity_id: NotRequired[str]
@@ -29,7 +30,7 @@ class WorkflowExecutionFilterTypedDict(TypedDict):
     offset: NotRequired[int]
     order: NotRequired[WorkflowExecutionFilterOrder]
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
     task_queue: NotRequired[str]
     workflow_id: NotRequired[str]
@@ -40,7 +41,7 @@ class WorkflowExecutionFilterTypedDict(TypedDict):
 
 
 class WorkflowExecutionFilter(BaseModel):
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     entity: Optional[str] = None
     r"""e.g. plan, invoice, subscription"""
@@ -61,7 +62,7 @@ class WorkflowExecutionFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

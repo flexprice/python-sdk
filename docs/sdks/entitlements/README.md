@@ -44,14 +44,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoListEntitlementsResponse](../../models/dtolistentitlementsresponse.md)**
+**[models.ListEntitlementsResponse](../../models/listentitlementsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## create_entitlement
@@ -82,14 +82,14 @@ with Flexprice(
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `feature_id`                                                                                | *str*                                                                                       | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `feature_type`                                                                              | [models.FeatureType](../../models/featuretype.md)                                           | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `end_date`                                                                                  | *Optional[str]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `end_date`                                                                                  | [date](https://docs.python.org/3/library/datetime.html#date-objects)                        | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `entity_id`                                                                                 | *Optional[str]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `entity_type`                                                                               | [Optional[models.EntitlementEntityType]](../../models/entitlemententitytype.md)             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `is_enabled`                                                                                | *Optional[bool]*                                                                            | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `is_soft_limit`                                                                             | *Optional[bool]*                                                                            | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `parent_entitlement_id`                                                                     | *Optional[str]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `plan_id`                                                                                   | *Optional[str]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
-| `start_date`                                                                                | *Optional[str]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `start_date`                                                                                | [date](https://docs.python.org/3/library/datetime.html#date-objects)                        | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `static_value`                                                                              | *Optional[str]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `usage_limit`                                                                               | *Optional[int]*                                                                             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
 | `usage_reset_period`                                                                        | [Optional[models.EntitlementUsageResetPeriod]](../../models/entitlementusageresetperiod.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |
@@ -97,14 +97,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoEntitlementResponse](../../models/dtoentitlementresponse.md)**
+**[models.EntitlementResponse](../../models/entitlementresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## create_entitlements_bulk
@@ -136,21 +136,21 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `items`                                                                                 | List[[models.DtoCreateEntitlementRequest](../../models/dtocreateentitlementrequest.md)] | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `retries`                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                        | :heavy_minus_sign:                                                                      | Configuration to override the default retry behavior of the client.                     |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `items`                                                                           | List[[models.CreateEntitlementRequest](../../models/createentitlementrequest.md)] | :heavy_check_mark:                                                                | N/A                                                                               |
+| `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
 
 ### Response
 
-**[models.DtoCreateBulkEntitlementResponse](../../models/dtocreatebulkentitlementresponse.md)**
+**[models.CreateBulkEntitlementResponse](../../models/createbulkentitlementresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_entitlement
@@ -179,7 +179,7 @@ with Flexprice(
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `end_time`                                                                        | *Optional[str]*                                                                   | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `end_time`                                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects)              | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `entity_ids`                                                                      | List[*str*]                                                                       | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `entity_type`                                                                     | [Optional[models.EntitlementEntityType]](../../models/entitlemententitytype.md)   | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `expand`                                                                          | *Optional[str]*                                                                   | :heavy_minus_sign:                                                                | N/A                                                                               |
@@ -192,20 +192,20 @@ with Flexprice(
 | `order`                                                                           | [Optional[models.EntitlementFilterOrder]](../../models/entitlementfilterorder.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `plan_ids`                                                                        | List[*str*]                                                                       | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `sort`                                                                            | List[[models.SortCondition](../../models/sortcondition.md)]                       | :heavy_minus_sign:                                                                | N/A                                                                               |
-| `start_time`                                                                      | *Optional[str]*                                                                   | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `start_time`                                                                      | [date](https://docs.python.org/3/library/datetime.html#date-objects)              | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `status`                                                                          | [Optional[models.Status]](../../models/status.md)                                 | :heavy_minus_sign:                                                                | N/A                                                                               |
 | `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
 
 ### Response
 
-**[models.DtoListEntitlementsResponse](../../models/dtolistentitlementsresponse.md)**
+**[models.ListEntitlementsResponse](../../models/listentitlementsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_entitlement
@@ -239,14 +239,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoEntitlementResponse](../../models/dtoentitlementresponse.md)**
+**[models.EntitlementResponse](../../models/entitlementresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_entitlement
@@ -285,14 +285,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoEntitlementResponse](../../models/dtoentitlementresponse.md)**
+**[models.EntitlementResponse](../../models/entitlementresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## delete_entitlement
@@ -326,14 +326,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_plan_entitlements
@@ -367,12 +367,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoListEntitlementsResponse](../../models/dtolistentitlementsresponse.md)**
+**[models.ListEntitlementsResponse](../../models/listentitlementsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

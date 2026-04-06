@@ -7,6 +7,7 @@ from .status import Status
 from .transactionreason import TransactionReason
 from .transactionstatus import TransactionStatus
 from .transactiontype import TransactionType
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -22,7 +23,7 @@ WalletTransactionFilterOrder = Literal[
 class WalletTransactionFilterTypedDict(TypedDict):
     created_by: NotRequired[str]
     credits_available_gt: NotRequired[float]
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     expand: NotRequired[str]
     expiry_date_after: NotRequired[str]
     expiry_date_before: NotRequired[str]
@@ -36,7 +37,7 @@ class WalletTransactionFilterTypedDict(TypedDict):
     reference_id: NotRequired[str]
     reference_type: NotRequired[str]
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
     transaction_reason: NotRequired[TransactionReason]
     transaction_status: NotRequired[TransactionStatus]
@@ -48,7 +49,7 @@ class WalletTransactionFilter(BaseModel):
 
     credits_available_gt: Optional[float] = None
 
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     expand: Optional[str] = None
 
@@ -75,7 +76,7 @@ class WalletTransactionFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

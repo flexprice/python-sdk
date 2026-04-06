@@ -6,14 +6,14 @@ from typing import Any, TYPE_CHECKING
 from flexprice.utils.dynamic_imports import lazy_getattr, lazy_dir
 
 if TYPE_CHECKING:
-    from .errors_errorresponse import ErrorsErrorResponse, ErrorsErrorResponseData
+    from .errorresponse import ErrorResponse, ErrorResponseData
     from .flexpricedefaulterror import FlexpriceDefaultError
     from .no_response_error import NoResponseError
     from .responsevalidationerror import ResponseValidationError
 
 __all__ = [
-    "ErrorsErrorResponse",
-    "ErrorsErrorResponseData",
+    "ErrorResponse",
+    "ErrorResponseData",
     "FlexpriceDefaultError",
     "FlexpriceError",
     "NoResponseError",
@@ -21,8 +21,8 @@ __all__ = [
 ]
 
 _dynamic_imports: dict[str, str] = {
-    "ErrorsErrorResponse": ".errors_errorresponse",
-    "ErrorsErrorResponseData": ".errors_errorresponse",
+    "ErrorResponse": ".errorresponse",
+    "ErrorResponseData": ".errorresponse",
     "FlexpriceDefaultError": ".flexpricedefaulterror",
     "NoResponseError": ".no_response_error",
     "ResponseValidationError": ".responsevalidationerror",

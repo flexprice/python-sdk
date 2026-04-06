@@ -28,7 +28,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCouponResponse:
+    ) -> models.Coupon:
         r"""Create coupon
 
         Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
@@ -62,7 +62,7 @@ class Coupons(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateCouponRequest(
+        request = models.CreateCouponRequest(
             amount_off=amount_off,
             cadence=cadence,
             currency=currency,
@@ -91,7 +91,7 @@ class Coupons(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateCouponRequest
+                request, False, False, "json", models.CreateCouponRequest
             ),
             allow_empty_value=None,
             allowed_fields=["api_key_auth", "api_key_auth"],
@@ -121,19 +121,19 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoCouponResponse, http_res)
+            return unmarshal_json_response(models.Coupon, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -168,7 +168,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCouponResponse:
+    ) -> models.Coupon:
         r"""Create coupon
 
         Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
@@ -202,7 +202,7 @@ class Coupons(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateCouponRequest(
+        request = models.CreateCouponRequest(
             amount_off=amount_off,
             cadence=cadence,
             currency=currency,
@@ -231,7 +231,7 @@ class Coupons(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateCouponRequest
+                request, False, False, "json", models.CreateCouponRequest
             ),
             allow_empty_value=None,
             allowed_fields=["api_key_auth", "api_key_auth"],
@@ -261,19 +261,19 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoCouponResponse, http_res)
+            return unmarshal_json_response(models.Coupon, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -308,7 +308,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoListCouponsResponse:
+    ) -> models.ListCouponsResponse:
         r"""Query coupons
 
         Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
@@ -392,17 +392,17 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoListCouponsResponse, http_res)
+            return unmarshal_json_response(models.ListCouponsResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -437,7 +437,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoListCouponsResponse:
+    ) -> models.ListCouponsResponse:
         r"""Query coupons
 
         Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
@@ -521,17 +521,17 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoListCouponsResponse, http_res)
+            return unmarshal_json_response(models.ListCouponsResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -555,7 +555,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCouponResponse:
+    ) -> models.Coupon:
         r"""Get coupon
 
         Use when you need to load a single coupon (e.g. for display or to validate a code).
@@ -620,17 +620,17 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCouponResponse, http_res)
+            return unmarshal_json_response(models.Coupon, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -654,7 +654,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCouponResponse:
+    ) -> models.Coupon:
         r"""Get coupon
 
         Use when you need to load a single coupon (e.g. for display or to validate a code).
@@ -719,17 +719,17 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCouponResponse, http_res)
+            return unmarshal_json_response(models.Coupon, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -755,7 +755,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCouponResponse:
+    ) -> models.Coupon:
         r"""Update coupon
 
         Use when changing coupon config (e.g. value, validity, or usage limits).
@@ -780,9 +780,9 @@ class Coupons(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.UpdateCouponRequest(
+        request = models.UpdateCouponRequestRequest(
             id=id,
-            body=models.DtoUpdateCouponRequest(
+            body=models.UpdateCouponRequest(
                 metadata=metadata,
                 name=name,
             ),
@@ -802,7 +802,7 @@ class Coupons(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.DtoUpdateCouponRequest
+                request.body, False, False, "json", models.UpdateCouponRequest
             ),
             allow_empty_value=None,
             allowed_fields=["api_key_auth", "api_key_auth"],
@@ -832,19 +832,19 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCouponResponse, http_res)
+            return unmarshal_json_response(models.Coupon, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -870,7 +870,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCouponResponse:
+    ) -> models.Coupon:
         r"""Update coupon
 
         Use when changing coupon config (e.g. value, validity, or usage limits).
@@ -895,9 +895,9 @@ class Coupons(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.UpdateCouponRequest(
+        request = models.UpdateCouponRequestRequest(
             id=id,
-            body=models.DtoUpdateCouponRequest(
+            body=models.UpdateCouponRequest(
                 metadata=metadata,
                 name=name,
             ),
@@ -917,7 +917,7 @@ class Coupons(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.DtoUpdateCouponRequest
+                request.body, False, False, "json", models.UpdateCouponRequest
             ),
             allow_empty_value=None,
             allowed_fields=["api_key_auth", "api_key_auth"],
@@ -947,19 +947,19 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCouponResponse, http_res)
+            return unmarshal_json_response(models.Coupon, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1056,14 +1056,14 @@ class Coupons(BaseSDK):
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -1160,14 +1160,14 @@ class Coupons(BaseSDK):
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(

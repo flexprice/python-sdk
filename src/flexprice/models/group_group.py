@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .groupentitytype import GroupEntityType
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Optional
@@ -10,7 +11,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class GroupGroupTypedDict(TypedDict):
-    created_at: NotRequired[str]
+    created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     entity_type: NotRequired[GroupEntityType]
     environment_id: NotRequired[str]
@@ -20,12 +21,12 @@ class GroupGroupTypedDict(TypedDict):
     name: NotRequired[str]
     status: NotRequired[Status]
     tenant_id: NotRequired[str]
-    updated_at: NotRequired[str]
+    updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
 
 
 class GroupGroup(BaseModel):
-    created_at: Optional[str] = None
+    created_at: Optional[datetime] = None
 
     created_by: Optional[str] = None
 
@@ -45,7 +46,7 @@ class GroupGroup(BaseModel):
 
     tenant_id: Optional[str] = None
 
-    updated_at: Optional[str] = None
+    updated_at: Optional[datetime] = None
 
     updated_by: Optional[str] = None
 

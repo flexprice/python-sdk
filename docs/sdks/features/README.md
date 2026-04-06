@@ -38,32 +38,32 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `name`                                                                          | *str*                                                                           | :heavy_check_mark:                                                              | N/A                                                                             |
-| `type`                                                                          | [models.FeatureType](../../models/featuretype.md)                               | :heavy_check_mark:                                                              | N/A                                                                             |
-| `alert_settings`                                                                | [Optional[models.AlertSettings]](../../models/alertsettings.md)                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `description`                                                                   | *Optional[str]*                                                                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `group_id`                                                                      | *Optional[str]*                                                                 | :heavy_minus_sign:                                                              | GroupID is the id of the group to add the feature to                            |
-| `lookup_key`                                                                    | *Optional[str]*                                                                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `metadata`                                                                      | Dict[str, *str*]                                                                | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `meter`                                                                         | [Optional[models.DtoCreateMeterRequest]](../../models/dtocreatemeterrequest.md) | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `meter_id`                                                                      | *Optional[str]*                                                                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `reporting_unit`                                                                | [Optional[models.ReportingUnit]](../../models/reportingunit.md)                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `unit_plural`                                                                   | *Optional[str]*                                                                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `unit_singular`                                                                 | *Optional[str]*                                                                 | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `name`                                                                    | *str*                                                                     | :heavy_check_mark:                                                        | N/A                                                                       |
+| `type`                                                                    | [models.FeatureType](../../models/featuretype.md)                         | :heavy_check_mark:                                                        | N/A                                                                       |
+| `alert_settings`                                                          | [Optional[models.AlertSettings]](../../models/alertsettings.md)           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `description`                                                             | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `group_id`                                                                | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | GroupID is the id of the group to add the feature to                      |
+| `lookup_key`                                                              | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `metadata`                                                                | Dict[str, *str*]                                                          | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `meter`                                                                   | [Optional[models.CreateMeterRequest]](../../models/createmeterrequest.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `meter_id`                                                                | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `reporting_unit`                                                          | [Optional[models.ReportingUnit]](../../models/reportingunit.md)           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `unit_plural`                                                             | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `unit_singular`                                                           | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
 
 ### Response
 
-**[models.DtoFeatureResponse](../../models/dtofeatureresponse.md)**
+**[models.Feature1](../../models/feature1.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_feature
@@ -92,7 +92,7 @@ with Flexprice(
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `end_time`                                                                | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `end_time`                                                                | [date](https://docs.python.org/3/library/datetime.html#date-objects)      | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `expand`                                                                  | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `feature_ids`                                                             | List[*str*]                                                               | :heavy_minus_sign:                                                        | Feature specific filters                                                  |
 | `filters`                                                                 | List[[models.FilterCondition](../../models/filtercondition.md)]           | :heavy_minus_sign:                                                        | filters allows complex filtering based on multiple fields                 |
@@ -104,20 +104,20 @@ with Flexprice(
 | `offset`                                                                  | *Optional[int]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `order`                                                                   | [Optional[models.FeatureFilterOrder]](../../models/featurefilterorder.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `sort`                                                                    | List[[models.SortCondition](../../models/sortcondition.md)]               | :heavy_minus_sign:                                                        | N/A                                                                       |
-| `start_time`                                                              | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `start_time`                                                              | [date](https://docs.python.org/3/library/datetime.html#date-objects)      | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `status`                                                                  | [Optional[models.Status]](../../models/status.md)                         | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
 
 ### Response
 
-**[models.DtoListFeaturesResponse](../../models/dtolistfeaturesresponse.md)**
+**[models.ListFeaturesResponse](../../models/listfeaturesresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_feature
@@ -160,14 +160,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoFeatureResponse](../../models/dtofeatureresponse.md)**
+**[models.Feature1](../../models/feature1.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## delete_feature
@@ -201,12 +201,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoSuccessResponse](../../models/dtosuccessresponse.md)**
+**[models.SuccessResponse](../../models/successresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

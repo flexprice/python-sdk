@@ -18,8 +18,8 @@ class CreditNotes(BaseSDK):
         idempotency_key: Optional[str] = None,
         line_items: Optional[
             Union[
-                List[models.DtoCreateCreditNoteLineItemRequest],
-                List[models.DtoCreateCreditNoteLineItemRequestTypedDict],
+                List[models.CreateCreditNoteLineItemRequest],
+                List[models.CreateCreditNoteLineItemRequestTypedDict],
             ]
         ] = None,
         memo: Optional[str] = None,
@@ -29,7 +29,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Create credit note
 
         Use when issuing a refund or adjustment (e.g. customer dispute or proration). Links to an invoice; create as draft then finalize.
@@ -59,12 +59,12 @@ class CreditNotes(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateCreditNoteRequest(
+        request = models.CreateCreditNoteRequest(
             credit_note_number=credit_note_number,
             idempotency_key=idempotency_key,
             invoice_id=invoice_id,
             line_items=utils.get_pydantic_model(
-                line_items, Optional[List[models.DtoCreateCreditNoteLineItemRequest]]
+                line_items, Optional[List[models.CreateCreditNoteLineItemRequest]]
             ),
             memo=memo,
             metadata=metadata,
@@ -86,7 +86,7 @@ class CreditNotes(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateCreditNoteRequest
+                request, False, False, "json", models.CreateCreditNoteRequest
             ),
             allow_empty_value=None,
             allowed_fields=["api_key_auth", "api_key_auth"],
@@ -116,19 +116,19 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -153,8 +153,8 @@ class CreditNotes(BaseSDK):
         idempotency_key: Optional[str] = None,
         line_items: Optional[
             Union[
-                List[models.DtoCreateCreditNoteLineItemRequest],
-                List[models.DtoCreateCreditNoteLineItemRequestTypedDict],
+                List[models.CreateCreditNoteLineItemRequest],
+                List[models.CreateCreditNoteLineItemRequestTypedDict],
             ]
         ] = None,
         memo: Optional[str] = None,
@@ -164,7 +164,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Create credit note
 
         Use when issuing a refund or adjustment (e.g. customer dispute or proration). Links to an invoice; create as draft then finalize.
@@ -194,12 +194,12 @@ class CreditNotes(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoCreateCreditNoteRequest(
+        request = models.CreateCreditNoteRequest(
             credit_note_number=credit_note_number,
             idempotency_key=idempotency_key,
             invoice_id=invoice_id,
             line_items=utils.get_pydantic_model(
-                line_items, Optional[List[models.DtoCreateCreditNoteLineItemRequest]]
+                line_items, Optional[List[models.CreateCreditNoteLineItemRequest]]
             ),
             memo=memo,
             metadata=metadata,
@@ -221,7 +221,7 @@ class CreditNotes(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoCreateCreditNoteRequest
+                request, False, False, "json", models.CreateCreditNoteRequest
             ),
             allow_empty_value=None,
             allowed_fields=["api_key_auth", "api_key_auth"],
@@ -251,19 +251,19 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -287,7 +287,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Get credit note
 
         Use when you need to load a single credit note (e.g. for display or reconciliation).
@@ -352,17 +352,17 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -386,7 +386,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Get credit note
 
         Use when you need to load a single credit note (e.g. for display or reconciliation).
@@ -451,17 +451,17 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -485,7 +485,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Finalize credit note
 
         Use when locking a draft credit note and applying the credit (e.g. after approval). Once finalized, applied per billing provider.
@@ -553,19 +553,19 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -589,7 +589,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Finalize credit note
 
         Use when locking a draft credit note and applying the credit (e.g. after approval). Once finalized, applied per billing provider.
@@ -657,19 +657,19 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -693,7 +693,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Void credit note
 
         Use when cancelling a draft credit note (e.g. created by mistake). Only draft credit notes can be voided.
@@ -761,19 +761,19 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -797,7 +797,7 @@ class CreditNotes(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoCreditNoteResponse:
+    ) -> models.CreditNoteResponse:
         r"""Void credit note
 
         Use when cancelling a draft credit note (e.g. created by mistake). Only draft credit notes can be voided.
@@ -865,19 +865,19 @@ class CreditNotes(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoCreditNoteResponse, http_res)
+            return unmarshal_json_response(models.CreditNoteResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(

@@ -5,6 +5,7 @@ from .meter_aggregation import MeterAggregation, MeterAggregationTypedDict
 from .meter_filter import MeterFilter, MeterFilterTypedDict
 from .resetusage import ResetUsage
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Optional
@@ -13,7 +14,7 @@ from typing_extensions import NotRequired, TypedDict
 
 class MeterMeterTypedDict(TypedDict):
     aggregation: NotRequired[MeterAggregationTypedDict]
-    created_at: NotRequired[str]
+    created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     environment_id: NotRequired[str]
     r"""EnvironmentID is the environment identifier for the meter"""
@@ -33,14 +34,14 @@ class MeterMeterTypedDict(TypedDict):
     reset_usage: NotRequired[ResetUsage]
     status: NotRequired[Status]
     tenant_id: NotRequired[str]
-    updated_at: NotRequired[str]
+    updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
 
 
 class MeterMeter(BaseModel):
     aggregation: Optional[MeterAggregation] = None
 
-    created_at: Optional[str] = None
+    created_at: Optional[datetime] = None
 
     created_by: Optional[str] = None
 
@@ -70,7 +71,7 @@ class MeterMeter(BaseModel):
 
     tenant_id: Optional[str] = None
 
-    updated_at: Optional[str] = None
+    updated_at: Optional[datetime] = None
 
     updated_by: Optional[str] = None
 

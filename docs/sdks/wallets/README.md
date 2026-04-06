@@ -52,14 +52,14 @@ with Flexprice(
 
 ### Response
 
-**[List[models.DtoWalletResponse]](../../models/.md)**
+**[List[models.Wallet]](../../models/.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_wallets_by_customer_id
@@ -93,14 +93,14 @@ with Flexprice(
 
 ### Response
 
-**[List[models.DtoWalletResponse]](../../models/.md)**
+**[List[models.Wallet]](../../models/.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## create_wallet
@@ -147,14 +147,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoWalletResponse](../../models/dtowalletresponse.md)**
+**[models.Wallet](../../models/wallet.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_wallet
@@ -201,8 +201,8 @@ with Flexprice(
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## query_wallet_transaction
@@ -233,7 +233,7 @@ with Flexprice(
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `created_by`                                                                                  | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `credits_available_gt`                                                                        | *Optional[float]*                                                                             | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `end_time`                                                                                    | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `end_time`                                                                                    | [date](https://docs.python.org/3/library/datetime.html#date-objects)                          | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `expand`                                                                                      | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `expiry_date_after`                                                                           | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `expiry_date_before`                                                                          | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
@@ -246,7 +246,7 @@ with Flexprice(
 | `reference_id`                                                                                | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `reference_type`                                                                              | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `sort`                                                                                        | List[[models.SortCondition](../../models/sortcondition.md)]                                   | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `start_time`                                                                                  | *Optional[str]*                                                                               | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `start_time`                                                                                  | [date](https://docs.python.org/3/library/datetime.html#date-objects)                          | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `status`                                                                                      | [Optional[models.Status]](../../models/status.md)                                             | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `transaction_reason`                                                                          | [Optional[models.TransactionReason]](../../models/transactionreason.md)                       | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `transaction_status`                                                                          | [Optional[models.TransactionStatus]](../../models/transactionstatus.md)                       | :heavy_minus_sign:                                                                            | N/A                                                                                           |
@@ -255,14 +255,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoListWalletTransactionsResponse](../../models/dtolistwallettransactionsresponse.md)**
+**[models.ListWalletTransactionsResponse](../../models/listwallettransactionsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400                                 | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_wallet
@@ -296,14 +296,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoWalletResponse](../../models/dtowalletresponse.md)**
+**[models.Wallet](../../models/wallet.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## update_wallet
@@ -343,14 +343,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoWalletResponse](../../models/dtowalletresponse.md)**
+**[models.Wallet](../../models/wallet.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_wallet_balance
@@ -385,14 +385,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoWalletBalanceResponse](../../models/dtowalletbalanceresponse.md)**
+**[models.WalletBalanceResponse](../../models/walletbalanceresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## terminate_wallet
@@ -426,14 +426,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoWalletResponse](../../models/dtowalletresponse.md)**
+**[models.Wallet](../../models/wallet.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## top_up_wallet
@@ -475,14 +475,14 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoTopUpWalletResponse](../../models/dtotopupwalletresponse.md)**
+**[models.TopUpWalletResponse](../../models/topupwalletresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_wallet_transactions
@@ -534,12 +534,12 @@ with Flexprice(
 
 ### Response
 
-**[models.DtoListWalletTransactionsResponse](../../models/dtolistwallettransactionsresponse.md)**
+**[models.ListWalletTransactionsResponse](../../models/listwallettransactionsresponse.md)**
 
 ### Errors
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.errors.ErrorsErrorResponse   | 400, 404                            | application/json                    |
-| models.errors.ErrorsErrorResponse   | 500                                 | application/json                    |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

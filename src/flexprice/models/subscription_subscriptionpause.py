@@ -5,6 +5,7 @@ from .pausemode import PauseMode
 from .pausestatus import PauseStatus
 from .resumemode import ResumeMode
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Optional
@@ -12,38 +13,38 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class SubscriptionSubscriptionPauseTypedDict(TypedDict):
-    created_at: NotRequired[str]
+    created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     environment_id: NotRequired[str]
     r"""EnvironmentID is the environment identifier for the pause"""
     id: NotRequired[str]
     r"""ID is the unique identifier for the subscription pause"""
     metadata: NotRequired[Dict[str, str]]
-    original_period_end: NotRequired[str]
+    original_period_end: NotRequired[datetime]
     r"""OriginalPeriodEnd is the end of the billing period when the pause was created"""
-    original_period_start: NotRequired[str]
+    original_period_start: NotRequired[datetime]
     r"""OriginalPeriodStart is the start of the billing period when the pause was created"""
-    pause_end: NotRequired[str]
+    pause_end: NotRequired[datetime]
     r"""PauseEnd is when the pause will end (null for indefinite)"""
     pause_mode: NotRequired[PauseMode]
-    pause_start: NotRequired[str]
+    pause_start: NotRequired[datetime]
     r"""PauseStart is when the pause actually started"""
     pause_status: NotRequired[PauseStatus]
     reason: NotRequired[str]
     r"""Reason is the reason for pausing"""
     resume_mode: NotRequired[ResumeMode]
-    resumed_at: NotRequired[str]
+    resumed_at: NotRequired[datetime]
     r"""ResumedAt is when the pause was actually ended (if manually resumed)"""
     status: NotRequired[Status]
     subscription_id: NotRequired[str]
     r"""SubscriptionID is the identifier for the subscription"""
     tenant_id: NotRequired[str]
-    updated_at: NotRequired[str]
+    updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
 
 
 class SubscriptionSubscriptionPause(BaseModel):
-    created_at: Optional[str] = None
+    created_at: Optional[datetime] = None
 
     created_by: Optional[str] = None
 
@@ -55,18 +56,18 @@ class SubscriptionSubscriptionPause(BaseModel):
 
     metadata: Optional[Dict[str, str]] = None
 
-    original_period_end: Optional[str] = None
+    original_period_end: Optional[datetime] = None
     r"""OriginalPeriodEnd is the end of the billing period when the pause was created"""
 
-    original_period_start: Optional[str] = None
+    original_period_start: Optional[datetime] = None
     r"""OriginalPeriodStart is the start of the billing period when the pause was created"""
 
-    pause_end: Optional[str] = None
+    pause_end: Optional[datetime] = None
     r"""PauseEnd is when the pause will end (null for indefinite)"""
 
     pause_mode: Optional[PauseMode] = None
 
-    pause_start: Optional[str] = None
+    pause_start: Optional[datetime] = None
     r"""PauseStart is when the pause actually started"""
 
     pause_status: Optional[PauseStatus] = None
@@ -76,7 +77,7 @@ class SubscriptionSubscriptionPause(BaseModel):
 
     resume_mode: Optional[ResumeMode] = None
 
-    resumed_at: Optional[str] = None
+    resumed_at: Optional[datetime] = None
     r"""ResumedAt is when the pause was actually ended (if manually resumed)"""
 
     status: Optional[Status] = None
@@ -86,7 +87,7 @@ class SubscriptionSubscriptionPause(BaseModel):
 
     tenant_id: Optional[str] = None
 
-    updated_at: Optional[str] = None
+    updated_at: Optional[datetime] = None
 
     updated_by: Optional[str] = None
 

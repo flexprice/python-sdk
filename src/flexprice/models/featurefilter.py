@@ -4,6 +4,7 @@ from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Literal, Optional
@@ -17,7 +18,7 @@ FeatureFilterOrder = Literal[
 
 
 class FeatureFilterTypedDict(TypedDict):
-    end_time: NotRequired[str]
+    end_time: NotRequired[datetime]
     expand: NotRequired[str]
     feature_ids: NotRequired[List[str]]
     r"""Feature specific filters"""
@@ -31,12 +32,12 @@ class FeatureFilterTypedDict(TypedDict):
     offset: NotRequired[int]
     order: NotRequired[FeatureFilterOrder]
     sort: NotRequired[List[SortConditionTypedDict]]
-    start_time: NotRequired[str]
+    start_time: NotRequired[datetime]
     status: NotRequired[Status]
 
 
 class FeatureFilter(BaseModel):
-    end_time: Optional[str] = None
+    end_time: Optional[datetime] = None
 
     expand: Optional[str] = None
 
@@ -62,7 +63,7 @@ class FeatureFilter(BaseModel):
 
     sort: Optional[List[SortCondition]] = None
 
-    start_time: Optional[str] = None
+    start_time: Optional[datetime] = None
 
     status: Optional[Status] = None
 

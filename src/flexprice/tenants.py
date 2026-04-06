@@ -16,7 +16,7 @@ class Tenants(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTenantBillingUsage:
+    ) -> models.TenantBillingUsage:
         r"""Get billing usage for the current tenant
 
         Use when showing the current tenant's billing usage (e.g. admin billing page or usage caps). Returns subscription and usage for the tenant.
@@ -75,17 +75,17 @@ class Tenants(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTenantBillingUsage, http_res)
+            return unmarshal_json_response(models.TenantBillingUsage, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -108,7 +108,7 @@ class Tenants(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTenantBillingUsage:
+    ) -> models.TenantBillingUsage:
         r"""Get billing usage for the current tenant
 
         Use when showing the current tenant's billing usage (e.g. admin billing page or usage caps). Returns subscription and usage for the tenant.
@@ -167,17 +167,17 @@ class Tenants(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTenantBillingUsage, http_res)
+            return unmarshal_json_response(models.TenantBillingUsage, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -197,9 +197,7 @@ class Tenants(BaseSDK):
         self,
         *,
         billing_details: Optional[
-            Union[
-                models.DtoTenantBillingDetails, models.DtoTenantBillingDetailsTypedDict
-            ]
+            Union[models.TenantBillingDetails, models.TenantBillingDetailsTypedDict]
         ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
@@ -207,7 +205,7 @@ class Tenants(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTenantResponse:
+    ) -> models.TenantResponse:
         r"""Update a tenant
 
         Use when changing tenant details (e.g. name or billing info). Request body contains the fields to update.
@@ -230,9 +228,9 @@ class Tenants(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoUpdateTenantRequest(
+        request = models.UpdateTenantRequest(
             billing_details=utils.get_pydantic_model(
-                billing_details, Optional[models.DtoTenantBillingDetails]
+                billing_details, Optional[models.TenantBillingDetails]
             ),
             metadata=metadata,
             name=name,
@@ -252,7 +250,7 @@ class Tenants(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoUpdateTenantRequest
+                request, False, False, "json", models.UpdateTenantRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -281,17 +279,17 @@ class Tenants(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTenantResponse, http_res)
+            return unmarshal_json_response(models.TenantResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -311,9 +309,7 @@ class Tenants(BaseSDK):
         self,
         *,
         billing_details: Optional[
-            Union[
-                models.DtoTenantBillingDetails, models.DtoTenantBillingDetailsTypedDict
-            ]
+            Union[models.TenantBillingDetails, models.TenantBillingDetailsTypedDict]
         ] = None,
         metadata: Optional[Dict[str, str]] = None,
         name: Optional[str] = None,
@@ -321,7 +317,7 @@ class Tenants(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTenantResponse:
+    ) -> models.TenantResponse:
         r"""Update a tenant
 
         Use when changing tenant details (e.g. name or billing info). Request body contains the fields to update.
@@ -344,9 +340,9 @@ class Tenants(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.DtoUpdateTenantRequest(
+        request = models.UpdateTenantRequest(
             billing_details=utils.get_pydantic_model(
-                billing_details, Optional[models.DtoTenantBillingDetails]
+                billing_details, Optional[models.TenantBillingDetails]
             ),
             metadata=metadata,
             name=name,
@@ -366,7 +362,7 @@ class Tenants(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.DtoUpdateTenantRequest
+                request, False, False, "json", models.UpdateTenantRequest
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -395,17 +391,17 @@ class Tenants(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTenantResponse, http_res)
+            return unmarshal_json_response(models.TenantResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -429,7 +425,7 @@ class Tenants(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTenantResponse:
+    ) -> models.TenantResponse:
         r"""Get tenant by ID
 
         Get tenant by ID
@@ -494,17 +490,17 @@ class Tenants(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTenantResponse, http_res)
+            return unmarshal_json_response(models.TenantResponse, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.errors.FlexpriceDefaultError(
@@ -528,7 +524,7 @@ class Tenants(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.DtoTenantResponse:
+    ) -> models.TenantResponse:
         r"""Get tenant by ID
 
         Get tenant by ID
@@ -593,17 +589,17 @@ class Tenants(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.DtoTenantResponse, http_res)
+            return unmarshal_json_response(models.TenantResponse, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
             response_data = unmarshal_json_response(
-                models.errors.ErrorsErrorResponseData, http_res
+                models.errors.ErrorResponseData, http_res
             )
-            raise models.errors.ErrorsErrorResponse(response_data, http_res)
+            raise models.errors.ErrorResponse(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.errors.FlexpriceDefaultError(
