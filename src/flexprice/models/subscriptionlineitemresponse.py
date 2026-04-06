@@ -4,7 +4,7 @@ from __future__ import annotations
 from .billingperiod import BillingPeriod
 from .commitmenttype import CommitmentType
 from .invoicecadence import InvoiceCadence
-from .price import Price, PriceTypedDict
+from .priceresponse import PriceResponse, PriceResponseTypedDict
 from .pricetype import PriceType
 from .status import Status
 from .subscriptionlineitementitytype import SubscriptionLineItemEntityType
@@ -42,7 +42,7 @@ class SubscriptionLineItemResponseTypedDict(TypedDict):
     meter_display_name: NotRequired[str]
     meter_id: NotRequired[str]
     plan_display_name: NotRequired[str]
-    price: NotRequired[PriceTypedDict]
+    price: NotRequired[PriceResponseTypedDict]
     price_id: NotRequired[str]
     price_type: NotRequired[PriceType]
     price_unit: NotRequired[str]
@@ -109,7 +109,7 @@ class SubscriptionLineItemResponse(BaseModel):
 
     plan_display_name: Optional[str] = None
 
-    price: Optional[Price] = None
+    price: Optional[PriceResponse] = None
 
     price_id: Optional[str] = None
 

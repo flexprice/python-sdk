@@ -52,7 +52,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Coupon](../../models/coupon.md)**
+**[models.CouponResponse](../../models/couponresponse.md)**
 
 ### Errors
 
@@ -141,7 +141,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Coupon](../../models/coupon.md)**
+**[models.CouponResponse](../../models/couponresponse.md)**
 
 ### Errors
 
@@ -184,7 +184,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Coupon](../../models/coupon.md)**
+**[models.CouponResponse](../../models/couponresponse.md)**
 
 ### Errors
 

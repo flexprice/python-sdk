@@ -22,7 +22,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Create plan
 
         Use when defining a new pricing plan (e.g. Free, Pro, Enterprise). Attach prices and entitlements; customers subscribe to plans.
@@ -98,7 +98,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -136,7 +136,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Create plan
 
         Use when defining a new pricing plan (e.g. Free, Pro, Enterprise). Attach prices and entitlements; customers subscribe to plans.
@@ -212,7 +212,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -522,7 +522,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Get plan
 
         Use when you need to load a single plan (e.g. for display or to create a subscription).
@@ -587,7 +587,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -621,7 +621,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Get plan
 
         Use when you need to load a single plan (e.g. for display or to create a subscription).
@@ -686,7 +686,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -725,7 +725,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Update plan
 
         Use when changing plan details (e.g. name, interval, or metadata). Partial update supported.
@@ -805,7 +805,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -844,7 +844,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Update plan
 
         Use when changing plan details (e.g. name, interval, or metadata). Partial update supported.
@@ -924,7 +924,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1161,7 +1161,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Clone a plan
 
         Clone an existing plan, copying its active prices, published entitlements, and published credit grants
@@ -1241,7 +1241,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, ["400", "404", "409"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1280,7 +1280,7 @@ class Plans(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Plan1:
+    ) -> models.PlanResponse:
         r"""Clone a plan
 
         Clone an existing plan, copying its active prices, published entitlements, and published credit grants
@@ -1360,7 +1360,7 @@ class Plans(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Plan1, http_res)
+            return unmarshal_json_response(models.PlanResponse, http_res)
         if utils.match_response(http_res, ["400", "404", "409"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

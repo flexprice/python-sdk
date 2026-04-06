@@ -11,10 +11,10 @@ from typing_extensions import NotRequired, TypedDict
 
 if TYPE_CHECKING:
     from .entitlementresponse import EntitlementResponse, EntitlementResponseTypedDict
-    from .price import Price, PriceTypedDict
+    from .priceresponse import PriceResponse, PriceResponseTypedDict
 
 
-class Addon1TypedDict(TypedDict):
+class AddonResponseTypedDict(TypedDict):
     created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     description: NotRequired[str]
@@ -24,7 +24,7 @@ class Addon1TypedDict(TypedDict):
     lookup_key: NotRequired[str]
     metadata: NotRequired[Dict[str, Any]]
     name: NotRequired[str]
-    prices: NotRequired[List["PriceTypedDict"]]
+    prices: NotRequired[List["PriceResponseTypedDict"]]
     r"""Optional expanded fields"""
     status: NotRequired[Status]
     tenant_id: NotRequired[str]
@@ -33,7 +33,7 @@ class Addon1TypedDict(TypedDict):
     updated_by: NotRequired[str]
 
 
-class Addon1(BaseModel):
+class AddonResponse(BaseModel):
     created_at: Optional[datetime] = None
 
     created_by: Optional[str] = None
@@ -52,7 +52,7 @@ class Addon1(BaseModel):
 
     name: Optional[str] = None
 
-    prices: Optional[List["Price"]] = None
+    prices: Optional[List["PriceResponse"]] = None
     r"""Optional expanded fields"""
 
     status: Optional[Status] = None

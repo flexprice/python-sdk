@@ -35,7 +35,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Update customer
 
         Use when updating customer details (e.g. name, email, or metadata). Identify by id or external_customer_id.
@@ -132,7 +132,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -183,7 +183,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Update customer
 
         Use when updating customer details (e.g. name, email, or metadata). Identify by id or external_customer_id.
@@ -280,7 +280,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -333,7 +333,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Create customer
 
         Use when onboarding a new billing customer (e.g. sign-up or CRM sync). Ideal for linking via external_customer_id to your app's user id.
@@ -432,7 +432,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -485,7 +485,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Create customer
 
         Use when onboarding a new billing customer (e.g. sign-up or CRM sync). Ideal for linking via external_customer_id to your app's user id.
@@ -584,7 +584,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -618,7 +618,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Get customer by external ID
 
         Use when resolving a customer by your app's id (e.g. from your user table). Ideal for integrations that key by external id.
@@ -683,7 +683,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -717,7 +717,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Get customer by external ID
 
         Use when resolving a customer by your app's id (e.g. from your user table). Ideal for integrations that key by external id.
@@ -782,7 +782,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1330,7 +1330,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Get customer
 
         Use when you need to load a single customer (e.g. for a billing portal or to attach a subscription).
@@ -1395,7 +1395,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1429,7 +1429,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer1:
+    ) -> models.CustomerResponse:
         r"""Get customer
 
         Use when you need to load a single customer (e.g. for a billing portal or to attach a subscription).
@@ -1494,7 +1494,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer1, http_res)
+            return unmarshal_json_response(models.CustomerResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

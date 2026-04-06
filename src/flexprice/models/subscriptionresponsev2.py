@@ -9,10 +9,10 @@ from .couponassociationresponse import (
     CouponAssociationResponseTypedDict,
 )
 from .creditgrantresponse import CreditGrantResponse, CreditGrantResponseTypedDict
-from .customer_1 import Customer1, Customer1TypedDict
+from .customerresponse import CustomerResponse, CustomerResponseTypedDict
 from .pausestatus import PauseStatus
 from .paymentterms import PaymentTerms
-from .plan_1 import Plan1, Plan1TypedDict
+from .planresponse import PlanResponse, PlanResponseTypedDict
 from .prorationbehavior import ProrationBehavior
 from .status import Status
 from .subscription_subscriptionpause import (
@@ -78,7 +78,7 @@ class SubscriptionResponseV2TypedDict(TypedDict):
     r"""CurrentPeriodStart is the end of the current period that the subscription has been invoiced for.
     At the end of this period, a new invoice will be created.
     """
-    customer: NotRequired[Customer1TypedDict]
+    customer: NotRequired[CustomerResponseTypedDict]
     r"""Customer response object containing all customer information"""
     customer_id: NotRequired[str]
     r"""CustomerID is the identifier for the customer in our system"""
@@ -115,7 +115,7 @@ class SubscriptionResponseV2TypedDict(TypedDict):
     payment_terms: NotRequired[PaymentTerms]
     phases: NotRequired[List[SubscriptionPhaseResponseTypedDict]]
     r"""Phases are included when \"phases\" is in expand parameter"""
-    plan: NotRequired[Plan1TypedDict]
+    plan: NotRequired[PlanResponseTypedDict]
     plan_id: NotRequired[str]
     r"""PlanID is the identifier for the plan in our system"""
     proration_behavior: NotRequired[ProrationBehavior]
@@ -196,7 +196,7 @@ class SubscriptionResponseV2(BaseModel):
     At the end of this period, a new invoice will be created.
     """
 
-    customer: Optional[Customer1] = None
+    customer: Optional[CustomerResponse] = None
     r"""Customer response object containing all customer information"""
 
     customer_id: Optional[str] = None
@@ -252,7 +252,7 @@ class SubscriptionResponseV2(BaseModel):
     phases: Optional[List[SubscriptionPhaseResponse]] = None
     r"""Phases are included when \"phases\" is in expand parameter"""
 
-    plan: Optional[Plan1] = None
+    plan: Optional[PlanResponse] = None
 
     plan_id: Optional[str] = None
     r"""PlanID is the identifier for the plan in our system"""

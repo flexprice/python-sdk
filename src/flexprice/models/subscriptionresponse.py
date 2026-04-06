@@ -9,10 +9,10 @@ from .couponassociationresponse import (
     CouponAssociationResponseTypedDict,
 )
 from .creditgrantresponse import CreditGrantResponse, CreditGrantResponseTypedDict
-from .customer_1 import Customer1, Customer1TypedDict
+from .customerresponse import CustomerResponse, CustomerResponseTypedDict
 from .pausestatus import PauseStatus
 from .paymentterms import PaymentTerms
-from .plan_1 import Plan1, Plan1TypedDict
+from .planresponse import PlanResponse, PlanResponseTypedDict
 from .prorationbehavior import ProrationBehavior
 from .status import Status
 from .subscription_subscriptionlineitem import (
@@ -36,10 +36,10 @@ from typing import Dict, List, Optional, TYPE_CHECKING
 from typing_extensions import NotRequired, TypedDict
 
 if TYPE_CHECKING:
-    from .invoice import Invoice, InvoiceTypedDict
+    from .invoiceresponse import InvoiceResponse, InvoiceResponseTypedDict
 
 
-class SubscriptionTypedDict(TypedDict):
+class SubscriptionResponseTypedDict(TypedDict):
     active_pause_id: NotRequired[str]
     r"""ActivePauseID references the current active pause configuration
     This will be null if no pause is active or scheduled
@@ -81,7 +81,7 @@ class SubscriptionTypedDict(TypedDict):
     r"""CurrentPeriodStart is the end of the current period that the subscription has been invoiced for.
     At the end of this period, a new invoice will be created.
     """
-    customer: NotRequired[Customer1TypedDict]
+    customer: NotRequired[CustomerResponseTypedDict]
     r"""Customer response object containing all customer information"""
     customer_id: NotRequired[str]
     r"""CustomerID is the identifier for the customer in our system"""
@@ -99,7 +99,7 @@ class SubscriptionTypedDict(TypedDict):
     r"""InvoicingCustomerID is the customer ID to use for invoicing
     This can differ from the subscription customer (e.g., parent company invoicing for child company)
     """
-    latest_invoice: NotRequired["InvoiceTypedDict"]
+    latest_invoice: NotRequired["InvoiceResponseTypedDict"]
     line_items: NotRequired[List[SubscriptionSubscriptionLineItemTypedDict]]
     lookup_key: NotRequired[str]
     r"""LookupKey is the key used to lookup the subscription in our system"""
@@ -115,7 +115,7 @@ class SubscriptionTypedDict(TypedDict):
     payment_terms: NotRequired[PaymentTerms]
     phases: NotRequired[List[SubscriptionPhaseResponseTypedDict]]
     r"""Phases are the subscription phases for this subscription"""
-    plan: NotRequired[Plan1TypedDict]
+    plan: NotRequired[PlanResponseTypedDict]
     plan_id: NotRequired[str]
     r"""PlanID is the identifier for the plan in our system"""
     proration_behavior: NotRequired[ProrationBehavior]
@@ -135,7 +135,7 @@ class SubscriptionTypedDict(TypedDict):
     r"""Version is used for optimistic locking"""
 
 
-class Subscription(BaseModel):
+class SubscriptionResponse(BaseModel):
     active_pause_id: Optional[str] = None
     r"""ActivePauseID references the current active pause configuration
     This will be null if no pause is active or scheduled
@@ -196,7 +196,7 @@ class Subscription(BaseModel):
     At the end of this period, a new invoice will be created.
     """
 
-    customer: Optional[Customer1] = None
+    customer: Optional[CustomerResponse] = None
     r"""Customer response object containing all customer information"""
 
     customer_id: Optional[str] = None
@@ -223,7 +223,7 @@ class Subscription(BaseModel):
     This can differ from the subscription customer (e.g., parent company invoicing for child company)
     """
 
-    latest_invoice: Optional["Invoice"] = None
+    latest_invoice: Optional["InvoiceResponse"] = None
 
     line_items: Optional[List[SubscriptionSubscriptionLineItem]] = None
 
@@ -250,7 +250,7 @@ class Subscription(BaseModel):
     phases: Optional[List[SubscriptionPhaseResponse]] = None
     r"""Phases are the subscription phases for this subscription"""
 
-    plan: Optional[Plan1] = None
+    plan: Optional[PlanResponse] = None
 
     plan_id: Optional[str] = None
     r"""PlanID is the identifier for the plan in our system"""

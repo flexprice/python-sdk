@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .paginationresponse import PaginationResponse, PaginationResponseTypedDict
-from .wallet import Wallet, WalletTypedDict
+from .walletresponse import WalletResponse, WalletResponseTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Optional
@@ -10,12 +10,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ListResponseDtoWalletResponseTypedDict(TypedDict):
-    items: NotRequired[List[WalletTypedDict]]
+    items: NotRequired[List[WalletResponseTypedDict]]
     pagination: NotRequired[PaginationResponseTypedDict]
 
 
 class ListResponseDtoWalletResponse(BaseModel):
-    items: Optional[List[Wallet]] = None
+    items: Optional[List[WalletResponse]] = None
 
     pagination: Optional[PaginationResponse] = None
 

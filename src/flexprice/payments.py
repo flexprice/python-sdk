@@ -324,7 +324,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Create payment
 
         Use when recording a payment against an invoice (e.g. after receiving funds via a gateway or manual entry).
@@ -416,7 +416,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -462,7 +462,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Create payment
 
         Use when recording a payment against an invoice (e.g. after receiving funds via a gateway or manual entry).
@@ -554,7 +554,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -588,7 +588,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Get payment
 
         Use when you need to load a single payment (e.g. for a receipt view or reconciliation).
@@ -653,7 +653,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -687,7 +687,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Get payment
 
         Use when you need to load a single payment (e.g. for a receipt view or reconciliation).
@@ -752,7 +752,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -794,7 +794,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Update payment
 
         Use when updating payment status or metadata (e.g. after reconciliation or adding a reference).
@@ -880,7 +880,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -922,7 +922,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Update payment
 
         Use when updating payment status or metadata (e.g. after reconciliation or adding a reference).
@@ -1008,7 +1008,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1240,7 +1240,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Process payment
 
         Use when you need to charge or process a payment (e.g. trigger the payment provider to capture funds). Returns updated payment with status.
@@ -1305,7 +1305,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1339,7 +1339,7 @@ class Payments(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Payment:
+    ) -> models.PaymentResponse:
         r"""Process payment
 
         Use when you need to charge or process a payment (e.g. trigger the payment provider to capture funds). Returns updated payment with status.
@@ -1404,7 +1404,7 @@ class Payments(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Payment, http_res)
+            return unmarshal_json_response(models.PaymentResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

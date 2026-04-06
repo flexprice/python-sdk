@@ -8,11 +8,11 @@ from .creditnote_creditnotelineitem import (
 from .creditnotereason import CreditNoteReason
 from .creditnotestatus import CreditNoteStatus
 from .creditnotetype import CreditNoteType
-from .customer_2 import Customer2, Customer2TypedDict
-from .invoice import Invoice, InvoiceTypedDict
+from .customer import Customer, CustomerTypedDict
+from .invoiceresponse import InvoiceResponse, InvoiceResponseTypedDict
 from .paymentstatus import PaymentStatus
 from .status import Status
-from .subscription import Subscription, SubscriptionTypedDict
+from .subscriptionresponse import SubscriptionResponse, SubscriptionResponseTypedDict
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -29,7 +29,7 @@ class CreditNoteResponseTypedDict(TypedDict):
     credit_note_type: NotRequired[CreditNoteType]
     currency: NotRequired[str]
     r"""currency is the three-letter ISO currency code (e.g., USD, EUR) for the credit note"""
-    customer: NotRequired[Customer2TypedDict]
+    customer: NotRequired[CustomerTypedDict]
     customer_id: NotRequired[str]
     r"""customer_id is the unique identifier of the customer who owns this credit note"""
     environment_id: NotRequired[str]
@@ -40,7 +40,7 @@ class CreditNoteResponseTypedDict(TypedDict):
     r"""id is the unique identifier for the credit note"""
     idempotency_key: NotRequired[str]
     r"""idempotency_key is an optional key used to prevent duplicate credit note creation"""
-    invoice: NotRequired[InvoiceTypedDict]
+    invoice: NotRequired[InvoiceResponseTypedDict]
     invoice_id: NotRequired[str]
     r"""invoice_id is the id of the invoice resource that this credit note is applied to"""
     line_items: NotRequired[List[CreditnoteCreditNoteLineItemTypedDict]]
@@ -51,7 +51,7 @@ class CreditNoteResponseTypedDict(TypedDict):
     reason: NotRequired[CreditNoteReason]
     refund_status: NotRequired[PaymentStatus]
     status: NotRequired[Status]
-    subscription: NotRequired[SubscriptionTypedDict]
+    subscription: NotRequired[SubscriptionResponseTypedDict]
     subscription_id: NotRequired[str]
     r"""subscription_id is the optional unique identifier of the subscription related to this credit note"""
     tenant_id: NotRequired[str]
@@ -78,7 +78,7 @@ class CreditNoteResponse(BaseModel):
     currency: Optional[str] = None
     r"""currency is the three-letter ISO currency code (e.g., USD, EUR) for the credit note"""
 
-    customer: Optional[Customer2] = None
+    customer: Optional[Customer] = None
 
     customer_id: Optional[str] = None
     r"""customer_id is the unique identifier of the customer who owns this credit note"""
@@ -95,7 +95,7 @@ class CreditNoteResponse(BaseModel):
     idempotency_key: Optional[str] = None
     r"""idempotency_key is an optional key used to prevent duplicate credit note creation"""
 
-    invoice: Optional[Invoice] = None
+    invoice: Optional[InvoiceResponse] = None
 
     invoice_id: Optional[str] = None
     r"""invoice_id is the id of the invoice resource that this credit note is applied to"""
@@ -114,7 +114,7 @@ class CreditNoteResponse(BaseModel):
 
     status: Optional[Status] = None
 
-    subscription: Optional[Subscription] = None
+    subscription: Optional[SubscriptionResponse] = None
 
     subscription_id: Optional[str] = None
     r"""subscription_id is the optional unique identifier of the subscription related to this credit note"""

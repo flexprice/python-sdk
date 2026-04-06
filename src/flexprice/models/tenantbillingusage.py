@@ -5,7 +5,7 @@ from .customerusagesummaryresponse import (
     CustomerUsageSummaryResponse,
     CustomerUsageSummaryResponseTypedDict,
 )
-from .subscription import Subscription, SubscriptionTypedDict
+from .subscriptionresponse import SubscriptionResponse, SubscriptionResponseTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Optional
@@ -13,12 +13,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class TenantBillingUsageTypedDict(TypedDict):
-    subscriptions: NotRequired[List[SubscriptionTypedDict]]
+    subscriptions: NotRequired[List[SubscriptionResponseTypedDict]]
     usage: NotRequired[CustomerUsageSummaryResponseTypedDict]
 
 
 class TenantBillingUsage(BaseModel):
-    subscriptions: Optional[List[Subscription]] = None
+    subscriptions: Optional[List[SubscriptionResponse]] = None
 
     usage: Optional[CustomerUsageSummaryResponse] = None
 

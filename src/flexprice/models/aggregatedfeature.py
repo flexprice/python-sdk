@@ -3,7 +3,7 @@
 from __future__ import annotations
 from .aggregatedentitlement import AggregatedEntitlement, AggregatedEntitlementTypedDict
 from .entitlementsource import EntitlementSource, EntitlementSourceTypedDict
-from .feature_1 import Feature1, Feature1TypedDict
+from .featureresponse import FeatureResponse, FeatureResponseTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Optional
@@ -12,14 +12,14 @@ from typing_extensions import NotRequired, TypedDict
 
 class AggregatedFeatureTypedDict(TypedDict):
     entitlement: NotRequired[AggregatedEntitlementTypedDict]
-    feature: NotRequired[Feature1TypedDict]
+    feature: NotRequired[FeatureResponseTypedDict]
     sources: NotRequired[List[EntitlementSourceTypedDict]]
 
 
 class AggregatedFeature(BaseModel):
     entitlement: Optional[AggregatedEntitlement] = None
 
-    feature: Optional[Feature1] = None
+    feature: Optional[FeatureResponse] = None
 
     sources: Optional[List[EntitlementSource]] = None
 

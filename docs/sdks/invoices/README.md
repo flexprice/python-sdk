@@ -118,7 +118,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Invoice](../../models/invoice.md)**
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
 
 ### Errors
 
@@ -162,7 +162,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Invoice](../../models/invoice.md)**
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
 
 ### Errors
 
@@ -268,7 +268,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Invoice](../../models/invoice.md)**
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
 
 ### Errors
 
@@ -312,7 +312,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Invoice](../../models/invoice.md)**
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
 
 ### Errors
 
@@ -437,7 +437,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Invoice](../../models/invoice.md)**
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
 
 ### Errors
 
@@ -602,7 +602,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Invoice](../../models/invoice.md)**
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
 
 ### Errors
 

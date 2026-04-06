@@ -16,7 +16,7 @@ from typing import Dict, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class WalletTypedDict(TypedDict):
+class WalletResponseTypedDict(TypedDict):
     alert_settings: NotRequired[AlertSettingsTypedDict]
     alert_state: NotRequired[AlertState]
     auto_topup: NotRequired[AutoTopupTypedDict]
@@ -53,7 +53,7 @@ class WalletTypedDict(TypedDict):
     wallet_type: NotRequired[WalletType]
 
 
-class Wallet(BaseModel):
+class WalletResponse(BaseModel):
     alert_settings: Optional[AlertSettings] = None
 
     alert_state: Optional[AlertState] = None

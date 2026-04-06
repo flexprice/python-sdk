@@ -246,7 +246,7 @@ class Addons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Addon1:
+    ) -> models.AddonResponse:
         r"""Get addon by lookup key
 
         Use when resolving an addon by external id (e.g. from your product catalog). Ideal for integrations.
@@ -311,7 +311,7 @@ class Addons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Addon1, http_res)
+            return unmarshal_json_response(models.AddonResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -345,7 +345,7 @@ class Addons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Addon1:
+    ) -> models.AddonResponse:
         r"""Get addon by lookup key
 
         Use when resolving an addon by external id (e.g. from your product catalog). Ideal for integrations.
@@ -410,7 +410,7 @@ class Addons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Addon1, http_res)
+            return unmarshal_json_response(models.AddonResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -726,7 +726,7 @@ class Addons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Addon1:
+    ) -> models.AddonResponse:
         r"""Get addon
 
         Use when you need to load a single addon (e.g. for display or to attach to a subscription).
@@ -791,7 +791,7 @@ class Addons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Addon1, http_res)
+            return unmarshal_json_response(models.AddonResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -825,7 +825,7 @@ class Addons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Addon1:
+    ) -> models.AddonResponse:
         r"""Get addon
 
         Use when you need to load a single addon (e.g. for display or to attach to a subscription).
@@ -890,7 +890,7 @@ class Addons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Addon1, http_res)
+            return unmarshal_json_response(models.AddonResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -927,7 +927,7 @@ class Addons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Addon1:
+    ) -> models.AddonResponse:
         r"""Update addon
 
         Use when changing addon details (e.g. name, pricing, or metadata).
@@ -1003,7 +1003,7 @@ class Addons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Addon1, http_res)
+            return unmarshal_json_response(models.AddonResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1040,7 +1040,7 @@ class Addons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Addon1:
+    ) -> models.AddonResponse:
         r"""Update addon
 
         Use when changing addon details (e.g. name, pricing, or metadata).
@@ -1116,7 +1116,7 @@ class Addons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Addon1, http_res)
+            return unmarshal_json_response(models.AddonResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

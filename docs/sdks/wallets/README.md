@@ -52,7 +52,7 @@ with Flexprice(
 
 ### Response
 
-**[List[models.Wallet]](../../models/.md)**
+**[List[models.WalletResponse]](../../models/.md)**
 
 ### Errors
 
@@ -93,7 +93,7 @@ with Flexprice(
 
 ### Response
 
-**[List[models.Wallet]](../../models/.md)**
+**[List[models.WalletResponse]](../../models/.md)**
 
 ### Errors
 
@@ -147,7 +147,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Wallet](../../models/wallet.md)**
+**[models.WalletResponse](../../models/walletresponse.md)**
 
 ### Errors
 
@@ -296,7 +296,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Wallet](../../models/wallet.md)**
+**[models.WalletResponse](../../models/walletresponse.md)**
 
 ### Errors
 
@@ -343,7 +343,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Wallet](../../models/wallet.md)**
+**[models.WalletResponse](../../models/walletresponse.md)**
 
 ### Errors
 
@@ -426,7 +426,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Wallet](../../models/wallet.md)**
+**[models.WalletResponse](../../models/walletresponse.md)**
 
 ### Errors
 

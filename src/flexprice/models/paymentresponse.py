@@ -15,7 +15,7 @@ from typing import Dict, List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class PaymentTypedDict(TypedDict):
+class PaymentResponseTypedDict(TypedDict):
     amount: NotRequired[str]
     attempts: NotRequired[List[PaymentAttemptResponseTypedDict]]
     created_at: NotRequired[datetime]
@@ -46,7 +46,7 @@ class PaymentTypedDict(TypedDict):
     updated_by: NotRequired[str]
 
 
-class Payment(BaseModel):
+class PaymentResponse(BaseModel):
     amount: Optional[str] = None
 
     attempts: Optional[List[PaymentAttemptResponse]] = None

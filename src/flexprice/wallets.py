@@ -23,7 +23,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.Wallet]:
+    ) -> List[models.WalletResponse]:
         r"""Get Customer Wallets
 
         Use when resolving wallets by external customer id or lookup key (e.g. from your app's user id). Supports optional real-time balance and expand.
@@ -98,7 +98,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(List[models.Wallet], http_res)
+            return unmarshal_json_response(List[models.WalletResponse], http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -137,7 +137,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.Wallet]:
+    ) -> List[models.WalletResponse]:
         r"""Get Customer Wallets
 
         Use when resolving wallets by external customer id or lookup key (e.g. from your app's user id). Supports optional real-time balance and expand.
@@ -212,7 +212,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(List[models.Wallet], http_res)
+            return unmarshal_json_response(List[models.WalletResponse], http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -246,7 +246,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.Wallet]:
+    ) -> List[models.WalletResponse]:
         r"""Get wallets by customer ID
 
         Use when showing a customer's wallets (e.g. balance overview by currency or in a billing portal). Supports optional expand for balance breakdown.
@@ -311,7 +311,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(List[models.Wallet], http_res)
+            return unmarshal_json_response(List[models.WalletResponse], http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -345,7 +345,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.Wallet]:
+    ) -> List[models.WalletResponse]:
         r"""Get wallets by customer ID
 
         Use when showing a customer's wallets (e.g. balance overview by currency or in a billing portal). Supports optional expand for balance breakdown.
@@ -410,7 +410,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(List[models.Wallet], http_res)
+            return unmarshal_json_response(List[models.WalletResponse], http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -459,7 +459,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Create a new wallet
 
         Use when giving a customer a prepaid or credit balance (e.g. prepaid plans or promotional credits).
@@ -569,7 +569,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -618,7 +618,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Create a new wallet
 
         Use when giving a customer a prepaid or credit balance (e.g. prepaid plans or promotional credits).
@@ -728,7 +728,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1346,7 +1346,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Get wallet
 
         Use when you need to load a single wallet (e.g. for a balance or settings view).
@@ -1411,7 +1411,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1445,7 +1445,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Get wallet
 
         Use when you need to load a single wallet (e.g. for a balance or settings view).
@@ -1510,7 +1510,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1554,7 +1554,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Update a wallet
 
         Use when changing wallet settings (e.g. enabling or updating auto top-up thresholds).
@@ -1640,7 +1640,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1684,7 +1684,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Update a wallet
 
         Use when changing wallet settings (e.g. enabling or updating auto top-up thresholds).
@@ -1770,7 +1770,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2008,7 +2008,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Terminate a wallet
 
         Use when closing a customer wallet (e.g. churn or migration). Closes the wallet and applies remaining balance per policy (refund or forfeit).
@@ -2073,7 +2073,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2107,7 +2107,7 @@ class Wallets(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Wallet:
+    ) -> models.WalletResponse:
         r"""Terminate a wallet
 
         Use when closing a customer wallet (e.g. churn or migration). Closes the wallet and applies remaining balance per policy (refund or forfeit).
@@ -2172,7 +2172,7 @@ class Wallets(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Wallet, http_res)
+            return unmarshal_json_response(models.WalletResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

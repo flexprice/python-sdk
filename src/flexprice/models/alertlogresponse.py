@@ -5,9 +5,9 @@ from .alertentitytype import AlertEntityType
 from .alertinfo import AlertInfo, AlertInfoTypedDict
 from .alertstate import AlertState
 from .alerttype import AlertType
-from .customer_1 import Customer1, Customer1TypedDict
-from .feature_1 import Feature1, Feature1TypedDict
-from .wallet import Wallet, WalletTypedDict
+from .customerresponse import CustomerResponse, CustomerResponseTypedDict
+from .featureresponse import FeatureResponse, FeatureResponseTypedDict
+from .walletresponse import WalletResponse, WalletResponseTypedDict
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -21,13 +21,13 @@ class AlertLogResponseTypedDict(TypedDict):
     alert_type: NotRequired[AlertType]
     created_at: NotRequired[datetime]
     created_by: NotRequired[str]
-    customer: NotRequired[Customer1TypedDict]
+    customer: NotRequired[CustomerResponseTypedDict]
     r"""Customer response object containing all customer information"""
     customer_id: NotRequired[str]
     entity_id: NotRequired[str]
     entity_type: NotRequired[AlertEntityType]
     environment_id: NotRequired[str]
-    feature: NotRequired[Feature1TypedDict]
+    feature: NotRequired[FeatureResponseTypedDict]
     id: NotRequired[str]
     parent_entity_id: NotRequired[str]
     parent_entity_type: NotRequired[str]
@@ -35,7 +35,7 @@ class AlertLogResponseTypedDict(TypedDict):
     tenant_id: NotRequired[str]
     updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
-    wallet: NotRequired[WalletTypedDict]
+    wallet: NotRequired[WalletResponseTypedDict]
 
 
 class AlertLogResponse(BaseModel):
@@ -49,7 +49,7 @@ class AlertLogResponse(BaseModel):
 
     created_by: Optional[str] = None
 
-    customer: Optional[Customer1] = None
+    customer: Optional[CustomerResponse] = None
     r"""Customer response object containing all customer information"""
 
     customer_id: Optional[str] = None
@@ -60,7 +60,7 @@ class AlertLogResponse(BaseModel):
 
     environment_id: Optional[str] = None
 
-    feature: Optional[Feature1] = None
+    feature: Optional[FeatureResponse] = None
 
     id: Optional[str] = None
 
@@ -76,7 +76,7 @@ class AlertLogResponse(BaseModel):
 
     updated_by: Optional[str] = None
 
-    wallet: Optional[Wallet] = None
+    wallet: Optional[WalletResponse] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

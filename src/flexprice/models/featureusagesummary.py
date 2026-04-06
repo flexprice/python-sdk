@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .entitlementsource import EntitlementSource, EntitlementSourceTypedDict
-from .feature_1 import Feature1, Feature1TypedDict
+from .featureresponse import FeatureResponse, FeatureResponseTypedDict
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -12,7 +12,7 @@ from typing_extensions import NotRequired, TypedDict
 
 class FeatureUsageSummaryTypedDict(TypedDict):
     current_usage: NotRequired[str]
-    feature: NotRequired[Feature1TypedDict]
+    feature: NotRequired[FeatureResponseTypedDict]
     is_enabled: NotRequired[bool]
     is_soft_limit: NotRequired[bool]
     is_unlimited: NotRequired[bool]
@@ -25,7 +25,7 @@ class FeatureUsageSummaryTypedDict(TypedDict):
 class FeatureUsageSummary(BaseModel):
     current_usage: Optional[str] = None
 
-    feature: Optional[Feature1] = None
+    feature: Optional[FeatureResponse] = None
 
     is_enabled: Optional[bool] = None
 

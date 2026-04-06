@@ -68,7 +68,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Price](../../models/price.md)**
+**[models.PriceResponse](../../models/priceresponse.md)**
 
 ### Errors
 
@@ -150,7 +150,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Price](../../models/price.md)**
+**[models.PriceResponse](../../models/priceresponse.md)**
 
 ### Errors
 
@@ -249,7 +249,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Price](../../models/price.md)**
+**[models.PriceResponse](../../models/priceresponse.md)**
 
 ### Errors
 
@@ -303,7 +303,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Price](../../models/price.md)**
+**[models.PriceResponse](../../models/priceresponse.md)**
 
 ### Errors
 

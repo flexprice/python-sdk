@@ -264,7 +264,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Create one-off invoice
 
         Use when creating a manual or one-off invoice (e.g. custom charge or non-recurring billing). Invoice is created in draft; finalize when ready.
@@ -396,7 +396,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -473,7 +473,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Create one-off invoice
 
         Use when creating a manual or one-off invoice (e.g. custom charge or non-recurring billing). Invoice is created in draft; finalize when ready.
@@ -605,7 +605,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -642,7 +642,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Get invoice preview
 
         Use when showing a customer what they will be charged (e.g. preview before checkout or plan change). No invoice is created.
@@ -716,7 +716,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -753,7 +753,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Get invoice preview
 
         Use when showing a customer what they will be charged (e.g. preview before checkout or plan change). No invoice is created.
@@ -827,7 +827,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1227,7 +1227,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Get invoice
 
         Use when loading an invoice for display or editing (e.g. portal or reconciliation). Supports group_by for usage breakdown and force_runtime_recalculation.
@@ -1296,7 +1296,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1332,7 +1332,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Get invoice
 
         Use when loading an invoice for display or editing (e.g. portal or reconciliation). Supports group_by for usage breakdown and force_runtime_recalculation.
@@ -1401,7 +1401,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1438,7 +1438,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Update invoice
 
         Use when updating invoice metadata or due date (e.g. PDF URL, net terms). For paid invoices only safe fields can be updated.
@@ -1514,7 +1514,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1551,7 +1551,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Update invoice
 
         Use when updating invoice metadata or due date (e.g. PDF URL, net terms). For paid invoices only safe fields can be updated.
@@ -1627,7 +1627,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2059,7 +2059,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Update invoice payment status
 
         Use when reconciling payment status from an external gateway or manual entry (e.g. mark paid after bank confirmation).
@@ -2133,7 +2133,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2169,7 +2169,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Update invoice payment status
 
         Use when reconciling payment status from an external gateway or manual entry (e.g. mark paid after bank confirmation).
@@ -2243,7 +2243,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2870,7 +2870,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Recalculate draft invoice (v2)
 
         Recalculates a draft SUBSCRIPTION invoice in-place (replaces line items, reapplies credits/coupons/taxes). Use when subscription or usage data changed before finalizing.
@@ -2937,7 +2937,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2972,7 +2972,7 @@ class Invoices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Invoice:
+    ) -> models.InvoiceResponse:
         r"""Recalculate draft invoice (v2)
 
         Recalculates a draft SUBSCRIPTION invoice in-place (replaces line items, reapplies credits/coupons/taxes). Use when subscription or usage data changed before finalizing.
@@ -3039,7 +3039,7 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Invoice, http_res)
+            return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

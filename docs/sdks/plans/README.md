@@ -47,7 +47,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Plan1](../../models/plan1.md)**
+**[models.PlanResponse](../../models/planresponse.md)**
 
 ### Errors
 
@@ -139,7 +139,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Plan1](../../models/plan1.md)**
+**[models.PlanResponse](../../models/planresponse.md)**
 
 ### Errors
 
@@ -185,7 +185,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Plan1](../../models/plan1.md)**
+**[models.PlanResponse](../../models/planresponse.md)**
 
 ### Errors
 
@@ -272,7 +272,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Plan1](../../models/plan1.md)**
+**[models.PlanResponse](../../models/planresponse.md)**
 
 ### Errors
 

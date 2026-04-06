@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .cancellationtype import CancellationType
-from .invoice import Invoice, InvoiceTypedDict
+from .invoiceresponse import InvoiceResponse, InvoiceResponseTypedDict
 from .prorationdetail import ProrationDetail, ProrationDetailTypedDict
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
@@ -19,7 +19,7 @@ class CancelSubscriptionResponseTypedDict(TypedDict):
     r"""Response metadata"""
     processed_at: NotRequired[datetime]
     proration_details: NotRequired[List[ProrationDetailTypedDict]]
-    proration_invoice: NotRequired[InvoiceTypedDict]
+    proration_invoice: NotRequired[InvoiceResponseTypedDict]
     reason: NotRequired[str]
     status: NotRequired[SubscriptionStatus]
     subscription_id: NotRequired[str]
@@ -39,7 +39,7 @@ class CancelSubscriptionResponse(BaseModel):
 
     proration_details: Optional[List[ProrationDetail]] = None
 
-    proration_invoice: Optional[Invoice] = None
+    proration_invoice: Optional[InvoiceResponse] = None
 
     reason: Optional[str] = None
 

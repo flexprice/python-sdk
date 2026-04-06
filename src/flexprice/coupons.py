@@ -28,7 +28,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Coupon:
+    ) -> models.CouponResponse:
         r"""Create coupon
 
         Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
@@ -121,7 +121,7 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Coupon, http_res)
+            return unmarshal_json_response(models.CouponResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
@@ -168,7 +168,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Coupon:
+    ) -> models.CouponResponse:
         r"""Create coupon
 
         Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
@@ -261,7 +261,7 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Coupon, http_res)
+            return unmarshal_json_response(models.CouponResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
@@ -555,7 +555,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Coupon:
+    ) -> models.CouponResponse:
         r"""Get coupon
 
         Use when you need to load a single coupon (e.g. for display or to validate a code).
@@ -620,7 +620,7 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Coupon, http_res)
+            return unmarshal_json_response(models.CouponResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -654,7 +654,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Coupon:
+    ) -> models.CouponResponse:
         r"""Get coupon
 
         Use when you need to load a single coupon (e.g. for display or to validate a code).
@@ -719,7 +719,7 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Coupon, http_res)
+            return unmarshal_json_response(models.CouponResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -755,7 +755,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Coupon:
+    ) -> models.CouponResponse:
         r"""Update coupon
 
         Use when changing coupon config (e.g. value, validity, or usage limits).
@@ -832,7 +832,7 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Coupon, http_res)
+            return unmarshal_json_response(models.CouponResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
@@ -870,7 +870,7 @@ class Coupons(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Coupon:
+    ) -> models.CouponResponse:
         r"""Update coupon
 
         Use when changing coupon config (e.g. value, validity, or usage limits).
@@ -947,7 +947,7 @@ class Coupons(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Coupon, http_res)
+            return unmarshal_json_response(models.CouponResponse, http_res)
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .paginationresponse import PaginationResponse, PaginationResponseTypedDict
-from .price import Price, PriceTypedDict
+from .priceresponse import PriceResponse, PriceResponseTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Optional
@@ -10,12 +10,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ListPricesResponseTypedDict(TypedDict):
-    items: NotRequired[List[PriceTypedDict]]
+    items: NotRequired[List[PriceResponseTypedDict]]
     pagination: NotRequired[PaginationResponseTypedDict]
 
 
 class ListPricesResponse(BaseModel):
-    items: Optional[List[Price]] = None
+    items: Optional[List[PriceResponse]] = None
 
     pagination: Optional[PaginationResponse] = None
 

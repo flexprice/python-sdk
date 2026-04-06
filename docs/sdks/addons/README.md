@@ -87,7 +87,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Addon1](../../models/addon1.md)**
+**[models.AddonResponse](../../models/addonresponse.md)**
 
 ### Errors
 
@@ -180,7 +180,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Addon1](../../models/addon1.md)**
+**[models.AddonResponse](../../models/addonresponse.md)**
 
 ### Errors
 
@@ -224,7 +224,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Addon1](../../models/addon1.md)**
+**[models.AddonResponse](../../models/addonresponse.md)**
 
 ### Errors
 

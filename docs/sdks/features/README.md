@@ -56,7 +56,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Feature1](../../models/feature1.md)**
+**[models.FeatureResponse](../../models/featureresponse.md)**
 
 ### Errors
 
@@ -160,7 +160,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Feature1](../../models/feature1.md)**
+**[models.FeatureResponse](../../models/featureresponse.md)**
 
 ### Errors
 

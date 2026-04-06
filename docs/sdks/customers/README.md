@@ -57,7 +57,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Customer1](../../models/customer1.md)**
+**[models.CustomerResponse](../../models/customerresponse.md)**
 
 ### Errors
 
@@ -110,7 +110,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Customer1](../../models/customer1.md)**
+**[models.CustomerResponse](../../models/customerresponse.md)**
 
 ### Errors
 
@@ -151,7 +151,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Customer1](../../models/customer1.md)**
+**[models.CustomerResponse](../../models/customerresponse.md)**
 
 ### Errors
 
@@ -290,7 +290,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Customer1](../../models/customer1.md)**
+**[models.CustomerResponse](../../models/customerresponse.md)**
 
 ### Errors
 

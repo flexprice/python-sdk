@@ -5,7 +5,7 @@ from .couponapplicationresponse import (
     CouponApplicationResponse,
     CouponApplicationResponseTypedDict,
 )
-from .customer_1 import Customer1, Customer1TypedDict
+from .customerresponse import CustomerResponse, CustomerResponseTypedDict
 from .invoicelineitemresponse import (
     InvoiceLineItemResponse,
     InvoiceLineItemResponseTypedDict,
@@ -22,10 +22,13 @@ from typing import Dict, List, Optional, TYPE_CHECKING
 from typing_extensions import NotRequired, TypedDict
 
 if TYPE_CHECKING:
-    from .subscription import Subscription, SubscriptionTypedDict
+    from .subscriptionresponse import (
+        SubscriptionResponse,
+        SubscriptionResponseTypedDict,
+    )
 
 
-class InvoiceTypedDict(TypedDict):
+class InvoiceResponseTypedDict(TypedDict):
     adjustment_amount: NotRequired[str]
     r"""adjustment_amount is the total sum of credit notes of type \"adjustment\".
     These are non-cash reductions applied to the invoice (e.g. goodwill credit, billing correction).
@@ -48,7 +51,7 @@ class InvoiceTypedDict(TypedDict):
     created_by: NotRequired[str]
     currency: NotRequired[str]
     r"""currency is the three-letter ISO currency code (e.g., USD, EUR, GBP) that applies to all monetary amounts on this invoice"""
-    customer: NotRequired[Customer1TypedDict]
+    customer: NotRequired[CustomerResponseTypedDict]
     r"""Customer response object containing all customer information"""
     customer_id: NotRequired[str]
     r"""customer_id is the ID of the customer who will receive this invoice"""
@@ -93,7 +96,7 @@ class InvoiceTypedDict(TypedDict):
     These are actual refunds issued to the customer.
     """
     status: NotRequired[Status]
-    subscription: NotRequired["SubscriptionTypedDict"]
+    subscription: NotRequired["SubscriptionResponseTypedDict"]
     subscription_id: NotRequired[str]
     r"""subscription_id is the ID of the subscription this invoice is associated with (only present for subscription-based invoices)"""
     subtotal: NotRequired[str]
@@ -117,7 +120,7 @@ class InvoiceTypedDict(TypedDict):
     r"""voided_at is the timestamp when this invoice was voided or cancelled"""
 
 
-class Invoice(BaseModel):
+class InvoiceResponse(BaseModel):
     adjustment_amount: Optional[str] = None
     r"""adjustment_amount is the total sum of credit notes of type \"adjustment\".
     These are non-cash reductions applied to the invoice (e.g. goodwill credit, billing correction).
@@ -151,7 +154,7 @@ class Invoice(BaseModel):
     currency: Optional[str] = None
     r"""currency is the three-letter ISO currency code (e.g., USD, EUR, GBP) that applies to all monetary amounts on this invoice"""
 
-    customer: Optional[Customer1] = None
+    customer: Optional[CustomerResponse] = None
     r"""Customer response object containing all customer information"""
 
     customer_id: Optional[str] = None
@@ -219,7 +222,7 @@ class Invoice(BaseModel):
 
     status: Optional[Status] = None
 
-    subscription: Optional["Subscription"] = None
+    subscription: Optional["SubscriptionResponse"] = None
 
     subscription_id: Optional[str] = None
     r"""subscription_id is the ID of the subscription this invoice is associated with (only present for subscription-based invoices)"""

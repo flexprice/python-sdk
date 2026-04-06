@@ -49,7 +49,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Create price
 
         Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metered). Ideal for both simple and usage-based pricing.
@@ -173,7 +173,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -238,7 +238,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Create price
 
         Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metered). Ideal for both simple and usage-based pricing.
@@ -362,7 +362,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -604,7 +604,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Get price by lookup key
 
         Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal for integrations.
@@ -669,7 +669,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -703,7 +703,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Get price by lookup key
 
         Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal for integrations.
@@ -768,7 +768,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1116,7 +1116,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Get price
 
         Use when you need to load a single price (e.g. for display or editing). Response includes expanded meter and price unit when applicable.
@@ -1181,7 +1181,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1215,7 +1215,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Get price
 
         Use when you need to load a single price (e.g. for display or editing). Response includes expanded meter and price unit when applicable.
@@ -1280,7 +1280,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1333,7 +1333,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Update price
 
         Use when changing price configuration (e.g. amount, billing scheme, or metadata).
@@ -1439,7 +1439,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -1492,7 +1492,7 @@ class Prices(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Price:
+    ) -> models.PriceResponse:
         r"""Update price
 
         Use when changing price configuration (e.g. amount, billing scheme, or metadata).
@@ -1598,7 +1598,7 @@ class Prices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Price, http_res)
+            return unmarshal_json_response(models.PriceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

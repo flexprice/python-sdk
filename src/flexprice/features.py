@@ -35,7 +35,7 @@ class Features(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Feature1:
+    ) -> models.FeatureResponse:
         r"""Create feature
 
         Use when defining a new feature or capability to gate or meter (e.g. feature flags or usage-based limits). Ideal for boolean or usage features.
@@ -129,7 +129,7 @@ class Features(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Feature1, http_res)
+            return unmarshal_json_response(models.FeatureResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -180,7 +180,7 @@ class Features(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Feature1:
+    ) -> models.FeatureResponse:
         r"""Create feature
 
         Use when defining a new feature or capability to gate or meter (e.g. feature flags or usage-based limits). Ideal for boolean or usage features.
@@ -274,7 +274,7 @@ class Features(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Feature1, http_res)
+            return unmarshal_json_response(models.FeatureResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -617,7 +617,7 @@ class Features(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Feature1:
+    ) -> models.FeatureResponse:
         r"""Update feature
 
         Use when changing feature definition (e.g. name, type, or meter). Request body contains the fields to update.
@@ -711,7 +711,7 @@ class Features(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Feature1, http_res)
+            return unmarshal_json_response(models.FeatureResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -760,7 +760,7 @@ class Features(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Feature1:
+    ) -> models.FeatureResponse:
         r"""Update feature
 
         Use when changing feature definition (e.g. name, type, or meter). Request body contains the fields to update.
@@ -854,7 +854,7 @@ class Features(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Feature1, http_res)
+            return unmarshal_json_response(models.FeatureResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

@@ -111,7 +111,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Payment](../../models/payment.md)**
+**[models.PaymentResponse](../../models/paymentresponse.md)**
 
 ### Errors
 
@@ -152,7 +152,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Payment](../../models/payment.md)**
+**[models.PaymentResponse](../../models/paymentresponse.md)**
 
 ### Errors
 
@@ -201,7 +201,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Payment](../../models/payment.md)**
+**[models.PaymentResponse](../../models/paymentresponse.md)**
 
 ### Errors
 
@@ -283,7 +283,7 @@ with Flexprice(
 
 ### Response
 
-**[models.Payment](../../models/payment.md)**
+**[models.PaymentResponse](../../models/paymentresponse.md)**
 
 ### Errors
 

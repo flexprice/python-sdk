@@ -3,7 +3,7 @@
 from __future__ import annotations
 from .entitlemententitytype import EntitlementEntityType
 from .entitlementusageresetperiod import EntitlementUsageResetPeriod
-from .feature_1 import Feature1, Feature1TypedDict
+from .featureresponse import FeatureResponse, FeatureResponseTypedDict
 from .featuretype import FeatureType
 from .status import Status
 from datetime import datetime
@@ -13,12 +13,12 @@ from typing import Optional, TYPE_CHECKING
 from typing_extensions import NotRequired, TypedDict
 
 if TYPE_CHECKING:
-    from .addon_1 import Addon1, Addon1TypedDict
-    from .plan_1 import Plan1, Plan1TypedDict
+    from .addonresponse import AddonResponse, AddonResponseTypedDict
+    from .planresponse import PlanResponse, PlanResponseTypedDict
 
 
 class EntitlementResponseTypedDict(TypedDict):
-    addon: NotRequired["Addon1TypedDict"]
+    addon: NotRequired["AddonResponseTypedDict"]
     created_at: NotRequired[datetime]
     created_by: NotRequired[str]
     display_order: NotRequired[int]
@@ -26,14 +26,14 @@ class EntitlementResponseTypedDict(TypedDict):
     entity_id: NotRequired[str]
     entity_type: NotRequired[EntitlementEntityType]
     environment_id: NotRequired[str]
-    feature: NotRequired[Feature1TypedDict]
+    feature: NotRequired[FeatureResponseTypedDict]
     feature_id: NotRequired[str]
     feature_type: NotRequired[FeatureType]
     id: NotRequired[str]
     is_enabled: NotRequired[bool]
     is_soft_limit: NotRequired[bool]
     parent_entitlement_id: NotRequired[str]
-    plan: NotRequired["Plan1TypedDict"]
+    plan: NotRequired["PlanResponseTypedDict"]
     plan_id: NotRequired[str]
     r"""TODO: Remove this once we have a proper entitlement entity type"""
     start_date: NotRequired[datetime]
@@ -47,7 +47,7 @@ class EntitlementResponseTypedDict(TypedDict):
 
 
 class EntitlementResponse(BaseModel):
-    addon: Optional["Addon1"] = None
+    addon: Optional["AddonResponse"] = None
 
     created_at: Optional[datetime] = None
 
@@ -63,7 +63,7 @@ class EntitlementResponse(BaseModel):
 
     environment_id: Optional[str] = None
 
-    feature: Optional[Feature1] = None
+    feature: Optional[FeatureResponse] = None
 
     feature_id: Optional[str] = None
 
@@ -77,7 +77,7 @@ class EntitlementResponse(BaseModel):
 
     parent_entitlement_id: Optional[str] = None
 
-    plan: Optional["Plan1"] = None
+    plan: Optional["PlanResponse"] = None
 
     plan_id: Optional[str] = None
     r"""TODO: Remove this once we have a proper entitlement entity type"""

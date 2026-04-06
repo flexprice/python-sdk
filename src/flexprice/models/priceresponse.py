@@ -25,12 +25,12 @@ from typing import Dict, List, Optional, TYPE_CHECKING
 from typing_extensions import NotRequired, TypedDict
 
 if TYPE_CHECKING:
-    from .addon_1 import Addon1, Addon1TypedDict
-    from .plan_1 import Plan1, Plan1TypedDict
+    from .addonresponse import AddonResponse, AddonResponseTypedDict
+    from .planresponse import PlanResponse, PlanResponseTypedDict
 
 
-class PriceTypedDict(TypedDict):
-    addon: NotRequired["Addon1TypedDict"]
+class PriceResponseTypedDict(TypedDict):
+    addon: NotRequired["AddonResponseTypedDict"]
     amount: NotRequired[str]
     r"""Amount stored in main currency units (e.g., dollars, not cents)
     For USD: 12.50 means $12.50
@@ -79,7 +79,7 @@ class PriceTypedDict(TypedDict):
     r"""MinQuantity is the minimum quantity of the price"""
     parent_price_id: NotRequired[str]
     r"""ParentPriceID references the root price (always set for price lineage tracking)"""
-    plan: NotRequired["Plan1TypedDict"]
+    plan: NotRequired["PlanResponseTypedDict"]
     price_unit: NotRequired[str]
     r"""PriceUnit is the code of the price unit (e.g., 'btc', 'eth')"""
     price_unit_amount: NotRequired[str]
@@ -106,8 +106,8 @@ class PriceTypedDict(TypedDict):
     updated_by: NotRequired[str]
 
 
-class Price(BaseModel):
-    addon: Optional["Addon1"] = None
+class PriceResponse(BaseModel):
+    addon: Optional["AddonResponse"] = None
 
     amount: Optional[str] = None
     r"""Amount stored in main currency units (e.g., dollars, not cents)
@@ -184,7 +184,7 @@ class Price(BaseModel):
     parent_price_id: Optional[str] = None
     r"""ParentPriceID references the root price (always set for price lineage tracking)"""
 
-    plan: Optional["Plan1"] = None
+    plan: Optional["PlanResponse"] = None
 
     price_unit: Optional[str] = None
     r"""PriceUnit is the code of the price unit (e.g., 'btc', 'eth')"""

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .creditgrantresponse import CreditGrantResponse, CreditGrantResponseTypedDict
-from .invoice import Invoice, InvoiceTypedDict
+from .invoiceresponse import InvoiceResponse, InvoiceResponseTypedDict
 from .prorationdetails import ProrationDetails, ProrationDetailsTypedDict
 from .subscriptionchangetype import SubscriptionChangeType
 from .subscriptionsummary import SubscriptionSummary, SubscriptionSummaryTypedDict
@@ -21,7 +21,7 @@ class SubscriptionChangeExecuteResponseTypedDict(TypedDict):
     r"""credit_grants contains any credit grants created for proration credits"""
     effective_date: NotRequired[datetime]
     r"""effective_date is when the change took effect"""
-    invoice: NotRequired[InvoiceTypedDict]
+    invoice: NotRequired[InvoiceResponseTypedDict]
     is_scheduled: NotRequired[bool]
     r"""is_scheduled indicates if the change was scheduled or executed immediately"""
     metadata: NotRequired[Dict[str, str]]
@@ -46,7 +46,7 @@ class SubscriptionChangeExecuteResponse(BaseModel):
     effective_date: Optional[datetime] = None
     r"""effective_date is when the change took effect"""
 
-    invoice: Optional[Invoice] = None
+    invoice: Optional[InvoiceResponse] = None
 
     is_scheduled: Optional[bool] = None
     r"""is_scheduled indicates if the change was scheduled or executed immediately"""

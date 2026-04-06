@@ -95,7 +95,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Create subscription
 
         Use when onboarding a customer to a plan or starting a new subscription. Ideal for draft subscriptions (activate later) or active from start.
@@ -255,7 +255,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -366,7 +366,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Create subscription
 
         Use when onboarding a customer to a plan or starting a new subscription. Ideal for draft subscriptions (activate later) or active from start.
@@ -526,7 +526,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2138,7 +2138,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Get subscription
 
         Use when you need to load a single subscription (e.g. for a billing portal or to check status).
@@ -2203,7 +2203,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2237,7 +2237,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Get subscription
 
         Use when you need to load a single subscription (e.g. for a billing portal or to check status).
@@ -2302,7 +2302,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2340,7 +2340,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Update subscription
 
         Use when changing subscription details (e.g. quantity, billing anchor, or parent). Supports partial update; send \"\" to clear parent_subscription_id.
@@ -2418,7 +2418,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2456,7 +2456,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Update subscription
 
         Use when changing subscription details (e.g. quantity, billing anchor, or parent). Supports partial update; send \"\" to clear parent_subscription_id.
@@ -2534,7 +2534,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2569,7 +2569,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Activate draft subscription
 
         Use when turning a draft subscription live (e.g. after collecting payment or completing setup). Once activated, billing and entitlements apply.
@@ -2645,7 +2645,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -2680,7 +2680,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Activate draft subscription
 
         Use when turning a draft subscription live (e.g. after collecting payment or completing setup). Once activated, billing and entitlements apply.
@@ -2756,7 +2756,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -4489,7 +4489,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Add customers to subscription inheritance
 
         Attach additional child customers (by external ID) to an active standalone or parent subscription; creates inherited skeleton subscriptions for each. The subscription must be active.
@@ -4565,7 +4565,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -4600,7 +4600,7 @@ class Subscriptions(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Subscription:
+    ) -> models.SubscriptionResponse:
         r"""Add customers to subscription inheritance
 
         Attach additional child customers (by external ID) to an active standalone or parent subscription; creates inherited skeleton subscriptions for each. The subscription must be active.
@@ -4676,7 +4676,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Subscription, http_res)
+            return unmarshal_json_response(models.SubscriptionResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

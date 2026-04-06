@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .paginationresponse import PaginationResponse, PaginationResponseTypedDict
-from .subscription import Subscription, SubscriptionTypedDict
+from .subscriptionresponse import SubscriptionResponse, SubscriptionResponseTypedDict
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Optional
@@ -10,12 +10,12 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ListSubscriptionsResponseTypedDict(TypedDict):
-    items: NotRequired[List[SubscriptionTypedDict]]
+    items: NotRequired[List[SubscriptionResponseTypedDict]]
     pagination: NotRequired[PaginationResponseTypedDict]
 
 
 class ListSubscriptionsResponse(BaseModel):
-    items: Optional[List[Subscription]] = None
+    items: Optional[List[SubscriptionResponse]] = None
 
     pagination: Optional[PaginationResponse] = None
 

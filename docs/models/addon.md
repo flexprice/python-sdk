@@ -1,4 +1,4 @@
-# Addon1
+# Addon
 
 
 ## Fields
@@ -8,13 +8,11 @@
 | `created_at`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `created_by`                                                         | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `description`                                                        | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `entitlements`                                                       | List[[models.EntitlementResponse](../models/entitlementresponse.md)] | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `environment_id`                                                     | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `id`                                                                 | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `lookup_key`                                                         | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `metadata`                                                           | Dict[str, *Any*]                                                     | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `name`                                                               | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `prices`                                                             | List[[models.Price](../models/price.md)]                             | :heavy_minus_sign:                                                   | Optional expanded fields                                             |
 | `status`                                                             | [Optional[models.Status]](../models/status.md)                       | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `tenant_id`                                                          | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `type`                                                               | [Optional[models.AddonType]](../models/addontype.md)                 | :heavy_minus_sign:                                                   | N/A                                                                  |
