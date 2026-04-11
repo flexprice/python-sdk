@@ -69,6 +69,8 @@ class InvoiceFilterTypedDict(TypedDict):
     sort: NotRequired[List[SortConditionTypedDict]]
     start_time: NotRequired[datetime]
     status: NotRequired[Status]
+    subscription_customer_id: NotRequired[List[str]]
+    r"""subscription_customer_id filters invoices by the subscription owner's customer ID"""
     subscription_id: NotRequired[str]
     r"""subscription_id filters invoices generated for a specific subscription
     Only returns invoices that were created as part of the specified subscription's billing
@@ -146,6 +148,9 @@ class InvoiceFilter(BaseModel):
 
     status: Optional[Status] = None
 
+    subscription_customer_id: Optional[List[str]] = None
+    r"""subscription_customer_id filters invoices by the subscription owner's customer ID"""
+
     subscription_id: Optional[str] = None
     r"""subscription_id filters invoices generated for a specific subscription
     Only returns invoices that were created as part of the specified subscription's billing
@@ -177,6 +182,7 @@ class InvoiceFilter(BaseModel):
                 "sort",
                 "start_time",
                 "status",
+                "subscription_customer_id",
                 "subscription_id",
             ]
         )

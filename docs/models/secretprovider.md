@@ -21,6 +21,7 @@ This is an open enum. Unrecognized values will not fail type checks.
 - `"razorpay"`
 - `"chargebee"`
 - `"quickbooks"`
+- `"zoho_books"`
 - `"nomod"`
 - `"moyasar"`
 - `"paddle"`

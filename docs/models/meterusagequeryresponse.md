@@ -1,0 +1,12 @@
+# MeterUsageQueryResponse
+
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `aggregation_type`                                               | [Optional[models.AggregationType]](../models/aggregationtype.md) | :heavy_minus_sign:                                               | N/A                                                              |                                                                  |
+| `event_count`                                                    | *Optional[int]*                                                  | :heavy_minus_sign:                                               | N/A                                                              | 42                                                               |
+| `meter_id`                                                       | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              | mtr_abc                                                          |
+| `points`                                                         | List[[models.MeterUsagePoint](../models/meterusagepoint.md)]     | :heavy_minus_sign:                                               | N/A                                                              |                                                                  |
+| `total_value`                                                    | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              | 1234.5678                                                        |

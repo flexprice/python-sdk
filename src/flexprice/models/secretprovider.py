@@ -14,6 +14,7 @@ SecretProvider = Union[
         "razorpay",
         "chargebee",
         "quickbooks",
+        "zoho_books",
         "nomod",
         "moyasar",
         "paddle",

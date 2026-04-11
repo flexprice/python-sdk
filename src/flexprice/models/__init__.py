@@ -96,6 +96,10 @@ if TYPE_CHECKING:
         CancelSubscriptionScheduleRequest,
         CancelSubscriptionScheduleRequestTypedDict,
     )
+    from .changedinvoice import ChangedInvoice, ChangedInvoiceTypedDict
+    from .changedlineitem import ChangedLineItem, ChangedLineItemTypedDict
+    from .changedresources import ChangedResources, ChangedResourcesTypedDict
+    from .changedsubscription import ChangedSubscription, ChangedSubscriptionTypedDict
     from .cloneplanrequest import ClonePlanRequest, ClonePlanRequestTypedDict
     from .collectionmethod import CollectionMethod
     from .commitmentinfo import CommitmentInfo, CommitmentInfoTypedDict
@@ -367,11 +371,11 @@ if TYPE_CHECKING:
         ExecuteSubscriptionChangeRequest,
         ExecuteSubscriptionChangeRequestTypedDict,
     )
-    from .executesubscriptioninheritancerequest import (
-        ExecuteSubscriptionInheritanceRequest,
-        ExecuteSubscriptionInheritanceRequestTypedDict,
-    )
     from .executesubscriptionmodifyop import (
+        ExecuteSubscriptionModifyRequestRequest,
+        ExecuteSubscriptionModifyRequestRequestTypedDict,
+    )
+    from .executesubscriptionmodifyrequest import (
         ExecuteSubscriptionModifyRequest,
         ExecuteSubscriptionModifyRequestTypedDict,
     )
@@ -596,6 +600,10 @@ if TYPE_CHECKING:
         LineItemCommitmentConfig,
         LineItemCommitmentConfigTypedDict,
     )
+    from .lineitemquantitychange import (
+        LineItemQuantityChange,
+        LineItemQuantityChangeTypedDict,
+    )
     from .linkintegrationmappingrequest import (
         LinkIntegrationMappingRequest,
         LinkIntegrationMappingRequestTypedDict,
@@ -732,6 +740,23 @@ if TYPE_CHECKING:
     from .meter_meter import MeterMeter, MeterMeterTypedDict
     from .metermatchingresult import MeterMatchingResult, MeterMatchingResultTypedDict
     from .meterresponse import MeterResponse, MeterResponseTypedDict
+    from .meterusageanalyticsrequest import (
+        MeterUsageAnalyticsRequest,
+        MeterUsageAnalyticsRequestTypedDict,
+    )
+    from .meterusageanalyticsresponse import (
+        MeterUsageAnalyticsResponse,
+        MeterUsageAnalyticsResponseTypedDict,
+    )
+    from .meterusagepoint import MeterUsagePoint, MeterUsagePointTypedDict
+    from .meterusagequeryrequest import (
+        MeterUsageQueryRequest,
+        MeterUsageQueryRequestTypedDict,
+    )
+    from .meterusagequeryresponse import (
+        MeterUsageQueryResponse,
+        MeterUsageQueryResponseTypedDict,
+    )
     from .models_temporalworkflowresult import (
         ModelsTemporalWorkflowResult,
         ModelsTemporalWorkflowResultTypedDict,
@@ -776,6 +801,10 @@ if TYPE_CHECKING:
     from .previewsubscriptionchangeop import (
         PreviewSubscriptionChangeRequest,
         PreviewSubscriptionChangeRequestTypedDict,
+    )
+    from .previewsubscriptionmodifyop import (
+        PreviewSubscriptionModifyRequest,
+        PreviewSubscriptionModifyRequestTypedDict,
     )
     from .price_jsonbtransformquantity import (
         PriceJSONBTransformQuantity,
@@ -858,6 +887,14 @@ if TYPE_CHECKING:
     from .sortdirection import SortDirection
     from .sourceusageitem import SourceUsageItem, SourceUsageItemTypedDict
     from .status import Status
+    from .submodifyinheritancerequest import (
+        SubModifyInheritanceRequest,
+        SubModifyInheritanceRequestTypedDict,
+    )
+    from .submodifyquantitychangerequest import (
+        SubModifyQuantityChangeRequest,
+        SubModifyQuantityChangeRequestTypedDict,
+    )
     from .subscription_subscriptionlineitem import (
         SubscriptionSubscriptionLineItem,
         SubscriptionSubscriptionLineItemTypedDict,
@@ -901,6 +938,11 @@ if TYPE_CHECKING:
         SubscriptionLineItemResponse,
         SubscriptionLineItemResponseTypedDict,
     )
+    from .subscriptionmodifyresponse import (
+        SubscriptionModifyResponse,
+        SubscriptionModifyResponseTypedDict,
+    )
+    from .subscriptionmodifytype import SubscriptionModifyType
     from .subscriptionpauseresponse import (
         SubscriptionPauseResponse,
         SubscriptionPauseResponseTypedDict,
@@ -1314,6 +1356,14 @@ __all__ = [
     "CancelSubscriptionScheduleRequest",
     "CancelSubscriptionScheduleRequestTypedDict",
     "CancellationType",
+    "ChangedInvoice",
+    "ChangedInvoiceTypedDict",
+    "ChangedLineItem",
+    "ChangedLineItemTypedDict",
+    "ChangedResources",
+    "ChangedResourcesTypedDict",
+    "ChangedSubscription",
+    "ChangedSubscriptionTypedDict",
     "ClonePlanRequest",
     "ClonePlanRequestTypedDict",
     "Code",
@@ -1530,9 +1580,9 @@ __all__ = [
     "EventTypedDict",
     "ExecuteSubscriptionChangeRequest",
     "ExecuteSubscriptionChangeRequestTypedDict",
-    "ExecuteSubscriptionInheritanceRequest",
-    "ExecuteSubscriptionInheritanceRequestTypedDict",
     "ExecuteSubscriptionModifyRequest",
+    "ExecuteSubscriptionModifyRequestRequest",
+    "ExecuteSubscriptionModifyRequestRequestTypedDict",
     "ExecuteSubscriptionModifyRequestTypedDict",
     "ExecutionResult",
     "ExecutionResultTypedDict",
@@ -1717,6 +1767,8 @@ __all__ = [
     "InvoiceType",
     "LineItemCommitmentConfig",
     "LineItemCommitmentConfigTypedDict",
+    "LineItemQuantityChange",
+    "LineItemQuantityChangeTypedDict",
     "LinkIntegrationMappingRequest",
     "LinkIntegrationMappingRequestTypedDict",
     "LinkIntegrationMappingResponse",
@@ -1813,6 +1865,16 @@ __all__ = [
     "MeterMeterTypedDict",
     "MeterResponse",
     "MeterResponseTypedDict",
+    "MeterUsageAnalyticsRequest",
+    "MeterUsageAnalyticsRequestTypedDict",
+    "MeterUsageAnalyticsResponse",
+    "MeterUsageAnalyticsResponseTypedDict",
+    "MeterUsagePoint",
+    "MeterUsagePointTypedDict",
+    "MeterUsageQueryRequest",
+    "MeterUsageQueryRequestTypedDict",
+    "MeterUsageQueryResponse",
+    "MeterUsageQueryResponseTypedDict",
     "ModelsTemporalWorkflowResult",
     "ModelsTemporalWorkflowResultTypedDict",
     "OverrideEntitlementRequest",
@@ -1850,6 +1912,8 @@ __all__ = [
     "PostPlansIDCloneRequestTypedDict",
     "PreviewSubscriptionChangeRequest",
     "PreviewSubscriptionChangeRequestTypedDict",
+    "PreviewSubscriptionModifyRequest",
+    "PreviewSubscriptionModifyRequestTypedDict",
     "PriceEntityType",
     "PriceFilter",
     "PriceFilterOrder",
@@ -1931,6 +1995,10 @@ __all__ = [
     "SourceUsageItem",
     "SourceUsageItemTypedDict",
     "Status",
+    "SubModifyInheritanceRequest",
+    "SubModifyInheritanceRequestTypedDict",
+    "SubModifyQuantityChangeRequest",
+    "SubModifyQuantityChangeRequestTypedDict",
     "SubscriptionChangeExecuteResponse",
     "SubscriptionChangeExecuteResponseTypedDict",
     "SubscriptionChangePreviewResponse",
@@ -1950,6 +2018,9 @@ __all__ = [
     "SubscriptionLineItemLookupResultTypedDict",
     "SubscriptionLineItemResponse",
     "SubscriptionLineItemResponseTypedDict",
+    "SubscriptionModifyResponse",
+    "SubscriptionModifyResponseTypedDict",
+    "SubscriptionModifyType",
     "SubscriptionPauseResponse",
     "SubscriptionPauseResponseTypedDict",
     "SubscriptionPhaseCreateRequest",
@@ -2251,6 +2322,14 @@ _dynamic_imports: dict[str, str] = {
     "CancelSubscriptionResponseTypedDict": ".cancelsubscriptionresponse",
     "CancelSubscriptionScheduleRequest": ".cancelsubscriptionscheduleop",
     "CancelSubscriptionScheduleRequestTypedDict": ".cancelsubscriptionscheduleop",
+    "ChangedInvoice": ".changedinvoice",
+    "ChangedInvoiceTypedDict": ".changedinvoice",
+    "ChangedLineItem": ".changedlineitem",
+    "ChangedLineItemTypedDict": ".changedlineitem",
+    "ChangedResources": ".changedresources",
+    "ChangedResourcesTypedDict": ".changedresources",
+    "ChangedSubscription": ".changedsubscription",
+    "ChangedSubscriptionTypedDict": ".changedsubscription",
     "ClonePlanRequest": ".cloneplanrequest",
     "ClonePlanRequestTypedDict": ".cloneplanrequest",
     "CollectionMethod": ".collectionmethod",
@@ -2463,10 +2542,10 @@ _dynamic_imports: dict[str, str] = {
     "EventProcessingStatusType": ".eventprocessingstatustype",
     "ExecuteSubscriptionChangeRequest": ".executesubscriptionchangeop",
     "ExecuteSubscriptionChangeRequestTypedDict": ".executesubscriptionchangeop",
-    "ExecuteSubscriptionInheritanceRequest": ".executesubscriptioninheritancerequest",
-    "ExecuteSubscriptionInheritanceRequestTypedDict": ".executesubscriptioninheritancerequest",
-    "ExecuteSubscriptionModifyRequest": ".executesubscriptionmodifyop",
-    "ExecuteSubscriptionModifyRequestTypedDict": ".executesubscriptionmodifyop",
+    "ExecuteSubscriptionModifyRequestRequest": ".executesubscriptionmodifyop",
+    "ExecuteSubscriptionModifyRequestRequestTypedDict": ".executesubscriptionmodifyop",
+    "ExecuteSubscriptionModifyRequest": ".executesubscriptionmodifyrequest",
+    "ExecuteSubscriptionModifyRequestTypedDict": ".executesubscriptionmodifyrequest",
     "FailurePoint": ".failurepoint",
     "FailurePointTypedDict": ".failurepoint",
     "FailurePointType": ".failurepointtype",
@@ -2648,6 +2727,8 @@ _dynamic_imports: dict[str, str] = {
     "InvoiceType": ".invoicetype",
     "LineItemCommitmentConfig": ".lineitemcommitmentconfig",
     "LineItemCommitmentConfigTypedDict": ".lineitemcommitmentconfig",
+    "LineItemQuantityChange": ".lineitemquantitychange",
+    "LineItemQuantityChangeTypedDict": ".lineitemquantitychange",
     "LinkIntegrationMappingRequest": ".linkintegrationmappingrequest",
     "LinkIntegrationMappingRequestTypedDict": ".linkintegrationmappingrequest",
     "LinkIntegrationMappingResponse": ".linkintegrationmappingresponse",
@@ -2744,6 +2825,16 @@ _dynamic_imports: dict[str, str] = {
     "MeterMatchingResultTypedDict": ".metermatchingresult",
     "MeterResponse": ".meterresponse",
     "MeterResponseTypedDict": ".meterresponse",
+    "MeterUsageAnalyticsRequest": ".meterusageanalyticsrequest",
+    "MeterUsageAnalyticsRequestTypedDict": ".meterusageanalyticsrequest",
+    "MeterUsageAnalyticsResponse": ".meterusageanalyticsresponse",
+    "MeterUsageAnalyticsResponseTypedDict": ".meterusageanalyticsresponse",
+    "MeterUsagePoint": ".meterusagepoint",
+    "MeterUsagePointTypedDict": ".meterusagepoint",
+    "MeterUsageQueryRequest": ".meterusagequeryrequest",
+    "MeterUsageQueryRequestTypedDict": ".meterusagequeryrequest",
+    "MeterUsageQueryResponse": ".meterusagequeryresponse",
+    "MeterUsageQueryResponseTypedDict": ".meterusagequeryresponse",
     "ModelsTemporalWorkflowResult": ".models_temporalworkflowresult",
     "ModelsTemporalWorkflowResultTypedDict": ".models_temporalworkflowresult",
     "OverrideEntitlementRequest": ".overrideentitlementrequest",
@@ -2779,6 +2870,8 @@ _dynamic_imports: dict[str, str] = {
     "PostPlansIDCloneRequestTypedDict": ".post_plans_id_cloneop",
     "PreviewSubscriptionChangeRequest": ".previewsubscriptionchangeop",
     "PreviewSubscriptionChangeRequestTypedDict": ".previewsubscriptionchangeop",
+    "PreviewSubscriptionModifyRequest": ".previewsubscriptionmodifyop",
+    "PreviewSubscriptionModifyRequestTypedDict": ".previewsubscriptionmodifyop",
     "PriceJSONBTransformQuantity": ".price_jsonbtransformquantity",
     "PriceJSONBTransformQuantityTypedDict": ".price_jsonbtransformquantity",
     "PricePrice": ".price_price",
@@ -2857,6 +2950,10 @@ _dynamic_imports: dict[str, str] = {
     "SourceUsageItem": ".sourceusageitem",
     "SourceUsageItemTypedDict": ".sourceusageitem",
     "Status": ".status",
+    "SubModifyInheritanceRequest": ".submodifyinheritancerequest",
+    "SubModifyInheritanceRequestTypedDict": ".submodifyinheritancerequest",
+    "SubModifyQuantityChangeRequest": ".submodifyquantitychangerequest",
+    "SubModifyQuantityChangeRequestTypedDict": ".submodifyquantitychangerequest",
     "SubscriptionSubscriptionLineItem": ".subscription_subscriptionlineitem",
     "SubscriptionSubscriptionLineItemTypedDict": ".subscription_subscriptionlineitem",
     "SubscriptionSubscriptionPause": ".subscription_subscriptionpause",
@@ -2880,6 +2977,9 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionLineItemLookupResultTypedDict": ".subscriptionlineitemlookupresult",
     "SubscriptionLineItemResponse": ".subscriptionlineitemresponse",
     "SubscriptionLineItemResponseTypedDict": ".subscriptionlineitemresponse",
+    "SubscriptionModifyResponse": ".subscriptionmodifyresponse",
+    "SubscriptionModifyResponseTypedDict": ".subscriptionmodifyresponse",
+    "SubscriptionModifyType": ".subscriptionmodifytype",
     "SubscriptionPauseResponse": ".subscriptionpauseresponse",
     "SubscriptionPauseResponseTypedDict": ".subscriptionpauseresponse",
     "SubscriptionPhaseCreateRequest": ".subscriptionphasecreaterequest",

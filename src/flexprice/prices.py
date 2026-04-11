@@ -13,7 +13,6 @@ class Prices(BaseSDK):
     def create_price(
         self,
         *,
-        billing_cadence: models.BillingCadence,
         billing_model: models.BillingModel,
         billing_period: models.BillingPeriod,
         currency: str,
@@ -54,7 +53,6 @@ class Prices(BaseSDK):
 
         Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metered). Ideal for both simple and usage-based pricing.
 
-        :param billing_cadence:
         :param billing_model:
         :param billing_period:
         :param currency:
@@ -97,7 +95,6 @@ class Prices(BaseSDK):
 
         request = models.CreatePriceRequest(
             amount=amount,
-            billing_cadence=billing_cadence,
             billing_model=billing_model,
             billing_period=billing_period,
             billing_period_count=billing_period_count,
@@ -202,7 +199,6 @@ class Prices(BaseSDK):
     async def create_price_async(
         self,
         *,
-        billing_cadence: models.BillingCadence,
         billing_model: models.BillingModel,
         billing_period: models.BillingPeriod,
         currency: str,
@@ -243,7 +239,6 @@ class Prices(BaseSDK):
 
         Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metered). Ideal for both simple and usage-based pricing.
 
-        :param billing_cadence:
         :param billing_model:
         :param billing_period:
         :param currency:
@@ -286,7 +281,6 @@ class Prices(BaseSDK):
 
         request = models.CreatePriceRequest(
             amount=amount,
-            billing_cadence=billing_cadence,
             billing_model=billing_model,
             billing_period=billing_period,
             billing_period_count=billing_period_count,

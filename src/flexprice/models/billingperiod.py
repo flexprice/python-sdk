@@ -13,6 +13,7 @@ BillingPeriod = Union[
         "DAILY",
         "QUARTERLY",
         "HALF_YEARLY",
+        "ONETIME",
     ],
     UnrecognizedStr,
 ]

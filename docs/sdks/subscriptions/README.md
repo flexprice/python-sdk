@@ -21,7 +21,8 @@
 * [get_subscription_entitlements](#get_subscription_entitlements) - Get subscription entitlements
 * [get_subscription_upcoming_grants](#get_subscription_upcoming_grants) - Get upcoming credit grant applications
 * [create_subscription_line_item](#create_subscription_line_item) - Create subscription line item
-* [execute_subscription_modify](#execute_subscription_modify) - Add customers to subscription inheritance
+* [execute_subscription_modify](#execute_subscription_modify) - Execute subscription modification
+* [preview_subscription_modify](#preview_subscription_modify) - Preview subscription modification
 * [pause_subscription](#pause_subscription) - Pause a subscription
 * [list_subscription_pauses](#list_subscription_pauses) - List all pauses for a subscription
 * [resume_subscription](#resume_subscription) - Resume a paused subscription
@@ -46,7 +47,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.create_subscription(billing_cadence="ONETIME", billing_period="DAILY", currency="New Leu", plan_id="<id>")
+    res = f_client.subscriptions.create_subscription(billing_period="ONETIME", currency="Kwacha", plan_id="<id>")
 
     # Handle response
     print(res)
@@ -57,7 +58,6 @@ with Flexprice(
 
 | Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `billing_cadence`                                                                                                                                 | [models.BillingCadence](../../models/billingcadence.md)                                                                                           | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
 | `billing_period`                                                                                                                                  | [models.BillingPeriod](../../models/billingperiod.md)                                                                                             | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
 | `currency`                                                                                                                                        | *str*                                                                                                                                             | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
 | `plan_id`                                                                                                                                         | *str*                                                                                                                                             | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
@@ -630,7 +630,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.execute_subscription_change(id="<id>", billing_cadence="RECURRING", billing_cycle="anniversary", billing_period="QUARTERLY", proration_behavior="create_prorations", target_plan_id="<id>")
+    res = f_client.subscriptions.execute_subscription_change(id="<id>", billing_cadence="RECURRING", billing_cycle="anniversary", billing_period="ANNUAL", proration_behavior="none", target_plan_id="<id>")
 
     # Handle response
     print(res)
@@ -679,7 +679,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.preview_subscription_change(id="<id>", billing_cadence="RECURRING", billing_cycle="calendar", billing_period="HALF_YEARLY", proration_behavior="create_prorations", target_plan_id="<id>")
+    res = f_client.subscriptions.preview_subscription_change(id="<id>", billing_cadence="RECURRING", billing_cycle="anniversary", billing_period="ONETIME", proration_behavior="none", target_plan_id="<id>")
 
     # Handle response
     print(res)
@@ -854,7 +854,7 @@ with Flexprice(
 
 ## execute_subscription_modify
 
-Attach additional child customers (by external ID) to an active standalone or parent subscription; creates inherited skeleton subscriptions for each. The subscription must be active.
+Execute a mid-cycle subscription modification (inheritance or quantity change).
 
 ### Example Usage
 
@@ -867,7 +867,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.execute_subscription_modify(id="<id>")
+    res = f_client.subscriptions.execute_subscription_modify(id="<id>", type_="inheritance")
 
     # Handle response
     print(res)
@@ -876,15 +876,61 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | Subscription ID                                                     |
-| `external_customer_ids_to_inherit_subscription`                     | List[*str*]                                                         | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `id`                                                                                              | *str*                                                                                             | :heavy_check_mark:                                                                                | Subscription ID                                                                                   |
+| `type`                                                                                            | [models.SubscriptionModifyType](../../models/subscriptionmodifytype.md)                           | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `inheritance_params`                                                                              | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)       | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `quantity_change_params`                                                                          | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
 
 ### Response
 
-**[models.SubscriptionResponse](../../models/subscriptionresponse.md)**
+**[models.SubscriptionModifyResponse](../../models/subscriptionmodifyresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## preview_subscription_modify
+
+Preview the impact of a mid-cycle subscription modification without committing changes.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="previewSubscriptionModify" method="post" path="/subscriptions/{id}/modify/preview" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="quantity_change")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `id`                                                                                              | *str*                                                                                             | :heavy_check_mark:                                                                                | Subscription ID                                                                                   |
+| `type`                                                                                            | [models.SubscriptionModifyType](../../models/subscriptionmodifytype.md)                           | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `inheritance_params`                                                                              | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)       | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `quantity_change_params`                                                                          | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
+
+### Response
+
+**[models.SubscriptionModifyResponse](../../models/subscriptionmodifyresponse.md)**
 
 ### Errors
 

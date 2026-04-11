@@ -5,7 +5,6 @@ from .addaddontosubscriptionrequest import (
     AddAddonToSubscriptionRequest,
     AddAddonToSubscriptionRequestTypedDict,
 )
-from .billingcadence import BillingCadence
 from .billingcycle import BillingCycle
 from .billingperiod import BillingPeriod
 from .collectionmethod import CollectionMethod
@@ -50,7 +49,6 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class CreateSubscriptionRequestTypedDict(TypedDict):
-    billing_cadence: BillingCadence
     billing_period: BillingPeriod
     currency: str
     plan_id: str
@@ -109,8 +107,6 @@ class CreateSubscriptionRequestTypedDict(TypedDict):
 
 
 class CreateSubscriptionRequest(BaseModel):
-    billing_cadence: BillingCadence
-
     billing_period: BillingPeriod
 
     currency: str

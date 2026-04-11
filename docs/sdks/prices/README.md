@@ -27,7 +27,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.prices.create_price(billing_cadence="RECURRING", billing_model="PACKAGE", billing_period="HALF_YEARLY", currency="Serbian Dinar", entity_id="<id>", entity_type="PRICE", invoice_cadence="ARREAR", price_unit_type="CUSTOM", type_="USAGE")
+    res = f_client.prices.create_price(billing_model="FLAT_FEE", billing_period="DAILY", currency="Dong", entity_id="<id>", entity_type="PRICE", invoice_cadence="ADVANCE", price_unit_type="FIAT", type_="FIXED")
 
     # Handle response
     print(res)
@@ -38,7 +38,6 @@ with Flexprice(
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `billing_cadence`                                                                 | [models.BillingCadence](../../models/billingcadence.md)                           | :heavy_check_mark:                                                                | N/A                                                                               |
 | `billing_model`                                                                   | [models.BillingModel](../../models/billingmodel.md)                               | :heavy_check_mark:                                                                | N/A                                                                               |
 | `billing_period`                                                                  | [models.BillingPeriod](../../models/billingperiod.md)                             | :heavy_check_mark:                                                                | N/A                                                                               |
 | `currency`                                                                        | *str*                                                                             | :heavy_check_mark:                                                                | N/A                                                                               |

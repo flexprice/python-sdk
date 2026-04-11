@@ -13,7 +13,6 @@ class Subscriptions(BaseSDK):
     def create_subscription(
         self,
         *,
-        billing_cadence: models.BillingCadence,
         billing_period: models.BillingPeriod,
         currency: str,
         plan_id: str,
@@ -100,7 +99,6 @@ class Subscriptions(BaseSDK):
 
         Use when onboarding a customer to a plan or starting a new subscription. Ideal for draft subscriptions (activate later) or active from start.
 
-        :param billing_cadence:
         :param billing_period:
         :param currency:
         :param plan_id:
@@ -158,7 +156,6 @@ class Subscriptions(BaseSDK):
             addons=utils.get_pydantic_model(
                 addons, Optional[List[models.AddAddonToSubscriptionRequest]]
             ),
-            billing_cadence=billing_cadence,
             billing_cycle=billing_cycle,
             billing_period=billing_period,
             billing_period_count=billing_period_count,
@@ -284,7 +281,6 @@ class Subscriptions(BaseSDK):
     async def create_subscription_async(
         self,
         *,
-        billing_cadence: models.BillingCadence,
         billing_period: models.BillingPeriod,
         currency: str,
         plan_id: str,
@@ -371,7 +367,6 @@ class Subscriptions(BaseSDK):
 
         Use when onboarding a customer to a plan or starting a new subscription. Ideal for draft subscriptions (activate later) or active from start.
 
-        :param billing_cadence:
         :param billing_period:
         :param currency:
         :param plan_id:
@@ -429,7 +424,6 @@ class Subscriptions(BaseSDK):
             addons=utils.get_pydantic_model(
                 addons, Optional[List[models.AddAddonToSubscriptionRequest]]
             ),
-            billing_cadence=billing_cadence,
             billing_cycle=billing_cycle,
             billing_period=billing_period,
             billing_period_count=billing_period_count,
@@ -4484,18 +4478,32 @@ class Subscriptions(BaseSDK):
         self,
         *,
         id: str,
-        external_customer_ids_to_inherit_subscription: Optional[List[str]] = None,
+        type_: models.SubscriptionModifyType,
+        inheritance_params: Optional[
+            Union[
+                models.SubModifyInheritanceRequest,
+                models.SubModifyInheritanceRequestTypedDict,
+            ]
+        ] = None,
+        quantity_change_params: Optional[
+            Union[
+                models.SubModifyQuantityChangeRequest,
+                models.SubModifyQuantityChangeRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionResponse:
-        r"""Add customers to subscription inheritance
+    ) -> models.SubscriptionModifyResponse:
+        r"""Execute subscription modification
 
-        Attach additional child customers (by external ID) to an active standalone or parent subscription; creates inherited skeleton subscriptions for each. The subscription must be active.
+        Execute a mid-cycle subscription modification (inheritance or quantity change).
 
         :param id: Subscription ID
-        :param external_customer_ids_to_inherit_subscription:
+        :param type:
+        :param inheritance_params:
+        :param quantity_change_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -4511,10 +4519,17 @@ class Subscriptions(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.ExecuteSubscriptionModifyRequest(
+        request = models.ExecuteSubscriptionModifyRequestRequest(
             id=id,
-            body=models.ExecuteSubscriptionInheritanceRequest(
-                external_customer_ids_to_inherit_subscription=external_customer_ids_to_inherit_subscription,
+            body=models.ExecuteSubscriptionModifyRequest(
+                inheritance_params=utils.get_pydantic_model(
+                    inheritance_params, Optional[models.SubModifyInheritanceRequest]
+                ),
+                quantity_change_params=utils.get_pydantic_model(
+                    quantity_change_params,
+                    Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                type=type_,
             ),
         )
 
@@ -4536,7 +4551,7 @@ class Subscriptions(BaseSDK):
                 False,
                 False,
                 "json",
-                models.ExecuteSubscriptionInheritanceRequest,
+                models.ExecuteSubscriptionModifyRequest,
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -4565,7 +4580,7 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.SubscriptionResponse, http_res)
+            return unmarshal_json_response(models.SubscriptionModifyResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res
@@ -4595,18 +4610,32 @@ class Subscriptions(BaseSDK):
         self,
         *,
         id: str,
-        external_customer_ids_to_inherit_subscription: Optional[List[str]] = None,
+        type_: models.SubscriptionModifyType,
+        inheritance_params: Optional[
+            Union[
+                models.SubModifyInheritanceRequest,
+                models.SubModifyInheritanceRequestTypedDict,
+            ]
+        ] = None,
+        quantity_change_params: Optional[
+            Union[
+                models.SubModifyQuantityChangeRequest,
+                models.SubModifyQuantityChangeRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionResponse:
-        r"""Add customers to subscription inheritance
+    ) -> models.SubscriptionModifyResponse:
+        r"""Execute subscription modification
 
-        Attach additional child customers (by external ID) to an active standalone or parent subscription; creates inherited skeleton subscriptions for each. The subscription must be active.
+        Execute a mid-cycle subscription modification (inheritance or quantity change).
 
         :param id: Subscription ID
-        :param external_customer_ids_to_inherit_subscription:
+        :param type:
+        :param inheritance_params:
+        :param quantity_change_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -4622,10 +4651,17 @@ class Subscriptions(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.ExecuteSubscriptionModifyRequest(
+        request = models.ExecuteSubscriptionModifyRequestRequest(
             id=id,
-            body=models.ExecuteSubscriptionInheritanceRequest(
-                external_customer_ids_to_inherit_subscription=external_customer_ids_to_inherit_subscription,
+            body=models.ExecuteSubscriptionModifyRequest(
+                inheritance_params=utils.get_pydantic_model(
+                    inheritance_params, Optional[models.SubModifyInheritanceRequest]
+                ),
+                quantity_change_params=utils.get_pydantic_model(
+                    quantity_change_params,
+                    Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                type=type_,
             ),
         )
 
@@ -4647,7 +4683,7 @@ class Subscriptions(BaseSDK):
                 False,
                 False,
                 "json",
-                models.ExecuteSubscriptionInheritanceRequest,
+                models.ExecuteSubscriptionModifyRequest,
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -4676,7 +4712,271 @@ class Subscriptions(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.SubscriptionResponse, http_res)
+            return unmarshal_json_response(models.SubscriptionModifyResponse, http_res)
+        if utils.match_response(http_res, ["400", "404"], "application/json"):
+            response_data = unmarshal_json_response(
+                models.errors.ErrorResponseData, http_res
+            )
+            raise models.errors.ErrorResponse(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                models.errors.ErrorResponseData, http_res
+            )
+            raise models.errors.ErrorResponse(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.errors.FlexpriceDefaultError(
+                "API error occurred", http_res, http_res_text
+            )
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.errors.FlexpriceDefaultError(
+                "API error occurred", http_res, http_res_text
+            )
+
+        raise models.errors.FlexpriceDefaultError(
+            "Unexpected response received", http_res
+        )
+
+    def preview_subscription_modify(
+        self,
+        *,
+        id: str,
+        type_: models.SubscriptionModifyType,
+        inheritance_params: Optional[
+            Union[
+                models.SubModifyInheritanceRequest,
+                models.SubModifyInheritanceRequestTypedDict,
+            ]
+        ] = None,
+        quantity_change_params: Optional[
+            Union[
+                models.SubModifyQuantityChangeRequest,
+                models.SubModifyQuantityChangeRequestTypedDict,
+            ]
+        ] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.SubscriptionModifyResponse:
+        r"""Preview subscription modification
+
+        Preview the impact of a mid-cycle subscription modification without committing changes.
+
+        :param id: Subscription ID
+        :param type:
+        :param inheritance_params:
+        :param quantity_change_params:
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PreviewSubscriptionModifyRequest(
+            id=id,
+            body=models.ExecuteSubscriptionModifyRequest(
+                inheritance_params=utils.get_pydantic_model(
+                    inheritance_params, Optional[models.SubModifyInheritanceRequest]
+                ),
+                quantity_change_params=utils.get_pydantic_model(
+                    quantity_change_params,
+                    Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                type=type_,
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/subscriptions/{id}/modify/preview",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.ExecuteSubscriptionModifyRequest,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="previewSubscriptionModify",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["400", "404", "4XX", "500", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(models.SubscriptionModifyResponse, http_res)
+        if utils.match_response(http_res, ["400", "404"], "application/json"):
+            response_data = unmarshal_json_response(
+                models.errors.ErrorResponseData, http_res
+            )
+            raise models.errors.ErrorResponse(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/json"):
+            response_data = unmarshal_json_response(
+                models.errors.ErrorResponseData, http_res
+            )
+            raise models.errors.ErrorResponse(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.errors.FlexpriceDefaultError(
+                "API error occurred", http_res, http_res_text
+            )
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.errors.FlexpriceDefaultError(
+                "API error occurred", http_res, http_res_text
+            )
+
+        raise models.errors.FlexpriceDefaultError(
+            "Unexpected response received", http_res
+        )
+
+    async def preview_subscription_modify_async(
+        self,
+        *,
+        id: str,
+        type_: models.SubscriptionModifyType,
+        inheritance_params: Optional[
+            Union[
+                models.SubModifyInheritanceRequest,
+                models.SubModifyInheritanceRequestTypedDict,
+            ]
+        ] = None,
+        quantity_change_params: Optional[
+            Union[
+                models.SubModifyQuantityChangeRequest,
+                models.SubModifyQuantityChangeRequestTypedDict,
+            ]
+        ] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.SubscriptionModifyResponse:
+        r"""Preview subscription modification
+
+        Preview the impact of a mid-cycle subscription modification without committing changes.
+
+        :param id: Subscription ID
+        :param type:
+        :param inheritance_params:
+        :param quantity_change_params:
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.PreviewSubscriptionModifyRequest(
+            id=id,
+            body=models.ExecuteSubscriptionModifyRequest(
+                inheritance_params=utils.get_pydantic_model(
+                    inheritance_params, Optional[models.SubModifyInheritanceRequest]
+                ),
+                quantity_change_params=utils.get_pydantic_model(
+                    quantity_change_params,
+                    Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                type=type_,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/subscriptions/{id}/modify/preview",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.body,
+                False,
+                False,
+                "json",
+                models.ExecuteSubscriptionModifyRequest,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="previewSubscriptionModify",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["400", "404", "4XX", "500", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(models.SubscriptionModifyResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

@@ -97,6 +97,10 @@ class InvoiceResponseTypedDict(TypedDict):
     """
     status: NotRequired[Status]
     subscription: NotRequired["SubscriptionResponseTypedDict"]
+    subscription_customer_id: NotRequired[str]
+    r"""subscription_customer_id is the subscription owner's customer ID (Subscription.CustomerID).
+    It may differ from customer_id when the subscription uses an invoicing customer. Set internally; nullable in DB.
+    """
     subscription_id: NotRequired[str]
     r"""subscription_id is the ID of the subscription this invoice is associated with (only present for subscription-based invoices)"""
     subtotal: NotRequired[str]
@@ -224,6 +228,11 @@ class InvoiceResponse(BaseModel):
 
     subscription: Optional["SubscriptionResponse"] = None
 
+    subscription_customer_id: Optional[str] = None
+    r"""subscription_customer_id is the subscription owner's customer ID (Subscription.CustomerID).
+    It may differ from customer_id when the subscription uses an invoicing customer. Set internally; nullable in DB.
+    """
+
     subscription_id: Optional[str] = None
     r"""subscription_id is the ID of the subscription this invoice is associated with (only present for subscription-based invoices)"""
 
@@ -296,6 +305,7 @@ class InvoiceResponse(BaseModel):
                 "refunded_amount",
                 "status",
                 "subscription",
+                "subscription_customer_id",
                 "subscription_id",
                 "subtotal",
                 "taxes",

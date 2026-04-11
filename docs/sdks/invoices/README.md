@@ -6,6 +6,7 @@
 
 * [get_customer_invoice_summary](#get_customer_invoice_summary) - Get customer invoice summary
 * [create_invoice](#create_invoice) - Create one-off invoice
+* [get_meter_usage_preview_invoice](#get_meter_usage_preview_invoice) - Get invoice preview using meter_usage data
 * [get_invoice_preview](#get_invoice_preview) - Get invoice preview
 * [query_invoice](#query_invoice) - Query invoices
 * [get_invoice](#get_invoice) - Get invoice
@@ -128,6 +129,50 @@ with Flexprice(
 | models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
+## get_meter_usage_preview_invoice
+
+Preview invoice using the meter_usage table for usage data instead of feature_usage.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="getMeterUsagePreviewInvoice" method="post" path="/invoices/meter-usage-preview" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.invoices.get_meter_usage_preview_invoice(subscription_id="<id>", hide_zero_charges_line_items=False)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `subscription_id`                                                                   | *str*                                                                               | :heavy_check_mark:                                                                  | subscription_id is the unique identifier of the subscription to preview invoice for |
+| `hide_zero_charges_line_items`                                                      | *Optional[bool]*                                                                    | :heavy_minus_sign:                                                                  | hide_zero_charges_line_items indicates whether to hide line items with zero cost    |
+| `period_end`                                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects)                | :heavy_minus_sign:                                                                  | period_end is the optional end date of the period to preview                        |
+| `period_start`                                                                      | [date](https://docs.python.org/3/library/datetime.html#date-objects)                | :heavy_minus_sign:                                                                  | period_start is the optional start date of the period to preview                    |
+| `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |
+
+### Response
+
+**[models.InvoiceResponse](../../models/invoiceresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
 ## get_invoice_preview
 
 Use when showing a customer what they will be charged (e.g. preview before checkout or plan change). No invoice is created.
@@ -220,6 +265,7 @@ with Flexprice(
 | `sort`                                                                                                                                                                           | List[[models.SortCondition](../../models/sortcondition.md)]                                                                                                                      | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `start_time`                                                                                                                                                                     | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                                                             | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
 | `status`                                                                                                                                                                         | [Optional[models.Status]](../../models/status.md)                                                                                                                                | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `subscription_customer_id`                                                                                                                                                       | List[*str*]                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                               | subscription_customer_id filters invoices by the subscription owner's customer ID                                                                                                |
 | `subscription_id`                                                                                                                                                                | *Optional[str]*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                               | subscription_id filters invoices generated for a specific subscription<br/>Only returns invoices that were created as part of the specified subscription's billing               |
 | `retries`                                                                                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                               | Configuration to override the default retry behavior of the client.                                                                                                              |
 
