@@ -8,6 +8,7 @@
 * [query_feature](#query_feature) - Query features
 * [update_feature](#update_feature) - Update feature
 * [delete_feature](#delete_feature) - Delete feature
+* [clone_feature](#clone_feature) - Clone a feature
 
 ## create_feature
 
@@ -208,5 +209,50 @@ with Flexprice(
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## clone_feature
+
+Clone an existing feature
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="cloneFeature" method="post" path="/features/{id}/clone" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.features.clone_feature(id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `id`                                                                  | *str*                                                                 | :heavy_check_mark:                                                    | Source Feature ID                                                     |
+| `description`                                                         | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | Description overrides the source feature's description when provided  |
+| `lookup_key`                                                          | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | LookupKey is required and must be unique across published features    |
+| `metadata`                                                            | Dict[str, *str*]                                                      | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `name`                                                                | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | Name is required and must be different from the source feature's name |
+| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
+
+### Response
+
+**[models.FeatureResponse](../../models/featureresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400, 404, 409                       | application/json                    |
 | models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |

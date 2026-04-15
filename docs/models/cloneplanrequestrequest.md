@@ -1,4 +1,4 @@
-# PostPlansIDCloneRequest
+# ClonePlanRequestRequest
 
 
 ## Fields

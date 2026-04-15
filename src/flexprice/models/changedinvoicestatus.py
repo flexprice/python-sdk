@@ -5,18 +5,11 @@ from flexprice.types import UnrecognizedStr
 from typing import Literal, Union
 
 
-WindowSize = Union[
+ChangedInvoiceStatus = Union[
     Literal[
-        "MONTH",
-        "MINUTE",
-        "15MIN",
-        "30MIN",
-        "HOUR",
-        "3HOUR",
-        "6HOUR",
-        "12HOUR",
-        "DAY",
-        "WEEK",
+        "preview",
+        "issued",
     ],
     UnrecognizedStr,
 ]
+r"""preview | issued | INITIATED | PENDING | PROCESSING | SUCCEEDED | OVERPAID | FAILED | REFUNDED | PARTIALLY_REFUNDED"""

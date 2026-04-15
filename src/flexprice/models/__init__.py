@@ -97,9 +97,27 @@ if TYPE_CHECKING:
         CancelSubscriptionScheduleRequestTypedDict,
     )
     from .changedinvoice import ChangedInvoice, ChangedInvoiceTypedDict
+    from .changedinvoiceaction import ChangedInvoiceAction
+    from .changedinvoicestatus import ChangedInvoiceStatus
     from .changedlineitem import ChangedLineItem, ChangedLineItemTypedDict
+    from .changedlineitemaction import ChangedLineItemAction
     from .changedresources import ChangedResources, ChangedResourcesTypedDict
     from .changedsubscription import ChangedSubscription, ChangedSubscriptionTypedDict
+    from .changedsubscriptionaction import ChangedSubscriptionAction
+    from .cloneenvironmentop import (
+        CloneEnvironmentRequestRequest,
+        CloneEnvironmentRequestRequestTypedDict,
+    )
+    from .cloneenvironmentrequest import (
+        CloneEnvironmentRequest,
+        CloneEnvironmentRequestTypedDict,
+    )
+    from .clonefeatureop import (
+        CloneFeatureRequestRequest,
+        CloneFeatureRequestRequestTypedDict,
+    )
+    from .clonefeaturerequest import CloneFeatureRequest, CloneFeatureRequestTypedDict
+    from .cloneplanop import ClonePlanRequestRequest, ClonePlanRequestRequestTypedDict
     from .cloneplanrequest import ClonePlanRequest, ClonePlanRequestTypedDict
     from .collectionmethod import CollectionMethod
     from .commitmentinfo import CommitmentInfo, CommitmentInfoTypedDict
@@ -357,6 +375,7 @@ if TYPE_CHECKING:
         EntityIntegrationMappingResponseTypedDict,
     )
     from .entitytype import EntityType
+    from .environmenttype import EnvironmentType
     from .errorresponse import (
         Code,
         Details,
@@ -794,10 +813,6 @@ if TYPE_CHECKING:
     from .plan import Plan, PlanTypedDict
     from .planfilter import PlanFilter, PlanFilterOrder, PlanFilterTypedDict
     from .plansummary import PlanSummary, PlanSummaryTypedDict
-    from .post_plans_id_cloneop import (
-        PostPlansIDCloneRequest,
-        PostPlansIDCloneRequestTypedDict,
-    )
     from .previewsubscriptionchangeop import (
         PreviewSubscriptionChangeRequest,
         PreviewSubscriptionChangeRequestTypedDict,
@@ -1357,14 +1372,28 @@ __all__ = [
     "CancelSubscriptionScheduleRequestTypedDict",
     "CancellationType",
     "ChangedInvoice",
+    "ChangedInvoiceAction",
+    "ChangedInvoiceStatus",
     "ChangedInvoiceTypedDict",
     "ChangedLineItem",
+    "ChangedLineItemAction",
     "ChangedLineItemTypedDict",
     "ChangedResources",
     "ChangedResourcesTypedDict",
     "ChangedSubscription",
+    "ChangedSubscriptionAction",
     "ChangedSubscriptionTypedDict",
+    "CloneEnvironmentRequest",
+    "CloneEnvironmentRequestRequest",
+    "CloneEnvironmentRequestRequestTypedDict",
+    "CloneEnvironmentRequestTypedDict",
+    "CloneFeatureRequest",
+    "CloneFeatureRequestRequest",
+    "CloneFeatureRequestRequestTypedDict",
+    "CloneFeatureRequestTypedDict",
     "ClonePlanRequest",
+    "ClonePlanRequestRequest",
+    "ClonePlanRequestRequestTypedDict",
     "ClonePlanRequestTypedDict",
     "Code",
     "CollectionMethod",
@@ -1571,6 +1600,7 @@ __all__ = [
     "EntityIntegrationMappingResponse",
     "EntityIntegrationMappingResponseTypedDict",
     "EntityType",
+    "EnvironmentType",
     "ErrorResponse",
     "ErrorResponseTypedDict",
     "Event",
@@ -1908,8 +1938,6 @@ __all__ = [
     "PlanSummary",
     "PlanSummaryTypedDict",
     "PlanTypedDict",
-    "PostPlansIDCloneRequest",
-    "PostPlansIDCloneRequestTypedDict",
     "PreviewSubscriptionChangeRequest",
     "PreviewSubscriptionChangeRequestTypedDict",
     "PreviewSubscriptionModifyRequest",
@@ -2324,12 +2352,26 @@ _dynamic_imports: dict[str, str] = {
     "CancelSubscriptionScheduleRequestTypedDict": ".cancelsubscriptionscheduleop",
     "ChangedInvoice": ".changedinvoice",
     "ChangedInvoiceTypedDict": ".changedinvoice",
+    "ChangedInvoiceAction": ".changedinvoiceaction",
+    "ChangedInvoiceStatus": ".changedinvoicestatus",
     "ChangedLineItem": ".changedlineitem",
     "ChangedLineItemTypedDict": ".changedlineitem",
+    "ChangedLineItemAction": ".changedlineitemaction",
     "ChangedResources": ".changedresources",
     "ChangedResourcesTypedDict": ".changedresources",
     "ChangedSubscription": ".changedsubscription",
     "ChangedSubscriptionTypedDict": ".changedsubscription",
+    "ChangedSubscriptionAction": ".changedsubscriptionaction",
+    "CloneEnvironmentRequestRequest": ".cloneenvironmentop",
+    "CloneEnvironmentRequestRequestTypedDict": ".cloneenvironmentop",
+    "CloneEnvironmentRequest": ".cloneenvironmentrequest",
+    "CloneEnvironmentRequestTypedDict": ".cloneenvironmentrequest",
+    "CloneFeatureRequestRequest": ".clonefeatureop",
+    "CloneFeatureRequestRequestTypedDict": ".clonefeatureop",
+    "CloneFeatureRequest": ".clonefeaturerequest",
+    "CloneFeatureRequestTypedDict": ".clonefeaturerequest",
+    "ClonePlanRequestRequest": ".cloneplanop",
+    "ClonePlanRequestRequestTypedDict": ".cloneplanop",
     "ClonePlanRequest": ".cloneplanrequest",
     "ClonePlanRequestTypedDict": ".cloneplanrequest",
     "CollectionMethod": ".collectionmethod",
@@ -2530,6 +2572,7 @@ _dynamic_imports: dict[str, str] = {
     "EntityIntegrationMappingResponse": ".entityintegrationmappingresponse",
     "EntityIntegrationMappingResponseTypedDict": ".entityintegrationmappingresponse",
     "EntityType": ".entitytype",
+    "EnvironmentType": ".environmenttype",
     "Code": ".errorresponse",
     "Details": ".errorresponse",
     "DetailsTypedDict": ".errorresponse",
@@ -2866,8 +2909,6 @@ _dynamic_imports: dict[str, str] = {
     "PlanFilterTypedDict": ".planfilter",
     "PlanSummary": ".plansummary",
     "PlanSummaryTypedDict": ".plansummary",
-    "PostPlansIDCloneRequest": ".post_plans_id_cloneop",
-    "PostPlansIDCloneRequestTypedDict": ".post_plans_id_cloneop",
     "PreviewSubscriptionChangeRequest": ".previewsubscriptionchangeop",
     "PreviewSubscriptionChangeRequestTypedDict": ".previewsubscriptionchangeop",
     "PreviewSubscriptionModifyRequest": ".previewsubscriptionmodifyop",

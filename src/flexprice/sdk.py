@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from flexprice.credit_notes import CreditNotes
     from flexprice.customers import Customers
     from flexprice.entitlements import Entitlements
+    from flexprice.environments import Environments
     from flexprice.events import Events
     from flexprice.features import Features
     from flexprice.groups import Groups
@@ -60,6 +61,7 @@ class Flexprice(BaseSDK):
     customers: "Customers"
     wallets: "Wallets"
     invoices: "Invoices"
+    environments: "Environments"
     events: "Events"
     features: "Features"
     groups: "Groups"
@@ -91,6 +93,7 @@ class Flexprice(BaseSDK):
         "customers": ("flexprice.customers", "Customers"),
         "wallets": ("flexprice.wallets", "Wallets"),
         "invoices": ("flexprice.invoices", "Invoices"),
+        "environments": ("flexprice.environments", "Environments"),
         "events": ("flexprice.events", "Events"),
         "features": ("flexprice.features", "Features"),
         "groups": ("flexprice.groups", "Groups"),

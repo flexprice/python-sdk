@@ -1148,7 +1148,7 @@ class Plans(BaseSDK):
             "Unexpected response received", http_res
         )
 
-    def post_plans_id_clone(
+    def clone_plan(
         self,
         *,
         id: str,
@@ -1187,7 +1187,7 @@ class Plans(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.PostPlansIDCloneRequest(
+        request = models.ClonePlanRequestRequest(
             id=id,
             body=models.ClonePlanRequest(
                 description=description,
@@ -1230,7 +1230,7 @@ class Plans(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="post_/plans/{id}/clone",
+                operation_id="clonePlan",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
@@ -1267,7 +1267,7 @@ class Plans(BaseSDK):
             "Unexpected response received", http_res
         )
 
-    async def post_plans_id_clone_async(
+    async def clone_plan_async(
         self,
         *,
         id: str,
@@ -1306,7 +1306,7 @@ class Plans(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.PostPlansIDCloneRequest(
+        request = models.ClonePlanRequestRequest(
             id=id,
             body=models.ClonePlanRequest(
                 description=description,
@@ -1349,7 +1349,7 @@ class Plans(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="post_/plans/{id}/clone",
+                operation_id="clonePlan",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),

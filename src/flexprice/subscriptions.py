@@ -22,6 +22,7 @@ class Subscriptions(BaseSDK):
                 List[models.AddAddonToSubscriptionRequestTypedDict],
             ]
         ] = None,
+        billing_anchor: Optional[datetime] = None,
         billing_cycle: Optional[models.BillingCycle] = None,
         billing_period_count: Optional[int] = None,
         collection_method: Optional[models.CollectionMethod] = None,
@@ -103,6 +104,10 @@ class Subscriptions(BaseSDK):
         :param currency:
         :param plan_id:
         :param addons: Addons represents addons to be added to the subscription during creation
+        :param billing_anchor: BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
+            For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
+            is before that day in the month, the first billing period ends on the next occurrence of that
+            day in the same month (a shorter first period); subsequent periods follow the usual interval.
         :param billing_cycle:
         :param billing_period_count:
         :param collection_method:
@@ -156,6 +161,7 @@ class Subscriptions(BaseSDK):
             addons=utils.get_pydantic_model(
                 addons, Optional[List[models.AddAddonToSubscriptionRequest]]
             ),
+            billing_anchor=billing_anchor,
             billing_cycle=billing_cycle,
             billing_period=billing_period,
             billing_period_count=billing_period_count,
@@ -290,6 +296,7 @@ class Subscriptions(BaseSDK):
                 List[models.AddAddonToSubscriptionRequestTypedDict],
             ]
         ] = None,
+        billing_anchor: Optional[datetime] = None,
         billing_cycle: Optional[models.BillingCycle] = None,
         billing_period_count: Optional[int] = None,
         collection_method: Optional[models.CollectionMethod] = None,
@@ -371,6 +378,10 @@ class Subscriptions(BaseSDK):
         :param currency:
         :param plan_id:
         :param addons: Addons represents addons to be added to the subscription during creation
+        :param billing_anchor: BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
+            For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
+            is before that day in the month, the first billing period ends on the next occurrence of that
+            day in the same month (a shorter first period); subsequent periods follow the usual interval.
         :param billing_cycle:
         :param billing_period_count:
         :param collection_method:
@@ -424,6 +435,7 @@ class Subscriptions(BaseSDK):
             addons=utils.get_pydantic_model(
                 addons, Optional[List[models.AddAddonToSubscriptionRequest]]
             ),
+            billing_anchor=billing_anchor,
             billing_cycle=billing_cycle,
             billing_period=billing_period,
             billing_period_count=billing_period_count,

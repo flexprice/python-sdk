@@ -54,6 +54,12 @@ class CreateSubscriptionRequestTypedDict(TypedDict):
     plan_id: str
     addons: NotRequired[List[AddAddonToSubscriptionRequestTypedDict]]
     r"""Addons represents addons to be added to the subscription during creation"""
+    billing_anchor: NotRequired[datetime]
+    r"""BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
+    For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
+    is before that day in the month, the first billing period ends on the next occurrence of that
+    day in the same month (a shorter first period); subsequent periods follow the usual interval.
+    """
     billing_cycle: NotRequired[BillingCycle]
     billing_period_count: NotRequired[int]
     collection_method: NotRequired[CollectionMethod]
@@ -115,6 +121,13 @@ class CreateSubscriptionRequest(BaseModel):
 
     addons: Optional[List[AddAddonToSubscriptionRequest]] = None
     r"""Addons represents addons to be added to the subscription during creation"""
+
+    billing_anchor: Optional[datetime] = None
+    r"""BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
+    For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
+    is before that day in the month, the first billing period ends on the next occurrence of that
+    day in the same month (a shorter first period); subsequent periods follow the usual interval.
+    """
 
     billing_cycle: Optional[BillingCycle] = None
 
@@ -202,6 +215,7 @@ class CreateSubscriptionRequest(BaseModel):
         optional_fields = set(
             [
                 "addons",
+                "billing_anchor",
                 "billing_cycle",
                 "billing_period_count",
                 "collection_method",

@@ -9,7 +9,7 @@
 * [get_plan](#get_plan) - Get plan
 * [update_plan](#update_plan) - Update plan
 * [delete_plan](#delete_plan) - Delete plan
-* [post_plans_id_clone](#post_plans_id_clone) - Clone a plan
+* [clone_plan](#clone_plan) - Clone a plan
 * [sync_plan_prices](#sync_plan_prices) - Synchronize plan prices
 
 ## create_plan
@@ -236,13 +236,13 @@ with Flexprice(
 | models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
-## post_plans_id_clone
+## clone_plan
 
 Clone an existing plan, copying its active prices, published entitlements, and published credit grants
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="post_/plans/{id}/clone" method="post" path="/plans/{id}/clone" -->
+<!-- UsageSnippet language="python" operationID="clonePlan" method="post" path="/plans/{id}/clone" -->
 ```python
 from flexprice import Flexprice
 
@@ -251,7 +251,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.plans.post_plans_id_clone(id="<id>")
+    res = f_client.plans.clone_plan(id="<id>")
 
     # Handle response
     print(res)

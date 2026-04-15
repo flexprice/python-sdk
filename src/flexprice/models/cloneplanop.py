@@ -7,14 +7,14 @@ from flexprice.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
 
 
-class PostPlansIDCloneRequestTypedDict(TypedDict):
+class ClonePlanRequestRequestTypedDict(TypedDict):
     id: str
     r"""Source Plan ID"""
     body: ClonePlanRequestTypedDict
     r"""Clone configuration"""
 
 
-class PostPlansIDCloneRequest(BaseModel):
+class ClonePlanRequestRequest(BaseModel):
     id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
