@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .billingperiod import BillingPeriod
 from .commitmenttype import CommitmentType
+from .prorationbehavior import ProrationBehavior
 from .subscriptionpricecreaterequest import (
     SubscriptionPriceCreateRequest,
     SubscriptionPriceCreateRequestTypedDict,
@@ -29,6 +30,7 @@ class CreateSubscriptionLineItemRequestTypedDict(TypedDict):
     price: NotRequired[SubscriptionPriceCreateRequestTypedDict]
     price_id: NotRequired[str]
     r"""PriceID references an existing price (plan, addon, or subscription-scoped). Exactly one of price_id or price must be set."""
+    proration_behavior: NotRequired[ProrationBehavior]
     quantity: NotRequired[float]
     start_date: NotRequired[datetime]
     subscription_phase_id: NotRequired[str]
@@ -61,6 +63,8 @@ class CreateSubscriptionLineItemRequest(BaseModel):
     price_id: Optional[str] = None
     r"""PriceID references an existing price (plan, addon, or subscription-scoped). Exactly one of price_id or price must be set."""
 
+    proration_behavior: Optional[ProrationBehavior] = None
+
     quantity: Optional[float] = None
 
     start_date: Optional[datetime] = None
@@ -83,6 +87,7 @@ class CreateSubscriptionLineItemRequest(BaseModel):
                 "metadata",
                 "price",
                 "price_id",
+                "proration_behavior",
                 "quantity",
                 "start_date",
                 "subscription_phase_id",

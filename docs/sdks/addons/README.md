@@ -26,7 +26,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.addons.create_addon(lookup_key="<value>", name="<value>", type_="multiple_instance")
+    res = f_client.addons.create_addon(lookup_key="<value>", name="<value>")
 
     # Handle response
     print(res)
@@ -39,7 +39,6 @@ with Flexprice(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `lookup_key`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `name`                                                              | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `type`                                                              | [models.AddonType](../../models/addontype.md)                       | :heavy_check_mark:                                                  | N/A                                                                 |
 | `description`                                                       | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `metadata`                                                          | Dict[str, *Any*]                                                    | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
@@ -124,7 +123,6 @@ with Flexprice(
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `addon_ids`                                                           | List[*str*]                                                           | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `addon_type`                                                          | [Optional[models.AddonType]](../../models/addontype.md)               | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `end_time`                                                            | [date](https://docs.python.org/3/library/datetime.html#date-objects)  | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `expand`                                                              | *Optional[str]*                                                       | :heavy_minus_sign:                                                    | N/A                                                                   |
 | `filters`                                                             | List[[models.FilterCondition](../../models/filtercondition.md)]       | :heavy_minus_sign:                                                    | filters allows complex filtering based on multiple fields             |

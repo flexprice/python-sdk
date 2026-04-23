@@ -16,6 +16,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class SubscriptionSubscriptionLineItemTypedDict(TypedDict):
+    addon_association_id: NotRequired[str]
     billing_period: NotRequired[BillingPeriod]
     billing_period_count: NotRequired[int]
     r"""from price at create; default 1"""
@@ -59,6 +60,8 @@ class SubscriptionSubscriptionLineItemTypedDict(TypedDict):
 
 
 class SubscriptionSubscriptionLineItem(BaseModel):
+    addon_association_id: Optional[str] = None
+
     billing_period: Optional[BillingPeriod] = None
 
     billing_period_count: Optional[int] = None
@@ -141,6 +144,7 @@ class SubscriptionSubscriptionLineItem(BaseModel):
     def serialize_model(self, handler):
         optional_fields = set(
             [
+                "addon_association_id",
                 "billing_period",
                 "billing_period_count",
                 "commitment_amount",

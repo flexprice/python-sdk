@@ -563,6 +563,7 @@ class Subscriptions(BaseSDK):
         *,
         addon_id: str,
         subscription_id: str,
+        cadence: Optional[models.AddonCadence] = None,
         line_item_commitments: Optional[
             Union[
                 Dict[str, models.LineItemCommitmentConfig],
@@ -570,6 +571,7 @@ class Subscriptions(BaseSDK):
             ]
         ] = None,
         metadata: Optional[Dict[str, Any]] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         start_date: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -582,8 +584,10 @@ class Subscriptions(BaseSDK):
 
         :param addon_id:
         :param subscription_id:
+        :param cadence:
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per addon line item (keyed by price_id)
         :param metadata:
+        :param proration_behavior:
         :param start_date:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -602,11 +606,13 @@ class Subscriptions(BaseSDK):
 
         request = models.AddAddonRequest(
             addon_id=addon_id,
+            cadence=cadence,
             line_item_commitments=utils.get_pydantic_model(
                 line_item_commitments,
                 Optional[Dict[str, models.LineItemCommitmentConfig]],
             ),
             metadata=metadata,
+            proration_behavior=proration_behavior,
             start_date=start_date,
             subscription_id=subscription_id,
         )
@@ -685,6 +691,7 @@ class Subscriptions(BaseSDK):
         *,
         addon_id: str,
         subscription_id: str,
+        cadence: Optional[models.AddonCadence] = None,
         line_item_commitments: Optional[
             Union[
                 Dict[str, models.LineItemCommitmentConfig],
@@ -692,6 +699,7 @@ class Subscriptions(BaseSDK):
             ]
         ] = None,
         metadata: Optional[Dict[str, Any]] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         start_date: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -704,8 +712,10 @@ class Subscriptions(BaseSDK):
 
         :param addon_id:
         :param subscription_id:
+        :param cadence:
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per addon line item (keyed by price_id)
         :param metadata:
+        :param proration_behavior:
         :param start_date:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -724,11 +734,13 @@ class Subscriptions(BaseSDK):
 
         request = models.AddAddonRequest(
             addon_id=addon_id,
+            cadence=cadence,
             line_item_commitments=utils.get_pydantic_model(
                 line_item_commitments,
                 Optional[Dict[str, models.LineItemCommitmentConfig]],
             ),
             metadata=metadata,
+            proration_behavior=proration_behavior,
             start_date=start_date,
             subscription_id=subscription_id,
         )
@@ -806,6 +818,8 @@ class Subscriptions(BaseSDK):
         self,
         *,
         addon_association_id: str,
+        effective_date: Optional[datetime] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         reason: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -817,6 +831,11 @@ class Subscriptions(BaseSDK):
         Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
 
         :param addon_association_id:
+        :param effective_date: EffectiveDate is the date the cancellation takes effect.
+            When nil the addon is cancelled at the end of the current period.
+            When provided it must fall within [CurrentPeriodStart, CurrentPeriodEnd]; mid-period
+            values combined with create_prorations will issue a wallet credit for unused time.
+        :param proration_behavior:
         :param reason:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -835,6 +854,8 @@ class Subscriptions(BaseSDK):
 
         request = models.RemoveAddonRequest(
             addon_association_id=addon_association_id,
+            effective_date=effective_date,
+            proration_behavior=proration_behavior,
             reason=reason,
         )
 
@@ -911,6 +932,8 @@ class Subscriptions(BaseSDK):
         self,
         *,
         addon_association_id: str,
+        effective_date: Optional[datetime] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         reason: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -922,6 +945,11 @@ class Subscriptions(BaseSDK):
         Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
 
         :param addon_association_id:
+        :param effective_date: EffectiveDate is the date the cancellation takes effect.
+            When nil the addon is cancelled at the end of the current period.
+            When provided it must fall within [CurrentPeriodStart, CurrentPeriodEnd]; mid-period
+            values combined with create_prorations will issue a wallet credit for unused time.
+        :param proration_behavior:
         :param reason:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -940,6 +968,8 @@ class Subscriptions(BaseSDK):
 
         request = models.RemoveAddonRequest(
             addon_association_id=addon_association_id,
+            effective_date=effective_date,
+            proration_behavior=proration_behavior,
             reason=reason,
         )
 
@@ -1337,6 +1367,7 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         effective_from: Optional[str] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1348,6 +1379,7 @@ class Subscriptions(BaseSDK):
 
         :param id: Line Item ID
         :param effective_from:
+        :param proration_behavior:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1367,6 +1399,7 @@ class Subscriptions(BaseSDK):
             id=id,
             body=models.DeleteSubscriptionLineItemRequest(
                 effective_from=effective_from,
+                proration_behavior=proration_behavior,
             ),
         )
 
@@ -1450,6 +1483,7 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         effective_from: Optional[str] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1461,6 +1495,7 @@ class Subscriptions(BaseSDK):
 
         :param id: Line Item ID
         :param effective_from:
+        :param proration_behavior:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1480,6 +1515,7 @@ class Subscriptions(BaseSDK):
             id=id,
             body=models.DeleteSubscriptionLineItemRequest(
                 effective_from=effective_from,
+                proration_behavior=proration_behavior,
             ),
         )
 
@@ -4183,6 +4219,7 @@ class Subscriptions(BaseSDK):
             ]
         ] = None,
         price_id: Optional[str] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         quantity: Optional[float] = None,
         start_date: Optional[datetime] = None,
         subscription_phase_id: Optional[str] = None,
@@ -4208,6 +4245,7 @@ class Subscriptions(BaseSDK):
         :param metadata:
         :param price:
         :param price_id: PriceID references an existing price (plan, addon, or subscription-scoped). Exactly one of price_id or price must be set.
+        :param proration_behavior:
         :param quantity:
         :param start_date:
         :param subscription_phase_id:
@@ -4243,6 +4281,7 @@ class Subscriptions(BaseSDK):
                     price, Optional[models.SubscriptionPriceCreateRequest]
                 ),
                 price_id=price_id,
+                proration_behavior=proration_behavior,
                 quantity=quantity,
                 start_date=start_date,
                 subscription_phase_id=subscription_phase_id,
@@ -4345,6 +4384,7 @@ class Subscriptions(BaseSDK):
             ]
         ] = None,
         price_id: Optional[str] = None,
+        proration_behavior: Optional[models.ProrationBehavior] = None,
         quantity: Optional[float] = None,
         start_date: Optional[datetime] = None,
         subscription_phase_id: Optional[str] = None,
@@ -4370,6 +4410,7 @@ class Subscriptions(BaseSDK):
         :param metadata:
         :param price:
         :param price_id: PriceID references an existing price (plan, addon, or subscription-scoped). Exactly one of price_id or price must be set.
+        :param proration_behavior:
         :param quantity:
         :param start_date:
         :param subscription_phase_id:
@@ -4405,6 +4446,7 @@ class Subscriptions(BaseSDK):
                     price, Optional[models.SubscriptionPriceCreateRequest]
                 ),
                 price_id=price_id,
+                proration_behavior=proration_behavior,
                 quantity=quantity,
                 start_date=start_date,
                 subscription_phase_id=subscription_phase_id,

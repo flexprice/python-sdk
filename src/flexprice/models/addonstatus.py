@@ -9,7 +9,7 @@ AddonStatus = Union[
     Literal[
         "active",
         "cancelled",
-        "paused",
+        "pending",
     ],
     UnrecognizedStr,
 ]

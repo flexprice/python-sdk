@@ -15,7 +15,6 @@ class Addons(BaseSDK):
         *,
         lookup_key: str,
         name: str,
-        type_: models.AddonType,
         description: Optional[str] = None,
         metadata: Optional[Dict[str, Any]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -29,7 +28,6 @@ class Addons(BaseSDK):
 
         :param lookup_key:
         :param name:
-        :param type:
         :param description:
         :param metadata:
         :param retries: Override the default retry configuration for this method
@@ -52,7 +50,6 @@ class Addons(BaseSDK):
             lookup_key=lookup_key,
             metadata=metadata,
             name=name,
-            type=type_,
         )
 
         req = self._build_request(
@@ -129,7 +126,6 @@ class Addons(BaseSDK):
         *,
         lookup_key: str,
         name: str,
-        type_: models.AddonType,
         description: Optional[str] = None,
         metadata: Optional[Dict[str, Any]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -143,7 +139,6 @@ class Addons(BaseSDK):
 
         :param lookup_key:
         :param name:
-        :param type:
         :param description:
         :param metadata:
         :param retries: Override the default retry configuration for this method
@@ -166,7 +161,6 @@ class Addons(BaseSDK):
             lookup_key=lookup_key,
             metadata=metadata,
             name=name,
-            type=type_,
         )
 
         req = self._build_request_async(
@@ -440,7 +434,6 @@ class Addons(BaseSDK):
         self,
         *,
         addon_ids: Optional[List[str]] = None,
-        addon_type: Optional[models.AddonType] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
         filters: Optional[
@@ -465,7 +458,6 @@ class Addons(BaseSDK):
         Use when listing or searching addons (e.g. catalog or subscription builder). Returns a paginated list; supports filtering and sorting.
 
         :param addon_ids:
-        :param addon_type:
         :param end_time:
         :param expand:
         :param filters: filters allows complex filtering based on multiple fields
@@ -493,7 +485,6 @@ class Addons(BaseSDK):
 
         request = models.AddonFilter(
             addon_ids=addon_ids,
-            addon_type=addon_type,
             end_time=end_time,
             expand=expand,
             filters=utils.get_pydantic_model(
@@ -581,7 +572,6 @@ class Addons(BaseSDK):
         self,
         *,
         addon_ids: Optional[List[str]] = None,
-        addon_type: Optional[models.AddonType] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
         filters: Optional[
@@ -606,7 +596,6 @@ class Addons(BaseSDK):
         Use when listing or searching addons (e.g. catalog or subscription builder). Returns a paginated list; supports filtering and sorting.
 
         :param addon_ids:
-        :param addon_type:
         :param end_time:
         :param expand:
         :param filters: filters allows complex filtering based on multiple fields
@@ -634,7 +623,6 @@ class Addons(BaseSDK):
 
         request = models.AddonFilter(
             addon_ids=addon_ids,
-            addon_type=addon_type,
             end_time=end_time,
             expand=expand,
             filters=utils.get_pydantic_model(

@@ -30,9 +30,9 @@ if TYPE_CHECKING:
         AddonAssociationResponse,
         AddonAssociationResponseTypedDict,
     )
+    from .addoncadence import AddonCadence
     from .addonfilter import AddonFilter, AddonFilterOrder, AddonFilterTypedDict
     from .addonstatus import AddonStatus
-    from .addontype import AddonType
     from .address import Address, AddressTypedDict
     from .aggregatedentitlement import (
         AggregatedEntitlement,
@@ -1311,13 +1311,13 @@ __all__ = [
     "AddonAssociationEntityType",
     "AddonAssociationResponse",
     "AddonAssociationResponseTypedDict",
+    "AddonCadence",
     "AddonFilter",
     "AddonFilterOrder",
     "AddonFilterTypedDict",
     "AddonResponse",
     "AddonResponseTypedDict",
     "AddonStatus",
-    "AddonType",
     "AddonTypedDict",
     "Address",
     "AddressTypedDict",
@@ -2293,11 +2293,11 @@ _dynamic_imports: dict[str, str] = {
     "AddonAssociationEntityType": ".addonassociationentitytype",
     "AddonAssociationResponse": ".addonassociationresponse",
     "AddonAssociationResponseTypedDict": ".addonassociationresponse",
+    "AddonCadence": ".addoncadence",
     "AddonFilter": ".addonfilter",
     "AddonFilterOrder": ".addonfilter",
     "AddonFilterTypedDict": ".addonfilter",
     "AddonStatus": ".addonstatus",
-    "AddonType": ".addontype",
     "Address": ".address",
     "AddressTypedDict": ".address",
     "AggregatedEntitlement": ".aggregatedentitlement",

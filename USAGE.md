@@ -8,7 +8,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.addons.create_addon(lookup_key="<value>", name="<value>", type_="multiple_instance")
+    res = f_client.addons.create_addon(lookup_key="<value>", name="<value>")
 
     # Handle response
     print(res)
@@ -29,7 +29,7 @@ async def main():
         api_key_auth="<YOUR_API_KEY_HERE>",
     ) as f_client:
 
-        res = await f_client.addons.create_addon_async(lookup_key="<value>", name="<value>", type_="multiple_instance")
+        res = await f_client.addons.create_addon_async(lookup_key="<value>", name="<value>")
 
         # Handle response
         print(res)
