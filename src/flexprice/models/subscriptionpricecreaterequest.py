@@ -41,7 +41,7 @@ class SubscriptionPriceCreateRequestTypedDict(TypedDict):
     tier_mode: NotRequired[BillingTier]
     tiers: NotRequired[List[CreatePriceTierTypedDict]]
     transform_quantity: NotRequired[PriceTransformQuantityTypedDict]
-    trial_period: NotRequired[int]
+    trial_period_days: NotRequired[int]
 
 
 class SubscriptionPriceCreateRequest(BaseModel):
@@ -85,7 +85,7 @@ class SubscriptionPriceCreateRequest(BaseModel):
 
     transform_quantity: Optional[PriceTransformQuantity] = None
 
-    trial_period: Optional[int] = None
+    trial_period_days: Optional[int] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -106,7 +106,7 @@ class SubscriptionPriceCreateRequest(BaseModel):
                 "tier_mode",
                 "tiers",
                 "transform_quantity",
-                "trial_period",
+                "trial_period_days",
             ]
         )
         serialized = handler(self)

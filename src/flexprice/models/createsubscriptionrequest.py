@@ -108,8 +108,10 @@ class CreateSubscriptionRequestTypedDict(TypedDict):
     subscription_status: NotRequired[SubscriptionStatus]
     tax_rate_overrides: NotRequired[List[TaxRateOverrideTypedDict]]
     r"""tax_rate_overrides is the tax rate overrides	to be applied to the subscription"""
-    trial_end: NotRequired[datetime]
-    trial_start: NotRequired[datetime]
+    trial_period_days: NotRequired[int]
+    r"""TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
+    0 = explicitly no trial (overrides catalog). >0 = override duration in days.
+    """
 
 
 class CreateSubscriptionRequest(BaseModel):
@@ -206,9 +208,10 @@ class CreateSubscriptionRequest(BaseModel):
     tax_rate_overrides: Optional[List[TaxRateOverride]] = None
     r"""tax_rate_overrides is the tax rate overrides	to be applied to the subscription"""
 
-    trial_end: Optional[datetime] = None
-
-    trial_start: Optional[datetime] = None
+    trial_period_days: Optional[int] = None
+    r"""TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
+    0 = explicitly no trial (overrides catalog). >0 = override duration in days.
+    """
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -245,8 +248,7 @@ class CreateSubscriptionRequest(BaseModel):
                 "start_date",
                 "subscription_status",
                 "tax_rate_overrides",
-                "trial_end",
-                "trial_start",
+                "trial_period_days",
             ]
         )
         serialized = handler(self)

@@ -89,8 +89,7 @@ class Subscriptions(BaseSDK):
         tax_rate_overrides: Optional[
             Union[List[models.TaxRateOverride], List[models.TaxRateOverrideTypedDict]]
         ] = None,
-        trial_end: Optional[datetime] = None,
-        trial_start: Optional[datetime] = None,
+        trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -140,8 +139,8 @@ class Subscriptions(BaseSDK):
         :param start_date:
         :param subscription_status:
         :param tax_rate_overrides: tax_rate_overrides is the tax rate overrides	to be applied to the subscription
-        :param trial_end:
-        :param trial_start:
+        :param trial_period_days: TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
+            0 = explicitly no trial (overrides catalog). >0 = override duration in days.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -211,8 +210,7 @@ class Subscriptions(BaseSDK):
             tax_rate_overrides=utils.get_pydantic_model(
                 tax_rate_overrides, Optional[List[models.TaxRateOverride]]
             ),
-            trial_end=trial_end,
-            trial_start=trial_start,
+            trial_period_days=trial_period_days,
         )
 
         req = self._build_request(
@@ -363,8 +361,7 @@ class Subscriptions(BaseSDK):
         tax_rate_overrides: Optional[
             Union[List[models.TaxRateOverride], List[models.TaxRateOverrideTypedDict]]
         ] = None,
-        trial_end: Optional[datetime] = None,
-        trial_start: Optional[datetime] = None,
+        trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -414,8 +411,8 @@ class Subscriptions(BaseSDK):
         :param start_date:
         :param subscription_status:
         :param tax_rate_overrides: tax_rate_overrides is the tax rate overrides	to be applied to the subscription
-        :param trial_end:
-        :param trial_start:
+        :param trial_period_days: TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
+            0 = explicitly no trial (overrides catalog). >0 = override duration in days.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -485,8 +482,7 @@ class Subscriptions(BaseSDK):
             tax_rate_overrides=utils.get_pydantic_model(
                 tax_rate_overrides, Optional[List[models.TaxRateOverride]]
             ),
-            trial_end=trial_end,
-            trial_start=trial_start,
+            trial_period_days=trial_period_days,
         )
 
         req = self._build_request_async(
@@ -1623,6 +1619,7 @@ class Subscriptions(BaseSDK):
         subscription_ids: Optional[List[str]] = None,
         subscription_status: Optional[List[models.SubscriptionStatus]] = None,
         subscription_type: Optional[List[models.SubscriptionType]] = None,
+        trial_end_due_lte: Optional[datetime] = None,
         with_line_items: Optional[bool] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1657,6 +1654,8 @@ class Subscriptions(BaseSDK):
         :param subscription_ids:
         :param subscription_status: SubscriptionStatus filters by subscription status
         :param subscription_type: SubscriptionType filters by subscription type
+        :param trial_end_due_lte: TrialEndDueLTE, when set, restricts to subscriptions with trial_end not nil and trial_end <= trial_end_due_lte.
+            Use with subscription_status trialing for trial-end cron processing.
         :param with_line_items: WithLineItems includes line items in the response
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1698,6 +1697,7 @@ class Subscriptions(BaseSDK):
             subscription_ids=subscription_ids,
             subscription_status=subscription_status,
             subscription_type=subscription_type,
+            trial_end_due_lte=trial_end_due_lte,
             with_line_items=with_line_items,
         )
 
@@ -1799,6 +1799,7 @@ class Subscriptions(BaseSDK):
         subscription_ids: Optional[List[str]] = None,
         subscription_status: Optional[List[models.SubscriptionStatus]] = None,
         subscription_type: Optional[List[models.SubscriptionType]] = None,
+        trial_end_due_lte: Optional[datetime] = None,
         with_line_items: Optional[bool] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1833,6 +1834,8 @@ class Subscriptions(BaseSDK):
         :param subscription_ids:
         :param subscription_status: SubscriptionStatus filters by subscription status
         :param subscription_type: SubscriptionType filters by subscription type
+        :param trial_end_due_lte: TrialEndDueLTE, when set, restricts to subscriptions with trial_end not nil and trial_end <= trial_end_due_lte.
+            Use with subscription_status trialing for trial-end cron processing.
         :param with_line_items: WithLineItems includes line items in the response
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1874,6 +1877,7 @@ class Subscriptions(BaseSDK):
             subscription_ids=subscription_ids,
             subscription_status=subscription_status,
             subscription_type=subscription_type,
+            trial_end_due_lte=trial_end_due_lte,
             with_line_items=with_line_items,
         )
 
@@ -5031,716 +5035,6 @@ class Subscriptions(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.SubscriptionModifyResponse, http_res)
-        if utils.match_response(http_res, ["400", "404"], "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    def pause_subscription(
-        self,
-        *,
-        id: str,
-        pause_mode: models.PauseMode,
-        dry_run: Optional[bool] = None,
-        metadata: Optional[Dict[str, str]] = None,
-        pause_days: Optional[int] = None,
-        pause_end: Optional[datetime] = None,
-        pause_start: Optional[datetime] = None,
-        reason: Optional[str] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionPauseResponse:
-        r"""Pause a subscription
-
-        Use when temporarily stopping a subscription (e.g. customer hold or seasonal pause). Billing and access pause; resume when ready.
-
-        :param id: Subscription ID
-        :param pause_mode:
-        :param dry_run: Whether to perform a dry run
-            @Description If true, validates the request and shows impact without actually pausing the subscription
-            @Example false
-        :param metadata: Additional metadata as key-value pairs
-            @Description Optional metadata for storing additional information about the pause
-            @Example {\"requested_by\": \"customer\", \"channel\": \"support_ticket\"}
-        :param pause_days: Duration of the pause in days
-            @Description Number of days to pause the subscription. Cannot be used together with pause_end. Must be greater than 0
-            @Example 30
-        :param pause_end: End date for the subscription pause
-            @Description ISO 8601 timestamp when the pause should end. Cannot be used together with pause_days. Must be after pause_start
-            @Example \"2024-02-15T00:00:00Z\"
-        :param pause_start: Start date for the subscription pause
-            @Description ISO 8601 timestamp when the pause should begin. Required when pause_mode is \"scheduled\"
-            @Example \"2024-01-15T00:00:00Z\"
-        :param reason: Reason for pausing the subscription
-            @Description Optional reason for the pause. Maximum 255 characters
-            @Example \"Customer requested temporary suspension\"
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.PauseSubscriptionRequestRequest(
-            id=id,
-            body=models.PauseSubscriptionRequest(
-                dry_run=dry_run,
-                metadata=metadata,
-                pause_days=pause_days,
-                pause_end=pause_end,
-                pause_mode=pause_mode,
-                pause_start=pause_start,
-                reason=reason,
-            ),
-        )
-
-        req = self._build_request(
-            method="POST",
-            path="/subscriptions/{id}/pause",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.PauseSubscriptionRequest
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="pauseSubscription",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.SubscriptionPauseResponse, http_res)
-        if utils.match_response(http_res, ["400", "404"], "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    async def pause_subscription_async(
-        self,
-        *,
-        id: str,
-        pause_mode: models.PauseMode,
-        dry_run: Optional[bool] = None,
-        metadata: Optional[Dict[str, str]] = None,
-        pause_days: Optional[int] = None,
-        pause_end: Optional[datetime] = None,
-        pause_start: Optional[datetime] = None,
-        reason: Optional[str] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionPauseResponse:
-        r"""Pause a subscription
-
-        Use when temporarily stopping a subscription (e.g. customer hold or seasonal pause). Billing and access pause; resume when ready.
-
-        :param id: Subscription ID
-        :param pause_mode:
-        :param dry_run: Whether to perform a dry run
-            @Description If true, validates the request and shows impact without actually pausing the subscription
-            @Example false
-        :param metadata: Additional metadata as key-value pairs
-            @Description Optional metadata for storing additional information about the pause
-            @Example {\"requested_by\": \"customer\", \"channel\": \"support_ticket\"}
-        :param pause_days: Duration of the pause in days
-            @Description Number of days to pause the subscription. Cannot be used together with pause_end. Must be greater than 0
-            @Example 30
-        :param pause_end: End date for the subscription pause
-            @Description ISO 8601 timestamp when the pause should end. Cannot be used together with pause_days. Must be after pause_start
-            @Example \"2024-02-15T00:00:00Z\"
-        :param pause_start: Start date for the subscription pause
-            @Description ISO 8601 timestamp when the pause should begin. Required when pause_mode is \"scheduled\"
-            @Example \"2024-01-15T00:00:00Z\"
-        :param reason: Reason for pausing the subscription
-            @Description Optional reason for the pause. Maximum 255 characters
-            @Example \"Customer requested temporary suspension\"
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.PauseSubscriptionRequestRequest(
-            id=id,
-            body=models.PauseSubscriptionRequest(
-                dry_run=dry_run,
-                metadata=metadata,
-                pause_days=pause_days,
-                pause_end=pause_end,
-                pause_mode=pause_mode,
-                pause_start=pause_start,
-                reason=reason,
-            ),
-        )
-
-        req = self._build_request_async(
-            method="POST",
-            path="/subscriptions/{id}/pause",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.PauseSubscriptionRequest
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="pauseSubscription",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.SubscriptionPauseResponse, http_res)
-        if utils.match_response(http_res, ["400", "404"], "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    def list_subscription_pauses(
-        self,
-        *,
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.ListSubscriptionPausesResponse]:
-        r"""List all pauses for a subscription
-
-        Use when showing pause history for a subscription (e.g. support or audit). Returns all past and future pauses.
-
-        :param id: Subscription ID
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.ListSubscriptionPausesRequest(
-            id=id,
-        )
-
-        req = self._build_request(
-            method="GET",
-            path="/subscriptions/{id}/pauses",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="listSubscriptionPauses",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                List[models.ListSubscriptionPausesResponse], http_res
-            )
-        if utils.match_response(http_res, ["400", "404"], "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    async def list_subscription_pauses_async(
-        self,
-        *,
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> List[models.ListSubscriptionPausesResponse]:
-        r"""List all pauses for a subscription
-
-        Use when showing pause history for a subscription (e.g. support or audit). Returns all past and future pauses.
-
-        :param id: Subscription ID
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.ListSubscriptionPausesRequest(
-            id=id,
-        )
-
-        req = self._build_request_async(
-            method="GET",
-            path="/subscriptions/{id}/pauses",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="listSubscriptionPauses",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                List[models.ListSubscriptionPausesResponse], http_res
-            )
-        if utils.match_response(http_res, ["400", "404"], "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    def resume_subscription(
-        self,
-        *,
-        id: str,
-        resume_mode: models.ResumeMode,
-        dry_run: Optional[bool] = None,
-        metadata: Optional[Dict[str, str]] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionPauseResponse:
-        r"""Resume a paused subscription
-
-        Use when reactivating a paused subscription (e.g. end of hold). Billing and access resume from the resume date.
-
-        :param id: Subscription ID
-        :param resume_mode:
-        :param dry_run: Whether to perform a dry run
-            @Description If true, validates the request and shows impact without actually resuming the subscription
-            @Example false
-        :param metadata: Additional metadata as key-value pairs
-            @Description Optional metadata for storing additional information about the resume operation
-            @Example {\"resumed_by\": \"admin\", \"reason\": \"issue_resolved\"}
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.ResumeSubscriptionRequestRequest(
-            id=id,
-            body=models.ResumeSubscriptionRequest(
-                dry_run=dry_run,
-                metadata=metadata,
-                resume_mode=resume_mode,
-            ),
-        )
-
-        req = self._build_request(
-            method="POST",
-            path="/subscriptions/{id}/resume",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.ResumeSubscriptionRequest
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="resumeSubscription",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.SubscriptionPauseResponse, http_res)
-        if utils.match_response(http_res, ["400", "404"], "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    async def resume_subscription_async(
-        self,
-        *,
-        id: str,
-        resume_mode: models.ResumeMode,
-        dry_run: Optional[bool] = None,
-        metadata: Optional[Dict[str, str]] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionPauseResponse:
-        r"""Resume a paused subscription
-
-        Use when reactivating a paused subscription (e.g. end of hold). Billing and access resume from the resume date.
-
-        :param id: Subscription ID
-        :param resume_mode:
-        :param dry_run: Whether to perform a dry run
-            @Description If true, validates the request and shows impact without actually resuming the subscription
-            @Example false
-        :param metadata: Additional metadata as key-value pairs
-            @Description Optional metadata for storing additional information about the resume operation
-            @Example {\"resumed_by\": \"admin\", \"reason\": \"issue_resolved\"}
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.ResumeSubscriptionRequestRequest(
-            id=id,
-            body=models.ResumeSubscriptionRequest(
-                dry_run=dry_run,
-                metadata=metadata,
-                resume_mode=resume_mode,
-            ),
-        )
-
-        req = self._build_request_async(
-            method="POST",
-            path="/subscriptions/{id}/resume",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.body, False, False, "json", models.ResumeSubscriptionRequest
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="resumeSubscription",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.SubscriptionPauseResponse, http_res)
         if utils.match_response(http_res, ["400", "404"], "application/json"):
             response_data = unmarshal_json_response(
                 models.errors.ErrorResponseData, http_res

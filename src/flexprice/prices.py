@@ -43,7 +43,7 @@ class Prices(BaseSDK):
         transform_quantity: Optional[
             Union[models.PriceTransformQuantity, models.PriceTransformQuantityTypedDict]
         ] = None,
-        trial_period: Optional[int] = None,
+        trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -77,7 +77,7 @@ class Prices(BaseSDK):
         :param tier_mode:
         :param tiers:
         :param transform_quantity:
-        :param trial_period:
+        :param trial_period_days:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -123,7 +123,7 @@ class Prices(BaseSDK):
             transform_quantity=utils.get_pydantic_model(
                 transform_quantity, Optional[models.PriceTransformQuantity]
             ),
-            trial_period=trial_period,
+            trial_period_days=trial_period_days,
             type=type_,
         )
 
@@ -229,7 +229,7 @@ class Prices(BaseSDK):
         transform_quantity: Optional[
             Union[models.PriceTransformQuantity, models.PriceTransformQuantityTypedDict]
         ] = None,
-        trial_period: Optional[int] = None,
+        trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -263,7 +263,7 @@ class Prices(BaseSDK):
         :param tier_mode:
         :param tiers:
         :param transform_quantity:
-        :param trial_period:
+        :param trial_period_days:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -309,7 +309,7 @@ class Prices(BaseSDK):
             transform_quantity=utils.get_pydantic_model(
                 transform_quantity, Optional[models.PriceTransformQuantity]
             ),
-            trial_period=trial_period,
+            trial_period_days=trial_period_days,
             type=type_,
         )
 

@@ -8,6 +8,7 @@ InvoiceBillingReason = Literal[
     "SUBSCRIPTION_CREATE",
     "SUBSCRIPTION_CYCLE",
     "SUBSCRIPTION_UPDATE",
+    "SUBSCRIPTION_TRIAL_END",
     "PRORATION",
     "MANUAL",
 ]

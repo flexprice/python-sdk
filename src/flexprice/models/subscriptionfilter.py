@@ -59,6 +59,10 @@ class SubscriptionFilterTypedDict(TypedDict):
     r"""SubscriptionStatus filters by subscription status"""
     subscription_type: NotRequired[List[SubscriptionType]]
     r"""SubscriptionType filters by subscription type"""
+    trial_end_due_lte: NotRequired[datetime]
+    r"""TrialEndDueLTE, when set, restricts to subscriptions with trial_end not nil and trial_end <= trial_end_due_lte.
+    Use with subscription_status trialing for trial-end cron processing.
+    """
     with_line_items: NotRequired[bool]
     r"""WithLineItems includes line items in the response"""
 
@@ -123,6 +127,11 @@ class SubscriptionFilter(BaseModel):
     subscription_type: Optional[List[SubscriptionType]] = None
     r"""SubscriptionType filters by subscription type"""
 
+    trial_end_due_lte: Optional[datetime] = None
+    r"""TrialEndDueLTE, when set, restricts to subscriptions with trial_end not nil and trial_end <= trial_end_due_lte.
+    Use with subscription_status trialing for trial-end cron processing.
+    """
+
     with_line_items: Optional[bool] = None
     r"""WithLineItems includes line items in the response"""
 
@@ -152,6 +161,7 @@ class SubscriptionFilter(BaseModel):
                 "subscription_ids",
                 "subscription_status",
                 "subscription_type",
+                "trial_end_due_lte",
                 "with_line_items",
             ]
         )

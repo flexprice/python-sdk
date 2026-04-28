@@ -705,14 +705,6 @@ if TYPE_CHECKING:
         ListScheduledTasksResponseTypedDict,
     )
     from .listsecretsresponse import ListSecretsResponse, ListSecretsResponseTypedDict
-    from .listsubscriptionpausesop import (
-        ListSubscriptionPausesRequest,
-        ListSubscriptionPausesRequestTypedDict,
-    )
-    from .listsubscriptionpausesresponse import (
-        ListSubscriptionPausesResponse,
-        ListSubscriptionPausesResponseTypedDict,
-    )
     from .listsubscriptionschedulesop import (
         ListSubscriptionSchedulesRequest,
         ListSubscriptionSchedulesRequestTypedDict,
@@ -791,14 +783,6 @@ if TYPE_CHECKING:
     from .paginationresponse import PaginationResponse, PaginationResponseTypedDict
     from .pausemode import PauseMode
     from .pausestatus import PauseStatus
-    from .pausesubscriptionop import (
-        PauseSubscriptionRequestRequest,
-        PauseSubscriptionRequestRequestTypedDict,
-    )
-    from .pausesubscriptionrequest import (
-        PauseSubscriptionRequest,
-        PauseSubscriptionRequestTypedDict,
-    )
     from .paymentattemptresponse import (
         PaymentAttemptResponse,
         PaymentAttemptResponseTypedDict,
@@ -864,14 +848,6 @@ if TYPE_CHECKING:
     from .reportingunit import ReportingUnit, ReportingUnitTypedDict
     from .resetusage import ResetUsage
     from .resumemode import ResumeMode
-    from .resumesubscriptionop import (
-        ResumeSubscriptionRequestRequest,
-        ResumeSubscriptionRequestRequestTypedDict,
-    )
-    from .resumesubscriptionrequest import (
-        ResumeSubscriptionRequest,
-        ResumeSubscriptionRequestTypedDict,
-    )
     from .roundtype import RoundType
     from .s3compressiontype import S3CompressionType
     from .s3encryptiontype import S3EncryptionType
@@ -958,10 +934,6 @@ if TYPE_CHECKING:
         SubscriptionModifyResponseTypedDict,
     )
     from .subscriptionmodifytype import SubscriptionModifyType
-    from .subscriptionpauseresponse import (
-        SubscriptionPauseResponse,
-        SubscriptionPauseResponseTypedDict,
-    )
     from .subscriptionphasecreaterequest import (
         SubscriptionPhaseCreateRequest,
         SubscriptionPhaseCreateRequestTypedDict,
@@ -1852,10 +1824,6 @@ __all__ = [
     "ListScheduledTasksResponseTypedDict",
     "ListSecretsResponse",
     "ListSecretsResponseTypedDict",
-    "ListSubscriptionPausesRequest",
-    "ListSubscriptionPausesRequestTypedDict",
-    "ListSubscriptionPausesResponse",
-    "ListSubscriptionPausesResponseTypedDict",
     "ListSubscriptionSchedulesRequest",
     "ListSubscriptionSchedulesRequestTypedDict",
     "ListSubscriptionsResponse",
@@ -1915,10 +1883,6 @@ __all__ = [
     "PaginationResponseTypedDict",
     "PauseMode",
     "PauseStatus",
-    "PauseSubscriptionRequest",
-    "PauseSubscriptionRequestRequest",
-    "PauseSubscriptionRequestRequestTypedDict",
-    "PauseSubscriptionRequestTypedDict",
     "PaymentAttemptResponse",
     "PaymentAttemptResponseTypedDict",
     "PaymentBehavior",
@@ -1989,10 +1953,6 @@ __all__ = [
     "ReportingUnitTypedDict",
     "ResetUsage",
     "ResumeMode",
-    "ResumeSubscriptionRequest",
-    "ResumeSubscriptionRequestRequest",
-    "ResumeSubscriptionRequestRequestTypedDict",
-    "ResumeSubscriptionRequestTypedDict",
     "RoundType",
     "S3CompressionType",
     "S3EncryptionType",
@@ -2049,8 +2009,6 @@ __all__ = [
     "SubscriptionModifyResponse",
     "SubscriptionModifyResponseTypedDict",
     "SubscriptionModifyType",
-    "SubscriptionPauseResponse",
-    "SubscriptionPauseResponseTypedDict",
     "SubscriptionPhaseCreateRequest",
     "SubscriptionPhaseCreateRequestTypedDict",
     "SubscriptionPhaseResponse",
@@ -2825,10 +2783,6 @@ _dynamic_imports: dict[str, str] = {
     "ListScheduledTasksResponseTypedDict": ".listscheduledtasksresponse",
     "ListSecretsResponse": ".listsecretsresponse",
     "ListSecretsResponseTypedDict": ".listsecretsresponse",
-    "ListSubscriptionPausesRequest": ".listsubscriptionpausesop",
-    "ListSubscriptionPausesRequestTypedDict": ".listsubscriptionpausesop",
-    "ListSubscriptionPausesResponse": ".listsubscriptionpausesresponse",
-    "ListSubscriptionPausesResponseTypedDict": ".listsubscriptionpausesresponse",
     "ListSubscriptionSchedulesRequest": ".listsubscriptionschedulesop",
     "ListSubscriptionSchedulesRequestTypedDict": ".listsubscriptionschedulesop",
     "ListSubscriptionsResponse": ".listsubscriptionsresponse",
@@ -2888,10 +2842,6 @@ _dynamic_imports: dict[str, str] = {
     "PaginationResponseTypedDict": ".paginationresponse",
     "PauseMode": ".pausemode",
     "PauseStatus": ".pausestatus",
-    "PauseSubscriptionRequestRequest": ".pausesubscriptionop",
-    "PauseSubscriptionRequestRequestTypedDict": ".pausesubscriptionop",
-    "PauseSubscriptionRequest": ".pausesubscriptionrequest",
-    "PauseSubscriptionRequestTypedDict": ".pausesubscriptionrequest",
     "PaymentAttemptResponse": ".paymentattemptresponse",
     "PaymentAttemptResponseTypedDict": ".paymentattemptresponse",
     "PaymentBehavior": ".paymentbehavior",
@@ -2958,10 +2908,6 @@ _dynamic_imports: dict[str, str] = {
     "ReportingUnitTypedDict": ".reportingunit",
     "ResetUsage": ".resetusage",
     "ResumeMode": ".resumemode",
-    "ResumeSubscriptionRequestRequest": ".resumesubscriptionop",
-    "ResumeSubscriptionRequestRequestTypedDict": ".resumesubscriptionop",
-    "ResumeSubscriptionRequest": ".resumesubscriptionrequest",
-    "ResumeSubscriptionRequestTypedDict": ".resumesubscriptionrequest",
     "RoundType": ".roundtype",
     "S3CompressionType": ".s3compressiontype",
     "S3EncryptionType": ".s3encryptiontype",
@@ -3021,8 +2967,6 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionModifyResponse": ".subscriptionmodifyresponse",
     "SubscriptionModifyResponseTypedDict": ".subscriptionmodifyresponse",
     "SubscriptionModifyType": ".subscriptionmodifytype",
-    "SubscriptionPauseResponse": ".subscriptionpauseresponse",
-    "SubscriptionPauseResponseTypedDict": ".subscriptionpauseresponse",
     "SubscriptionPhaseCreateRequest": ".subscriptionphasecreaterequest",
     "SubscriptionPhaseCreateRequestTypedDict": ".subscriptionphasecreaterequest",
     "SubscriptionPhaseResponse": ".subscriptionphaseresponse",

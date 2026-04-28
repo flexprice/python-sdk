@@ -54,7 +54,6 @@ class SubscriptionLineItemResponseTypedDict(TypedDict):
     subscription_id: NotRequired[str]
     subscription_phase_id: NotRequired[str]
     tenant_id: NotRequired[str]
-    trial_period: NotRequired[int]
     updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
 
@@ -134,8 +133,6 @@ class SubscriptionLineItemResponse(BaseModel):
 
     tenant_id: Optional[str] = None
 
-    trial_period: Optional[int] = None
-
     updated_at: Optional[datetime] = None
 
     updated_by: Optional[str] = None
@@ -180,7 +177,6 @@ class SubscriptionLineItemResponse(BaseModel):
                 "subscription_id",
                 "subscription_phase_id",
                 "tenant_id",
-                "trial_period",
                 "updated_at",
                 "updated_by",
             ]

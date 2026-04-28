@@ -97,8 +97,8 @@ class PriceResponseTypedDict(TypedDict):
     tier_mode: NotRequired[BillingTier]
     tiers: NotRequired[List[PricePriceTierTypedDict]]
     transform_quantity: NotRequired[PriceJSONBTransformQuantityTypedDict]
-    trial_period: NotRequired[int]
-    r"""TrialPeriod is the number of days for the trial period
+    trial_period_days: NotRequired[int]
+    r"""TrialPeriodDays is the number of days for the trial period
     Note: This is only applicable for recurring prices (BILLING_CADENCE_RECURRING)
     """
     type: NotRequired[PriceType]
@@ -215,8 +215,8 @@ class PriceResponse(BaseModel):
 
     transform_quantity: Optional[PriceJSONBTransformQuantity] = None
 
-    trial_period: Optional[int] = None
-    r"""TrialPeriod is the number of days for the trial period
+    trial_period_days: Optional[int] = None
+    r"""TrialPeriodDays is the number of days for the trial period
     Note: This is only applicable for recurring prices (BILLING_CADENCE_RECURRING)
     """
 
@@ -271,7 +271,7 @@ class PriceResponse(BaseModel):
                 "tier_mode",
                 "tiers",
                 "transform_quantity",
-                "trial_period",
+                "trial_period_days",
                 "type",
                 "updated_at",
                 "updated_by",
