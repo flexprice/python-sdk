@@ -74,7 +74,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.scheduled_tasks.create_scheduled_task(connection_id="<id>", entity_type="credit_topups", interval="custom", job_config={})
+    res = f_client.scheduled_tasks.create_scheduled_task(connection_id="<id>", entity_type="credit_usage", interval="custom", job_config={})
 
     # Handle response
     print(res)

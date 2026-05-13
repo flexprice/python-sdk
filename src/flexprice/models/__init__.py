@@ -398,6 +398,8 @@ if TYPE_CHECKING:
         ExecuteSubscriptionModifyRequest,
         ExecuteSubscriptionModifyRequestTypedDict,
     )
+    from .exportmetadataentitytype import ExportMetadataEntityType
+    from .exportmetadatafield import ExportMetadataField, ExportMetadataFieldTypedDict
     from .failurepoint import FailurePoint, FailurePointTypedDict
     from .failurepointtype import FailurePointType
     from .feature import Feature, FeatureTypedDict
@@ -591,6 +593,7 @@ if TYPE_CHECKING:
         Type,
     )
     from .group_group import GroupGroup, GroupGroupTypedDict
+    from .groupedinvoicingaction import GroupedInvoicingAction
     from .groupentitytype import GroupEntityType
     from .groupfilter import GroupFilter, GroupFilterOrder, GroupFilterTypedDict
     from .groupresponse import GroupResponse, GroupResponseTypedDict
@@ -705,6 +708,10 @@ if TYPE_CHECKING:
         ListScheduledTasksResponseTypedDict,
     )
     from .listsecretsresponse import ListSecretsResponse, ListSecretsResponseTypedDict
+    from .listsubscriptionlineitemsresponse import (
+        ListSubscriptionLineItemsResponse,
+        ListSubscriptionLineItemsResponseTypedDict,
+    )
     from .listsubscriptionschedulesop import (
         ListSubscriptionSchedulesRequest,
         ListSubscriptionSchedulesRequestTypedDict,
@@ -878,6 +885,10 @@ if TYPE_CHECKING:
     from .sortdirection import SortDirection
     from .sourceusageitem import SourceUsageItem, SourceUsageItemTypedDict
     from .status import Status
+    from .submodifygroupedinvoicingparams import (
+        SubModifyGroupedInvoicingParams,
+        SubModifyGroupedInvoicingParamsTypedDict,
+    )
     from .submodifyinheritancerequest import (
         SubModifyInheritanceRequest,
         SubModifyInheritanceRequestTypedDict,
@@ -921,6 +932,11 @@ if TYPE_CHECKING:
         SubscriptionInheritanceConfigTypedDict,
     )
     from .subscriptionlineitementitytype import SubscriptionLineItemEntityType
+    from .subscriptionlineitemfilter import (
+        SubscriptionLineItemFilter,
+        SubscriptionLineItemFilterOrder,
+        SubscriptionLineItemFilterTypedDict,
+    )
     from .subscriptionlineitemlookupresult import (
         SubscriptionLineItemLookupResult,
         SubscriptionLineItemLookupResultTypedDict,
@@ -1588,6 +1604,9 @@ __all__ = [
     "ExecuteSubscriptionModifyRequestTypedDict",
     "ExecutionResult",
     "ExecutionResultTypedDict",
+    "ExportMetadataEntityType",
+    "ExportMetadataField",
+    "ExportMetadataFieldTypedDict",
     "FailurePoint",
     "FailurePointType",
     "FailurePointTypedDict",
@@ -1745,6 +1764,7 @@ __all__ = [
     "GroupGroupTypedDict",
     "GroupResponse",
     "GroupResponseTypedDict",
+    "GroupedInvoicingAction",
     "IngestEventRequest",
     "IngestEventRequestTypedDict",
     "IntegrationEntityType",
@@ -1824,6 +1844,8 @@ __all__ = [
     "ListScheduledTasksResponseTypedDict",
     "ListSecretsResponse",
     "ListSecretsResponseTypedDict",
+    "ListSubscriptionLineItemsResponse",
+    "ListSubscriptionLineItemsResponseTypedDict",
     "ListSubscriptionSchedulesRequest",
     "ListSubscriptionSchedulesRequestTypedDict",
     "ListSubscriptionsResponse",
@@ -1983,6 +2005,8 @@ __all__ = [
     "SourceUsageItem",
     "SourceUsageItemTypedDict",
     "Status",
+    "SubModifyGroupedInvoicingParams",
+    "SubModifyGroupedInvoicingParamsTypedDict",
     "SubModifyInheritanceRequest",
     "SubModifyInheritanceRequestTypedDict",
     "SubModifyQuantityChangeRequest",
@@ -2002,6 +2026,9 @@ __all__ = [
     "SubscriptionInheritanceConfig",
     "SubscriptionInheritanceConfigTypedDict",
     "SubscriptionLineItemEntityType",
+    "SubscriptionLineItemFilter",
+    "SubscriptionLineItemFilterOrder",
+    "SubscriptionLineItemFilterTypedDict",
     "SubscriptionLineItemLookupResult",
     "SubscriptionLineItemLookupResultTypedDict",
     "SubscriptionLineItemResponse",
@@ -2547,6 +2574,9 @@ _dynamic_imports: dict[str, str] = {
     "ExecuteSubscriptionModifyRequestRequestTypedDict": ".executesubscriptionmodifyop",
     "ExecuteSubscriptionModifyRequest": ".executesubscriptionmodifyrequest",
     "ExecuteSubscriptionModifyRequestTypedDict": ".executesubscriptionmodifyrequest",
+    "ExportMetadataEntityType": ".exportmetadataentitytype",
+    "ExportMetadataField": ".exportmetadatafield",
+    "ExportMetadataFieldTypedDict": ".exportmetadatafield",
     "FailurePoint": ".failurepoint",
     "FailurePointTypedDict": ".failurepoint",
     "FailurePointType": ".failurepointtype",
@@ -2700,6 +2730,7 @@ _dynamic_imports: dict[str, str] = {
     "Type": ".getwallettransactionsop",
     "GroupGroup": ".group_group",
     "GroupGroupTypedDict": ".group_group",
+    "GroupedInvoicingAction": ".groupedinvoicingaction",
     "GroupEntityType": ".groupentitytype",
     "GroupFilter": ".groupfilter",
     "GroupFilterOrder": ".groupfilter",
@@ -2783,6 +2814,8 @@ _dynamic_imports: dict[str, str] = {
     "ListScheduledTasksResponseTypedDict": ".listscheduledtasksresponse",
     "ListSecretsResponse": ".listsecretsresponse",
     "ListSecretsResponseTypedDict": ".listsecretsresponse",
+    "ListSubscriptionLineItemsResponse": ".listsubscriptionlineitemsresponse",
+    "ListSubscriptionLineItemsResponseTypedDict": ".listsubscriptionlineitemsresponse",
     "ListSubscriptionSchedulesRequest": ".listsubscriptionschedulesop",
     "ListSubscriptionSchedulesRequestTypedDict": ".listsubscriptionschedulesop",
     "ListSubscriptionsResponse": ".listsubscriptionsresponse",
@@ -2937,6 +2970,8 @@ _dynamic_imports: dict[str, str] = {
     "SourceUsageItem": ".sourceusageitem",
     "SourceUsageItemTypedDict": ".sourceusageitem",
     "Status": ".status",
+    "SubModifyGroupedInvoicingParams": ".submodifygroupedinvoicingparams",
+    "SubModifyGroupedInvoicingParamsTypedDict": ".submodifygroupedinvoicingparams",
     "SubModifyInheritanceRequest": ".submodifyinheritancerequest",
     "SubModifyInheritanceRequestTypedDict": ".submodifyinheritancerequest",
     "SubModifyQuantityChangeRequest": ".submodifyquantitychangerequest",
@@ -2960,6 +2995,9 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionInheritanceConfig": ".subscriptioninheritanceconfig",
     "SubscriptionInheritanceConfigTypedDict": ".subscriptioninheritanceconfig",
     "SubscriptionLineItemEntityType": ".subscriptionlineitementitytype",
+    "SubscriptionLineItemFilter": ".subscriptionlineitemfilter",
+    "SubscriptionLineItemFilterOrder": ".subscriptionlineitemfilter",
+    "SubscriptionLineItemFilterTypedDict": ".subscriptionlineitemfilter",
     "SubscriptionLineItemLookupResult": ".subscriptionlineitemlookupresult",
     "SubscriptionLineItemLookupResultTypedDict": ".subscriptionlineitemlookupresult",
     "SubscriptionLineItemResponse": ".subscriptionlineitemresponse",

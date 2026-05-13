@@ -7,7 +7,7 @@ from .status import Status
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Literal, Optional
+from typing import Dict, List, Literal, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -26,6 +26,7 @@ class CustomerFilterTypedDict(TypedDict):
     external_ids: NotRequired[List[str]]
     filters: NotRequired[List[FilterConditionTypedDict]]
     limit: NotRequired[int]
+    metadata: NotRequired[Dict[str, str]]
     offset: NotRequired[int]
     order: NotRequired[CustomerFilterOrder]
     sort: NotRequired[List[SortConditionTypedDict]]
@@ -50,6 +51,8 @@ class CustomerFilter(BaseModel):
 
     limit: Optional[int] = None
 
+    metadata: Optional[Dict[str, str]] = None
+
     offset: Optional[int] = None
 
     order: Optional[CustomerFilterOrder] = None
@@ -72,6 +75,7 @@ class CustomerFilter(BaseModel):
                 "external_ids",
                 "filters",
                 "limit",
+                "metadata",
                 "offset",
                 "order",
                 "sort",

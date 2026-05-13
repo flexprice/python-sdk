@@ -18,3 +18,4 @@ This is an open enum. Unrecognized values will not fail type checks.
 - `"invoice"`
 - `"credit_topups"`
 - `"credit_usage"`
+- `"usage_analytics"`

@@ -4,54 +4,76 @@ from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
 from .sortcondition import SortCondition, SortConditionTypedDict
 from .status import Status
+from .subscriptionlineitementitytype import SubscriptionLineItemEntityType
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, List, Literal, Optional
+from typing import List, Literal, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-PlanFilterOrder = Literal[
+SubscriptionLineItemFilterOrder = Literal[
     "asc",
     "desc",
 ]
 
 
-class PlanFilterTypedDict(TypedDict):
+class SubscriptionLineItemFilterTypedDict(TypedDict):
+    active_filter: NotRequired[bool]
+    addon_association_ids: NotRequired[List[str]]
+    billing_periods: NotRequired[List[str]]
+    currencies: NotRequired[List[str]]
+    current_period_start: NotRequired[datetime]
+    customer_ids: NotRequired[List[str]]
     end_time: NotRequired[datetime]
+    entity_ids: NotRequired[List[str]]
+    entity_type: NotRequired[SubscriptionLineItemEntityType]
     expand: NotRequired[str]
     filters: NotRequired[List[FilterConditionTypedDict]]
-    r"""filters allows complex filtering based on multiple fields"""
     limit: NotRequired[int]
-    lookup_key: NotRequired[str]
-    metadata: NotRequired[Dict[str, str]]
+    meter_ids: NotRequired[List[str]]
     offset: NotRequired[int]
-    order: NotRequired[PlanFilterOrder]
-    plan_ids: NotRequired[List[str]]
+    order: NotRequired[SubscriptionLineItemFilterOrder]
+    price_ids: NotRequired[List[str]]
     sort: NotRequired[List[SortConditionTypedDict]]
     start_time: NotRequired[datetime]
     status: NotRequired[Status]
+    subscription_ids: NotRequired[List[str]]
+    r"""Specific filters"""
 
 
-class PlanFilter(BaseModel):
+class SubscriptionLineItemFilter(BaseModel):
+    active_filter: Optional[bool] = True
+
+    addon_association_ids: Optional[List[str]] = None
+
+    billing_periods: Optional[List[str]] = None
+
+    currencies: Optional[List[str]] = None
+
+    current_period_start: Optional[datetime] = None
+
+    customer_ids: Optional[List[str]] = None
+
     end_time: Optional[datetime] = None
+
+    entity_ids: Optional[List[str]] = None
+
+    entity_type: Optional[SubscriptionLineItemEntityType] = None
 
     expand: Optional[str] = None
 
     filters: Optional[List[FilterCondition]] = None
-    r"""filters allows complex filtering based on multiple fields"""
 
     limit: Optional[int] = None
 
-    lookup_key: Optional[str] = None
-
-    metadata: Optional[Dict[str, str]] = None
+    meter_ids: Optional[List[str]] = None
 
     offset: Optional[int] = None
 
-    order: Optional[PlanFilterOrder] = None
+    order: Optional[SubscriptionLineItemFilterOrder] = None
 
-    plan_ids: Optional[List[str]] = None
+    price_ids: Optional[List[str]] = None
 
     sort: Optional[List[SortCondition]] = None
 
@@ -59,22 +81,33 @@ class PlanFilter(BaseModel):
 
     status: Optional[Status] = None
 
+    subscription_ids: Optional[List[str]] = None
+    r"""Specific filters"""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
             [
+                "active_filter",
+                "addon_association_ids",
+                "billing_periods",
+                "currencies",
+                "current_period_start",
+                "customer_ids",
                 "end_time",
+                "entity_ids",
+                "entity_type",
                 "expand",
                 "filters",
                 "limit",
-                "lookup_key",
-                "metadata",
+                "meter_ids",
                 "offset",
                 "order",
-                "plan_ids",
+                "price_ids",
                 "sort",
                 "start_time",
                 "status",
+                "subscription_ids",
             ]
         )
         serialized = handler(self)

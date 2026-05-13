@@ -7,6 +7,7 @@
 * [create_subscription](#create_subscription) - Create subscription
 * [add_subscription_addon](#add_subscription_addon) - Add addon to subscription
 * [remove_subscription_addon](#remove_subscription_addon) - Remove addon from subscription
+* [query_subscription_line_items](#query_subscription_line_items) - Search subscription line items
 * [update_subscription_line_item](#update_subscription_line_item) - Update subscription line item
 * [delete_subscription_line_item](#delete_subscription_line_item) - Delete subscription line item
 * [query_subscription](#query_subscription) - Query subscriptions
@@ -186,6 +187,66 @@ with Flexprice(
 ### Response
 
 **[models.SuccessResponse](../../models/successresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## query_subscription_line_items
+
+List subscription line items with a JSON filter (subscription, customer, price, pagination, expand=prices, etc.).
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="querySubscriptionLineItems" method="post" path="/subscriptions/lineitems/search" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.subscriptions.query_subscription_line_items(active_filter=True)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `active_filter`                                                                                     | *Optional[bool]*                                                                                    | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `addon_association_ids`                                                                             | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `billing_periods`                                                                                   | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `currencies`                                                                                        | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `current_period_start`                                                                              | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `customer_ids`                                                                                      | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `end_time`                                                                                          | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `entity_ids`                                                                                        | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `entity_type`                                                                                       | [Optional[models.SubscriptionLineItemEntityType]](../../models/subscriptionlineitementitytype.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `expand`                                                                                            | *Optional[str]*                                                                                     | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `filters`                                                                                           | List[[models.FilterCondition](../../models/filtercondition.md)]                                     | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `limit`                                                                                             | *Optional[int]*                                                                                     | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `meter_ids`                                                                                         | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `offset`                                                                                            | *Optional[int]*                                                                                     | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `order`                                                                                             | [Optional[models.SubscriptionLineItemFilterOrder]](../../models/subscriptionlineitemfilterorder.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `price_ids`                                                                                         | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `sort`                                                                                              | List[[models.SortCondition](../../models/sortcondition.md)]                                         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `start_time`                                                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `status`                                                                                            | [Optional[models.Status]](../../models/status.md)                                                   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `subscription_ids`                                                                                  | List[*str*]                                                                                         | :heavy_minus_sign:                                                                                  | Specific filters                                                                                    |
+| `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
+
+### Response
+
+**[models.ListSubscriptionLineItemsResponse](../../models/listsubscriptionlineitemsresponse.md)**
 
 ### Errors
 
@@ -880,13 +941,14 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `id`                                                                                              | *str*                                                                                             | :heavy_check_mark:                                                                                | Subscription ID                                                                                   |
-| `type`                                                                                            | [models.SubscriptionModifyType](../../models/subscriptionmodifytype.md)                           | :heavy_check_mark:                                                                                | N/A                                                                                               |
-| `inheritance_params`                                                                              | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)       | :heavy_minus_sign:                                                                                | N/A                                                                                               |
-| `quantity_change_params`                                                                          | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |
-| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                | *str*                                                                                               | :heavy_check_mark:                                                                                  | Subscription ID                                                                                     |
+| `type`                                                                                              | [models.SubscriptionModifyType](../../models/subscriptionmodifytype.md)                             | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `grouped_invoicing_params`                                                                          | [Optional[models.SubModifyGroupedInvoicingParams]](../../models/submodifygroupedinvoicingparams.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `inheritance_params`                                                                                | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `quantity_change_params`                                                                            | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
 
 ### Response
 
@@ -915,7 +977,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="quantity_change")
+    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="grouped_invoicing")
 
     # Handle response
     print(res)
@@ -924,13 +986,14 @@ with Flexprice(
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `id`                                                                                              | *str*                                                                                             | :heavy_check_mark:                                                                                | Subscription ID                                                                                   |
-| `type`                                                                                            | [models.SubscriptionModifyType](../../models/subscriptionmodifytype.md)                           | :heavy_check_mark:                                                                                | N/A                                                                                               |
-| `inheritance_params`                                                                              | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)       | :heavy_minus_sign:                                                                                | N/A                                                                                               |
-| `quantity_change_params`                                                                          | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |
-| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                | *str*                                                                                               | :heavy_check_mark:                                                                                  | Subscription ID                                                                                     |
+| `type`                                                                                              | [models.SubscriptionModifyType](../../models/subscriptionmodifytype.md)                             | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `grouped_invoicing_params`                                                                          | [Optional[models.SubModifyGroupedInvoicingParams]](../../models/submodifygroupedinvoicingparams.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `inheritance_params`                                                                                | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `quantity_change_params`                                                                            | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
 
 ### Response
 

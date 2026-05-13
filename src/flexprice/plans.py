@@ -248,6 +248,7 @@ class Plans(BaseSDK):
         ] = None,
         limit: Optional[int] = None,
         lookup_key: Optional[str] = None,
+        metadata: Optional[Dict[str, str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.PlanFilterOrder] = None,
         plan_ids: Optional[List[str]] = None,
@@ -270,6 +271,7 @@ class Plans(BaseSDK):
         :param filters: filters allows complex filtering based on multiple fields
         :param limit:
         :param lookup_key:
+        :param metadata:
         :param offset:
         :param order:
         :param plan_ids:
@@ -299,6 +301,7 @@ class Plans(BaseSDK):
             ),
             limit=limit,
             lookup_key=lookup_key,
+            metadata=metadata,
             offset=offset,
             order=order,
             plan_ids=plan_ids,
@@ -386,6 +389,7 @@ class Plans(BaseSDK):
         ] = None,
         limit: Optional[int] = None,
         lookup_key: Optional[str] = None,
+        metadata: Optional[Dict[str, str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.PlanFilterOrder] = None,
         plan_ids: Optional[List[str]] = None,
@@ -408,6 +412,7 @@ class Plans(BaseSDK):
         :param filters: filters allows complex filtering based on multiple fields
         :param limit:
         :param lookup_key:
+        :param metadata:
         :param offset:
         :param order:
         :param plan_ids:
@@ -437,6 +442,7 @@ class Plans(BaseSDK):
             ),
             limit=limit,
             lookup_key=lookup_key,
+            metadata=metadata,
             offset=offset,
             order=order,
             plan_ids=plan_ids,

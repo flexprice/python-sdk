@@ -5,13 +5,10 @@ from flexprice.types import UnrecognizedStr
 from typing import Literal, Union
 
 
-SubscriptionType = Union[
+ExportMetadataEntityType = Union[
     Literal[
-        "standalone",
-        "delegated_invoicing",
-        "parent",
-        "inherited",
-        "grouped_invoicing",
+        "customer",
+        "wallet",
     ],
     UnrecognizedStr,
 ]

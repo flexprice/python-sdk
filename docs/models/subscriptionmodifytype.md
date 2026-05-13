@@ -12,3 +12,4 @@ value: SubscriptionModifyType = "inheritance"
 
 - `"inheritance"`
 - `"quantity_change"`
+- `"grouped_invoicing"`

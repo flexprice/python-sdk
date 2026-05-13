@@ -821,6 +821,7 @@ class Customers(BaseSDK):
             Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
         ] = None,
         limit: Optional[int] = None,
+        metadata: Optional[Dict[str, str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.CustomerFilterOrder] = None,
         sort: Optional[
@@ -845,6 +846,7 @@ class Customers(BaseSDK):
         :param external_ids:
         :param filters:
         :param limit:
+        :param metadata:
         :param offset:
         :param order:
         :param sort:
@@ -876,6 +878,7 @@ class Customers(BaseSDK):
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
+            metadata=metadata,
             offset=offset,
             order=order,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
@@ -965,6 +968,7 @@ class Customers(BaseSDK):
             Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
         ] = None,
         limit: Optional[int] = None,
+        metadata: Optional[Dict[str, str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.CustomerFilterOrder] = None,
         sort: Optional[
@@ -989,6 +993,7 @@ class Customers(BaseSDK):
         :param external_ids:
         :param filters:
         :param limit:
+        :param metadata:
         :param offset:
         :param order:
         :param sort:
@@ -1020,6 +1025,7 @@ class Customers(BaseSDK):
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
+            metadata=metadata,
             offset=offset,
             order=order,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),

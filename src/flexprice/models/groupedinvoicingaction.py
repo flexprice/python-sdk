@@ -4,8 +4,7 @@ from __future__ import annotations
 from typing import Literal
 
 
-SubscriptionModifyType = Literal[
-    "inheritance",
-    "quantity_change",
-    "grouped_invoicing",
+GroupedInvoicingAction = Literal[
+    "add",
+    "remove",
 ]
