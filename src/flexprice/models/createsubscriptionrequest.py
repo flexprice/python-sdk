@@ -54,6 +54,13 @@ class CreateSubscriptionRequestTypedDict(TypedDict):
     plan_id: str
     addons: NotRequired[List[AddAddonToSubscriptionRequestTypedDict]]
     r"""Addons represents addons to be added to the subscription during creation"""
+    auto_invoice_threshold: NotRequired[str]
+    r"""AutoInvoiceThreshold is the usage amount (in subscription currency) that triggers
+    an intermediate invoice mid-period. Set once at creation; cannot be changed later.
+    Allowed only when the subscription resolves to type standalone (no parent hierarchy rows).
+    Plan line items must be usage-based only (no fixed or other non-usage plan prices).
+    Nil means auto invoice threshold billing is disabled for this subscription.
+    """
     billing_anchor: NotRequired[datetime]
     r"""BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
     For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
@@ -123,6 +130,14 @@ class CreateSubscriptionRequest(BaseModel):
 
     addons: Optional[List[AddAddonToSubscriptionRequest]] = None
     r"""Addons represents addons to be added to the subscription during creation"""
+
+    auto_invoice_threshold: Optional[str] = None
+    r"""AutoInvoiceThreshold is the usage amount (in subscription currency) that triggers
+    an intermediate invoice mid-period. Set once at creation; cannot be changed later.
+    Allowed only when the subscription resolves to type standalone (no parent hierarchy rows).
+    Plan line items must be usage-based only (no fixed or other non-usage plan prices).
+    Nil means auto invoice threshold billing is disabled for this subscription.
+    """
 
     billing_anchor: Optional[datetime] = None
     r"""BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
@@ -218,6 +233,7 @@ class CreateSubscriptionRequest(BaseModel):
         optional_fields = set(
             [
                 "addons",
+                "auto_invoice_threshold",
                 "billing_anchor",
                 "billing_cycle",
                 "billing_period_count",

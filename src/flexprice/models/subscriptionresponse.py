@@ -44,6 +44,11 @@ class SubscriptionResponseTypedDict(TypedDict):
     r"""ActivePauseID references the current active pause configuration
     This will be null if no pause is active or scheduled
     """
+    auto_invoice_threshold: NotRequired[str]
+    r"""AutoInvoiceThreshold is the usage amount (in subscription currency) that triggers
+    an intermediate invoice. Overrides the plan-level threshold when set.
+    Nil means: inherit from the plan's threshold (which may also be nil = disabled).
+    """
     billing_anchor: NotRequired[datetime]
     r"""BillingAnchor is the reference point that aligns future billing cycle dates.
     It sets the day of week for week intervals, the day of month for month and year intervals,
@@ -139,6 +144,12 @@ class SubscriptionResponse(BaseModel):
     active_pause_id: Optional[str] = None
     r"""ActivePauseID references the current active pause configuration
     This will be null if no pause is active or scheduled
+    """
+
+    auto_invoice_threshold: Optional[str] = None
+    r"""AutoInvoiceThreshold is the usage amount (in subscription currency) that triggers
+    an intermediate invoice. Overrides the plan-level threshold when set.
+    Nil means: inherit from the plan's threshold (which may also be nil = disabled).
     """
 
     billing_anchor: Optional[datetime] = None
@@ -286,6 +297,7 @@ class SubscriptionResponse(BaseModel):
         optional_fields = set(
             [
                 "active_pause_id",
+                "auto_invoice_threshold",
                 "billing_anchor",
                 "billing_cadence",
                 "billing_cycle",

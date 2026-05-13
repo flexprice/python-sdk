@@ -22,6 +22,7 @@ class Subscriptions(BaseSDK):
                 List[models.AddAddonToSubscriptionRequestTypedDict],
             ]
         ] = None,
+        auto_invoice_threshold: Optional[str] = None,
         billing_anchor: Optional[datetime] = None,
         billing_cycle: Optional[models.BillingCycle] = None,
         billing_period_count: Optional[int] = None,
@@ -103,6 +104,11 @@ class Subscriptions(BaseSDK):
         :param currency:
         :param plan_id:
         :param addons: Addons represents addons to be added to the subscription during creation
+        :param auto_invoice_threshold: AutoInvoiceThreshold is the usage amount (in subscription currency) that triggers
+            an intermediate invoice mid-period. Set once at creation; cannot be changed later.
+            Allowed only when the subscription resolves to type standalone (no parent hierarchy rows).
+            Plan line items must be usage-based only (no fixed or other non-usage plan prices).
+            Nil means auto invoice threshold billing is disabled for this subscription.
         :param billing_anchor: BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
             For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
             is before that day in the month, the first billing period ends on the next occurrence of that
@@ -160,6 +166,7 @@ class Subscriptions(BaseSDK):
             addons=utils.get_pydantic_model(
                 addons, Optional[List[models.AddAddonToSubscriptionRequest]]
             ),
+            auto_invoice_threshold=auto_invoice_threshold,
             billing_anchor=billing_anchor,
             billing_cycle=billing_cycle,
             billing_period=billing_period,
@@ -294,6 +301,7 @@ class Subscriptions(BaseSDK):
                 List[models.AddAddonToSubscriptionRequestTypedDict],
             ]
         ] = None,
+        auto_invoice_threshold: Optional[str] = None,
         billing_anchor: Optional[datetime] = None,
         billing_cycle: Optional[models.BillingCycle] = None,
         billing_period_count: Optional[int] = None,
@@ -375,6 +383,11 @@ class Subscriptions(BaseSDK):
         :param currency:
         :param plan_id:
         :param addons: Addons represents addons to be added to the subscription during creation
+        :param auto_invoice_threshold: AutoInvoiceThreshold is the usage amount (in subscription currency) that triggers
+            an intermediate invoice mid-period. Set once at creation; cannot be changed later.
+            Allowed only when the subscription resolves to type standalone (no parent hierarchy rows).
+            Plan line items must be usage-based only (no fixed or other non-usage plan prices).
+            Nil means auto invoice threshold billing is disabled for this subscription.
         :param billing_anchor: BillingAnchor overrides the derived billing anchor when billing_cycle is anniversary.
             For monthly billing, the day-of-month (and time-of-day) define cycle boundaries: if start_date
             is before that day in the month, the first billing period ends on the next occurrence of that
@@ -432,6 +445,7 @@ class Subscriptions(BaseSDK):
             addons=utils.get_pydantic_model(
                 addons, Optional[List[models.AddAddonToSubscriptionRequest]]
             ),
+            auto_invoice_threshold=auto_invoice_threshold,
             billing_anchor=billing_anchor,
             billing_cycle=billing_cycle,
             billing_period=billing_period,

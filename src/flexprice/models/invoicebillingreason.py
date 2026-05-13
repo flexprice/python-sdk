@@ -12,4 +12,5 @@ InvoiceBillingReason = Literal[
     "SUBSCRIPTION_TRIAL_START",
     "PRORATION",
     "MANUAL",
+    "AUTO_INVOICE_THRESHOLD",
 ]
