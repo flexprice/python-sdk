@@ -235,6 +235,7 @@ class Invoices(BaseSDK):
         invoice_pdf_url: Optional[str] = None,
         invoice_status: Optional[models.InvoiceStatus] = None,
         invoice_type: Optional[models.InvoiceType] = None,
+        issue_date: Optional[datetime] = None,
         line_item_coupons: Optional[
             Union[
                 List[models.InvoiceLineItemCoupon],
@@ -286,6 +287,8 @@ class Invoices(BaseSDK):
         :param invoice_pdf_url: invoice_pdf_url is the URL where customers can download the PDF version of this invoice
         :param invoice_status:
         :param invoice_type:
+        :param issue_date: issue_date overrides the user-facing date of the invoice.
+            Defaults to created_at if not provided.
         :param line_item_coupons: Invoice Line Item Coupons
         :param line_items: line_items contains the individual items that make up this invoice
         :param metadata:
@@ -330,6 +333,7 @@ class Invoices(BaseSDK):
             invoice_pdf_url=invoice_pdf_url,
             invoice_status=invoice_status,
             invoice_type=invoice_type,
+            issue_date=issue_date,
             line_item_coupons=utils.get_pydantic_model(
                 line_item_coupons, Optional[List[models.InvoiceLineItemCoupon]]
             ),
@@ -444,6 +448,7 @@ class Invoices(BaseSDK):
         invoice_pdf_url: Optional[str] = None,
         invoice_status: Optional[models.InvoiceStatus] = None,
         invoice_type: Optional[models.InvoiceType] = None,
+        issue_date: Optional[datetime] = None,
         line_item_coupons: Optional[
             Union[
                 List[models.InvoiceLineItemCoupon],
@@ -495,6 +500,8 @@ class Invoices(BaseSDK):
         :param invoice_pdf_url: invoice_pdf_url is the URL where customers can download the PDF version of this invoice
         :param invoice_status:
         :param invoice_type:
+        :param issue_date: issue_date overrides the user-facing date of the invoice.
+            Defaults to created_at if not provided.
         :param line_item_coupons: Invoice Line Item Coupons
         :param line_items: line_items contains the individual items that make up this invoice
         :param metadata:
@@ -539,6 +546,7 @@ class Invoices(BaseSDK):
             invoice_pdf_url=invoice_pdf_url,
             invoice_status=invoice_status,
             invoice_type=invoice_type,
+            issue_date=issue_date,
             line_item_coupons=utils.get_pydantic_model(
                 line_item_coupons, Optional[List[models.InvoiceLineItemCoupon]]
             ),
@@ -605,228 +613,6 @@ class Invoices(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.InvoiceResponse, http_res)
-        if utils.match_response(http_res, "400", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    def get_meter_usage_preview_invoice(
-        self,
-        *,
-        subscription_id: str,
-        hide_zero_charges_line_items: Optional[bool] = False,
-        period_end: Optional[datetime] = None,
-        period_start: Optional[datetime] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.InvoiceResponse:
-        r"""Get invoice preview using meter_usage data
-
-        Preview invoice using the meter_usage table for usage data instead of feature_usage.
-
-        :param subscription_id: subscription_id is the unique identifier of the subscription to preview invoice for
-        :param hide_zero_charges_line_items: hide_zero_charges_line_items indicates whether to hide line items with zero cost
-        :param period_end: period_end is the optional end date of the period to preview
-        :param period_start: period_start is the optional start date of the period to preview
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.GetPreviewInvoiceRequest(
-            hide_zero_charges_line_items=hide_zero_charges_line_items,
-            period_end=period_end,
-            period_start=period_start,
-            subscription_id=subscription_id,
-        )
-
-        req = self._build_request(
-            method="POST",
-            path="/invoices/meter-usage-preview",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=False,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.GetPreviewInvoiceRequest
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="getMeterUsagePreviewInvoice",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.InvoiceResponse, http_res)
-        if utils.match_response(http_res, "400", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "500", "application/json"):
-            response_data = unmarshal_json_response(
-                models.errors.ErrorResponseData, http_res
-            )
-            raise models.errors.ErrorResponse(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.errors.FlexpriceDefaultError(
-                "API error occurred", http_res, http_res_text
-            )
-
-        raise models.errors.FlexpriceDefaultError(
-            "Unexpected response received", http_res
-        )
-
-    async def get_meter_usage_preview_invoice_async(
-        self,
-        *,
-        subscription_id: str,
-        hide_zero_charges_line_items: Optional[bool] = False,
-        period_end: Optional[datetime] = None,
-        period_start: Optional[datetime] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.InvoiceResponse:
-        r"""Get invoice preview using meter_usage data
-
-        Preview invoice using the meter_usage table for usage data instead of feature_usage.
-
-        :param subscription_id: subscription_id is the unique identifier of the subscription to preview invoice for
-        :param hide_zero_charges_line_items: hide_zero_charges_line_items indicates whether to hide line items with zero cost
-        :param period_end: period_end is the optional end date of the period to preview
-        :param period_start: period_start is the optional start date of the period to preview
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.GetPreviewInvoiceRequest(
-            hide_zero_charges_line_items=hide_zero_charges_line_items,
-            period_end=period_end,
-            period_start=period_start,
-            subscription_id=subscription_id,
-        )
-
-        req = self._build_request_async(
-            method="POST",
-            path="/invoices/meter-usage-preview",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=False,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.GetPreviewInvoiceRequest
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="getMeterUsagePreviewInvoice",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.InvoiceResponse, http_res)
         if utils.match_response(http_res, "400", "application/json"):
             response_data = unmarshal_json_response(

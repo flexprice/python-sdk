@@ -2,16 +2,15 @@
 
 from __future__ import annotations
 from dataclasses import dataclass, field
-from flexprice.models import errorresponse as models_errorresponse
+from flexprice.models import errorcode as models_errorcode
 from flexprice.models.errors import FlexpriceError
 from flexprice.types import BaseModel
 import httpx
-from typing import Dict, Optional
+from typing import Optional
 
 
 class ErrorResponseData(BaseModel):
-    code: Optional[models_errorresponse.Code] = None
-    details: Optional[Dict[str, models_errorresponse.Details]] = None
+    code: Optional[models_errorcode.ErrorCode] = None
     http_status_code: Optional[int] = None
     message: Optional[str] = None
 

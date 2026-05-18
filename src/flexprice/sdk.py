@@ -29,7 +29,6 @@ if TYPE_CHECKING:
     from flexprice.groups import Groups
     from flexprice.integrations import Integrations
     from flexprice.invoices import Invoices
-    from flexprice.meterusage import MeterUsage
     from flexprice.payments import Payments
     from flexprice.plans import Plans
     from flexprice.price_units import PriceUnits
@@ -66,7 +65,6 @@ class Flexprice(BaseSDK):
     features: "Features"
     groups: "Groups"
     integrations: "Integrations"
-    meter_usage: "MeterUsage"
     payments: "Payments"
     plans: "Plans"
     prices: "Prices"
@@ -98,7 +96,6 @@ class Flexprice(BaseSDK):
         "features": ("flexprice.features", "Features"),
         "groups": ("flexprice.groups", "Groups"),
         "integrations": ("flexprice.integrations", "Integrations"),
-        "meter_usage": ("flexprice.meterusage", "MeterUsage"),
         "payments": ("flexprice.payments", "Payments"),
         "plans": ("flexprice.plans", "Plans"),
         "prices": ("flexprice.prices", "Prices"),

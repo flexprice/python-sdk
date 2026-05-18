@@ -52,6 +52,10 @@ class CreateInvoiceRequestTypedDict(TypedDict):
     r"""invoice_pdf_url is the URL where customers can download the PDF version of this invoice"""
     invoice_status: NotRequired[InvoiceStatus]
     invoice_type: NotRequired[InvoiceType]
+    issue_date: NotRequired[datetime]
+    r"""issue_date overrides the user-facing date of the invoice.
+    Defaults to created_at if not provided.
+    """
     line_item_coupons: NotRequired[List[InvoiceLineItemCouponTypedDict]]
     r"""Invoice Line Item Coupons"""
     line_items: NotRequired[List[CreateInvoiceLineItemRequestTypedDict]]
@@ -123,6 +127,11 @@ class CreateInvoiceRequest(BaseModel):
 
     invoice_type: Optional[InvoiceType] = None
 
+    issue_date: Optional[datetime] = None
+    r"""issue_date overrides the user-facing date of the invoice.
+    Defaults to created_at if not provided.
+    """
+
     line_item_coupons: Optional[List[InvoiceLineItemCoupon]] = None
     r"""Invoice Line Item Coupons"""
 
@@ -170,6 +179,7 @@ class CreateInvoiceRequest(BaseModel):
                 "invoice_pdf_url",
                 "invoice_status",
                 "invoice_type",
+                "issue_date",
                 "line_item_coupons",
                 "line_items",
                 "metadata",

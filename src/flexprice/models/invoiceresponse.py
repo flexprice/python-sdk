@@ -73,6 +73,8 @@ class InvoiceResponseTypedDict(TypedDict):
     r"""invoice_pdf_url is the URL where customers can download the PDF version of this invoice"""
     invoice_status: NotRequired[InvoiceStatus]
     invoice_type: NotRequired[InvoiceType]
+    issue_date: NotRequired[datetime]
+    r"""issue_date is the user-facing date of the invoice. Defaults to created_at if not set."""
     last_computed_at: NotRequired[datetime]
     r"""last_computed_at is the timestamp when this invoice was last computed by ComputeInvoice"""
     line_items: NotRequired[List[InvoiceLineItemResponseTypedDict]]
@@ -192,6 +194,9 @@ class InvoiceResponse(BaseModel):
 
     invoice_type: Optional[InvoiceType] = None
 
+    issue_date: Optional[datetime] = None
+    r"""issue_date is the user-facing date of the invoice. Defaults to created_at if not set."""
+
     last_computed_at: Optional[datetime] = None
     r"""last_computed_at is the timestamp when this invoice was last computed by ComputeInvoice"""
 
@@ -293,6 +298,7 @@ class InvoiceResponse(BaseModel):
                 "invoice_pdf_url",
                 "invoice_status",
                 "invoice_type",
+                "issue_date",
                 "last_computed_at",
                 "line_items",
                 "metadata",
