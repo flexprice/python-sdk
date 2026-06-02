@@ -8,4 +8,5 @@ SubscriptionModifyType = Literal[
     "inheritance",
     "quantity_change",
     "grouped_invoicing",
+    "trial_end",
 ]

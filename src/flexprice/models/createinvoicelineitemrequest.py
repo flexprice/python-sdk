@@ -14,6 +14,8 @@ class CreateInvoiceLineItemRequestTypedDict(TypedDict):
     r"""amount is the monetary amount for this line item"""
     quantity: str
     r"""quantity is the quantity of units for this line item"""
+    adjusted_entitlement_quantity: NotRequired[str]
+    r"""adjusted_entitlement_quantity is the entitlement-covered units deducted from raw usage."""
     commitment_info: NotRequired[CommitmentInfoTypedDict]
     display_name: NotRequired[str]
     r"""display_name is the optional human-readable name for this line item"""
@@ -50,6 +52,12 @@ class CreateInvoiceLineItemRequestTypedDict(TypedDict):
     r"""price_unit is the optional 3-digit ISO code of the price unit associated with this line item"""
     price_unit_amount: NotRequired[str]
     r"""price_unit_amount is the optional amount converted to the price unit currency"""
+    subscription_id: NotRequired[str]
+    r"""subscription_id overrides the invoice's subscription_id for this specific line item.
+    Used for grouped invoicing where child line items belong to child subscriptions.
+    """
+    subscription_line_item_id: NotRequired[str]
+    r"""sub_line_item_id links this line item to the subscription_line_item that generated it."""
 
 
 class CreateInvoiceLineItemRequest(BaseModel):
@@ -58,6 +66,9 @@ class CreateInvoiceLineItemRequest(BaseModel):
 
     quantity: str
     r"""quantity is the quantity of units for this line item"""
+
+    adjusted_entitlement_quantity: Optional[str] = None
+    r"""adjusted_entitlement_quantity is the entitlement-covered units deducted from raw usage."""
 
     commitment_info: Optional[CommitmentInfo] = None
 
@@ -113,10 +124,19 @@ class CreateInvoiceLineItemRequest(BaseModel):
     price_unit_amount: Optional[str] = None
     r"""price_unit_amount is the optional amount converted to the price unit currency"""
 
+    subscription_id: Optional[str] = None
+    r"""subscription_id overrides the invoice's subscription_id for this specific line item.
+    Used for grouped invoicing where child line items belong to child subscriptions.
+    """
+
+    subscription_line_item_id: Optional[str] = None
+    r"""sub_line_item_id links this line item to the subscription_line_item that generated it."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
             [
+                "adjusted_entitlement_quantity",
                 "commitment_info",
                 "display_name",
                 "entity_id",
@@ -135,6 +155,8 @@ class CreateInvoiceLineItemRequest(BaseModel):
                 "price_type",
                 "price_unit",
                 "price_unit_amount",
+                "subscription_id",
+                "subscription_line_item_id",
             ]
         )
         serialized = handler(self)

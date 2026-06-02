@@ -15,3 +15,4 @@ value: PaymentGatewayType = "stripe"
 - `"nomod"`
 - `"moyasar"`
 - `"paddle"`
+- `"whop"`

@@ -158,7 +158,9 @@ class Flexprice(BaseSDK):
         ), "The provided async_client must implement the AsyncHttpClient protocol."
 
         security: Any = None
-        if callable(api_key_auth):
+        if api_key_auth is None:
+            security = None
+        elif callable(api_key_auth):
             # pylint: disable=unnecessary-lambda-assignment
             security = lambda: models.Security(api_key_auth=api_key_auth())
         else:

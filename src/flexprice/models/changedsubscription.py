@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .changedsubscriptionaction import ChangedSubscriptionAction
 from .subscriptionstatus import SubscriptionStatus
+from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -12,21 +13,29 @@ from typing_extensions import NotRequired, TypedDict
 class ChangedSubscriptionTypedDict(TypedDict):
     action: NotRequired[ChangedSubscriptionAction]
     r"""created | updated"""
+    current_period_end: NotRequired[datetime]
     id: NotRequired[str]
     status: NotRequired[SubscriptionStatus]
+    trial_end: NotRequired[datetime]
 
 
 class ChangedSubscription(BaseModel):
     action: Optional[ChangedSubscriptionAction] = None
     r"""created | updated"""
 
+    current_period_end: Optional[datetime] = None
+
     id: Optional[str] = None
 
     status: Optional[SubscriptionStatus] = None
 
+    trial_end: Optional[datetime] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["action", "id", "status"])
+        optional_fields = set(
+            ["action", "current_period_end", "id", "status", "trial_end"]
+        )
         serialized = handler(self)
         m = {}
 

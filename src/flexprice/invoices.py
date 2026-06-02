@@ -866,6 +866,8 @@ class Invoices(BaseSDK):
         *,
         amount_due_gt: Optional[float] = None,
         amount_remaining_gt: Optional[float] = None,
+        billing_reason: Optional[models.InvoiceBillingReason] = None,
+        currency: Optional[str] = None,
         customer_id: Optional[str] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
@@ -905,6 +907,9 @@ class Invoices(BaseSDK):
             Useful for finding invoices above a certain threshold or identifying high-value invoices
         :param amount_remaining_gt: amount_remaining_gt filters invoices with an outstanding balance greater than the specified value
             Useful for finding invoices that still have significant unpaid amounts
+        :param billing_reason:
+        :param currency: currency filters invoices by their currency (ISO 4217 code, e.g. \"usd\", \"eur\").
+            Matches on the invoices.currency column exactly.
         :param customer_id: customer_id filters invoices for a specific customer using FlexPrice's internal customer ID
             This is the ID returned by FlexPrice when creating or retrieving customers
         :param end_time:
@@ -951,6 +956,8 @@ class Invoices(BaseSDK):
         request = models.InvoiceFilter(
             amount_due_gt=amount_due_gt,
             amount_remaining_gt=amount_remaining_gt,
+            billing_reason=billing_reason,
+            currency=currency,
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,
@@ -1051,6 +1058,8 @@ class Invoices(BaseSDK):
         *,
         amount_due_gt: Optional[float] = None,
         amount_remaining_gt: Optional[float] = None,
+        billing_reason: Optional[models.InvoiceBillingReason] = None,
+        currency: Optional[str] = None,
         customer_id: Optional[str] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
@@ -1090,6 +1099,9 @@ class Invoices(BaseSDK):
             Useful for finding invoices above a certain threshold or identifying high-value invoices
         :param amount_remaining_gt: amount_remaining_gt filters invoices with an outstanding balance greater than the specified value
             Useful for finding invoices that still have significant unpaid amounts
+        :param billing_reason:
+        :param currency: currency filters invoices by their currency (ISO 4217 code, e.g. \"usd\", \"eur\").
+            Matches on the invoices.currency column exactly.
         :param customer_id: customer_id filters invoices for a specific customer using FlexPrice's internal customer ID
             This is the ID returned by FlexPrice when creating or retrieving customers
         :param end_time:
@@ -1136,6 +1148,8 @@ class Invoices(BaseSDK):
         request = models.InvoiceFilter(
             amount_due_gt=amount_due_gt,
             amount_remaining_gt=amount_remaining_gt,
+            billing_reason=billing_reason,
+            currency=currency,
             customer_id=customer_id,
             end_time=end_time,
             expand=expand,

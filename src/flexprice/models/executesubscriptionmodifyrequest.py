@@ -13,6 +13,10 @@ from .submodifyquantitychangerequest import (
     SubModifyQuantityChangeRequest,
     SubModifyQuantityChangeRequestTypedDict,
 )
+from .submodifytrialendrequest import (
+    SubModifyTrialEndRequest,
+    SubModifyTrialEndRequestTypedDict,
+)
 from .subscriptionmodifytype import SubscriptionModifyType
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -25,6 +29,7 @@ class ExecuteSubscriptionModifyRequestTypedDict(TypedDict):
     grouped_invoicing_params: NotRequired[SubModifyGroupedInvoicingParamsTypedDict]
     inheritance_params: NotRequired[SubModifyInheritanceRequestTypedDict]
     quantity_change_params: NotRequired[SubModifyQuantityChangeRequestTypedDict]
+    trial_end_params: NotRequired[SubModifyTrialEndRequestTypedDict]
 
 
 class ExecuteSubscriptionModifyRequest(BaseModel):
@@ -36,10 +41,17 @@ class ExecuteSubscriptionModifyRequest(BaseModel):
 
     quantity_change_params: Optional[SubModifyQuantityChangeRequest] = None
 
+    trial_end_params: Optional[SubModifyTrialEndRequest] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["grouped_invoicing_params", "inheritance_params", "quantity_change_params"]
+            [
+                "grouped_invoicing_params",
+                "inheritance_params",
+                "quantity_change_params",
+                "trial_end_params",
+            ]
         )
         serialized = handler(self)
         m = {}

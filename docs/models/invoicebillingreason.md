@@ -18,3 +18,4 @@ value: InvoiceBillingReason = "SUBSCRIPTION_CREATE"
 - `"PRORATION"`
 - `"MANUAL"`
 - `"AUTO_INVOICE_THRESHOLD"`
+- `"WALLET_AUTO_TOPUP"`

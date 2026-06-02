@@ -6,7 +6,7 @@ from .status import Status
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -17,6 +17,7 @@ class EntityIntegrationMappingResponseTypedDict(TypedDict):
     entity_type: NotRequired[IntegrationEntityType]
     environment_id: NotRequired[str]
     id: NotRequired[str]
+    metadata: NotRequired[Dict[str, Any]]
     provider_entity_id: NotRequired[str]
     provider_type: NotRequired[str]
     status: NotRequired[Status]
@@ -37,6 +38,8 @@ class EntityIntegrationMappingResponse(BaseModel):
     environment_id: Optional[str] = None
 
     id: Optional[str] = None
+
+    metadata: Optional[Dict[str, Any]] = None
 
     provider_entity_id: Optional[str] = None
 
@@ -60,6 +63,7 @@ class EntityIntegrationMappingResponse(BaseModel):
                 "entity_type",
                 "environment_id",
                 "id",
+                "metadata",
                 "provider_entity_id",
                 "provider_type",
                 "status",

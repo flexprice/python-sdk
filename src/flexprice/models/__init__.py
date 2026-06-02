@@ -374,6 +374,7 @@ if TYPE_CHECKING:
         EntityIntegrationMappingResponse,
         EntityIntegrationMappingResponseTypedDict,
     )
+    from .entitysyncconfig import EntitySyncConfig, EntitySyncConfigTypedDict
     from .entitytype import EntityType
     from .environmenttype import EnvironmentType
     from .errorcode import ErrorCode
@@ -461,6 +462,10 @@ if TYPE_CHECKING:
         GetDetailedCostAnalyticsResponseTypedDict,
     )
     from .getentitlementop import GetEntitlementRequest, GetEntitlementRequestTypedDict
+    from .getentityintegrationmappingsop import (
+        GetEntityIntegrationMappingsRequest,
+        GetEntityIntegrationMappingsRequestTypedDict,
+    )
     from .geteventbyidresponse import (
         GetEventByIDResponse,
         GetEventByIDResponseTypedDict,
@@ -593,6 +598,14 @@ if TYPE_CHECKING:
     from .groupfilter import GroupFilter, GroupFilterOrder, GroupFilterTypedDict
     from .groupresponse import GroupResponse, GroupResponseTypedDict
     from .ingesteventrequest import IngestEventRequest, IngestEventRequestTypedDict
+    from .integrationconfigentry import (
+        IntegrationConfigEntry,
+        IntegrationConfigEntryTypedDict,
+    )
+    from .integrationconfigresponse import (
+        IntegrationConfigResponse,
+        IntegrationConfigResponseTypedDict,
+    )
     from .integrationentitytype import IntegrationEntityType
     from .invoicebillingreason import InvoiceBillingReason
     from .invoicecadence import InvoiceCadence
@@ -612,6 +625,7 @@ if TYPE_CHECKING:
     )
     from .invoicepreview import InvoicePreview, InvoicePreviewTypedDict
     from .invoicestatus import InvoiceStatus
+    from .invoicesyncsettings import InvoiceSyncSettings, InvoiceSyncSettingsTypedDict
     from .invoicetype import InvoiceType
     from .lineitemcommitmentconfig import (
         LineItemCommitmentConfig,
@@ -659,6 +673,10 @@ if TYPE_CHECKING:
     from .listentitlementsresponse import (
         ListEntitlementsResponse,
         ListEntitlementsResponseTypedDict,
+    )
+    from .listentityintegrationmappingsresponse import (
+        ListEntityIntegrationMappingsResponse,
+        ListEntityIntegrationMappingsResponseTypedDict,
     )
     from .listfeaturesresponse import (
         ListFeaturesResponse,
@@ -836,6 +854,7 @@ if TYPE_CHECKING:
     from .roundtype import RoundType
     from .s3compressiontype import S3CompressionType
     from .s3encryptiontype import S3EncryptionType
+    from .s3exportconfig import S3ExportConfig, S3ExportConfigTypedDict
     from .s3jobconfig import S3JobConfig, S3JobConfigTypedDict
     from .scheduledraftfinalizationop import (
         ScheduleDraftFinalizationResponse,
@@ -874,6 +893,10 @@ if TYPE_CHECKING:
     from .submodifyquantitychangerequest import (
         SubModifyQuantityChangeRequest,
         SubModifyQuantityChangeRequestTypedDict,
+    )
+    from .submodifytrialendrequest import (
+        SubModifyTrialEndRequest,
+        SubModifyTrialEndRequestTypedDict,
     )
     from .subscription_subscriptionlineitem import (
         SubscriptionSubscriptionLineItem,
@@ -961,6 +984,7 @@ if TYPE_CHECKING:
         SubscriptionUsageByMetersResponseTypedDict,
     )
     from .successresponse import SuccessResponse, SuccessResponseTypedDict
+    from .syncconfig import SyncConfig, SyncConfigTypedDict
     from .syncplanpricesop import SyncPlanPricesRequest, SyncPlanPricesRequestTypedDict
     from .taskresponse import TaskResponse, TaskResponseTypedDict
     from .taskstatus import TaskStatus
@@ -1000,6 +1024,7 @@ if TYPE_CHECKING:
     from .transactionreason import TransactionReason
     from .transactionstatus import TransactionStatus
     from .transactiontype import TransactionType
+    from .trialendaction import TrialEndAction
     from .triggerforcerunrequest import (
         TriggerForceRunRequest,
         TriggerForceRunRequestTypedDict,
@@ -1157,6 +1182,8 @@ if TYPE_CHECKING:
         UpdateTaxRateRequestTypedDict,
     )
     from .updatetenantrequest import UpdateTenantRequest, UpdateTenantRequestTypedDict
+    from .updateuserrequest import UpdateUserRequest, UpdateUserRequestTypedDict
+    from .updateuserresponse import UpdateUserResponse, UpdateUserResponseTypedDict
     from .updatewalletop import (
         UpdateWalletRequestRequest,
         UpdateWalletRequestRequestTypedDict,
@@ -1562,6 +1589,8 @@ __all__ = [
     "EntitlementUsageResetPeriod",
     "EntityIntegrationMappingResponse",
     "EntityIntegrationMappingResponseTypedDict",
+    "EntitySyncConfig",
+    "EntitySyncConfigTypedDict",
     "EntityType",
     "EnvironmentType",
     "ErrorCode",
@@ -1640,6 +1669,8 @@ __all__ = [
     "GetDetailedCostAnalyticsResponseTypedDict",
     "GetEntitlementRequest",
     "GetEntitlementRequestTypedDict",
+    "GetEntityIntegrationMappingsRequest",
+    "GetEntityIntegrationMappingsRequestTypedDict",
     "GetEventByIDResponse",
     "GetEventByIDResponseTypedDict",
     "GetEventRequest",
@@ -1743,6 +1774,10 @@ __all__ = [
     "GroupedInvoicingAction",
     "IngestEventRequest",
     "IngestEventRequestTypedDict",
+    "IntegrationConfigEntry",
+    "IntegrationConfigEntryTypedDict",
+    "IntegrationConfigResponse",
+    "IntegrationConfigResponseTypedDict",
     "IntegrationEntityType",
     "InvoiceBillingReason",
     "InvoiceCadence",
@@ -1762,6 +1797,8 @@ __all__ = [
     "InvoiceResponse",
     "InvoiceResponseTypedDict",
     "InvoiceStatus",
+    "InvoiceSyncSettings",
+    "InvoiceSyncSettingsTypedDict",
     "InvoiceType",
     "LineItemCommitmentConfig",
     "LineItemCommitmentConfigTypedDict",
@@ -1791,6 +1828,8 @@ __all__ = [
     "ListCustomersResponseTypedDict",
     "ListEntitlementsResponse",
     "ListEntitlementsResponseTypedDict",
+    "ListEntityIntegrationMappingsResponse",
+    "ListEntityIntegrationMappingsResponseTypedDict",
     "ListFeaturesResponse",
     "ListFeaturesResponseTypedDict",
     "ListGroupsResponse",
@@ -1944,6 +1983,8 @@ __all__ = [
     "RoundType",
     "S3CompressionType",
     "S3EncryptionType",
+    "S3ExportConfig",
+    "S3ExportConfigTypedDict",
     "S3JobConfig",
     "S3JobConfigTypedDict",
     "ScheduleDraftFinalizationResponse",
@@ -1977,6 +2018,8 @@ __all__ = [
     "SubModifyInheritanceRequestTypedDict",
     "SubModifyQuantityChangeRequest",
     "SubModifyQuantityChangeRequestTypedDict",
+    "SubModifyTrialEndRequest",
+    "SubModifyTrialEndRequestTypedDict",
     "SubscriptionChangeExecuteResponse",
     "SubscriptionChangeExecuteResponseTypedDict",
     "SubscriptionChangePreviewResponse",
@@ -2027,6 +2070,8 @@ __all__ = [
     "SubscriptionUsageByMetersResponseTypedDict",
     "SuccessResponse",
     "SuccessResponseTypedDict",
+    "SyncConfig",
+    "SyncConfigTypedDict",
     "SyncPlanPricesRequest",
     "SyncPlanPricesRequestTypedDict",
     "TaskResponse",
@@ -2066,6 +2111,7 @@ __all__ = [
     "TransactionReason",
     "TransactionStatus",
     "TransactionType",
+    "TrialEndAction",
     "TriggerForceRunRequest",
     "TriggerForceRunRequestTypedDict",
     "TriggerForceRunResponse",
@@ -2153,6 +2199,10 @@ __all__ = [
     "UpdateTaxRateRequestTypedDict",
     "UpdateTenantRequest",
     "UpdateTenantRequestTypedDict",
+    "UpdateUserRequest",
+    "UpdateUserRequestTypedDict",
+    "UpdateUserResponse",
+    "UpdateUserResponseTypedDict",
     "UpdateWalletRequest",
     "UpdateWalletRequestRequest",
     "UpdateWalletRequestRequestTypedDict",
@@ -2522,6 +2572,8 @@ _dynamic_imports: dict[str, str] = {
     "EntitlementUsageResetPeriod": ".entitlementusageresetperiod",
     "EntityIntegrationMappingResponse": ".entityintegrationmappingresponse",
     "EntityIntegrationMappingResponseTypedDict": ".entityintegrationmappingresponse",
+    "EntitySyncConfig": ".entitysyncconfig",
+    "EntitySyncConfigTypedDict": ".entitysyncconfig",
     "EntityType": ".entitytype",
     "EnvironmentType": ".environmenttype",
     "ErrorCode": ".errorcode",
@@ -2598,6 +2650,8 @@ _dynamic_imports: dict[str, str] = {
     "GetDetailedCostAnalyticsResponseTypedDict": ".getdetailedcostanalyticsresponse",
     "GetEntitlementRequest": ".getentitlementop",
     "GetEntitlementRequestTypedDict": ".getentitlementop",
+    "GetEntityIntegrationMappingsRequest": ".getentityintegrationmappingsop",
+    "GetEntityIntegrationMappingsRequestTypedDict": ".getentityintegrationmappingsop",
     "GetEventByIDResponse": ".geteventbyidresponse",
     "GetEventByIDResponseTypedDict": ".geteventbyidresponse",
     "GetEventRequest": ".geteventop",
@@ -2703,6 +2757,10 @@ _dynamic_imports: dict[str, str] = {
     "GroupResponseTypedDict": ".groupresponse",
     "IngestEventRequest": ".ingesteventrequest",
     "IngestEventRequestTypedDict": ".ingesteventrequest",
+    "IntegrationConfigEntry": ".integrationconfigentry",
+    "IntegrationConfigEntryTypedDict": ".integrationconfigentry",
+    "IntegrationConfigResponse": ".integrationconfigresponse",
+    "IntegrationConfigResponseTypedDict": ".integrationconfigresponse",
     "IntegrationEntityType": ".integrationentitytype",
     "InvoiceBillingReason": ".invoicebillingreason",
     "InvoiceCadence": ".invoicecadence",
@@ -2720,6 +2778,8 @@ _dynamic_imports: dict[str, str] = {
     "InvoicePreview": ".invoicepreview",
     "InvoicePreviewTypedDict": ".invoicepreview",
     "InvoiceStatus": ".invoicestatus",
+    "InvoiceSyncSettings": ".invoicesyncsettings",
+    "InvoiceSyncSettingsTypedDict": ".invoicesyncsettings",
     "InvoiceType": ".invoicetype",
     "LineItemCommitmentConfig": ".lineitemcommitmentconfig",
     "LineItemCommitmentConfigTypedDict": ".lineitemcommitmentconfig",
@@ -2749,6 +2809,8 @@ _dynamic_imports: dict[str, str] = {
     "ListCustomersResponseTypedDict": ".listcustomersresponse",
     "ListEntitlementsResponse": ".listentitlementsresponse",
     "ListEntitlementsResponseTypedDict": ".listentitlementsresponse",
+    "ListEntityIntegrationMappingsResponse": ".listentityintegrationmappingsresponse",
+    "ListEntityIntegrationMappingsResponseTypedDict": ".listentityintegrationmappingsresponse",
     "ListFeaturesResponse": ".listfeaturesresponse",
     "ListFeaturesResponseTypedDict": ".listfeaturesresponse",
     "ListGroupsResponse": ".listgroupsresponse",
@@ -2898,6 +2960,8 @@ _dynamic_imports: dict[str, str] = {
     "RoundType": ".roundtype",
     "S3CompressionType": ".s3compressiontype",
     "S3EncryptionType": ".s3encryptiontype",
+    "S3ExportConfig": ".s3exportconfig",
+    "S3ExportConfigTypedDict": ".s3exportconfig",
     "S3JobConfig": ".s3jobconfig",
     "S3JobConfigTypedDict": ".s3jobconfig",
     "ScheduleDraftFinalizationResponse": ".scheduledraftfinalizationop",
@@ -2930,6 +2994,8 @@ _dynamic_imports: dict[str, str] = {
     "SubModifyInheritanceRequestTypedDict": ".submodifyinheritancerequest",
     "SubModifyQuantityChangeRequest": ".submodifyquantitychangerequest",
     "SubModifyQuantityChangeRequestTypedDict": ".submodifyquantitychangerequest",
+    "SubModifyTrialEndRequest": ".submodifytrialendrequest",
+    "SubModifyTrialEndRequestTypedDict": ".submodifytrialendrequest",
     "SubscriptionSubscriptionLineItem": ".subscription_subscriptionlineitem",
     "SubscriptionSubscriptionLineItemTypedDict": ".subscription_subscriptionlineitem",
     "SubscriptionSubscriptionPause": ".subscription_subscriptionpause",
@@ -2982,6 +3048,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUsageByMetersResponseTypedDict": ".subscriptionusagebymetersresponse",
     "SuccessResponse": ".successresponse",
     "SuccessResponseTypedDict": ".successresponse",
+    "SyncConfig": ".syncconfig",
+    "SyncConfigTypedDict": ".syncconfig",
     "SyncPlanPricesRequest": ".syncplanpricesop",
     "SyncPlanPricesRequestTypedDict": ".syncplanpricesop",
     "TaskResponse": ".taskresponse",
@@ -3021,6 +3089,7 @@ _dynamic_imports: dict[str, str] = {
     "TransactionReason": ".transactionreason",
     "TransactionStatus": ".transactionstatus",
     "TransactionType": ".transactiontype",
+    "TrialEndAction": ".trialendaction",
     "TriggerForceRunRequest": ".triggerforcerunrequest",
     "TriggerForceRunRequestTypedDict": ".triggerforcerunrequest",
     "TriggerForceRunResponse": ".triggerforcerunresponse",
@@ -3107,6 +3176,10 @@ _dynamic_imports: dict[str, str] = {
     "UpdateTaxRateRequestTypedDict": ".updatetaxraterequest",
     "UpdateTenantRequest": ".updatetenantrequest",
     "UpdateTenantRequestTypedDict": ".updatetenantrequest",
+    "UpdateUserRequest": ".updateuserrequest",
+    "UpdateUserRequestTypedDict": ".updateuserrequest",
+    "UpdateUserResponse": ".updateuserresponse",
+    "UpdateUserResponseTypedDict": ".updateuserresponse",
     "UpdateWalletRequestRequest": ".updatewalletop",
     "UpdateWalletRequestRequestTypedDict": ".updatewalletop",
     "UpdateWalletRequest": ".updatewalletrequest",

@@ -13,4 +13,5 @@ InvoiceBillingReason = Literal[
     "PRORATION",
     "MANUAL",
     "AUTO_INVOICE_THRESHOLD",
+    "WALLET_AUTO_TOPUP",
 ]

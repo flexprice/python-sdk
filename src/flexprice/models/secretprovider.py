@@ -18,6 +18,7 @@ SecretProvider = Union[
         "nomod",
         "moyasar",
         "paddle",
+        "whop",
     ],
     UnrecognizedStr,
 ]

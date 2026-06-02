@@ -4903,6 +4903,12 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        trial_end_params: Optional[
+            Union[
+                models.SubModifyTrialEndRequest,
+                models.SubModifyTrialEndRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -4917,6 +4923,7 @@ class Subscriptions(BaseSDK):
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -4945,6 +4952,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                trial_end_params=utils.get_pydantic_model(
+                    trial_end_params, Optional[models.SubModifyTrialEndRequest]
                 ),
                 type=type_,
             ),
@@ -5046,6 +5056,12 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        trial_end_params: Optional[
+            Union[
+                models.SubModifyTrialEndRequest,
+                models.SubModifyTrialEndRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -5060,6 +5076,7 @@ class Subscriptions(BaseSDK):
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -5088,6 +5105,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                trial_end_params=utils.get_pydantic_model(
+                    trial_end_params, Optional[models.SubModifyTrialEndRequest]
                 ),
                 type=type_,
             ),
@@ -5189,6 +5209,12 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        trial_end_params: Optional[
+            Union[
+                models.SubModifyTrialEndRequest,
+                models.SubModifyTrialEndRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -5203,6 +5229,7 @@ class Subscriptions(BaseSDK):
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -5231,6 +5258,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                trial_end_params=utils.get_pydantic_model(
+                    trial_end_params, Optional[models.SubModifyTrialEndRequest]
                 ),
                 type=type_,
             ),
@@ -5332,6 +5362,12 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        trial_end_params: Optional[
+            Union[
+                models.SubModifyTrialEndRequest,
+                models.SubModifyTrialEndRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -5346,6 +5382,7 @@ class Subscriptions(BaseSDK):
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -5374,6 +5411,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                trial_end_params=utils.get_pydantic_model(
+                    trial_end_params, Optional[models.SubModifyTrialEndRequest]
                 ),
                 type=type_,
             ),

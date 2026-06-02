@@ -90,6 +90,12 @@ class PriceResponseTypedDict(TypedDict):
     r"""PriceUnitTiers are the tiers for the price unit when BillingModel is TIERED"""
     price_unit_type: NotRequired[PriceUnitType]
     pricing_unit: NotRequired[PriceUnitResponseTypedDict]
+    sequence: NotRequired[int]
+    r"""Sequence is the monotonic stamp bumped on every state change that
+    subscription line items need to react to. Read by the plan-price sync;
+    set by the database (DEFAULT nextval) on create and by the price
+    repository on termination / compatibility-affecting edits.
+    """
     start_date: NotRequired[datetime]
     r"""StartDate is the start date of the price"""
     status: NotRequired[Status]
@@ -202,6 +208,13 @@ class PriceResponse(BaseModel):
 
     pricing_unit: Optional[PriceUnitResponse] = None
 
+    sequence: Optional[int] = None
+    r"""Sequence is the monotonic stamp bumped on every state change that
+    subscription line items need to react to. Read by the plan-price sync;
+    set by the database (DEFAULT nextval) on create and by the price
+    repository on termination / compatibility-affecting edits.
+    """
+
     start_date: Optional[datetime] = None
     r"""StartDate is the start date of the price"""
 
@@ -265,6 +278,7 @@ class PriceResponse(BaseModel):
                 "price_unit_tiers",
                 "price_unit_type",
                 "pricing_unit",
+                "sequence",
                 "start_date",
                 "status",
                 "tenant_id",

@@ -949,6 +949,7 @@ with Flexprice(
 | `grouped_invoicing_params`                                                                          | [Optional[models.SubModifyGroupedInvoicingParams]](../../models/submodifygroupedinvoicingparams.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `inheritance_params`                                                                                | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `quantity_change_params`                                                                            | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `trial_end_params`                                                                                  | [Optional[models.SubModifyTrialEndRequest]](../../models/submodifytrialendrequest.md)               | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
 
 ### Response
@@ -978,7 +979,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="grouped_invoicing")
+    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="trial_end")
 
     # Handle response
     print(res)
@@ -994,6 +995,7 @@ with Flexprice(
 | `grouped_invoicing_params`                                                                          | [Optional[models.SubModifyGroupedInvoicingParams]](../../models/submodifygroupedinvoicingparams.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `inheritance_params`                                                                                | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `quantity_change_params`                                                                            | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `trial_end_params`                                                                                  | [Optional[models.SubModifyTrialEndRequest]](../../models/submodifytrialendrequest.md)               | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
 
 ### Response

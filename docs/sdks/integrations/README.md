@@ -4,7 +4,48 @@
 
 ### Available Operations
 
+* [get_integration_config](#get_integration_config) - Get integration configurations
 * [link_integration_mapping](#link_integration_mapping) - Link integration mapping
+* [get_entity_integration_mappings](#get_entity_integration_mappings) - Get entity integration mappings
+
+## get_integration_config
+
+Returns the base capabilities and current sync configuration for all connected providers.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="getIntegrationConfig" method="get" path="/integrations/config" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.integrations.get_integration_config()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.IntegrationConfigResponse](../../models/integrationconfigresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## link_integration_mapping
 
@@ -42,6 +83,48 @@ with Flexprice(
 ### Response
 
 **[models.LinkIntegrationMappingResponse](../../models/linkintegrationmappingresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## get_entity_integration_mappings
+
+Get integration mappings for a specific entity by entity type and entity ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="getEntityIntegrationMappings" method="get" path="/integrations/mappings" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.integrations.get_entity_integration_mappings(entity_type="<value>", entity_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `entity_type`                                                                                             | *str*                                                                                                     | :heavy_check_mark:                                                                                        | Entity type (customer, plan, invoice, subscription, payment, credit_note, addon, item, item_price, price) |
+| `entity_id`                                                                                               | *str*                                                                                                     | :heavy_check_mark:                                                                                        | Entity ID                                                                                                 |
+| `retries`                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                          | :heavy_minus_sign:                                                                                        | Configuration to override the default retry behavior of the client.                                       |
+
+### Response
+
+**[models.ListEntityIntegrationMappingsResponse](../../models/listentityintegrationmappingsresponse.md)**
 
 ### Errors
 

@@ -6,6 +6,7 @@
 
 * [create_user](#create_user) - Create user or service account
 * [get_user_info](#get_user_info) - Get current user
+* [update_user](#update_user) - Update current user
 * [query_user](#query_user) - Query users
 
 ## create_user
@@ -88,6 +89,47 @@ with Flexprice(
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | models.errors.ErrorResponse         | 401                                 | application/json                    |
+| models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## update_user
+
+Update the current authenticated user. Only metadata updates are supported.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="updateUser" method="put" path="/users/me" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.users.update_user()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `metadata`                                                          | Dict[str, *str*]                                                    | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.UpdateUserResponse](../../models/updateuserresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400                                 | application/json                    |
 | models.errors.ErrorResponse         | 500                                 | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 

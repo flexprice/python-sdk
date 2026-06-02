@@ -123,12 +123,22 @@ class SubscriptionResponseV2TypedDict(TypedDict):
     plan: NotRequired[PlanResponseTypedDict]
     plan_id: NotRequired[str]
     r"""PlanID is the identifier for the plan in our system"""
+    plan_prices_out_of_sync: NotRequired[bool]
+    r"""PlanPricesOutOfSync is true when the subscription's synced_price_sequence
+    is behind the plan's current max prices.sequence — i.e. plan-price
+    changes have not yet been reconciled into this subscription's line items.
+    """
     proration_behavior: NotRequired[ProrationBehavior]
     start_date: NotRequired[datetime]
     r"""StartDate is the start date of the subscription"""
     status: NotRequired[Status]
     subscription_status: NotRequired[SubscriptionStatus]
     subscription_type: NotRequired[SubscriptionType]
+    synced_price_sequence: NotRequired[int]
+    r"""SyncedPriceSequence is the plan-price sequence up to which this
+    subscription's line items have been reconciled. Bumped by the
+    plan-price sync after a successful pass.
+    """
     tenant_id: NotRequired[str]
     trial_end: NotRequired[datetime]
     r"""TrialEnd is the end date of the trial period"""
@@ -268,6 +278,12 @@ class SubscriptionResponseV2(BaseModel):
     plan_id: Optional[str] = None
     r"""PlanID is the identifier for the plan in our system"""
 
+    plan_prices_out_of_sync: Optional[bool] = None
+    r"""PlanPricesOutOfSync is true when the subscription's synced_price_sequence
+    is behind the plan's current max prices.sequence — i.e. plan-price
+    changes have not yet been reconciled into this subscription's line items.
+    """
+
     proration_behavior: Optional[ProrationBehavior] = None
 
     start_date: Optional[datetime] = None
@@ -278,6 +294,12 @@ class SubscriptionResponseV2(BaseModel):
     subscription_status: Optional[SubscriptionStatus] = None
 
     subscription_type: Optional[SubscriptionType] = None
+
+    synced_price_sequence: Optional[int] = None
+    r"""SyncedPriceSequence is the plan-price sequence up to which this
+    subscription's line items have been reconciled. Bumped by the
+    plan-price sync after a successful pass.
+    """
 
     tenant_id: Optional[str] = None
 
@@ -339,11 +361,13 @@ class SubscriptionResponseV2(BaseModel):
                 "phases",
                 "plan",
                 "plan_id",
+                "plan_prices_out_of_sync",
                 "proration_behavior",
                 "start_date",
                 "status",
                 "subscription_status",
                 "subscription_type",
+                "synced_price_sequence",
                 "tenant_id",
                 "trial_end",
                 "trial_start",

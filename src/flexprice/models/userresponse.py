@@ -5,7 +5,7 @@ from .tenantresponse import TenantResponse, TenantResponseTypedDict
 from .usertype import UserType
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -13,6 +13,7 @@ class UserResponseTypedDict(TypedDict):
     email: NotRequired[str]
     r"""Empty for service accounts"""
     id: NotRequired[str]
+    metadata: NotRequired[Dict[str, str]]
     roles: NotRequired[List[str]]
     tenant: NotRequired[TenantResponseTypedDict]
     type: NotRequired[UserType]
@@ -24,6 +25,8 @@ class UserResponse(BaseModel):
 
     id: Optional[str] = None
 
+    metadata: Optional[Dict[str, str]] = None
+
     roles: Optional[List[str]] = None
 
     tenant: Optional[TenantResponse] = None
@@ -32,7 +35,7 @@ class UserResponse(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["email", "id", "roles", "tenant", "type"])
+        optional_fields = set(["email", "id", "metadata", "roles", "tenant", "type"])
         serialized = handler(self)
         m = {}
 

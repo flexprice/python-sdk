@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .filtercondition import FilterCondition, FilterConditionTypedDict
+from .invoicebillingreason import InvoiceBillingReason
 from .invoicestatus import InvoiceStatus
 from .invoicetype import InvoiceType
 from .paymentstatus import PaymentStatus
@@ -28,6 +29,11 @@ class InvoiceFilterTypedDict(TypedDict):
     amount_remaining_gt: NotRequired[float]
     r"""amount_remaining_gt filters invoices with an outstanding balance greater than the specified value
     Useful for finding invoices that still have significant unpaid amounts
+    """
+    billing_reason: NotRequired[InvoiceBillingReason]
+    currency: NotRequired[str]
+    r"""currency filters invoices by their currency (ISO 4217 code, e.g. \"usd\", \"eur\").
+    Matches on the invoices.currency column exactly.
     """
     customer_id: NotRequired[str]
     r"""customer_id filters invoices for a specific customer using FlexPrice's internal customer ID
@@ -86,6 +92,13 @@ class InvoiceFilter(BaseModel):
     amount_remaining_gt: Optional[float] = None
     r"""amount_remaining_gt filters invoices with an outstanding balance greater than the specified value
     Useful for finding invoices that still have significant unpaid amounts
+    """
+
+    billing_reason: Optional[InvoiceBillingReason] = None
+
+    currency: Optional[str] = None
+    r"""currency filters invoices by their currency (ISO 4217 code, e.g. \"usd\", \"eur\").
+    Matches on the invoices.currency column exactly.
     """
 
     customer_id: Optional[str] = None
@@ -162,6 +175,8 @@ class InvoiceFilter(BaseModel):
             [
                 "amount_due_gt",
                 "amount_remaining_gt",
+                "billing_reason",
+                "currency",
                 "customer_id",
                 "end_time",
                 "expand",

@@ -129,6 +129,11 @@ class SubscriptionResponseTypedDict(TypedDict):
     status: NotRequired[Status]
     subscription_status: NotRequired[SubscriptionStatus]
     subscription_type: NotRequired[SubscriptionType]
+    synced_price_sequence: NotRequired[int]
+    r"""SyncedPriceSequence is the plan-price sequence up to which this
+    subscription's line items have been reconciled. Bumped by the
+    plan-price sync after a successful pass.
+    """
     tenant_id: NotRequired[str]
     trial_end: NotRequired[datetime]
     r"""TrialEnd is the end date of the trial period"""
@@ -277,6 +282,12 @@ class SubscriptionResponse(BaseModel):
 
     subscription_type: Optional[SubscriptionType] = None
 
+    synced_price_sequence: Optional[int] = None
+    r"""SyncedPriceSequence is the plan-price sequence up to which this
+    subscription's line items have been reconciled. Bumped by the
+    plan-price sync after a successful pass.
+    """
+
     tenant_id: Optional[str] = None
 
     trial_end: Optional[datetime] = None
@@ -343,6 +354,7 @@ class SubscriptionResponse(BaseModel):
                 "status",
                 "subscription_status",
                 "subscription_type",
+                "synced_price_sequence",
                 "tenant_id",
                 "trial_end",
                 "trial_start",

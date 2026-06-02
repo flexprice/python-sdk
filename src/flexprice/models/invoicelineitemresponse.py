@@ -13,6 +13,10 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class InvoiceLineItemResponseTypedDict(TypedDict):
+    adjusted_entitlement_quantity: NotRequired[str]
+    r"""adjusted_entitlement_quantity is the entitlement-covered portion deducted from raw usage.
+    Nil when no entitlement was applied. Raw usage = Quantity + AdjustedEntitlementQuantity.
+    """
     amount: NotRequired[str]
     commitment_info: NotRequired[CommitmentInfoTypedDict]
     created_at: NotRequired[datetime]
@@ -45,6 +49,8 @@ class InvoiceLineItemResponseTypedDict(TypedDict):
     quantity: NotRequired[str]
     status: NotRequired[Status]
     subscription_id: NotRequired[str]
+    subscription_line_item_id: NotRequired[str]
+    r"""sub_line_item_id links this invoice line item to the subscription_line_item that generated it."""
     tenant_id: NotRequired[str]
     updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
@@ -55,6 +61,11 @@ class InvoiceLineItemResponseTypedDict(TypedDict):
 
 
 class InvoiceLineItemResponse(BaseModel):
+    adjusted_entitlement_quantity: Optional[str] = None
+    r"""adjusted_entitlement_quantity is the entitlement-covered portion deducted from raw usage.
+    Nil when no entitlement was applied. Raw usage = Quantity + AdjustedEntitlementQuantity.
+    """
+
     amount: Optional[str] = None
 
     commitment_info: Optional[CommitmentInfo] = None
@@ -116,6 +127,9 @@ class InvoiceLineItemResponse(BaseModel):
 
     subscription_id: Optional[str] = None
 
+    subscription_line_item_id: Optional[str] = None
+    r"""sub_line_item_id links this invoice line item to the subscription_line_item that generated it."""
+
     tenant_id: Optional[str] = None
 
     updated_at: Optional[datetime] = None
@@ -132,6 +146,7 @@ class InvoiceLineItemResponse(BaseModel):
     def serialize_model(self, handler):
         optional_fields = set(
             [
+                "adjusted_entitlement_quantity",
                 "amount",
                 "commitment_info",
                 "created_at",
@@ -161,6 +176,7 @@ class InvoiceLineItemResponse(BaseModel):
                 "quantity",
                 "status",
                 "subscription_id",
+                "subscription_line_item_id",
                 "tenant_id",
                 "updated_at",
                 "updated_by",
