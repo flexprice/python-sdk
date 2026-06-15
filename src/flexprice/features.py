@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, List, Mapping, Optional, Union
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Features(BaseSDK):
@@ -21,7 +21,7 @@ class Features(BaseSDK):
         description: Optional[str] = None,
         group_id: Optional[str] = None,
         lookup_key: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         meter: Optional[
             Union[models.CreateMeterRequest, models.CreateMeterRequestTypedDict]
         ] = None,
@@ -74,7 +74,7 @@ class Features(BaseSDK):
             description=description,
             group_id=group_id,
             lookup_key=lookup_key,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             meter=utils.get_pydantic_model(meter, Optional[models.CreateMeterRequest]),
             meter_id=meter_id,
             name=name,
@@ -166,7 +166,7 @@ class Features(BaseSDK):
         description: Optional[str] = None,
         group_id: Optional[str] = None,
         lookup_key: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         meter: Optional[
             Union[models.CreateMeterRequest, models.CreateMeterRequestTypedDict]
         ] = None,
@@ -219,7 +219,7 @@ class Features(BaseSDK):
             description=description,
             group_id=group_id,
             lookup_key=lookup_key,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             meter=utils.get_pydantic_model(meter, Optional[models.CreateMeterRequest]),
             meter_id=meter_id,
             name=name,
@@ -305,19 +305,24 @@ class Features(BaseSDK):
         *,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
-        feature_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
         lookup_key: Optional[str] = None,
-        lookup_keys: Optional[List[str]] = None,
-        meter_ids: Optional[List[str]] = None,
+        lookup_keys: Optional[Iterable[str]] = None,
+        meter_ids: Optional[Iterable[str]] = None,
         name_contains: Optional[str] = None,
         offset: Optional[int] = None,
         order: Optional[models.FeatureFilterOrder] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
@@ -362,14 +367,14 @@ class Features(BaseSDK):
         request = models.FeatureFilter(
             end_time=end_time,
             expand=expand,
-            feature_ids=feature_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
             lookup_key=lookup_key,
-            lookup_keys=lookup_keys,
-            meter_ids=meter_ids,
+            lookup_keys=utils.unmarshal(lookup_keys, Optional[List[str]]),
+            meter_ids=utils.unmarshal(meter_ids, Optional[List[str]]),
             name_contains=name_contains,
             offset=offset,
             order=order,
@@ -452,19 +457,24 @@ class Features(BaseSDK):
         *,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
-        feature_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
         lookup_key: Optional[str] = None,
-        lookup_keys: Optional[List[str]] = None,
-        meter_ids: Optional[List[str]] = None,
+        lookup_keys: Optional[Iterable[str]] = None,
+        meter_ids: Optional[Iterable[str]] = None,
         name_contains: Optional[str] = None,
         offset: Optional[int] = None,
         order: Optional[models.FeatureFilterOrder] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
@@ -509,14 +519,14 @@ class Features(BaseSDK):
         request = models.FeatureFilter(
             end_time=end_time,
             expand=expand,
-            feature_ids=feature_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
             lookup_key=lookup_key,
-            lookup_keys=lookup_keys,
-            meter_ids=meter_ids,
+            lookup_keys=utils.unmarshal(lookup_keys, Optional[List[str]]),
+            meter_ids=utils.unmarshal(meter_ids, Optional[List[str]]),
             name_contains=name_contains,
             offset=offset,
             order=order,
@@ -603,10 +613,10 @@ class Features(BaseSDK):
         ] = None,
         description: Optional[str] = None,
         filters: Optional[
-            Union[List[models.MeterFilter], List[models.MeterFilterTypedDict]]
+            Union[Iterable[models.MeterFilter], Iterable[models.MeterFilterTypedDict]]
         ] = None,
         group_id: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         reporting_unit: Optional[
             Union[models.ReportingUnit, models.ReportingUnitTypedDict]
@@ -658,7 +668,7 @@ class Features(BaseSDK):
                     filters, Optional[List[models.MeterFilter]]
                 ),
                 group_id=group_id,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
                 reporting_unit=utils.get_pydantic_model(
                     reporting_unit, Optional[models.ReportingUnit]
@@ -746,10 +756,10 @@ class Features(BaseSDK):
         ] = None,
         description: Optional[str] = None,
         filters: Optional[
-            Union[List[models.MeterFilter], List[models.MeterFilterTypedDict]]
+            Union[Iterable[models.MeterFilter], Iterable[models.MeterFilterTypedDict]]
         ] = None,
         group_id: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         reporting_unit: Optional[
             Union[models.ReportingUnit, models.ReportingUnitTypedDict]
@@ -801,7 +811,7 @@ class Features(BaseSDK):
                     filters, Optional[List[models.MeterFilter]]
                 ),
                 group_id=group_id,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
                 reporting_unit=utils.get_pydantic_model(
                     reporting_unit, Optional[models.ReportingUnit]
@@ -1084,7 +1094,7 @@ class Features(BaseSDK):
         id: str,
         description: Optional[str] = None,
         lookup_key: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1120,7 +1130,7 @@ class Features(BaseSDK):
             body=models.CloneFeatureRequest(
                 description=description,
                 lookup_key=lookup_key,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )
@@ -1200,7 +1210,7 @@ class Features(BaseSDK):
         id: str,
         description: Optional[str] = None,
         lookup_key: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1236,7 +1246,7 @@ class Features(BaseSDK):
             body=models.CloneFeatureRequest(
                 description=description,
                 lookup_key=lookup_key,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )

@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, List, Mapping, Optional, Union
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Customers(BaseSDK):
@@ -25,11 +25,11 @@ class Customers(BaseSDK):
         external_id: Optional[str] = None,
         integration_entity_mapping: Optional[
             Union[
-                List[models.CreateEntityIntegrationMappingRequest],
-                List[models.CreateEntityIntegrationMappingRequestTypedDict],
+                Iterable[models.CreateEntityIntegrationMappingRequest],
+                Iterable[models.CreateEntityIntegrationMappingRequestTypedDict],
             ]
         ] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -84,7 +84,7 @@ class Customers(BaseSDK):
                     integration_entity_mapping,
                     Optional[List[models.CreateEntityIntegrationMappingRequest]],
                 ),
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )
@@ -173,11 +173,11 @@ class Customers(BaseSDK):
         external_id: Optional[str] = None,
         integration_entity_mapping: Optional[
             Union[
-                List[models.CreateEntityIntegrationMappingRequest],
-                List[models.CreateEntityIntegrationMappingRequestTypedDict],
+                Iterable[models.CreateEntityIntegrationMappingRequest],
+                Iterable[models.CreateEntityIntegrationMappingRequestTypedDict],
             ]
         ] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -232,7 +232,7 @@ class Customers(BaseSDK):
                     integration_entity_mapping,
                     Optional[List[models.CreateEntityIntegrationMappingRequest]],
                 ),
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )
@@ -319,15 +319,18 @@ class Customers(BaseSDK):
         email: Optional[str] = None,
         integration_entity_mapping: Optional[
             Union[
-                List[models.CreateEntityIntegrationMappingRequest],
-                List[models.CreateEntityIntegrationMappingRequestTypedDict],
+                Iterable[models.CreateEntityIntegrationMappingRequest],
+                Iterable[models.CreateEntityIntegrationMappingRequestTypedDict],
             ]
         ] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         skip_onboarding_workflow: Optional[bool] = None,
         tax_rate_overrides: Optional[
-            Union[List[models.TaxRateOverride], List[models.TaxRateOverrideTypedDict]]
+            Union[
+                Iterable[models.TaxRateOverride],
+                Iterable[models.TaxRateOverrideTypedDict],
+            ]
         ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -381,7 +384,7 @@ class Customers(BaseSDK):
                 integration_entity_mapping,
                 Optional[List[models.CreateEntityIntegrationMappingRequest]],
             ),
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             skip_onboarding_workflow=skip_onboarding_workflow,
             tax_rate_overrides=utils.get_pydantic_model(
@@ -471,15 +474,18 @@ class Customers(BaseSDK):
         email: Optional[str] = None,
         integration_entity_mapping: Optional[
             Union[
-                List[models.CreateEntityIntegrationMappingRequest],
-                List[models.CreateEntityIntegrationMappingRequestTypedDict],
+                Iterable[models.CreateEntityIntegrationMappingRequest],
+                Iterable[models.CreateEntityIntegrationMappingRequestTypedDict],
             ]
         ] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         skip_onboarding_workflow: Optional[bool] = None,
         tax_rate_overrides: Optional[
-            Union[List[models.TaxRateOverride], List[models.TaxRateOverrideTypedDict]]
+            Union[
+                Iterable[models.TaxRateOverride],
+                Iterable[models.TaxRateOverrideTypedDict],
+            ]
         ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -533,7 +539,7 @@ class Customers(BaseSDK):
                 integration_entity_mapping,
                 Optional[List[models.CreateEntityIntegrationMappingRequest]],
             ),
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             skip_onboarding_workflow=skip_onboarding_workflow,
             tax_rate_overrides=utils.get_pydantic_model(
@@ -811,21 +817,26 @@ class Customers(BaseSDK):
     def query_customer(
         self,
         *,
-        customer_ids: Optional[List[str]] = None,
+        customer_ids: Optional[Iterable[str]] = None,
         email: Optional[str] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
         external_id: Optional[str] = None,
-        external_ids: Optional[List[str]] = None,
+        external_ids: Optional[Iterable[str]] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.CustomerFilterOrder] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
@@ -868,17 +879,17 @@ class Customers(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerFilter(
-            customer_ids=customer_ids,
+            customer_ids=utils.unmarshal(customer_ids, Optional[List[str]]),
             email=email,
             end_time=end_time,
             expand=expand,
             external_id=external_id,
-            external_ids=external_ids,
+            external_ids=utils.unmarshal(external_ids, Optional[List[str]]),
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             offset=offset,
             order=order,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
@@ -958,21 +969,26 @@ class Customers(BaseSDK):
     async def query_customer_async(
         self,
         *,
-        customer_ids: Optional[List[str]] = None,
+        customer_ids: Optional[Iterable[str]] = None,
         email: Optional[str] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
         external_id: Optional[str] = None,
-        external_ids: Optional[List[str]] = None,
+        external_ids: Optional[Iterable[str]] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.CustomerFilterOrder] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
@@ -1015,17 +1031,17 @@ class Customers(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerFilter(
-            customer_ids=customer_ids,
+            customer_ids=utils.unmarshal(customer_ids, Optional[List[str]]),
             email=email,
             end_time=end_time,
             expand=expand,
             external_id=external_id,
-            external_ids=external_ids,
+            external_ids=utils.unmarshal(external_ids, Optional[List[str]]),
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             offset=offset,
             order=order,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
@@ -1107,9 +1123,9 @@ class Customers(BaseSDK):
         *,
         customer_id: Optional[str] = None,
         customer_lookup_key: Optional[str] = None,
-        feature_ids: Optional[List[str]] = None,
-        feature_lookup_keys: Optional[List[str]] = None,
-        subscription_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
+        feature_lookup_keys: Optional[Iterable[str]] = None,
+        subscription_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1142,9 +1158,11 @@ class Customers(BaseSDK):
         request = models.GetCustomerUsageSummaryRequest(
             customer_id=customer_id,
             customer_lookup_key=customer_lookup_key,
-            feature_ids=feature_ids,
-            feature_lookup_keys=feature_lookup_keys,
-            subscription_ids=subscription_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
+            feature_lookup_keys=utils.unmarshal(
+                feature_lookup_keys, Optional[List[str]]
+            ),
+            subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
         )
 
         req = self._build_request(
@@ -1220,9 +1238,9 @@ class Customers(BaseSDK):
         *,
         customer_id: Optional[str] = None,
         customer_lookup_key: Optional[str] = None,
-        feature_ids: Optional[List[str]] = None,
-        feature_lookup_keys: Optional[List[str]] = None,
-        subscription_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
+        feature_lookup_keys: Optional[Iterable[str]] = None,
+        subscription_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1255,9 +1273,11 @@ class Customers(BaseSDK):
         request = models.GetCustomerUsageSummaryRequest(
             customer_id=customer_id,
             customer_lookup_key=customer_lookup_key,
-            feature_ids=feature_ids,
-            feature_lookup_keys=feature_lookup_keys,
-            subscription_ids=subscription_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
+            feature_lookup_keys=utils.unmarshal(
+                feature_lookup_keys, Optional[List[str]]
+            ),
+            subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
         )
 
         req = self._build_request_async(

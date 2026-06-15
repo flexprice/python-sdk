@@ -287,7 +287,7 @@ class Tasks(BaseSDK):
         file_url: str,
         task_type: models.TaskType,
         file_name: Optional[str] = None,
-        metadata: Optional[Dict[str, Any]] = None,
+        metadata: Optional[Mapping[str, Any]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -323,7 +323,7 @@ class Tasks(BaseSDK):
             file_name=file_name,
             file_type=file_type,
             file_url=file_url,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, Any]]),
             task_type=task_type,
         )
 
@@ -404,7 +404,7 @@ class Tasks(BaseSDK):
         file_url: str,
         task_type: models.TaskType,
         file_name: Optional[str] = None,
-        metadata: Optional[Dict[str, Any]] = None,
+        metadata: Optional[Mapping[str, Any]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -440,7 +440,7 @@ class Tasks(BaseSDK):
             file_name=file_name,
             file_type=file_type,
             file_url=file_url,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, Any]]),
             task_type=task_type,
         )
 

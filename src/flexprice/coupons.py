@@ -5,7 +5,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, List, Mapping, Optional, Union
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Coupons(BaseSDK):
@@ -16,14 +16,15 @@ class Coupons(BaseSDK):
         name: str,
         type_: models.CouponType,
         amount_off: Optional[str] = None,
+        coupon_code: Optional[str] = None,
         currency: Optional[str] = None,
         duration_in_periods: Optional[int] = None,
         max_redemptions: Optional[int] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         percentage_off: Optional[str] = None,
         redeem_after: Optional[str] = None,
         redeem_before: Optional[str] = None,
-        rules: Optional[Dict[str, Any]] = None,
+        rules: Optional[Mapping[str, Any]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -39,6 +40,7 @@ class Coupons(BaseSDK):
         :param name:
         :param type:
         :param amount_off:
+        :param coupon_code:
         :param currency:
         :param duration_in_periods:
         :param max_redemptions:
@@ -65,15 +67,16 @@ class Coupons(BaseSDK):
         request = models.CreateCouponRequest(
             amount_off=amount_off,
             cadence=cadence,
+            coupon_code=coupon_code,
             currency=currency,
             duration_in_periods=duration_in_periods,
             max_redemptions=max_redemptions,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             percentage_off=percentage_off,
             redeem_after=redeem_after,
             redeem_before=redeem_before,
-            rules=rules,
+            rules=utils.unmarshal(rules, Optional[Dict[str, Any]]),
             type=type_,
         )
 
@@ -156,14 +159,15 @@ class Coupons(BaseSDK):
         name: str,
         type_: models.CouponType,
         amount_off: Optional[str] = None,
+        coupon_code: Optional[str] = None,
         currency: Optional[str] = None,
         duration_in_periods: Optional[int] = None,
         max_redemptions: Optional[int] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         percentage_off: Optional[str] = None,
         redeem_after: Optional[str] = None,
         redeem_before: Optional[str] = None,
-        rules: Optional[Dict[str, Any]] = None,
+        rules: Optional[Mapping[str, Any]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -179,6 +183,7 @@ class Coupons(BaseSDK):
         :param name:
         :param type:
         :param amount_off:
+        :param coupon_code:
         :param currency:
         :param duration_in_periods:
         :param max_redemptions:
@@ -205,15 +210,16 @@ class Coupons(BaseSDK):
         request = models.CreateCouponRequest(
             amount_off=amount_off,
             cadence=cadence,
+            coupon_code=coupon_code,
             currency=currency,
             duration_in_periods=duration_in_periods,
             max_redemptions=max_redemptions,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             percentage_off=percentage_off,
             redeem_after=redeem_after,
             redeem_before=redeem_before,
-            rules=rules,
+            rules=utils.unmarshal(rules, Optional[Dict[str, Any]]),
             type=type_,
         )
 
@@ -292,16 +298,21 @@ class Coupons(BaseSDK):
     def query_coupon(
         self,
         *,
-        coupon_ids: Optional[List[str]] = None,
+        coupon_ids: Optional[Iterable[str]] = None,
         expand: Optional[str] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[models.CouponFilterOrder] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         status: Optional[models.Status] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -337,7 +348,7 @@ class Coupons(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CouponFilter(
-            coupon_ids=coupon_ids,
+            coupon_ids=utils.unmarshal(coupon_ids, Optional[List[str]]),
             expand=expand,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
@@ -421,16 +432,21 @@ class Coupons(BaseSDK):
     async def query_coupon_async(
         self,
         *,
-        coupon_ids: Optional[List[str]] = None,
+        coupon_ids: Optional[Iterable[str]] = None,
         expand: Optional[str] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[models.CouponFilterOrder] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         status: Optional[models.Status] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -466,7 +482,7 @@ class Coupons(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CouponFilter(
-            coupon_ids=coupon_ids,
+            coupon_ids=utils.unmarshal(coupon_ids, Optional[List[str]]),
             expand=expand,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
@@ -749,7 +765,7 @@ class Coupons(BaseSDK):
         self,
         *,
         id: str,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -783,7 +799,7 @@ class Coupons(BaseSDK):
         request = models.UpdateCouponRequestRequest(
             id=id,
             body=models.UpdateCouponRequest(
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )
@@ -864,7 +880,7 @@ class Coupons(BaseSDK):
         self,
         *,
         id: str,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -898,7 +914,7 @@ class Coupons(BaseSDK):
         request = models.UpdateCouponRequestRequest(
             id=id,
             body=models.UpdateCouponRequest(
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )

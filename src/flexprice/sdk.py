@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from flexprice.addons import Addons
     from flexprice.alerts import Alerts
     from flexprice.costs import Costs
+    from flexprice.coupon_associations import CouponAssociations
     from flexprice.coupons import Coupons
     from flexprice.credit_grants import CreditGrants
     from flexprice.credit_notes import CreditNotes
@@ -55,6 +56,7 @@ class Flexprice(BaseSDK):
     alerts: "Alerts"
     costs: "Costs"
     coupons: "Coupons"
+    coupon_associations: "CouponAssociations"
     credit_grants: "CreditGrants"
     credit_notes: "CreditNotes"
     customers: "Customers"
@@ -86,6 +88,7 @@ class Flexprice(BaseSDK):
         "alerts": ("flexprice.alerts", "Alerts"),
         "costs": ("flexprice.costs", "Costs"),
         "coupons": ("flexprice.coupons", "Coupons"),
+        "coupon_associations": ("flexprice.coupon_associations", "CouponAssociations"),
         "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
         "credit_notes": ("flexprice.credit_notes", "CreditNotes"),
         "customers": ("flexprice.customers", "Customers"),

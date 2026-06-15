@@ -22,7 +22,7 @@ class CreditGrants(BaseSDK):
         expiration_duration: Optional[int] = None,
         expiration_duration_unit: Optional[models.CreditGrantExpiryDurationUnit] = None,
         expiration_type: Optional[models.CreditGrantExpiryType] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         period: Optional[models.CreditGrantPeriod] = None,
         period_count: Optional[int] = None,
         plan_id: Optional[str] = None,
@@ -85,7 +85,7 @@ class CreditGrants(BaseSDK):
             expiration_duration=expiration_duration,
             expiration_duration_unit=expiration_duration_unit,
             expiration_type=expiration_type,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             period=period,
             period_count=period_count,
@@ -178,7 +178,7 @@ class CreditGrants(BaseSDK):
         expiration_duration: Optional[int] = None,
         expiration_duration_unit: Optional[models.CreditGrantExpiryDurationUnit] = None,
         expiration_type: Optional[models.CreditGrantExpiryType] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         period: Optional[models.CreditGrantPeriod] = None,
         period_count: Optional[int] = None,
         plan_id: Optional[str] = None,
@@ -241,7 +241,7 @@ class CreditGrants(BaseSDK):
             expiration_duration=expiration_duration,
             expiration_duration_unit=expiration_duration_unit,
             expiration_type=expiration_type,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             period=period,
             period_count=period_count,
@@ -524,7 +524,7 @@ class CreditGrants(BaseSDK):
         self,
         *,
         id: str,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -556,7 +556,7 @@ class CreditGrants(BaseSDK):
         request = models.UpdateCreditGrantRequestRequest(
             id=id,
             body=models.UpdateCreditGrantRequest(
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )
@@ -634,7 +634,7 @@ class CreditGrants(BaseSDK):
         self,
         *,
         id: str,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -666,7 +666,7 @@ class CreditGrants(BaseSDK):
         request = models.UpdateCreditGrantRequestRequest(
             id=id,
             body=models.UpdateCreditGrantRequest(
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 name=name,
             ),
         )

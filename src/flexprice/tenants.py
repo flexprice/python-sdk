@@ -199,7 +199,7 @@ class Tenants(BaseSDK):
         billing_details: Optional[
             Union[models.TenantBillingDetails, models.TenantBillingDetailsTypedDict]
         ] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -232,7 +232,7 @@ class Tenants(BaseSDK):
             billing_details=utils.get_pydantic_model(
                 billing_details, Optional[models.TenantBillingDetails]
             ),
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
         )
 
@@ -311,7 +311,7 @@ class Tenants(BaseSDK):
         billing_details: Optional[
             Union[models.TenantBillingDetails, models.TenantBillingDetailsTypedDict]
         ] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -344,7 +344,7 @@ class Tenants(BaseSDK):
             billing_details=utils.get_pydantic_model(
                 billing_details, Optional[models.TenantBillingDetails]
             ),
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
         )
 

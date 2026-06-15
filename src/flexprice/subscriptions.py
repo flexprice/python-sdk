@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, List, Mapping, Optional, Union
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Subscriptions(BaseSDK):
@@ -18,8 +18,8 @@ class Subscriptions(BaseSDK):
         plan_id: str,
         addons: Optional[
             Union[
-                List[models.AddAddonToSubscriptionRequest],
-                List[models.AddAddonToSubscriptionRequestTypedDict],
+                Iterable[models.AddAddonToSubscriptionRequest],
+                Iterable[models.AddAddonToSubscriptionRequestTypedDict],
             ]
         ] = None,
         auto_invoice_threshold: Optional[str] = None,
@@ -29,11 +29,11 @@ class Subscriptions(BaseSDK):
         collection_method: Optional[models.CollectionMethod] = None,
         commitment_amount: Optional[str] = None,
         commitment_duration: Optional[models.BillingPeriod] = None,
-        coupons: Optional[List[str]] = None,
+        coupons: Optional[Iterable[str]] = None,
         credit_grants: Optional[
             Union[
-                List[models.CreateCreditGrantRequest],
-                List[models.CreateCreditGrantRequestTypedDict],
+                Iterable[models.CreateCreditGrantRequest],
+                Iterable[models.CreateCreditGrantRequestTypedDict],
             ]
         ] = None,
         customer_id: Optional[str] = None,
@@ -50,45 +50,54 @@ class Subscriptions(BaseSDK):
         ] = None,
         line_item_commitments: Optional[
             Union[
-                Dict[str, models.LineItemCommitmentConfig],
-                Dict[str, models.LineItemCommitmentConfigTypedDict],
+                Mapping[str, models.LineItemCommitmentConfig],
+                Mapping[str, models.LineItemCommitmentConfigTypedDict],
             ]
         ] = None,
-        line_item_coupons: Optional[Dict[str, List[str]]] = None,
+        line_item_coupons: Optional[Mapping[str, Iterable[str]]] = None,
         line_items: Optional[
             Union[
-                List[models.CreateSubscriptionLineItemRequest],
-                List[models.CreateSubscriptionLineItemRequestTypedDict],
+                Iterable[models.CreateSubscriptionLineItemRequest],
+                Iterable[models.CreateSubscriptionLineItemRequestTypedDict],
             ]
         ] = None,
         lookup_key: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         overage_factor: Optional[str] = None,
         override_entitlements: Optional[
             Union[
-                List[models.OverrideEntitlementRequest],
-                List[models.OverrideEntitlementRequestTypedDict],
+                Iterable[models.OverrideEntitlementRequest],
+                Iterable[models.OverrideEntitlementRequestTypedDict],
             ]
         ] = None,
         override_line_items: Optional[
             Union[
-                List[models.OverrideLineItemRequest],
-                List[models.OverrideLineItemRequestTypedDict],
+                Iterable[models.OverrideLineItemRequest],
+                Iterable[models.OverrideLineItemRequestTypedDict],
             ]
         ] = None,
         payment_behavior: Optional[models.PaymentBehavior] = None,
         payment_terms: Optional[models.PaymentTerms] = None,
         phases: Optional[
             Union[
-                List[models.SubscriptionPhaseCreateRequest],
-                List[models.SubscriptionPhaseCreateRequestTypedDict],
+                Iterable[models.SubscriptionPhaseCreateRequest],
+                Iterable[models.SubscriptionPhaseCreateRequestTypedDict],
             ]
         ] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
         start_date: Optional[datetime] = None,
+        subscription_coupons: Optional[
+            Union[
+                Iterable[models.SubscriptionCouponInput],
+                Iterable[models.SubscriptionCouponInputTypedDict],
+            ]
+        ] = None,
         subscription_status: Optional[models.SubscriptionStatus] = None,
         tax_rate_overrides: Optional[
-            Union[List[models.TaxRateOverride], List[models.TaxRateOverrideTypedDict]]
+            Union[
+                Iterable[models.TaxRateOverride],
+                Iterable[models.TaxRateOverrideTypedDict],
+            ]
         ] = None,
         trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -118,7 +127,7 @@ class Subscriptions(BaseSDK):
         :param collection_method:
         :param commitment_amount: CommitmentAmount is the minimum amount a customer commits to paying for a billing period
         :param commitment_duration:
-        :param coupons:
+        :param coupons: Deprecated: use SubscriptionCoupons instead.
         :param credit_grants: Credit grants to be applied when subscription is created
         :param customer_id: customer_id is the flexprice customer id
             and it is prioritized over external_customer_id in case both are provided.
@@ -131,7 +140,7 @@ class Subscriptions(BaseSDK):
         :param gateway_payment_method_id:
         :param inheritance:
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)
-        :param line_item_coupons:
+        :param line_item_coupons: Deprecated: use SubscriptionCoupons instead.
         :param line_items: LineItems are extra line items to add at creation (each with price_id or price), in addition to plan prices
         :param lookup_key:
         :param metadata:
@@ -143,6 +152,8 @@ class Subscriptions(BaseSDK):
         :param phases: Phases represents subscription phases to be created with the subscription
         :param proration_behavior:
         :param start_date:
+        :param subscription_coupons: SubscriptionCoupons is the preferred way to attach coupons at creation.
+            Accepts coupon_code; optionally targets a line item via price_id.
         :param subscription_status:
         :param tax_rate_overrides: tax_rate_overrides is the tax rate overrides	to be applied to the subscription
         :param trial_period_days: TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
@@ -174,7 +185,7 @@ class Subscriptions(BaseSDK):
             collection_method=collection_method,
             commitment_amount=commitment_amount,
             commitment_duration=commitment_duration,
-            coupons=coupons,
+            coupons=utils.unmarshal(coupons, Optional[List[str]]),
             credit_grants=utils.get_pydantic_model(
                 credit_grants, Optional[List[models.CreateCreditGrantRequest]]
             ),
@@ -192,12 +203,14 @@ class Subscriptions(BaseSDK):
                 line_item_commitments,
                 Optional[Dict[str, models.LineItemCommitmentConfig]],
             ),
-            line_item_coupons=line_item_coupons,
+            line_item_coupons=utils.unmarshal(
+                line_item_coupons, Optional[Dict[str, List[str]]]
+            ),
             line_items=utils.get_pydantic_model(
                 line_items, Optional[List[models.CreateSubscriptionLineItemRequest]]
             ),
             lookup_key=lookup_key,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             overage_factor=overage_factor,
             override_entitlements=utils.get_pydantic_model(
                 override_entitlements, Optional[List[models.OverrideEntitlementRequest]]
@@ -213,6 +226,9 @@ class Subscriptions(BaseSDK):
             plan_id=plan_id,
             proration_behavior=proration_behavior,
             start_date=start_date,
+            subscription_coupons=utils.get_pydantic_model(
+                subscription_coupons, Optional[List[models.SubscriptionCouponInput]]
+            ),
             subscription_status=subscription_status,
             tax_rate_overrides=utils.get_pydantic_model(
                 tax_rate_overrides, Optional[List[models.TaxRateOverride]]
@@ -297,8 +313,8 @@ class Subscriptions(BaseSDK):
         plan_id: str,
         addons: Optional[
             Union[
-                List[models.AddAddonToSubscriptionRequest],
-                List[models.AddAddonToSubscriptionRequestTypedDict],
+                Iterable[models.AddAddonToSubscriptionRequest],
+                Iterable[models.AddAddonToSubscriptionRequestTypedDict],
             ]
         ] = None,
         auto_invoice_threshold: Optional[str] = None,
@@ -308,11 +324,11 @@ class Subscriptions(BaseSDK):
         collection_method: Optional[models.CollectionMethod] = None,
         commitment_amount: Optional[str] = None,
         commitment_duration: Optional[models.BillingPeriod] = None,
-        coupons: Optional[List[str]] = None,
+        coupons: Optional[Iterable[str]] = None,
         credit_grants: Optional[
             Union[
-                List[models.CreateCreditGrantRequest],
-                List[models.CreateCreditGrantRequestTypedDict],
+                Iterable[models.CreateCreditGrantRequest],
+                Iterable[models.CreateCreditGrantRequestTypedDict],
             ]
         ] = None,
         customer_id: Optional[str] = None,
@@ -329,45 +345,54 @@ class Subscriptions(BaseSDK):
         ] = None,
         line_item_commitments: Optional[
             Union[
-                Dict[str, models.LineItemCommitmentConfig],
-                Dict[str, models.LineItemCommitmentConfigTypedDict],
+                Mapping[str, models.LineItemCommitmentConfig],
+                Mapping[str, models.LineItemCommitmentConfigTypedDict],
             ]
         ] = None,
-        line_item_coupons: Optional[Dict[str, List[str]]] = None,
+        line_item_coupons: Optional[Mapping[str, Iterable[str]]] = None,
         line_items: Optional[
             Union[
-                List[models.CreateSubscriptionLineItemRequest],
-                List[models.CreateSubscriptionLineItemRequestTypedDict],
+                Iterable[models.CreateSubscriptionLineItemRequest],
+                Iterable[models.CreateSubscriptionLineItemRequestTypedDict],
             ]
         ] = None,
         lookup_key: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         overage_factor: Optional[str] = None,
         override_entitlements: Optional[
             Union[
-                List[models.OverrideEntitlementRequest],
-                List[models.OverrideEntitlementRequestTypedDict],
+                Iterable[models.OverrideEntitlementRequest],
+                Iterable[models.OverrideEntitlementRequestTypedDict],
             ]
         ] = None,
         override_line_items: Optional[
             Union[
-                List[models.OverrideLineItemRequest],
-                List[models.OverrideLineItemRequestTypedDict],
+                Iterable[models.OverrideLineItemRequest],
+                Iterable[models.OverrideLineItemRequestTypedDict],
             ]
         ] = None,
         payment_behavior: Optional[models.PaymentBehavior] = None,
         payment_terms: Optional[models.PaymentTerms] = None,
         phases: Optional[
             Union[
-                List[models.SubscriptionPhaseCreateRequest],
-                List[models.SubscriptionPhaseCreateRequestTypedDict],
+                Iterable[models.SubscriptionPhaseCreateRequest],
+                Iterable[models.SubscriptionPhaseCreateRequestTypedDict],
             ]
         ] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
         start_date: Optional[datetime] = None,
+        subscription_coupons: Optional[
+            Union[
+                Iterable[models.SubscriptionCouponInput],
+                Iterable[models.SubscriptionCouponInputTypedDict],
+            ]
+        ] = None,
         subscription_status: Optional[models.SubscriptionStatus] = None,
         tax_rate_overrides: Optional[
-            Union[List[models.TaxRateOverride], List[models.TaxRateOverrideTypedDict]]
+            Union[
+                Iterable[models.TaxRateOverride],
+                Iterable[models.TaxRateOverrideTypedDict],
+            ]
         ] = None,
         trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -397,7 +422,7 @@ class Subscriptions(BaseSDK):
         :param collection_method:
         :param commitment_amount: CommitmentAmount is the minimum amount a customer commits to paying for a billing period
         :param commitment_duration:
-        :param coupons:
+        :param coupons: Deprecated: use SubscriptionCoupons instead.
         :param credit_grants: Credit grants to be applied when subscription is created
         :param customer_id: customer_id is the flexprice customer id
             and it is prioritized over external_customer_id in case both are provided.
@@ -410,7 +435,7 @@ class Subscriptions(BaseSDK):
         :param gateway_payment_method_id:
         :param inheritance:
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)
-        :param line_item_coupons:
+        :param line_item_coupons: Deprecated: use SubscriptionCoupons instead.
         :param line_items: LineItems are extra line items to add at creation (each with price_id or price), in addition to plan prices
         :param lookup_key:
         :param metadata:
@@ -422,6 +447,8 @@ class Subscriptions(BaseSDK):
         :param phases: Phases represents subscription phases to be created with the subscription
         :param proration_behavior:
         :param start_date:
+        :param subscription_coupons: SubscriptionCoupons is the preferred way to attach coupons at creation.
+            Accepts coupon_code; optionally targets a line item via price_id.
         :param subscription_status:
         :param tax_rate_overrides: tax_rate_overrides is the tax rate overrides	to be applied to the subscription
         :param trial_period_days: TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
@@ -453,7 +480,7 @@ class Subscriptions(BaseSDK):
             collection_method=collection_method,
             commitment_amount=commitment_amount,
             commitment_duration=commitment_duration,
-            coupons=coupons,
+            coupons=utils.unmarshal(coupons, Optional[List[str]]),
             credit_grants=utils.get_pydantic_model(
                 credit_grants, Optional[List[models.CreateCreditGrantRequest]]
             ),
@@ -471,12 +498,14 @@ class Subscriptions(BaseSDK):
                 line_item_commitments,
                 Optional[Dict[str, models.LineItemCommitmentConfig]],
             ),
-            line_item_coupons=line_item_coupons,
+            line_item_coupons=utils.unmarshal(
+                line_item_coupons, Optional[Dict[str, List[str]]]
+            ),
             line_items=utils.get_pydantic_model(
                 line_items, Optional[List[models.CreateSubscriptionLineItemRequest]]
             ),
             lookup_key=lookup_key,
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             overage_factor=overage_factor,
             override_entitlements=utils.get_pydantic_model(
                 override_entitlements, Optional[List[models.OverrideEntitlementRequest]]
@@ -492,6 +521,9 @@ class Subscriptions(BaseSDK):
             plan_id=plan_id,
             proration_behavior=proration_behavior,
             start_date=start_date,
+            subscription_coupons=utils.get_pydantic_model(
+                subscription_coupons, Optional[List[models.SubscriptionCouponInput]]
+            ),
             subscription_status=subscription_status,
             tax_rate_overrides=utils.get_pydantic_model(
                 tax_rate_overrides, Optional[List[models.TaxRateOverride]]
@@ -576,11 +608,11 @@ class Subscriptions(BaseSDK):
         cadence: Optional[models.AddonCadence] = None,
         line_item_commitments: Optional[
             Union[
-                Dict[str, models.LineItemCommitmentConfig],
-                Dict[str, models.LineItemCommitmentConfigTypedDict],
+                Mapping[str, models.LineItemCommitmentConfig],
+                Mapping[str, models.LineItemCommitmentConfigTypedDict],
             ]
         ] = None,
-        metadata: Optional[Dict[str, Any]] = None,
+        metadata: Optional[Mapping[str, Any]] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
         start_date: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -621,7 +653,7 @@ class Subscriptions(BaseSDK):
                 line_item_commitments,
                 Optional[Dict[str, models.LineItemCommitmentConfig]],
             ),
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, Any]]),
             proration_behavior=proration_behavior,
             start_date=start_date,
             subscription_id=subscription_id,
@@ -704,11 +736,11 @@ class Subscriptions(BaseSDK):
         cadence: Optional[models.AddonCadence] = None,
         line_item_commitments: Optional[
             Union[
-                Dict[str, models.LineItemCommitmentConfig],
-                Dict[str, models.LineItemCommitmentConfigTypedDict],
+                Mapping[str, models.LineItemCommitmentConfig],
+                Mapping[str, models.LineItemCommitmentConfigTypedDict],
             ]
         ] = None,
-        metadata: Optional[Dict[str, Any]] = None,
+        metadata: Optional[Mapping[str, Any]] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
         start_date: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -749,7 +781,7 @@ class Subscriptions(BaseSDK):
                 line_item_commitments,
                 Optional[Dict[str, models.LineItemCommitmentConfig]],
             ),
-            metadata=metadata,
+            metadata=utils.unmarshal(metadata, Optional[Dict[str, Any]]),
             proration_behavior=proration_behavior,
             start_date=start_date,
             subscription_id=subscription_id,
@@ -1056,29 +1088,34 @@ class Subscriptions(BaseSDK):
         self,
         *,
         active_filter: Optional[bool] = True,
-        addon_association_ids: Optional[List[str]] = None,
-        billing_periods: Optional[List[str]] = None,
-        currencies: Optional[List[str]] = None,
+        addon_association_ids: Optional[Iterable[str]] = None,
+        billing_periods: Optional[Iterable[str]] = None,
+        currencies: Optional[Iterable[str]] = None,
         current_period_start: Optional[datetime] = None,
-        customer_ids: Optional[List[str]] = None,
+        customer_ids: Optional[Iterable[str]] = None,
         end_time: Optional[datetime] = None,
-        entity_ids: Optional[List[str]] = None,
+        entity_ids: Optional[Iterable[str]] = None,
         entity_type: Optional[models.SubscriptionLineItemEntityType] = None,
         expand: Optional[str] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
-        meter_ids: Optional[List[str]] = None,
+        meter_ids: Optional[Iterable[str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.SubscriptionLineItemFilterOrder] = None,
-        price_ids: Optional[List[str]] = None,
+        price_ids: Optional[Iterable[str]] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
-        subscription_ids: Optional[List[str]] = None,
+        subscription_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1125,27 +1162,29 @@ class Subscriptions(BaseSDK):
 
         request = models.SubscriptionLineItemFilter(
             active_filter=active_filter,
-            addon_association_ids=addon_association_ids,
-            billing_periods=billing_periods,
-            currencies=currencies,
+            addon_association_ids=utils.unmarshal(
+                addon_association_ids, Optional[List[str]]
+            ),
+            billing_periods=utils.unmarshal(billing_periods, Optional[List[str]]),
+            currencies=utils.unmarshal(currencies, Optional[List[str]]),
             current_period_start=current_period_start,
-            customer_ids=customer_ids,
+            customer_ids=utils.unmarshal(customer_ids, Optional[List[str]]),
             end_time=end_time,
-            entity_ids=entity_ids,
+            entity_ids=utils.unmarshal(entity_ids, Optional[List[str]]),
             entity_type=entity_type,
             expand=expand,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
-            meter_ids=meter_ids,
+            meter_ids=utils.unmarshal(meter_ids, Optional[List[str]]),
             offset=offset,
             order=order,
-            price_ids=price_ids,
+            price_ids=utils.unmarshal(price_ids, Optional[List[str]]),
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
             start_time=start_time,
             status=status,
-            subscription_ids=subscription_ids,
+            subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
         )
 
         req = self._build_request(
@@ -1223,29 +1262,34 @@ class Subscriptions(BaseSDK):
         self,
         *,
         active_filter: Optional[bool] = True,
-        addon_association_ids: Optional[List[str]] = None,
-        billing_periods: Optional[List[str]] = None,
-        currencies: Optional[List[str]] = None,
+        addon_association_ids: Optional[Iterable[str]] = None,
+        billing_periods: Optional[Iterable[str]] = None,
+        currencies: Optional[Iterable[str]] = None,
         current_period_start: Optional[datetime] = None,
-        customer_ids: Optional[List[str]] = None,
+        customer_ids: Optional[Iterable[str]] = None,
         end_time: Optional[datetime] = None,
-        entity_ids: Optional[List[str]] = None,
+        entity_ids: Optional[Iterable[str]] = None,
         entity_type: Optional[models.SubscriptionLineItemEntityType] = None,
         expand: Optional[str] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         limit: Optional[int] = None,
-        meter_ids: Optional[List[str]] = None,
+        meter_ids: Optional[Iterable[str]] = None,
         offset: Optional[int] = None,
         order: Optional[models.SubscriptionLineItemFilterOrder] = None,
-        price_ids: Optional[List[str]] = None,
+        price_ids: Optional[Iterable[str]] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
-        subscription_ids: Optional[List[str]] = None,
+        subscription_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1292,27 +1336,29 @@ class Subscriptions(BaseSDK):
 
         request = models.SubscriptionLineItemFilter(
             active_filter=active_filter,
-            addon_association_ids=addon_association_ids,
-            billing_periods=billing_periods,
-            currencies=currencies,
+            addon_association_ids=utils.unmarshal(
+                addon_association_ids, Optional[List[str]]
+            ),
+            billing_periods=utils.unmarshal(billing_periods, Optional[List[str]]),
+            currencies=utils.unmarshal(currencies, Optional[List[str]]),
             current_period_start=current_period_start,
-            customer_ids=customer_ids,
+            customer_ids=utils.unmarshal(customer_ids, Optional[List[str]]),
             end_time=end_time,
-            entity_ids=entity_ids,
+            entity_ids=utils.unmarshal(entity_ids, Optional[List[str]]),
             entity_type=entity_type,
             expand=expand,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
             limit=limit,
-            meter_ids=meter_ids,
+            meter_ids=utils.unmarshal(meter_ids, Optional[List[str]]),
             offset=offset,
             order=order,
-            price_ids=price_ids,
+            price_ids=utils.unmarshal(price_ids, Optional[List[str]]),
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
             start_time=start_time,
             status=status,
-            subscription_ids=subscription_ids,
+            subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
         )
 
         req = self._build_request_async(
@@ -1396,14 +1442,23 @@ class Subscriptions(BaseSDK):
         commitment_duration: Optional[models.BillingPeriod] = None,
         commitment_overage_factor: Optional[float] = None,
         commitment_quantity: Optional[float] = None,
+        commitment_time_buckets: Optional[
+            Union[
+                Iterable[models.CommitmentBucketRequest],
+                Iterable[models.CommitmentBucketRequestTypedDict],
+            ]
+        ] = None,
         commitment_true_up_enabled: Optional[bool] = None,
         commitment_type: Optional[models.CommitmentType] = None,
         commitment_windowed: Optional[bool] = None,
         effective_from: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         tier_mode: Optional[models.BillingTier] = None,
         tiers: Optional[
-            Union[List[models.CreatePriceTier], List[models.CreatePriceTierTypedDict]]
+            Union[
+                Iterable[models.CreatePriceTier],
+                Iterable[models.CreatePriceTierTypedDict],
+            ]
         ] = None,
         transform_quantity: Optional[
             Union[models.PriceTransformQuantity, models.PriceTransformQuantityTypedDict]
@@ -1424,6 +1479,7 @@ class Subscriptions(BaseSDK):
         :param commitment_duration:
         :param commitment_overage_factor:
         :param commitment_quantity:
+        :param commitment_time_buckets: Pointer so an explicit empty array can clear existing buckets (omission keeps them).
         :param commitment_true_up_enabled:
         :param commitment_type:
         :param commitment_windowed:
@@ -1456,11 +1512,15 @@ class Subscriptions(BaseSDK):
                 commitment_duration=commitment_duration,
                 commitment_overage_factor=commitment_overage_factor,
                 commitment_quantity=commitment_quantity,
+                commitment_time_buckets=utils.get_pydantic_model(
+                    commitment_time_buckets,
+                    Optional[List[models.CommitmentBucketRequest]],
+                ),
                 commitment_true_up_enabled=commitment_true_up_enabled,
                 commitment_type=commitment_type,
                 commitment_windowed=commitment_windowed,
                 effective_from=effective_from,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 tier_mode=tier_mode,
                 tiers=utils.get_pydantic_model(
                     tiers, Optional[List[models.CreatePriceTier]]
@@ -1556,14 +1616,23 @@ class Subscriptions(BaseSDK):
         commitment_duration: Optional[models.BillingPeriod] = None,
         commitment_overage_factor: Optional[float] = None,
         commitment_quantity: Optional[float] = None,
+        commitment_time_buckets: Optional[
+            Union[
+                Iterable[models.CommitmentBucketRequest],
+                Iterable[models.CommitmentBucketRequestTypedDict],
+            ]
+        ] = None,
         commitment_true_up_enabled: Optional[bool] = None,
         commitment_type: Optional[models.CommitmentType] = None,
         commitment_windowed: Optional[bool] = None,
         effective_from: Optional[str] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         tier_mode: Optional[models.BillingTier] = None,
         tiers: Optional[
-            Union[List[models.CreatePriceTier], List[models.CreatePriceTierTypedDict]]
+            Union[
+                Iterable[models.CreatePriceTier],
+                Iterable[models.CreatePriceTierTypedDict],
+            ]
         ] = None,
         transform_quantity: Optional[
             Union[models.PriceTransformQuantity, models.PriceTransformQuantityTypedDict]
@@ -1584,6 +1653,7 @@ class Subscriptions(BaseSDK):
         :param commitment_duration:
         :param commitment_overage_factor:
         :param commitment_quantity:
+        :param commitment_time_buckets: Pointer so an explicit empty array can clear existing buckets (omission keeps them).
         :param commitment_true_up_enabled:
         :param commitment_type:
         :param commitment_windowed:
@@ -1616,11 +1686,15 @@ class Subscriptions(BaseSDK):
                 commitment_duration=commitment_duration,
                 commitment_overage_factor=commitment_overage_factor,
                 commitment_quantity=commitment_quantity,
+                commitment_time_buckets=utils.get_pydantic_model(
+                    commitment_time_buckets,
+                    Optional[List[models.CommitmentBucketRequest]],
+                ),
                 commitment_true_up_enabled=commitment_true_up_enabled,
                 commitment_type=commitment_type,
                 commitment_windowed=commitment_windowed,
                 effective_from=effective_from,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 tier_mode=tier_mode,
                 tiers=utils.get_pydantic_model(
                     tiers, Optional[List[models.CreatePriceTier]]
@@ -1942,31 +2016,36 @@ class Subscriptions(BaseSDK):
         self,
         *,
         active_at: Optional[datetime] = None,
-        billing_cadence: Optional[List[models.BillingCadence]] = None,
-        billing_period: Optional[List[models.BillingPeriod]] = None,
+        billing_cadence: Optional[Iterable[models.BillingCadence]] = None,
+        billing_period: Optional[Iterable[models.BillingPeriod]] = None,
         customer_id: Optional[str] = None,
-        customer_ids: Optional[List[str]] = None,
+        customer_ids: Optional[Iterable[str]] = None,
         effective_date_for_update: Optional[str] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
         external_customer_id: Optional[str] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
-        invoicing_customer_ids: Optional[List[str]] = None,
+        invoicing_customer_ids: Optional[Iterable[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[models.SubscriptionFilterOrder] = None,
-        parent_subscription_ids: Optional[List[str]] = None,
+        parent_subscription_ids: Optional[Iterable[str]] = None,
         plan_id: Optional[str] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
-        subscription_ids: Optional[List[str]] = None,
-        subscription_status: Optional[List[models.SubscriptionStatus]] = None,
-        subscription_type: Optional[List[models.SubscriptionType]] = None,
+        subscription_ids: Optional[Iterable[str]] = None,
+        subscription_status: Optional[Iterable[models.SubscriptionStatus]] = None,
+        subscription_type: Optional[Iterable[models.SubscriptionType]] = None,
         trial_end_due_lte: Optional[datetime] = None,
         with_line_items: Optional[bool] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -2022,10 +2101,14 @@ class Subscriptions(BaseSDK):
 
         request = models.SubscriptionFilter(
             active_at=active_at,
-            billing_cadence=billing_cadence,
-            billing_period=billing_period,
+            billing_cadence=utils.unmarshal(
+                billing_cadence, Optional[List[models.BillingCadence]]
+            ),
+            billing_period=utils.unmarshal(
+                billing_period, Optional[List[models.BillingPeriod]]
+            ),
             customer_id=customer_id,
-            customer_ids=customer_ids,
+            customer_ids=utils.unmarshal(customer_ids, Optional[List[str]]),
             effective_date_for_update=effective_date_for_update,
             end_time=end_time,
             expand=expand,
@@ -2033,18 +2116,26 @@ class Subscriptions(BaseSDK):
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
-            invoicing_customer_ids=invoicing_customer_ids,
+            invoicing_customer_ids=utils.unmarshal(
+                invoicing_customer_ids, Optional[List[str]]
+            ),
             limit=limit,
             offset=offset,
             order=order,
-            parent_subscription_ids=parent_subscription_ids,
+            parent_subscription_ids=utils.unmarshal(
+                parent_subscription_ids, Optional[List[str]]
+            ),
             plan_id=plan_id,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
             start_time=start_time,
             status=status,
-            subscription_ids=subscription_ids,
-            subscription_status=subscription_status,
-            subscription_type=subscription_type,
+            subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
+            subscription_status=utils.unmarshal(
+                subscription_status, Optional[List[models.SubscriptionStatus]]
+            ),
+            subscription_type=utils.unmarshal(
+                subscription_type, Optional[List[models.SubscriptionType]]
+            ),
             trial_end_due_lte=trial_end_due_lte,
             with_line_items=with_line_items,
         )
@@ -2122,31 +2213,36 @@ class Subscriptions(BaseSDK):
         self,
         *,
         active_at: Optional[datetime] = None,
-        billing_cadence: Optional[List[models.BillingCadence]] = None,
-        billing_period: Optional[List[models.BillingPeriod]] = None,
+        billing_cadence: Optional[Iterable[models.BillingCadence]] = None,
+        billing_period: Optional[Iterable[models.BillingPeriod]] = None,
         customer_id: Optional[str] = None,
-        customer_ids: Optional[List[str]] = None,
+        customer_ids: Optional[Iterable[str]] = None,
         effective_date_for_update: Optional[str] = None,
         end_time: Optional[datetime] = None,
         expand: Optional[str] = None,
         external_customer_id: Optional[str] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
-        invoicing_customer_ids: Optional[List[str]] = None,
+        invoicing_customer_ids: Optional[Iterable[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[models.SubscriptionFilterOrder] = None,
-        parent_subscription_ids: Optional[List[str]] = None,
+        parent_subscription_ids: Optional[Iterable[str]] = None,
         plan_id: Optional[str] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
-        subscription_ids: Optional[List[str]] = None,
-        subscription_status: Optional[List[models.SubscriptionStatus]] = None,
-        subscription_type: Optional[List[models.SubscriptionType]] = None,
+        subscription_ids: Optional[Iterable[str]] = None,
+        subscription_status: Optional[Iterable[models.SubscriptionStatus]] = None,
+        subscription_type: Optional[Iterable[models.SubscriptionType]] = None,
         trial_end_due_lte: Optional[datetime] = None,
         with_line_items: Optional[bool] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -2202,10 +2298,14 @@ class Subscriptions(BaseSDK):
 
         request = models.SubscriptionFilter(
             active_at=active_at,
-            billing_cadence=billing_cadence,
-            billing_period=billing_period,
+            billing_cadence=utils.unmarshal(
+                billing_cadence, Optional[List[models.BillingCadence]]
+            ),
+            billing_period=utils.unmarshal(
+                billing_period, Optional[List[models.BillingPeriod]]
+            ),
             customer_id=customer_id,
-            customer_ids=customer_ids,
+            customer_ids=utils.unmarshal(customer_ids, Optional[List[str]]),
             effective_date_for_update=effective_date_for_update,
             end_time=end_time,
             expand=expand,
@@ -2213,18 +2313,26 @@ class Subscriptions(BaseSDK):
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
-            invoicing_customer_ids=invoicing_customer_ids,
+            invoicing_customer_ids=utils.unmarshal(
+                invoicing_customer_ids, Optional[List[str]]
+            ),
             limit=limit,
             offset=offset,
             order=order,
-            parent_subscription_ids=parent_subscription_ids,
+            parent_subscription_ids=utils.unmarshal(
+                parent_subscription_ids, Optional[List[str]]
+            ),
             plan_id=plan_id,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
             start_time=start_time,
             status=status,
-            subscription_ids=subscription_ids,
-            subscription_status=subscription_status,
-            subscription_type=subscription_type,
+            subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
+            subscription_status=utils.unmarshal(
+                subscription_status, Optional[List[models.SubscriptionStatus]]
+            ),
+            subscription_type=utils.unmarshal(
+                subscription_type, Optional[List[models.SubscriptionType]]
+            ),
             trial_end_due_lte=trial_end_due_lte,
             with_line_items=with_line_items,
         )
@@ -3400,7 +3508,10 @@ class Subscriptions(BaseSDK):
 
         :param id: Subscription ID
         :param cancellation_type:
-        :param cancel_at:
+        :param cancel_at: CancelAt is the exact date/time when the subscription should be cancelled.
+            Required for cancellation_type \"scheduled_date\"; optional for \"immediate\" (past dates only — backdated cancellation).
+            For \"scheduled_date\", accepts both future dates (deferred cancellation) and past dates (backdated cancellation).
+            For \"immediate\", accepts past/current dates only; use \"scheduled_date\" for future dates.
         :param cancel_immediately_inovice_policy:
         :param proration_behavior:
         :param reason: Reason for cancellation (for audit and business intelligence)
@@ -3521,7 +3632,10 @@ class Subscriptions(BaseSDK):
 
         :param id: Subscription ID
         :param cancellation_type:
-        :param cancel_at:
+        :param cancel_at: CancelAt is the exact date/time when the subscription should be cancelled.
+            Required for cancellation_type \"scheduled_date\"; optional for \"immediate\" (past dates only — backdated cancellation).
+            For \"scheduled_date\", accepts both future dates (deferred cancellation) and past dates (backdated cancellation).
+            For \"immediate\", accepts past/current dates only; use \"scheduled_date\" for future dates.
         :param cancel_immediately_inovice_policy:
         :param proration_behavior:
         :param reason: Reason for cancellation (for audit and business intelligence)
@@ -3631,7 +3745,7 @@ class Subscriptions(BaseSDK):
         target_plan_id: str,
         billing_period_count: Optional[int] = None,
         change_at: Optional[models.ScheduleType] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3673,7 +3787,7 @@ class Subscriptions(BaseSDK):
                 billing_period=billing_period,
                 billing_period_count=billing_period_count,
                 change_at=change_at,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 proration_behavior=proration_behavior,
                 target_plan_id=target_plan_id,
             ),
@@ -3761,7 +3875,7 @@ class Subscriptions(BaseSDK):
         target_plan_id: str,
         billing_period_count: Optional[int] = None,
         change_at: Optional[models.ScheduleType] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3803,7 +3917,7 @@ class Subscriptions(BaseSDK):
                 billing_period=billing_period,
                 billing_period_count=billing_period_count,
                 change_at=change_at,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 proration_behavior=proration_behavior,
                 target_plan_id=target_plan_id,
             ),
@@ -3891,7 +4005,7 @@ class Subscriptions(BaseSDK):
         target_plan_id: str,
         billing_period_count: Optional[int] = None,
         change_at: Optional[models.ScheduleType] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3933,7 +4047,7 @@ class Subscriptions(BaseSDK):
                 billing_period=billing_period,
                 billing_period_count=billing_period_count,
                 change_at=change_at,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 proration_behavior=proration_behavior,
                 target_plan_id=target_plan_id,
             ),
@@ -4021,7 +4135,7 @@ class Subscriptions(BaseSDK):
         target_plan_id: str,
         billing_period_count: Optional[int] = None,
         change_at: Optional[models.ScheduleType] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -4063,7 +4177,7 @@ class Subscriptions(BaseSDK):
                 billing_period=billing_period,
                 billing_period_count=billing_period_count,
                 change_at=change_at,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 proration_behavior=proration_behavior,
                 target_plan_id=target_plan_id,
             ),
@@ -4144,7 +4258,7 @@ class Subscriptions(BaseSDK):
         self,
         *,
         id: str,
-        feature_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -4173,7 +4287,7 @@ class Subscriptions(BaseSDK):
 
         request = models.GetSubscriptionEntitlementsRequest(
             id=id,
-            feature_ids=feature_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
         )
 
         req = self._build_request(
@@ -4248,7 +4362,7 @@ class Subscriptions(BaseSDK):
         self,
         *,
         id: str,
-        feature_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -4277,7 +4391,7 @@ class Subscriptions(BaseSDK):
 
         request = models.GetSubscriptionEntitlementsRequest(
             id=id,
-            feature_ids=feature_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
         )
 
         req = self._build_request_async(
@@ -4558,12 +4672,18 @@ class Subscriptions(BaseSDK):
         commitment_duration: Optional[models.BillingPeriod] = None,
         commitment_overage_factor: Optional[float] = None,
         commitment_quantity: Optional[float] = None,
+        commitment_time_buckets: Optional[
+            Union[
+                Iterable[models.CommitmentBucketRequest],
+                Iterable[models.CommitmentBucketRequestTypedDict],
+            ]
+        ] = None,
         commitment_true_up_enabled: Optional[bool] = None,
         commitment_type: Optional[models.CommitmentType] = None,
         commitment_windowed: Optional[bool] = None,
         display_name: Optional[str] = None,
         end_date: Optional[datetime] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         price: Optional[
             Union[
                 models.SubscriptionPriceCreateRequest,
@@ -4589,6 +4709,7 @@ class Subscriptions(BaseSDK):
         :param commitment_duration:
         :param commitment_overage_factor:
         :param commitment_quantity:
+        :param commitment_time_buckets:
         :param commitment_true_up_enabled:
         :param commitment_type:
         :param commitment_windowed:
@@ -4623,12 +4744,16 @@ class Subscriptions(BaseSDK):
                 commitment_duration=commitment_duration,
                 commitment_overage_factor=commitment_overage_factor,
                 commitment_quantity=commitment_quantity,
+                commitment_time_buckets=utils.get_pydantic_model(
+                    commitment_time_buckets,
+                    Optional[List[models.CommitmentBucketRequest]],
+                ),
                 commitment_true_up_enabled=commitment_true_up_enabled,
                 commitment_type=commitment_type,
                 commitment_windowed=commitment_windowed,
                 display_name=display_name,
                 end_date=end_date,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 price=utils.get_pydantic_model(
                     price, Optional[models.SubscriptionPriceCreateRequest]
                 ),
@@ -4723,12 +4848,18 @@ class Subscriptions(BaseSDK):
         commitment_duration: Optional[models.BillingPeriod] = None,
         commitment_overage_factor: Optional[float] = None,
         commitment_quantity: Optional[float] = None,
+        commitment_time_buckets: Optional[
+            Union[
+                Iterable[models.CommitmentBucketRequest],
+                Iterable[models.CommitmentBucketRequestTypedDict],
+            ]
+        ] = None,
         commitment_true_up_enabled: Optional[bool] = None,
         commitment_type: Optional[models.CommitmentType] = None,
         commitment_windowed: Optional[bool] = None,
         display_name: Optional[str] = None,
         end_date: Optional[datetime] = None,
-        metadata: Optional[Dict[str, str]] = None,
+        metadata: Optional[Mapping[str, str]] = None,
         price: Optional[
             Union[
                 models.SubscriptionPriceCreateRequest,
@@ -4754,6 +4885,7 @@ class Subscriptions(BaseSDK):
         :param commitment_duration:
         :param commitment_overage_factor:
         :param commitment_quantity:
+        :param commitment_time_buckets:
         :param commitment_true_up_enabled:
         :param commitment_type:
         :param commitment_windowed:
@@ -4788,12 +4920,16 @@ class Subscriptions(BaseSDK):
                 commitment_duration=commitment_duration,
                 commitment_overage_factor=commitment_overage_factor,
                 commitment_quantity=commitment_quantity,
+                commitment_time_buckets=utils.get_pydantic_model(
+                    commitment_time_buckets,
+                    Optional[List[models.CommitmentBucketRequest]],
+                ),
                 commitment_true_up_enabled=commitment_true_up_enabled,
                 commitment_type=commitment_type,
                 commitment_windowed=commitment_windowed,
                 display_name=display_name,
                 end_date=end_date,
-                metadata=metadata,
+                metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 price=utils.get_pydantic_model(
                     price, Optional[models.SubscriptionPriceCreateRequest]
                 ),
@@ -4885,6 +5021,9 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        coupon_params: Optional[
+            Union[models.SubModifyCouponParams, models.SubModifyCouponParamsTypedDict]
+        ] = None,
         grouped_invoicing_params: Optional[
             Union[
                 models.SubModifyGroupedInvoicingParams,
@@ -4903,6 +5042,9 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        tax_params: Optional[
+            Union[models.SubModifyTaxParams, models.SubModifyTaxParamsTypedDict]
+        ] = None,
         trial_end_params: Optional[
             Union[
                 models.SubModifyTrialEndRequest,
@@ -4916,13 +5058,15 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Execute subscription modification
 
-        Execute a mid-cycle subscription modification (inheritance or quantity change).
+        Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, or tax).
 
         :param id: Subscription ID
         :param type:
+        :param coupon_params:
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param tax_params:
         :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -4942,6 +5086,9 @@ class Subscriptions(BaseSDK):
         request = models.ExecuteSubscriptionModifyRequestRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                coupon_params=utils.get_pydantic_model(
+                    coupon_params, Optional[models.SubModifyCouponParams]
+                ),
                 grouped_invoicing_params=utils.get_pydantic_model(
                     grouped_invoicing_params,
                     Optional[models.SubModifyGroupedInvoicingParams],
@@ -4952,6 +5099,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                tax_params=utils.get_pydantic_model(
+                    tax_params, Optional[models.SubModifyTaxParams]
                 ),
                 trial_end_params=utils.get_pydantic_model(
                     trial_end_params, Optional[models.SubModifyTrialEndRequest]
@@ -5038,6 +5188,9 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        coupon_params: Optional[
+            Union[models.SubModifyCouponParams, models.SubModifyCouponParamsTypedDict]
+        ] = None,
         grouped_invoicing_params: Optional[
             Union[
                 models.SubModifyGroupedInvoicingParams,
@@ -5056,6 +5209,9 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        tax_params: Optional[
+            Union[models.SubModifyTaxParams, models.SubModifyTaxParamsTypedDict]
+        ] = None,
         trial_end_params: Optional[
             Union[
                 models.SubModifyTrialEndRequest,
@@ -5069,13 +5225,15 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Execute subscription modification
 
-        Execute a mid-cycle subscription modification (inheritance or quantity change).
+        Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, or tax).
 
         :param id: Subscription ID
         :param type:
+        :param coupon_params:
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param tax_params:
         :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -5095,6 +5253,9 @@ class Subscriptions(BaseSDK):
         request = models.ExecuteSubscriptionModifyRequestRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                coupon_params=utils.get_pydantic_model(
+                    coupon_params, Optional[models.SubModifyCouponParams]
+                ),
                 grouped_invoicing_params=utils.get_pydantic_model(
                     grouped_invoicing_params,
                     Optional[models.SubModifyGroupedInvoicingParams],
@@ -5105,6 +5266,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                tax_params=utils.get_pydantic_model(
+                    tax_params, Optional[models.SubModifyTaxParams]
                 ),
                 trial_end_params=utils.get_pydantic_model(
                     trial_end_params, Optional[models.SubModifyTrialEndRequest]
@@ -5191,6 +5355,9 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        coupon_params: Optional[
+            Union[models.SubModifyCouponParams, models.SubModifyCouponParamsTypedDict]
+        ] = None,
         grouped_invoicing_params: Optional[
             Union[
                 models.SubModifyGroupedInvoicingParams,
@@ -5209,6 +5376,9 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        tax_params: Optional[
+            Union[models.SubModifyTaxParams, models.SubModifyTaxParamsTypedDict]
+        ] = None,
         trial_end_params: Optional[
             Union[
                 models.SubModifyTrialEndRequest,
@@ -5222,13 +5392,15 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Preview subscription modification
 
-        Preview the impact of a mid-cycle subscription modification without committing changes.
+        Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, or tax) without committing changes.
 
         :param id: Subscription ID
         :param type:
+        :param coupon_params:
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param tax_params:
         :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -5248,6 +5420,9 @@ class Subscriptions(BaseSDK):
         request = models.PreviewSubscriptionModifyRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                coupon_params=utils.get_pydantic_model(
+                    coupon_params, Optional[models.SubModifyCouponParams]
+                ),
                 grouped_invoicing_params=utils.get_pydantic_model(
                     grouped_invoicing_params,
                     Optional[models.SubModifyGroupedInvoicingParams],
@@ -5258,6 +5433,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                tax_params=utils.get_pydantic_model(
+                    tax_params, Optional[models.SubModifyTaxParams]
                 ),
                 trial_end_params=utils.get_pydantic_model(
                     trial_end_params, Optional[models.SubModifyTrialEndRequest]
@@ -5344,6 +5522,9 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        coupon_params: Optional[
+            Union[models.SubModifyCouponParams, models.SubModifyCouponParamsTypedDict]
+        ] = None,
         grouped_invoicing_params: Optional[
             Union[
                 models.SubModifyGroupedInvoicingParams,
@@ -5362,6 +5543,9 @@ class Subscriptions(BaseSDK):
                 models.SubModifyQuantityChangeRequestTypedDict,
             ]
         ] = None,
+        tax_params: Optional[
+            Union[models.SubModifyTaxParams, models.SubModifyTaxParamsTypedDict]
+        ] = None,
         trial_end_params: Optional[
             Union[
                 models.SubModifyTrialEndRequest,
@@ -5375,13 +5559,15 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Preview subscription modification
 
-        Preview the impact of a mid-cycle subscription modification without committing changes.
+        Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, or tax) without committing changes.
 
         :param id: Subscription ID
         :param type:
+        :param coupon_params:
         :param grouped_invoicing_params:
         :param inheritance_params:
         :param quantity_change_params:
+        :param tax_params:
         :param trial_end_params:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -5401,6 +5587,9 @@ class Subscriptions(BaseSDK):
         request = models.PreviewSubscriptionModifyRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                coupon_params=utils.get_pydantic_model(
+                    coupon_params, Optional[models.SubModifyCouponParams]
+                ),
                 grouped_invoicing_params=utils.get_pydantic_model(
                     grouped_invoicing_params,
                     Optional[models.SubModifyGroupedInvoicingParams],
@@ -5411,6 +5600,9 @@ class Subscriptions(BaseSDK):
                 quantity_change_params=utils.get_pydantic_model(
                     quantity_change_params,
                     Optional[models.SubModifyQuantityChangeRequest],
+                ),
+                tax_params=utils.get_pydantic_model(
+                    tax_params, Optional[models.SubModifyTaxParams]
                 ),
                 trial_end_params=utils.get_pydantic_model(
                     trial_end_params, Optional[models.SubModifyTrialEndRequest]

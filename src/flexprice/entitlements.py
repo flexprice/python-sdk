@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, List, Mapping, Optional, Union
+from typing import Any, Iterable, List, Mapping, Optional, Union
 
 
 class Entitlements(BaseSDK):
@@ -488,8 +488,8 @@ class Entitlements(BaseSDK):
         self,
         *,
         items: Union[
-            List[models.CreateEntitlementRequest],
-            List[models.CreateEntitlementRequestTypedDict],
+            Iterable[models.CreateEntitlementRequest],
+            Iterable[models.CreateEntitlementRequestTypedDict],
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -597,8 +597,8 @@ class Entitlements(BaseSDK):
         self,
         *,
         items: Union[
-            List[models.CreateEntitlementRequest],
-            List[models.CreateEntitlementRequestTypedDict],
+            Iterable[models.CreateEntitlementRequest],
+            Iterable[models.CreateEntitlementRequestTypedDict],
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -706,21 +706,26 @@ class Entitlements(BaseSDK):
         self,
         *,
         end_time: Optional[datetime] = None,
-        entity_ids: Optional[List[str]] = None,
+        entity_ids: Optional[Iterable[str]] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
         expand: Optional[str] = None,
-        feature_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
         feature_type: Optional[models.FeatureType] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         is_enabled: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[models.EntitlementFilterOrder] = None,
-        plan_ids: Optional[List[str]] = None,
+        plan_ids: Optional[Iterable[str]] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
@@ -765,10 +770,10 @@ class Entitlements(BaseSDK):
 
         request = models.EntitlementFilter(
             end_time=end_time,
-            entity_ids=entity_ids,
+            entity_ids=utils.unmarshal(entity_ids, Optional[List[str]]),
             entity_type=entity_type,
             expand=expand,
-            feature_ids=feature_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
             feature_type=feature_type,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
@@ -777,7 +782,7 @@ class Entitlements(BaseSDK):
             limit=limit,
             offset=offset,
             order=order,
-            plan_ids=plan_ids,
+            plan_ids=utils.unmarshal(plan_ids, Optional[List[str]]),
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
             start_time=start_time,
             status=status,
@@ -856,21 +861,26 @@ class Entitlements(BaseSDK):
         self,
         *,
         end_time: Optional[datetime] = None,
-        entity_ids: Optional[List[str]] = None,
+        entity_ids: Optional[Iterable[str]] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
         expand: Optional[str] = None,
-        feature_ids: Optional[List[str]] = None,
+        feature_ids: Optional[Iterable[str]] = None,
         feature_type: Optional[models.FeatureType] = None,
         filters: Optional[
-            Union[List[models.FilterCondition], List[models.FilterConditionTypedDict]]
+            Union[
+                Iterable[models.FilterCondition],
+                Iterable[models.FilterConditionTypedDict],
+            ]
         ] = None,
         is_enabled: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[models.EntitlementFilterOrder] = None,
-        plan_ids: Optional[List[str]] = None,
+        plan_ids: Optional[Iterable[str]] = None,
         sort: Optional[
-            Union[List[models.SortCondition], List[models.SortConditionTypedDict]]
+            Union[
+                Iterable[models.SortCondition], Iterable[models.SortConditionTypedDict]
+            ]
         ] = None,
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
@@ -915,10 +925,10 @@ class Entitlements(BaseSDK):
 
         request = models.EntitlementFilter(
             end_time=end_time,
-            entity_ids=entity_ids,
+            entity_ids=utils.unmarshal(entity_ids, Optional[List[str]]),
             entity_type=entity_type,
             expand=expand,
-            feature_ids=feature_ids,
+            feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
             feature_type=feature_type,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
@@ -927,7 +937,7 @@ class Entitlements(BaseSDK):
             limit=limit,
             offset=offset,
             order=order,
-            plan_ids=plan_ids,
+            plan_ids=utils.unmarshal(plan_ids, Optional[List[str]]),
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
             start_time=start_time,
             status=status,
