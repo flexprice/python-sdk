@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Iterable, List, Mapping, Optional, Union
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Entitlements(BaseSDK):
@@ -75,6 +75,8 @@ class Entitlements(BaseSDK):
                 operation_id="getAddonEntitlements",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -174,6 +176,8 @@ class Entitlements(BaseSDK):
                 operation_id="getAddonEntitlements",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -213,6 +217,7 @@ class Entitlements(BaseSDK):
         *,
         feature_id: str,
         feature_type: models.FeatureType,
+        config_value: Optional[Mapping[str, Any]] = None,
         end_date: Optional[datetime] = None,
         entity_id: Optional[str] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
@@ -235,6 +240,7 @@ class Entitlements(BaseSDK):
 
         :param feature_id:
         :param feature_type:
+        :param config_value:
         :param end_date:
         :param entity_id:
         :param entity_type:
@@ -262,6 +268,7 @@ class Entitlements(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CreateEntitlementRequest(
+            config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
             end_date=end_date,
             entity_id=entity_id,
             entity_type=entity_type,
@@ -312,6 +319,8 @@ class Entitlements(BaseSDK):
                 operation_id="createEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "entitlement"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -351,6 +360,7 @@ class Entitlements(BaseSDK):
         *,
         feature_id: str,
         feature_type: models.FeatureType,
+        config_value: Optional[Mapping[str, Any]] = None,
         end_date: Optional[datetime] = None,
         entity_id: Optional[str] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
@@ -373,6 +383,7 @@ class Entitlements(BaseSDK):
 
         :param feature_id:
         :param feature_type:
+        :param config_value:
         :param end_date:
         :param entity_id:
         :param entity_type:
@@ -400,6 +411,7 @@ class Entitlements(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CreateEntitlementRequest(
+            config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
             end_date=end_date,
             entity_id=entity_id,
             entity_type=entity_type,
@@ -450,6 +462,8 @@ class Entitlements(BaseSDK):
                 operation_id="createEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "entitlement"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -557,6 +571,8 @@ class Entitlements(BaseSDK):
                 operation_id="createEntitlementsBulk",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "entitlements"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -666,6 +682,8 @@ class Entitlements(BaseSDK):
                 operation_id="createEntitlementsBulk",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "entitlements"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -823,6 +841,8 @@ class Entitlements(BaseSDK):
                 operation_id="queryEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "filter"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -978,6 +998,8 @@ class Entitlements(BaseSDK):
                 operation_id="queryEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "filter"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1077,6 +1099,8 @@ class Entitlements(BaseSDK):
                 operation_id="getEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1176,6 +1200,8 @@ class Entitlements(BaseSDK):
                 operation_id="getEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1214,6 +1240,7 @@ class Entitlements(BaseSDK):
         self,
         *,
         id: str,
+        config_value: Optional[Mapping[str, Any]] = None,
         is_enabled: Optional[bool] = None,
         is_soft_limit: Optional[bool] = None,
         static_value: Optional[str] = None,
@@ -1229,6 +1256,7 @@ class Entitlements(BaseSDK):
         Use when changing an entitlement (e.g. increasing or decreasing a limit). Request body contains the fields to update.
 
         :param id: Entitlement ID
+        :param config_value:
         :param is_enabled:
         :param is_soft_limit:
         :param static_value:
@@ -1252,6 +1280,7 @@ class Entitlements(BaseSDK):
         request = models.UpdateEntitlementRequestRequest(
             id=id,
             body=models.UpdateEntitlementRequest(
+                config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
                 is_enabled=is_enabled,
                 is_soft_limit=is_soft_limit,
                 static_value=static_value,
@@ -1295,6 +1324,8 @@ class Entitlements(BaseSDK):
                 operation_id="updateEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "entitlement"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1333,6 +1364,7 @@ class Entitlements(BaseSDK):
         self,
         *,
         id: str,
+        config_value: Optional[Mapping[str, Any]] = None,
         is_enabled: Optional[bool] = None,
         is_soft_limit: Optional[bool] = None,
         static_value: Optional[str] = None,
@@ -1348,6 +1380,7 @@ class Entitlements(BaseSDK):
         Use when changing an entitlement (e.g. increasing or decreasing a limit). Request body contains the fields to update.
 
         :param id: Entitlement ID
+        :param config_value:
         :param is_enabled:
         :param is_soft_limit:
         :param static_value:
@@ -1371,6 +1404,7 @@ class Entitlements(BaseSDK):
         request = models.UpdateEntitlementRequestRequest(
             id=id,
             body=models.UpdateEntitlementRequest(
+                config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
                 is_enabled=is_enabled,
                 is_soft_limit=is_soft_limit,
                 static_value=static_value,
@@ -1414,6 +1448,8 @@ class Entitlements(BaseSDK):
                 operation_id="updateEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions={"x-codegen-request-body-name": "entitlement"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1513,6 +1549,8 @@ class Entitlements(BaseSDK):
                 operation_id="deleteEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1612,6 +1650,8 @@ class Entitlements(BaseSDK):
                 operation_id="deleteEntitlement",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1711,6 +1751,8 @@ class Entitlements(BaseSDK):
                 operation_id="getPlanEntitlements",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1810,6 +1852,8 @@ class Entitlements(BaseSDK):
                 operation_id="getPlanEntitlements",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Entitlements"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),

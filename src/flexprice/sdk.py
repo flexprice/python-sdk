@@ -17,6 +17,7 @@ import weakref
 if TYPE_CHECKING:
     from flexprice.addons import Addons
     from flexprice.alerts import Alerts
+    from flexprice.checkout import Checkout
     from flexprice.costs import Costs
     from flexprice.coupon_associations import CouponAssociations
     from flexprice.coupons import Coupons
@@ -54,6 +55,7 @@ class Flexprice(BaseSDK):
     addons: "Addons"
     entitlements: "Entitlements"
     alerts: "Alerts"
+    checkout: "Checkout"
     costs: "Costs"
     coupons: "Coupons"
     coupon_associations: "CouponAssociations"
@@ -86,6 +88,7 @@ class Flexprice(BaseSDK):
         "addons": ("flexprice.addons", "Addons"),
         "entitlements": ("flexprice.entitlements", "Entitlements"),
         "alerts": ("flexprice.alerts", "Alerts"),
+        "checkout": ("flexprice.checkout", "Checkout"),
         "costs": ("flexprice.costs", "Costs"),
         "coupons": ("flexprice.coupons", "Coupons"),
         "coupon_associations": ("flexprice.coupon_associations", "CouponAssociations"),

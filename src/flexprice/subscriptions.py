@@ -37,7 +37,6 @@ class Subscriptions(BaseSDK):
             ]
         ] = None,
         customer_id: Optional[str] = None,
-        customer_timezone: Optional[str] = None,
         enable_true_up: Optional[bool] = None,
         end_date: Optional[datetime] = None,
         external_customer_id: Optional[str] = None,
@@ -99,6 +98,7 @@ class Subscriptions(BaseSDK):
                 Iterable[models.TaxRateOverrideTypedDict],
             ]
         ] = None,
+        timezone: Optional[str] = None,
         trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -131,8 +131,6 @@ class Subscriptions(BaseSDK):
         :param credit_grants: Credit grants to be applied when subscription is created
         :param customer_id: customer_id is the flexprice customer id
             and it is prioritized over external_customer_id in case both are provided.
-        :param customer_timezone: Timezone of the customer.
-            If not set, the default value is UTC.
         :param enable_true_up: Enable Commitment True Up Fee
         :param end_date:
         :param external_customer_id: external_customer_id is the customer id in your DB
@@ -156,6 +154,8 @@ class Subscriptions(BaseSDK):
             Accepts coupon_code; optionally targets a line item via price_id.
         :param subscription_status:
         :param tax_rate_overrides: tax_rate_overrides is the tax rate overrides	to be applied to the subscription
+        :param timezone: Timezone of the customer.
+            If not set, the default value is UTC.
         :param trial_period_days: TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
             0 = explicitly no trial (overrides catalog). >0 = override duration in days.
         :param retries: Override the default retry configuration for this method
@@ -191,7 +191,6 @@ class Subscriptions(BaseSDK):
             ),
             currency=currency,
             customer_id=customer_id,
-            customer_timezone=customer_timezone,
             enable_true_up=enable_true_up,
             end_date=end_date,
             external_customer_id=external_customer_id,
@@ -233,6 +232,7 @@ class Subscriptions(BaseSDK):
             tax_rate_overrides=utils.get_pydantic_model(
                 tax_rate_overrides, Optional[List[models.TaxRateOverride]]
             ),
+            timezone=timezone,
             trial_period_days=trial_period_days,
         )
 
@@ -271,6 +271,8 @@ class Subscriptions(BaseSDK):
                 operation_id="createSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "subscription"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -332,7 +334,6 @@ class Subscriptions(BaseSDK):
             ]
         ] = None,
         customer_id: Optional[str] = None,
-        customer_timezone: Optional[str] = None,
         enable_true_up: Optional[bool] = None,
         end_date: Optional[datetime] = None,
         external_customer_id: Optional[str] = None,
@@ -394,6 +395,7 @@ class Subscriptions(BaseSDK):
                 Iterable[models.TaxRateOverrideTypedDict],
             ]
         ] = None,
+        timezone: Optional[str] = None,
         trial_period_days: Optional[int] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -426,8 +428,6 @@ class Subscriptions(BaseSDK):
         :param credit_grants: Credit grants to be applied when subscription is created
         :param customer_id: customer_id is the flexprice customer id
             and it is prioritized over external_customer_id in case both are provided.
-        :param customer_timezone: Timezone of the customer.
-            If not set, the default value is UTC.
         :param enable_true_up: Enable Commitment True Up Fee
         :param end_date:
         :param external_customer_id: external_customer_id is the customer id in your DB
@@ -451,6 +451,8 @@ class Subscriptions(BaseSDK):
             Accepts coupon_code; optionally targets a line item via price_id.
         :param subscription_status:
         :param tax_rate_overrides: tax_rate_overrides is the tax rate overrides	to be applied to the subscription
+        :param timezone: Timezone of the customer.
+            If not set, the default value is UTC.
         :param trial_period_days: TrialPeriodDays: nil = inherit trial length from plan recurring-fixed prices (must be uniform).
             0 = explicitly no trial (overrides catalog). >0 = override duration in days.
         :param retries: Override the default retry configuration for this method
@@ -486,7 +488,6 @@ class Subscriptions(BaseSDK):
             ),
             currency=currency,
             customer_id=customer_id,
-            customer_timezone=customer_timezone,
             enable_true_up=enable_true_up,
             end_date=end_date,
             external_customer_id=external_customer_id,
@@ -528,6 +529,7 @@ class Subscriptions(BaseSDK):
             tax_rate_overrides=utils.get_pydantic_model(
                 tax_rate_overrides, Optional[List[models.TaxRateOverride]]
             ),
+            timezone=timezone,
             trial_period_days=trial_period_days,
         )
 
@@ -566,6 +568,8 @@ class Subscriptions(BaseSDK):
                 operation_id="createSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "subscription"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -694,6 +698,8 @@ class Subscriptions(BaseSDK):
                 operation_id="addSubscriptionAddon",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -822,6 +828,8 @@ class Subscriptions(BaseSDK):
                 operation_id="addSubscriptionAddon",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -936,6 +944,8 @@ class Subscriptions(BaseSDK):
                 operation_id="removeSubscriptionAddon",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1050,6 +1060,8 @@ class Subscriptions(BaseSDK):
                 operation_id="removeSubscriptionAddon",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1116,6 +1128,7 @@ class Subscriptions(BaseSDK):
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
         subscription_ids: Optional[Iterable[str]] = None,
+        subscription_line_item_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1144,7 +1157,8 @@ class Subscriptions(BaseSDK):
         :param sort:
         :param start_time:
         :param status:
-        :param subscription_ids: Specific filters
+        :param subscription_ids:
+        :param subscription_line_item_ids: Specific filters
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1185,6 +1199,9 @@ class Subscriptions(BaseSDK):
             start_time=start_time,
             status=status,
             subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
+            subscription_line_item_ids=utils.unmarshal(
+                subscription_line_item_ids, Optional[List[str]]
+            ),
         )
 
         req = self._build_request(
@@ -1222,6 +1239,8 @@ class Subscriptions(BaseSDK):
                 operation_id="querySubscriptionLineItems",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "filter", "x-scope": "read"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1290,6 +1309,7 @@ class Subscriptions(BaseSDK):
         start_time: Optional[datetime] = None,
         status: Optional[models.Status] = None,
         subscription_ids: Optional[Iterable[str]] = None,
+        subscription_line_item_ids: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1318,7 +1338,8 @@ class Subscriptions(BaseSDK):
         :param sort:
         :param start_time:
         :param status:
-        :param subscription_ids: Specific filters
+        :param subscription_ids:
+        :param subscription_line_item_ids: Specific filters
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1359,6 +1380,9 @@ class Subscriptions(BaseSDK):
             start_time=start_time,
             status=status,
             subscription_ids=utils.unmarshal(subscription_ids, Optional[List[str]]),
+            subscription_line_item_ids=utils.unmarshal(
+                subscription_line_item_ids, Optional[List[str]]
+            ),
         )
 
         req = self._build_request_async(
@@ -1396,6 +1420,8 @@ class Subscriptions(BaseSDK):
                 operation_id="querySubscriptionLineItems",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "filter", "x-scope": "read"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1570,6 +1596,8 @@ class Subscriptions(BaseSDK):
                 operation_id="updateSubscriptionLineItem",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1744,6 +1772,8 @@ class Subscriptions(BaseSDK):
                 operation_id="updateSubscriptionLineItem",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1860,6 +1890,8 @@ class Subscriptions(BaseSDK):
                 operation_id="deleteSubscriptionLineItem",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1976,6 +2008,8 @@ class Subscriptions(BaseSDK):
                 operation_id="deleteSubscriptionLineItem",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2175,6 +2209,8 @@ class Subscriptions(BaseSDK):
                 operation_id="querySubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "filter"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2372,6 +2408,8 @@ class Subscriptions(BaseSDK):
                 operation_id="querySubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "filter"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2483,6 +2521,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionUsage",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2596,6 +2636,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionUsage",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2697,6 +2739,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2796,6 +2840,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -2912,6 +2958,8 @@ class Subscriptions(BaseSDK):
                 operation_id="updateSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3028,6 +3076,8 @@ class Subscriptions(BaseSDK):
                 operation_id="updateSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3139,6 +3189,8 @@ class Subscriptions(BaseSDK):
                 operation_id="activateSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3250,6 +3302,8 @@ class Subscriptions(BaseSDK):
                 operation_id="activateSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3349,6 +3403,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionAddonAssociations",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3450,6 +3506,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionAddonAssociations",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3576,6 +3634,8 @@ class Subscriptions(BaseSDK):
                 operation_id="cancelSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3700,6 +3760,8 @@ class Subscriptions(BaseSDK):
                 operation_id="cancelSubscription",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3828,6 +3890,8 @@ class Subscriptions(BaseSDK):
                 operation_id="executeSubscriptionChange",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -3958,6 +4022,8 @@ class Subscriptions(BaseSDK):
                 operation_id="executeSubscriptionChange",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4088,6 +4154,8 @@ class Subscriptions(BaseSDK):
                 operation_id="previewSubscriptionChange",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4218,6 +4286,8 @@ class Subscriptions(BaseSDK):
                 operation_id="previewSubscriptionChange",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4322,6 +4392,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionEntitlements",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4426,6 +4498,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionEntitlements",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4527,6 +4601,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionUpcomingGrants",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4628,6 +4704,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionUpcomingGrants",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4804,6 +4882,8 @@ class Subscriptions(BaseSDK):
                 operation_id="createSubscriptionLineItem",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -4980,6 +5060,8 @@ class Subscriptions(BaseSDK):
                 operation_id="createSubscriptionLineItem",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5149,6 +5231,11 @@ class Subscriptions(BaseSDK):
                 operation_id="executeSubscriptionModify",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={
+                    "x-codegen-request-body-name": "request",
+                    "x-scope": "write",
+                },
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5316,6 +5403,11 @@ class Subscriptions(BaseSDK):
                 operation_id="executeSubscriptionModify",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={
+                    "x-codegen-request-body-name": "request",
+                    "x-scope": "write",
+                },
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5483,6 +5575,11 @@ class Subscriptions(BaseSDK):
                 operation_id="previewSubscriptionModify",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={
+                    "x-codegen-request-body-name": "request",
+                    "x-scope": "read",
+                },
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5650,6 +5747,11 @@ class Subscriptions(BaseSDK):
                 operation_id="previewSubscriptionModify",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={
+                    "x-codegen-request-body-name": "request",
+                    "x-scope": "read",
+                },
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5752,6 +5854,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionV2",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5854,6 +5958,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionV2",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -5962,6 +6068,8 @@ class Subscriptions(BaseSDK):
                 operation_id="listAllSubscriptionSchedules",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6059,6 +6167,8 @@ class Subscriptions(BaseSDK):
                 operation_id="listAllSubscriptionSchedules",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6147,6 +6257,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionSchedule",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6237,6 +6349,8 @@ class Subscriptions(BaseSDK):
                 operation_id="getSubscriptionSchedule",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6345,6 +6459,8 @@ class Subscriptions(BaseSDK):
                 operation_id="cancelSubscriptionSchedule",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6451,6 +6567,8 @@ class Subscriptions(BaseSDK):
                 operation_id="cancelSubscriptionSchedule",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions={"x-codegen-request-body-name": "request"},
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6539,6 +6657,8 @@ class Subscriptions(BaseSDK):
                 operation_id="listSubscriptionSchedules",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -6627,6 +6747,8 @@ class Subscriptions(BaseSDK):
                 operation_id="listSubscriptionSchedules",
                 oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
+                tags=["Subscriptions"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
