@@ -17,6 +17,7 @@ import weakref
 if TYPE_CHECKING:
     from flexprice.addons import Addons
     from flexprice.alerts import Alerts
+    from flexprice.alertsettings import AlertSettings
     from flexprice.checkout import Checkout
     from flexprice.costs import Costs
     from flexprice.coupon_associations import CouponAssociations
@@ -53,13 +54,14 @@ class Flexprice(BaseSDK):
     r"""Flexprice API: Flexprice API Service"""
 
     addons: "Addons"
+    credit_grants: "CreditGrants"
     entitlements: "Entitlements"
     alerts: "Alerts"
+    alert_settings: "AlertSettings"
     checkout: "Checkout"
     costs: "Costs"
     coupons: "Coupons"
     coupon_associations: "CouponAssociations"
-    credit_grants: "CreditGrants"
     credit_notes: "CreditNotes"
     customers: "Customers"
     wallets: "Wallets"
@@ -86,13 +88,14 @@ class Flexprice(BaseSDK):
     workflows: "Workflows"
     _sub_sdk_map = {
         "addons": ("flexprice.addons", "Addons"),
+        "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
         "entitlements": ("flexprice.entitlements", "Entitlements"),
         "alerts": ("flexprice.alerts", "Alerts"),
+        "alert_settings": ("flexprice.alertsettings", "AlertSettings"),
         "checkout": ("flexprice.checkout", "Checkout"),
         "costs": ("flexprice.costs", "Costs"),
         "coupons": ("flexprice.coupons", "Coupons"),
         "coupon_associations": ("flexprice.coupon_associations", "CouponAssociations"),
-        "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
         "credit_notes": ("flexprice.credit_notes", "CreditNotes"),
         "customers": ("flexprice.customers", "Customers"),
         "wallets": ("flexprice.wallets", "Wallets"),

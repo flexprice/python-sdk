@@ -63,7 +63,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.integrations.link_integration_mapping(entity_id="<id>", entity_type="item_price", provider_entity_id="<id>", provider_type="<value>")
+    res = f_client.integrations.link_integration_mapping(entity_id="<id>", entity_type="price", provider_entity_id="<id>", provider_type="<value>")
 
     # Handle response
     print(res)
