@@ -231,6 +231,7 @@ class Invoices(BaseSDK):
         coupons: Optional[Iterable[str]] = None,
         description: Optional[str] = None,
         due_date: Optional[datetime] = None,
+        force_sync_invoice: Optional[bool] = None,
         idempotency_key: Optional[str] = None,
         invoice_coupons: Optional[
             Union[
@@ -293,6 +294,10 @@ class Invoices(BaseSDK):
         :param coupons: coupons
         :param description: description is an optional text description of the invoice
         :param due_date: due_date is the date by which payment is expected
+        :param force_sync_invoice: force_sync_invoice, when true, attempts to synchronously sync this invoice to
+            Moyasar (if enabled) before returning, instead of relying solely on the async
+            Kafka + Temporal vendor-sync pipeline. Only honored by CreateOneOffInvoice.
+            Best-effort: sync failures do not fail invoice creation.
         :param idempotency_key: idempotency_key is an optional key used to prevent duplicate invoice creation
         :param invoice_coupons: Invoice Coupons
         :param invoice_number: invoice_number is an optional human-readable identifier for the invoice
@@ -337,6 +342,7 @@ class Invoices(BaseSDK):
             customer_id=customer_id,
             description=description,
             due_date=due_date,
+            force_sync_invoice=force_sync_invoice,
             idempotency_key=idempotency_key,
             invoice_coupons=utils.get_pydantic_model(
                 invoice_coupons, Optional[List[models.InvoiceCoupon]]
@@ -454,6 +460,7 @@ class Invoices(BaseSDK):
         coupons: Optional[Iterable[str]] = None,
         description: Optional[str] = None,
         due_date: Optional[datetime] = None,
+        force_sync_invoice: Optional[bool] = None,
         idempotency_key: Optional[str] = None,
         invoice_coupons: Optional[
             Union[
@@ -516,6 +523,10 @@ class Invoices(BaseSDK):
         :param coupons: coupons
         :param description: description is an optional text description of the invoice
         :param due_date: due_date is the date by which payment is expected
+        :param force_sync_invoice: force_sync_invoice, when true, attempts to synchronously sync this invoice to
+            Moyasar (if enabled) before returning, instead of relying solely on the async
+            Kafka + Temporal vendor-sync pipeline. Only honored by CreateOneOffInvoice.
+            Best-effort: sync failures do not fail invoice creation.
         :param idempotency_key: idempotency_key is an optional key used to prevent duplicate invoice creation
         :param invoice_coupons: Invoice Coupons
         :param invoice_number: invoice_number is an optional human-readable identifier for the invoice
@@ -560,6 +571,7 @@ class Invoices(BaseSDK):
             customer_id=customer_id,
             description=description,
             due_date=due_date,
+            force_sync_invoice=force_sync_invoice,
             idempotency_key=idempotency_key,
             invoice_coupons=utils.get_pydantic_model(
                 invoice_coupons, Optional[List[models.InvoiceCoupon]]
@@ -1305,6 +1317,7 @@ class Invoices(BaseSDK):
         id: str,
         expand_by_source: Optional[bool] = None,
         group_by: Optional[Iterable[str]] = None,
+        expand: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1317,6 +1330,7 @@ class Invoices(BaseSDK):
         :param id: Invoice ID
         :param expand_by_source: Include source-level price breakdown for usage line items (legacy)
         :param group_by: Group usage breakdown by specified fields (e.g., source, feature_id, properties.org_id)
+        :param expand: Comma-separated related fields to include. Supports 'tax_applied.tax_rate' to attach rate details to each applied tax.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1336,6 +1350,7 @@ class Invoices(BaseSDK):
             id=id,
             expand_by_source=expand_by_source,
             group_by=utils.unmarshal(group_by, Optional[List[str]]),
+            expand=expand,
         )
 
         req = self._build_request(
@@ -1412,6 +1427,7 @@ class Invoices(BaseSDK):
         id: str,
         expand_by_source: Optional[bool] = None,
         group_by: Optional[Iterable[str]] = None,
+        expand: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1424,6 +1440,7 @@ class Invoices(BaseSDK):
         :param id: Invoice ID
         :param expand_by_source: Include source-level price breakdown for usage line items (legacy)
         :param group_by: Group usage breakdown by specified fields (e.g., source, feature_id, properties.org_id)
+        :param expand: Comma-separated related fields to include. Supports 'tax_applied.tax_rate' to attach rate details to each applied tax.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1443,6 +1460,7 @@ class Invoices(BaseSDK):
             id=id,
             expand_by_source=expand_by_source,
             group_by=utils.unmarshal(group_by, Optional[List[str]]),
+            expand=expand,
         )
 
         req = self._build_request_async(

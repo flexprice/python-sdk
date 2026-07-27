@@ -431,6 +431,7 @@ class Costs(BaseSDK):
         expand: Optional[Iterable[str]] = None,
         external_customer_id: Optional[str] = None,
         feature_ids: Optional[Iterable[str]] = None,
+        include_children: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_time: Optional[datetime] = None,
@@ -447,6 +448,10 @@ class Costs(BaseSDK):
         :param expand: Expand options - specify which entities to expand
         :param external_customer_id: Optional - for specific customer
         :param feature_ids: Additional filters
+        :param include_children: IncludeChildren, when true and ExternalCustomerID belongs to a parent
+            customer, aggregates every inherited-child customer's usage into the
+            revenue and cost totals. Default (false) restricts the query to the
+            customer's own usage — mirrors the meter-usage analytics contract.
         :param limit: Pagination
         :param offset:
         :param start_time: Time range fields (optional - defaults to last 7 days if not provided)
@@ -470,6 +475,7 @@ class Costs(BaseSDK):
             expand=utils.unmarshal(expand, Optional[List[str]]),
             external_customer_id=external_customer_id,
             feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
+            include_children=include_children,
             limit=limit,
             offset=offset,
             start_time=start_time,
@@ -555,6 +561,7 @@ class Costs(BaseSDK):
         expand: Optional[Iterable[str]] = None,
         external_customer_id: Optional[str] = None,
         feature_ids: Optional[Iterable[str]] = None,
+        include_children: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_time: Optional[datetime] = None,
@@ -571,6 +578,10 @@ class Costs(BaseSDK):
         :param expand: Expand options - specify which entities to expand
         :param external_customer_id: Optional - for specific customer
         :param feature_ids: Additional filters
+        :param include_children: IncludeChildren, when true and ExternalCustomerID belongs to a parent
+            customer, aggregates every inherited-child customer's usage into the
+            revenue and cost totals. Default (false) restricts the query to the
+            customer's own usage — mirrors the meter-usage analytics contract.
         :param limit: Pagination
         :param offset:
         :param start_time: Time range fields (optional - defaults to last 7 days if not provided)
@@ -594,6 +605,7 @@ class Costs(BaseSDK):
             expand=utils.unmarshal(expand, Optional[List[str]]),
             external_customer_id=external_customer_id,
             feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
+            include_children=include_children,
             limit=limit,
             offset=offset,
             start_time=start_time,
@@ -679,6 +691,7 @@ class Costs(BaseSDK):
         expand: Optional[Iterable[str]] = None,
         external_customer_id: Optional[str] = None,
         feature_ids: Optional[Iterable[str]] = None,
+        include_children: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_time: Optional[datetime] = None,
@@ -695,6 +708,10 @@ class Costs(BaseSDK):
         :param expand: Expand options - specify which entities to expand
         :param external_customer_id: Optional - for specific customer
         :param feature_ids: Additional filters
+        :param include_children: IncludeChildren, when true and ExternalCustomerID belongs to a parent
+            customer, aggregates every inherited-child customer's usage into the
+            revenue and cost totals. Default (false) restricts the query to the
+            customer's own usage — mirrors the meter-usage analytics contract.
         :param limit: Pagination
         :param offset:
         :param start_time: Time range fields (optional - defaults to last 7 days if not provided)
@@ -718,6 +735,7 @@ class Costs(BaseSDK):
             expand=utils.unmarshal(expand, Optional[List[str]]),
             external_customer_id=external_customer_id,
             feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
+            include_children=include_children,
             limit=limit,
             offset=offset,
             start_time=start_time,
@@ -803,6 +821,7 @@ class Costs(BaseSDK):
         expand: Optional[Iterable[str]] = None,
         external_customer_id: Optional[str] = None,
         feature_ids: Optional[Iterable[str]] = None,
+        include_children: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         start_time: Optional[datetime] = None,
@@ -819,6 +838,10 @@ class Costs(BaseSDK):
         :param expand: Expand options - specify which entities to expand
         :param external_customer_id: Optional - for specific customer
         :param feature_ids: Additional filters
+        :param include_children: IncludeChildren, when true and ExternalCustomerID belongs to a parent
+            customer, aggregates every inherited-child customer's usage into the
+            revenue and cost totals. Default (false) restricts the query to the
+            customer's own usage — mirrors the meter-usage analytics contract.
         :param limit: Pagination
         :param offset:
         :param start_time: Time range fields (optional - defaults to last 7 days if not provided)
@@ -842,6 +865,7 @@ class Costs(BaseSDK):
             expand=utils.unmarshal(expand, Optional[List[str]]),
             external_customer_id=external_customer_id,
             feature_ids=utils.unmarshal(feature_ids, Optional[List[str]]),
+            include_children=include_children,
             limit=limit,
             offset=offset,
             start_time=start_time,

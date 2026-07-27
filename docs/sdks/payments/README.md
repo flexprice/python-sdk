@@ -83,7 +83,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.payments.create_payment(amount="883.46", currency="CFP Franc", destination_id="<id>", destination_type="CUSTOMER", payment_method_type="ACH", process_payment=True, save_card_and_make_default=False)
+    res = f_client.payments.create_payment(amount="883.46", currency="CFP Franc", destination_id="<id>", destination_type="CUSTOMER", payment_method_type="OFFLINE", process_payment=True, save_card_and_make_default=False)
 
     # Handle response
     print(res)

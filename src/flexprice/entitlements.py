@@ -217,10 +217,15 @@ class Entitlements(BaseSDK):
         *,
         feature_id: str,
         feature_type: models.FeatureType,
+        aggregation_mode: Optional[models.EntitlementAggregationMode] = None,
         config_value: Optional[Mapping[str, Any]] = None,
         end_date: Optional[datetime] = None,
         entity_id: Optional[str] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
+        grant_duration_unit: Optional[models.EntitlementGrantDurationUnit] = None,
+        grant_duration_value: Optional[int] = None,
+        grant_measure: Optional[models.EntitlementGrantMeasure] = None,
+        grant_quota: Optional[str] = None,
         is_enabled: Optional[bool] = None,
         is_soft_limit: Optional[bool] = None,
         parent_entitlement_id: Optional[str] = None,
@@ -240,10 +245,15 @@ class Entitlements(BaseSDK):
 
         :param feature_id:
         :param feature_type:
+        :param aggregation_mode:
         :param config_value:
         :param end_date:
         :param entity_id:
         :param entity_type:
+        :param grant_duration_unit:
+        :param grant_duration_value:
+        :param grant_measure:
+        :param grant_quota:
         :param is_enabled:
         :param is_soft_limit:
         :param parent_entitlement_id:
@@ -268,12 +278,17 @@ class Entitlements(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CreateEntitlementRequest(
+            aggregation_mode=aggregation_mode,
             config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
             end_date=end_date,
             entity_id=entity_id,
             entity_type=entity_type,
             feature_id=feature_id,
             feature_type=feature_type,
+            grant_duration_unit=grant_duration_unit,
+            grant_duration_value=grant_duration_value,
+            grant_measure=grant_measure,
+            grant_quota=grant_quota,
             is_enabled=is_enabled,
             is_soft_limit=is_soft_limit,
             parent_entitlement_id=parent_entitlement_id,
@@ -360,10 +375,15 @@ class Entitlements(BaseSDK):
         *,
         feature_id: str,
         feature_type: models.FeatureType,
+        aggregation_mode: Optional[models.EntitlementAggregationMode] = None,
         config_value: Optional[Mapping[str, Any]] = None,
         end_date: Optional[datetime] = None,
         entity_id: Optional[str] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
+        grant_duration_unit: Optional[models.EntitlementGrantDurationUnit] = None,
+        grant_duration_value: Optional[int] = None,
+        grant_measure: Optional[models.EntitlementGrantMeasure] = None,
+        grant_quota: Optional[str] = None,
         is_enabled: Optional[bool] = None,
         is_soft_limit: Optional[bool] = None,
         parent_entitlement_id: Optional[str] = None,
@@ -383,10 +403,15 @@ class Entitlements(BaseSDK):
 
         :param feature_id:
         :param feature_type:
+        :param aggregation_mode:
         :param config_value:
         :param end_date:
         :param entity_id:
         :param entity_type:
+        :param grant_duration_unit:
+        :param grant_duration_value:
+        :param grant_measure:
+        :param grant_quota:
         :param is_enabled:
         :param is_soft_limit:
         :param parent_entitlement_id:
@@ -411,12 +436,17 @@ class Entitlements(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CreateEntitlementRequest(
+            aggregation_mode=aggregation_mode,
             config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
             end_date=end_date,
             entity_id=entity_id,
             entity_type=entity_type,
             feature_id=feature_id,
             feature_type=feature_type,
+            grant_duration_unit=grant_duration_unit,
+            grant_duration_value=grant_duration_value,
+            grant_measure=grant_measure,
+            grant_quota=grant_quota,
             is_enabled=is_enabled,
             is_soft_limit=is_soft_limit,
             parent_entitlement_id=parent_entitlement_id,
@@ -735,6 +765,7 @@ class Entitlements(BaseSDK):
                 Iterable[models.FilterConditionTypedDict],
             ]
         ] = None,
+        has_grant_config: Optional[bool] = None,
         is_enabled: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -763,6 +794,7 @@ class Entitlements(BaseSDK):
         :param feature_ids:
         :param feature_type:
         :param filters: Specific filters for entitlements
+        :param has_grant_config: HasGrantConfig filters on grant-config presence (grant_quota set or not).
         :param is_enabled:
         :param limit:
         :param offset:
@@ -796,6 +828,7 @@ class Entitlements(BaseSDK):
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
+            has_grant_config=has_grant_config,
             is_enabled=is_enabled,
             limit=limit,
             offset=offset,
@@ -892,6 +925,7 @@ class Entitlements(BaseSDK):
                 Iterable[models.FilterConditionTypedDict],
             ]
         ] = None,
+        has_grant_config: Optional[bool] = None,
         is_enabled: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -920,6 +954,7 @@ class Entitlements(BaseSDK):
         :param feature_ids:
         :param feature_type:
         :param filters: Specific filters for entitlements
+        :param has_grant_config: HasGrantConfig filters on grant-config presence (grant_quota set or not).
         :param is_enabled:
         :param limit:
         :param offset:
@@ -953,6 +988,7 @@ class Entitlements(BaseSDK):
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
             ),
+            has_grant_config=has_grant_config,
             is_enabled=is_enabled,
             limit=limit,
             offset=offset,
@@ -1240,7 +1276,13 @@ class Entitlements(BaseSDK):
         self,
         *,
         id: str,
+        aggregation_mode: Optional[models.EntitlementAggregationMode] = None,
+        clear_grant_config: Optional[bool] = None,
         config_value: Optional[Mapping[str, Any]] = None,
+        grant_duration_unit: Optional[models.EntitlementGrantDurationUnit] = None,
+        grant_duration_value: Optional[int] = None,
+        grant_measure: Optional[models.EntitlementGrantMeasure] = None,
+        grant_quota: Optional[str] = None,
         is_enabled: Optional[bool] = None,
         is_soft_limit: Optional[bool] = None,
         static_value: Optional[str] = None,
@@ -1256,7 +1298,14 @@ class Entitlements(BaseSDK):
         Use when changing an entitlement (e.g. increasing or decreasing a limit). Request body contains the fields to update.
 
         :param id: Entitlement ID
+        :param aggregation_mode:
+        :param clear_grant_config: Grant config — nil fields leave the current value alone.
+            ClearGrantConfig=true wipes the whole grant config (back to a legacy entitlement).
         :param config_value:
+        :param grant_duration_unit:
+        :param grant_duration_value:
+        :param grant_measure:
+        :param grant_quota:
         :param is_enabled:
         :param is_soft_limit:
         :param static_value:
@@ -1280,7 +1329,13 @@ class Entitlements(BaseSDK):
         request = models.UpdateEntitlementRequestRequest(
             id=id,
             body=models.UpdateEntitlementRequest(
+                aggregation_mode=aggregation_mode,
+                clear_grant_config=clear_grant_config,
                 config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
+                grant_duration_unit=grant_duration_unit,
+                grant_duration_value=grant_duration_value,
+                grant_measure=grant_measure,
+                grant_quota=grant_quota,
                 is_enabled=is_enabled,
                 is_soft_limit=is_soft_limit,
                 static_value=static_value,
@@ -1364,7 +1419,13 @@ class Entitlements(BaseSDK):
         self,
         *,
         id: str,
+        aggregation_mode: Optional[models.EntitlementAggregationMode] = None,
+        clear_grant_config: Optional[bool] = None,
         config_value: Optional[Mapping[str, Any]] = None,
+        grant_duration_unit: Optional[models.EntitlementGrantDurationUnit] = None,
+        grant_duration_value: Optional[int] = None,
+        grant_measure: Optional[models.EntitlementGrantMeasure] = None,
+        grant_quota: Optional[str] = None,
         is_enabled: Optional[bool] = None,
         is_soft_limit: Optional[bool] = None,
         static_value: Optional[str] = None,
@@ -1380,7 +1441,14 @@ class Entitlements(BaseSDK):
         Use when changing an entitlement (e.g. increasing or decreasing a limit). Request body contains the fields to update.
 
         :param id: Entitlement ID
+        :param aggregation_mode:
+        :param clear_grant_config: Grant config — nil fields leave the current value alone.
+            ClearGrantConfig=true wipes the whole grant config (back to a legacy entitlement).
         :param config_value:
+        :param grant_duration_unit:
+        :param grant_duration_value:
+        :param grant_measure:
+        :param grant_quota:
         :param is_enabled:
         :param is_soft_limit:
         :param static_value:
@@ -1404,7 +1472,13 @@ class Entitlements(BaseSDK):
         request = models.UpdateEntitlementRequestRequest(
             id=id,
             body=models.UpdateEntitlementRequest(
+                aggregation_mode=aggregation_mode,
+                clear_grant_config=clear_grant_config,
                 config_value=utils.unmarshal(config_value, Optional[Dict[str, Any]]),
+                grant_duration_unit=grant_duration_unit,
+                grant_duration_value=grant_duration_value,
+                grant_measure=grant_measure,
+                grant_quota=grant_quota,
                 is_enabled=is_enabled,
                 is_soft_limit=is_soft_limit,
                 static_value=static_value,
