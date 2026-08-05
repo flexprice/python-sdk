@@ -2252,6 +2252,9 @@ class Wallets(BaseSDK):
         amount: Optional[str] = None,
         bonus_credits_expiry_date_utc: Optional[str] = None,
         bonus_credits_to_add: Optional[str] = None,
+        checkout: Optional[
+            Union[models.CheckoutParams, models.CheckoutParamsTypedDict]
+        ] = None,
         credits_to_add: Optional[str] = None,
         description: Optional[str] = None,
         expiry_date_utc: Optional[str] = None,
@@ -2283,6 +2286,7 @@ class Wallets(BaseSDK):
             purchase. When nil/omitted, the bonus is resolved from the tenant's
             bonus_credits_topup_config slabs (if enabled). When set, it must be greater than 0 and is
             used as-is, skipping slab resolution. To grant no bonus, omit this field entirely.
+        :param checkout:
         :param credits_to_add: credits_to_add is the number of credits to add to the wallet
         :param description: description to add any specific details about the transaction
         :param expiry_date_utc: expiry_date_utc is the expiry date in UTC timezone
@@ -2314,6 +2318,9 @@ class Wallets(BaseSDK):
                 amount=amount,
                 bonus_credits_expiry_date_utc=bonus_credits_expiry_date_utc,
                 bonus_credits_to_add=bonus_credits_to_add,
+                checkout=utils.get_pydantic_model(
+                    checkout, Optional[models.CheckoutParams]
+                ),
                 credits_to_add=credits_to_add,
                 description=description,
                 expiry_date_utc=expiry_date_utc,
@@ -2404,6 +2411,9 @@ class Wallets(BaseSDK):
         amount: Optional[str] = None,
         bonus_credits_expiry_date_utc: Optional[str] = None,
         bonus_credits_to_add: Optional[str] = None,
+        checkout: Optional[
+            Union[models.CheckoutParams, models.CheckoutParamsTypedDict]
+        ] = None,
         credits_to_add: Optional[str] = None,
         description: Optional[str] = None,
         expiry_date_utc: Optional[str] = None,
@@ -2435,6 +2445,7 @@ class Wallets(BaseSDK):
             purchase. When nil/omitted, the bonus is resolved from the tenant's
             bonus_credits_topup_config slabs (if enabled). When set, it must be greater than 0 and is
             used as-is, skipping slab resolution. To grant no bonus, omit this field entirely.
+        :param checkout:
         :param credits_to_add: credits_to_add is the number of credits to add to the wallet
         :param description: description to add any specific details about the transaction
         :param expiry_date_utc: expiry_date_utc is the expiry date in UTC timezone
@@ -2466,6 +2477,9 @@ class Wallets(BaseSDK):
                 amount=amount,
                 bonus_credits_expiry_date_utc=bonus_credits_expiry_date_utc,
                 bonus_credits_to_add=bonus_credits_to_add,
+                checkout=utils.get_pydantic_model(
+                    checkout, Optional[models.CheckoutParams]
+                ),
                 credits_to_add=credits_to_add,
                 description=description,
                 expiry_date_utc=expiry_date_utc,

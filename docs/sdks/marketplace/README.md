@@ -8,7 +8,7 @@
 
 ## post_marketplace_agreements
 
-Registers an AWS Marketplace buyer agreement against an existing FlexPrice subscription, upserting plan/subscription/customer integration mappings in one call.
+Registers an AWS Marketplace buyer agreement against an existing Flexprice subscription, upserting plan/subscription/customer integration mappings in one call.
 
 ### Example Usage
 
