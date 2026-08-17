@@ -23,7 +23,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.checkout.create_checkout_session(action="wallet_topup", customer_external_id="<id>", payment_provider="razorpay")
+    res = f_client.checkout.create_checkout_session(action="add_addon", customer_external_id="<id>", payment_provider="razorpay")
 
     # Handle response
     print(res)

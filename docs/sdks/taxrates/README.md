@@ -50,7 +50,7 @@ with Flexprice(
 
 ### Response
 
-**[List[models.TaxRateResponse]](../../models/.md)**
+**[models.ListTaxRatesResponse](../../models/listtaxratesresponse.md)**
 
 ### Errors
 

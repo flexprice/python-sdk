@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, Iterable, List, Mapping, Optional
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Union
 
 
 class Payments(BaseSDK):
@@ -317,6 +317,9 @@ class Payments(BaseSDK):
         destination_type: models.PaymentDestinationType,
         payment_method_type: models.PaymentMethodType,
         cancel_url: Optional[str] = None,
+        gateway_options: Optional[
+            Union[models.PaymentGatewayOptions, models.PaymentGatewayOptionsTypedDict]
+        ] = None,
         idempotency_key: Optional[str] = None,
         metadata: Optional[Mapping[str, str]] = None,
         payment_gateway: Optional[models.PaymentGatewayType] = None,
@@ -339,6 +342,7 @@ class Payments(BaseSDK):
         :param destination_type:
         :param payment_method_type:
         :param cancel_url:
+        :param gateway_options:
         :param idempotency_key:
         :param metadata:
         :param payment_gateway:
@@ -367,6 +371,9 @@ class Payments(BaseSDK):
             currency=currency,
             destination_id=destination_id,
             destination_type=destination_type,
+            gateway_options=utils.get_pydantic_model(
+                gateway_options, Optional[models.PaymentGatewayOptions]
+            ),
             idempotency_key=idempotency_key,
             metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             payment_gateway=payment_gateway,
@@ -457,6 +464,9 @@ class Payments(BaseSDK):
         destination_type: models.PaymentDestinationType,
         payment_method_type: models.PaymentMethodType,
         cancel_url: Optional[str] = None,
+        gateway_options: Optional[
+            Union[models.PaymentGatewayOptions, models.PaymentGatewayOptionsTypedDict]
+        ] = None,
         idempotency_key: Optional[str] = None,
         metadata: Optional[Mapping[str, str]] = None,
         payment_gateway: Optional[models.PaymentGatewayType] = None,
@@ -479,6 +489,7 @@ class Payments(BaseSDK):
         :param destination_type:
         :param payment_method_type:
         :param cancel_url:
+        :param gateway_options:
         :param idempotency_key:
         :param metadata:
         :param payment_gateway:
@@ -507,6 +518,9 @@ class Payments(BaseSDK):
             currency=currency,
             destination_id=destination_id,
             destination_type=destination_type,
+            gateway_options=utils.get_pydantic_model(
+                gateway_options, Optional[models.PaymentGatewayOptions]
+            ),
             idempotency_key=idempotency_key,
             metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             payment_gateway=payment_gateway,
