@@ -5,11 +5,13 @@ from flexprice.types import UnrecognizedStr
 from typing import Literal, Union
 
 
-EntityChangeBehaviour = Union[
+SubscriptionChangeEntityType = Union[
     Literal[
-        "carry",
-        "drop",
-        "add",
+        "plan",
+        "addon",
+        "credit_grant",
+        "entitlement",
+        "entitlement_grant",
     ],
     UnrecognizedStr,
 ]

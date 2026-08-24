@@ -45,6 +45,7 @@ if TYPE_CHECKING:
     from flexprice.tax_associations import TaxAssociations
     from flexprice.tax_rates import TaxRates
     from flexprice.tenants import Tenants
+    from flexprice.usage_records import UsageRecords
     from flexprice.users import Users
     from flexprice.wallets import Wallets
     from flexprice.webhook_events import WebhookEvents
@@ -85,6 +86,7 @@ class Flexprice(BaseSDK):
     tax_associations: "TaxAssociations"
     tax_rates: "TaxRates"
     tenants: "Tenants"
+    usage_records: "UsageRecords"
     users: "Users"
     webhook_events: "WebhookEvents"
     workflows: "Workflows"
@@ -120,6 +122,7 @@ class Flexprice(BaseSDK):
         "tax_associations": ("flexprice.tax_associations", "TaxAssociations"),
         "tax_rates": ("flexprice.tax_rates", "TaxRates"),
         "tenants": ("flexprice.tenants", "Tenants"),
+        "usage_records": ("flexprice.usage_records", "UsageRecords"),
         "users": ("flexprice.users", "Users"),
         "webhook_events": ("flexprice.webhook_events", "WebhookEvents"),
         "workflows": ("flexprice.workflows", "Workflows"),
