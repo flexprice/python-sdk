@@ -271,7 +271,6 @@ class TaxRates(BaseSDK):
         code: str,
         name: str,
         description: Optional[str] = None,
-        fixed_value: Optional[str] = None,
         metadata: Optional[Mapping[str, str]] = None,
         percentage_value: Optional[str] = None,
         scope: Optional[models.TaxRateScope] = None,
@@ -288,9 +287,8 @@ class TaxRates(BaseSDK):
         :param code: code is the unique alphanumeric case sensitive identifier for the tax rate (required)
         :param name: name is the human-readable name for the tax rate (required)
         :param description: description is an optional text description providing details about the tax rate
-        :param fixed_value: fixed_value is the fixed monetary amount when tax_rate_type is \"fixed\"
         :param metadata: metadata contains additional key-value pairs for storing extra information
-        :param percentage_value: percentage_value is the percentage value (0-100) when tax_rate_type is \"percentage\"
+        :param percentage_value: percentage_value is the percentage value (0-100)
         :param scope:
         :param tax_rate_type:
         :param retries: Override the default retry configuration for this method
@@ -311,7 +309,6 @@ class TaxRates(BaseSDK):
         request = models.CreateTaxRateRequest(
             code=code,
             description=description,
-            fixed_value=fixed_value,
             metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             percentage_value=percentage_value,
@@ -396,7 +393,6 @@ class TaxRates(BaseSDK):
         code: str,
         name: str,
         description: Optional[str] = None,
-        fixed_value: Optional[str] = None,
         metadata: Optional[Mapping[str, str]] = None,
         percentage_value: Optional[str] = None,
         scope: Optional[models.TaxRateScope] = None,
@@ -413,9 +409,8 @@ class TaxRates(BaseSDK):
         :param code: code is the unique alphanumeric case sensitive identifier for the tax rate (required)
         :param name: name is the human-readable name for the tax rate (required)
         :param description: description is an optional text description providing details about the tax rate
-        :param fixed_value: fixed_value is the fixed monetary amount when tax_rate_type is \"fixed\"
         :param metadata: metadata contains additional key-value pairs for storing extra information
-        :param percentage_value: percentage_value is the percentage value (0-100) when tax_rate_type is \"percentage\"
+        :param percentage_value: percentage_value is the percentage value (0-100)
         :param scope:
         :param tax_rate_type:
         :param retries: Override the default retry configuration for this method
@@ -436,7 +431,6 @@ class TaxRates(BaseSDK):
         request = models.CreateTaxRateRequest(
             code=code,
             description=description,
-            fixed_value=fixed_value,
             metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
             name=name,
             percentage_value=percentage_value,

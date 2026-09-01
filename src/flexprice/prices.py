@@ -23,6 +23,7 @@ class Prices(BaseSDK):
         type_: models.PriceType,
         amount: Optional[str] = None,
         billing_period_count: Optional[int] = None,
+        bucket_size: Optional[models.WindowSize] = None,
         description: Optional[str] = None,
         display_name: Optional[str] = None,
         end_date: Optional[datetime] = None,
@@ -66,6 +67,7 @@ class Prices(BaseSDK):
         :param type:
         :param amount:
         :param billing_period_count:
+        :param bucket_size:
         :param description:
         :param display_name:
         :param end_date:
@@ -101,6 +103,7 @@ class Prices(BaseSDK):
             billing_model=billing_model,
             billing_period=billing_period,
             billing_period_count=billing_period_count,
+            bucket_size=bucket_size,
             currency=currency,
             description=description,
             display_name=display_name,
@@ -216,6 +219,7 @@ class Prices(BaseSDK):
         type_: models.PriceType,
         amount: Optional[str] = None,
         billing_period_count: Optional[int] = None,
+        bucket_size: Optional[models.WindowSize] = None,
         description: Optional[str] = None,
         display_name: Optional[str] = None,
         end_date: Optional[datetime] = None,
@@ -259,6 +263,7 @@ class Prices(BaseSDK):
         :param type:
         :param amount:
         :param billing_period_count:
+        :param bucket_size:
         :param description:
         :param display_name:
         :param end_date:
@@ -294,6 +299,7 @@ class Prices(BaseSDK):
             billing_model=billing_model,
             billing_period=billing_period,
             billing_period_count=billing_period_count,
+            bucket_size=bucket_size,
             currency=currency,
             description=description,
             display_name=display_name,
@@ -1354,6 +1360,7 @@ class Prices(BaseSDK):
         id: str,
         amount: Optional[str] = None,
         billing_model: Optional[models.BillingModel] = None,
+        bucket_size: Optional[models.WindowSize] = None,
         description: Optional[str] = None,
         display_name: Optional[str] = None,
         effective_from: Optional[str] = None,
@@ -1389,6 +1396,7 @@ class Prices(BaseSDK):
         :param id: Price ID
         :param amount: Amount is the new price amount that overrides the original price (optional)
         :param billing_model:
+        :param bucket_size:
         :param description:
         :param display_name:
         :param effective_from:
@@ -1424,6 +1432,7 @@ class Prices(BaseSDK):
             body=models.UpdatePriceRequest(
                 amount=amount,
                 billing_model=billing_model,
+                bucket_size=bucket_size,
                 description=description,
                 display_name=display_name,
                 effective_from=effective_from,
@@ -1521,6 +1530,7 @@ class Prices(BaseSDK):
         id: str,
         amount: Optional[str] = None,
         billing_model: Optional[models.BillingModel] = None,
+        bucket_size: Optional[models.WindowSize] = None,
         description: Optional[str] = None,
         display_name: Optional[str] = None,
         effective_from: Optional[str] = None,
@@ -1556,6 +1566,7 @@ class Prices(BaseSDK):
         :param id: Price ID
         :param amount: Amount is the new price amount that overrides the original price (optional)
         :param billing_model:
+        :param bucket_size:
         :param description:
         :param display_name:
         :param effective_from:
@@ -1591,6 +1602,7 @@ class Prices(BaseSDK):
             body=models.UpdatePriceRequest(
                 amount=amount,
                 billing_model=billing_model,
+                bucket_size=bucket_size,
                 description=description,
                 display_name=display_name,
                 effective_from=effective_from,
