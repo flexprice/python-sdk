@@ -38,6 +38,7 @@ if TYPE_CHECKING:
     from flexprice.price_units import PriceUnits
     from flexprice.prices import Prices
     from flexprice.rbac import Rbac
+    from flexprice.refunds import Refunds
     from flexprice.scheduled_tasks import ScheduledTasks
     from flexprice.secrets import Secrets
     from flexprice.subscriptions import Subscriptions
@@ -79,6 +80,7 @@ class Flexprice(BaseSDK):
     prices: "Prices"
     price_units: "PriceUnits"
     rbac: "Rbac"
+    refunds: "Refunds"
     secrets: "Secrets"
     subscriptions: "Subscriptions"
     tasks: "Tasks"
@@ -115,6 +117,7 @@ class Flexprice(BaseSDK):
         "prices": ("flexprice.prices", "Prices"),
         "price_units": ("flexprice.price_units", "PriceUnits"),
         "rbac": ("flexprice.rbac", "Rbac"),
+        "refunds": ("flexprice.refunds", "Refunds"),
         "secrets": ("flexprice.secrets", "Secrets"),
         "subscriptions": ("flexprice.subscriptions", "Subscriptions"),
         "tasks": ("flexprice.tasks", "Tasks"),

@@ -811,6 +811,7 @@ class Payments(BaseSDK):
         error_message: Optional[str] = None,
         failed_at: Optional[datetime] = None,
         gateway_payment_id: Optional[str] = None,
+        gateway_tracking_id: Optional[str] = None,
         metadata: Optional[Mapping[str, str]] = None,
         payment_gateway: Optional[str] = None,
         payment_method_id: Optional[str] = None,
@@ -831,6 +832,8 @@ class Payments(BaseSDK):
         :param error_message:
         :param failed_at:
         :param gateway_payment_id:
+        :param gateway_tracking_id: GatewayTrackingID is the pre-payment handle at the gateway — link, hosted page,
+            invoice or order — recorded at checkout creation so the payment can be reconciled.
         :param metadata:
         :param payment_gateway:
         :param payment_method_id:
@@ -859,6 +862,7 @@ class Payments(BaseSDK):
                 error_message=error_message,
                 failed_at=failed_at,
                 gateway_payment_id=gateway_payment_id,
+                gateway_tracking_id=gateway_tracking_id,
                 metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 payment_gateway=payment_gateway,
                 payment_method_id=payment_method_id,
@@ -947,6 +951,7 @@ class Payments(BaseSDK):
         error_message: Optional[str] = None,
         failed_at: Optional[datetime] = None,
         gateway_payment_id: Optional[str] = None,
+        gateway_tracking_id: Optional[str] = None,
         metadata: Optional[Mapping[str, str]] = None,
         payment_gateway: Optional[str] = None,
         payment_method_id: Optional[str] = None,
@@ -967,6 +972,8 @@ class Payments(BaseSDK):
         :param error_message:
         :param failed_at:
         :param gateway_payment_id:
+        :param gateway_tracking_id: GatewayTrackingID is the pre-payment handle at the gateway — link, hosted page,
+            invoice or order — recorded at checkout creation so the payment can be reconciled.
         :param metadata:
         :param payment_gateway:
         :param payment_method_id:
@@ -995,6 +1002,7 @@ class Payments(BaseSDK):
                 error_message=error_message,
                 failed_at=failed_at,
                 gateway_payment_id=gateway_payment_id,
+                gateway_tracking_id=gateway_tracking_id,
                 metadata=utils.unmarshal(metadata, Optional[Dict[str, str]]),
                 payment_gateway=payment_gateway,
                 payment_method_id=payment_method_id,
