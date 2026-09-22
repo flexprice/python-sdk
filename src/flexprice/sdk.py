@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from flexprice.addons import Addons
     from flexprice.alerts import Alerts
     from flexprice.alertsettings import AlertSettings
+    from flexprice.analytics import Analytics
     from flexprice.checkout import Checkout
     from flexprice.costs import Costs
     from flexprice.coupon_associations import CouponAssociations
@@ -61,6 +62,7 @@ class Flexprice(BaseSDK):
     entitlements: "Entitlements"
     alerts: "Alerts"
     alert_settings: "AlertSettings"
+    analytics: "Analytics"
     checkout: "Checkout"
     costs: "Costs"
     coupons: "Coupons"
@@ -98,6 +100,7 @@ class Flexprice(BaseSDK):
         "entitlements": ("flexprice.entitlements", "Entitlements"),
         "alerts": ("flexprice.alerts", "Alerts"),
         "alert_settings": ("flexprice.alertsettings", "AlertSettings"),
+        "analytics": ("flexprice.analytics", "Analytics"),
         "checkout": ("flexprice.checkout", "Checkout"),
         "costs": ("flexprice.costs", "Costs"),
         "coupons": ("flexprice.coupons", "Coupons"),

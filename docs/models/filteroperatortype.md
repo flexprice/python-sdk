@@ -4,11 +4,15 @@
 
 ```python
 from flexprice.models import FilterOperatorType
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
 value: FilterOperatorType = "eq"
 ```
 
 
 ## Values
+
+This is an open enum. Unrecognized values will not fail type checks.
 
 - `"eq"`
 - `"contains"`

@@ -638,6 +638,7 @@ class Subscriptions(BaseSDK):
         addon_id: str,
         subscription_id: str,
         cadence: Optional[models.AddonCadence] = None,
+        change_at: Optional[models.ScheduleType] = None,
         checkout: Optional[
             Union[models.CheckoutParams, models.CheckoutParamsTypedDict]
         ] = None,
@@ -669,6 +670,7 @@ class Subscriptions(BaseSDK):
         :param addon_id:
         :param subscription_id:
         :param cadence:
+        :param change_at:
         :param checkout:
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per addon line item (keyed by price_id)
         :param metadata:
@@ -693,6 +695,7 @@ class Subscriptions(BaseSDK):
         request = models.AddAddonRequest(
             addon_id=addon_id,
             cadence=cadence,
+            change_at=change_at,
             checkout=utils.get_pydantic_model(
                 checkout, Optional[models.CheckoutParams]
             ),
@@ -791,6 +794,7 @@ class Subscriptions(BaseSDK):
         addon_id: str,
         subscription_id: str,
         cadence: Optional[models.AddonCadence] = None,
+        change_at: Optional[models.ScheduleType] = None,
         checkout: Optional[
             Union[models.CheckoutParams, models.CheckoutParamsTypedDict]
         ] = None,
@@ -822,6 +826,7 @@ class Subscriptions(BaseSDK):
         :param addon_id:
         :param subscription_id:
         :param cadence:
+        :param change_at:
         :param checkout:
         :param line_item_commitments: LineItemCommitments allows setting commitment configuration per addon line item (keyed by price_id)
         :param metadata:
@@ -846,6 +851,7 @@ class Subscriptions(BaseSDK):
         request = models.AddAddonRequest(
             addon_id=addon_id,
             cadence=cadence,
+            change_at=change_at,
             checkout=utils.get_pydantic_model(
                 checkout, Optional[models.CheckoutParams]
             ),
@@ -942,6 +948,7 @@ class Subscriptions(BaseSDK):
         self,
         *,
         addon_association_id: str,
+        change_at: Optional[models.ScheduleType] = None,
         effective_date: Optional[datetime] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
         reason: Optional[str] = None,
@@ -956,6 +963,7 @@ class Subscriptions(BaseSDK):
         Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
 
         :param addon_association_id:
+        :param change_at:
         :param effective_date: EffectiveDate defaults to period end when nil; mid-period with create_prorations issues a wallet credit.
         :param proration_behavior:
         :param reason:
@@ -976,6 +984,7 @@ class Subscriptions(BaseSDK):
 
         request = models.RemoveAddonRequest(
             addon_association_id=addon_association_id,
+            change_at=change_at,
             effective_date=effective_date,
             proration_behavior=proration_behavior,
             reason=reason,
@@ -1059,6 +1068,7 @@ class Subscriptions(BaseSDK):
         self,
         *,
         addon_association_id: str,
+        change_at: Optional[models.ScheduleType] = None,
         effective_date: Optional[datetime] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
         reason: Optional[str] = None,
@@ -1073,6 +1083,7 @@ class Subscriptions(BaseSDK):
         Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
 
         :param addon_association_id:
+        :param change_at:
         :param effective_date: EffectiveDate defaults to period end when nil; mid-period with create_prorations issues a wallet credit.
         :param proration_behavior:
         :param reason:
@@ -1093,6 +1104,7 @@ class Subscriptions(BaseSDK):
 
         request = models.RemoveAddonRequest(
             addon_association_id=addon_association_id,
+            change_at=change_at,
             effective_date=effective_date,
             proration_behavior=proration_behavior,
             reason=reason,
@@ -6450,6 +6462,12 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        addon_bulk_params: Optional[
+            Union[
+                models.SubModifyBulkAddonParams,
+                models.SubModifyBulkAddonParamsTypedDict,
+            ]
+        ] = None,
         addon_params: Optional[
             Union[models.SubModifyAddonParams, models.SubModifyAddonParamsTypedDict]
         ] = None,
@@ -6493,10 +6511,11 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Execute subscription modification
 
-        Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, or addon add/remove).
+        Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes settled as one netted document).
 
         :param id: Subscription ID
         :param type:
+        :param addon_bulk_params:
         :param addon_params:
         :param checkout:
         :param coupon_params:
@@ -6523,6 +6542,9 @@ class Subscriptions(BaseSDK):
         request = models.ExecuteSubscriptionModifyRequestRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                addon_bulk_params=utils.get_pydantic_model(
+                    addon_bulk_params, Optional[models.SubModifyBulkAddonParams]
+                ),
                 addon_params=utils.get_pydantic_model(
                     addon_params, Optional[models.SubModifyAddonParams]
                 ),
@@ -6636,6 +6658,12 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        addon_bulk_params: Optional[
+            Union[
+                models.SubModifyBulkAddonParams,
+                models.SubModifyBulkAddonParamsTypedDict,
+            ]
+        ] = None,
         addon_params: Optional[
             Union[models.SubModifyAddonParams, models.SubModifyAddonParamsTypedDict]
         ] = None,
@@ -6679,10 +6707,11 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Execute subscription modification
 
-        Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, or addon add/remove).
+        Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes settled as one netted document).
 
         :param id: Subscription ID
         :param type:
+        :param addon_bulk_params:
         :param addon_params:
         :param checkout:
         :param coupon_params:
@@ -6709,6 +6738,9 @@ class Subscriptions(BaseSDK):
         request = models.ExecuteSubscriptionModifyRequestRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                addon_bulk_params=utils.get_pydantic_model(
+                    addon_bulk_params, Optional[models.SubModifyBulkAddonParams]
+                ),
                 addon_params=utils.get_pydantic_model(
                     addon_params, Optional[models.SubModifyAddonParams]
                 ),
@@ -6822,6 +6854,12 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        addon_bulk_params: Optional[
+            Union[
+                models.SubModifyBulkAddonParams,
+                models.SubModifyBulkAddonParamsTypedDict,
+            ]
+        ] = None,
         addon_params: Optional[
             Union[models.SubModifyAddonParams, models.SubModifyAddonParamsTypedDict]
         ] = None,
@@ -6865,10 +6903,11 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Preview subscription modification
 
-        Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, or addon add/remove) without committing changes.
+        Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes) without committing changes.
 
         :param id: Subscription ID
         :param type:
+        :param addon_bulk_params:
         :param addon_params:
         :param checkout:
         :param coupon_params:
@@ -6895,6 +6934,9 @@ class Subscriptions(BaseSDK):
         request = models.PreviewSubscriptionModifyRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                addon_bulk_params=utils.get_pydantic_model(
+                    addon_bulk_params, Optional[models.SubModifyBulkAddonParams]
+                ),
                 addon_params=utils.get_pydantic_model(
                     addon_params, Optional[models.SubModifyAddonParams]
                 ),
@@ -7008,6 +7050,12 @@ class Subscriptions(BaseSDK):
         *,
         id: str,
         type_: models.SubscriptionModifyType,
+        addon_bulk_params: Optional[
+            Union[
+                models.SubModifyBulkAddonParams,
+                models.SubModifyBulkAddonParamsTypedDict,
+            ]
+        ] = None,
         addon_params: Optional[
             Union[models.SubModifyAddonParams, models.SubModifyAddonParamsTypedDict]
         ] = None,
@@ -7051,10 +7099,11 @@ class Subscriptions(BaseSDK):
     ) -> models.SubscriptionModifyResponse:
         r"""Preview subscription modification
 
-        Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, or addon add/remove) without committing changes.
+        Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes) without committing changes.
 
         :param id: Subscription ID
         :param type:
+        :param addon_bulk_params:
         :param addon_params:
         :param checkout:
         :param coupon_params:
@@ -7081,6 +7130,9 @@ class Subscriptions(BaseSDK):
         request = models.PreviewSubscriptionModifyRequest(
             id=id,
             body=models.ExecuteSubscriptionModifyRequest(
+                addon_bulk_params=utils.get_pydantic_model(
+                    addon_bulk_params, Optional[models.SubModifyBulkAddonParams]
+                ),
                 addon_params=utils.get_pydantic_model(
                     addon_params, Optional[models.SubModifyAddonParams]
                 ),
