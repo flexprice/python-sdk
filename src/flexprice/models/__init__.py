@@ -169,6 +169,11 @@ if TYPE_CHECKING:
         CancelSubscriptionScheduleRequest,
         CancelSubscriptionScheduleRequestTypedDict,
     )
+    from .changedaddonassociation import (
+        ChangedAddonAssociation,
+        ChangedAddonAssociationTypedDict,
+    )
+    from .changedaddonassociationaction import ChangedAddonAssociationAction
     from .changedinvoice import ChangedInvoice, ChangedInvoiceTypedDict
     from .changedinvoiceaction import ChangedInvoiceAction
     from .changedinvoicestatus import ChangedInvoiceStatus
@@ -504,6 +509,7 @@ if TYPE_CHECKING:
     from .entitlementgrantallocationbehavior import EntitlementGrantAllocationBehavior
     from .entitlementgrantdurationunit import EntitlementGrantDurationUnit
     from .entitlementgrantmeasure import EntitlementGrantMeasure
+    from .entitlementgrantstatus import EntitlementGrantStatus
     from .entitlementsource import EntitlementSource, EntitlementSourceTypedDict
     from .entitlementsourceentitytype import EntitlementSourceEntityType
     from .entitlementusageresetperiod import EntitlementUsageResetPeriod
@@ -561,6 +567,7 @@ if TYPE_CHECKING:
     )
     from .exportmetadataentitytype import ExportMetadataEntityType
     from .exportmetadatafield import ExportMetadataField, ExportMetadataFieldTypedDict
+    from .factstatus import FactStatus
     from .failurepoint import FailurePoint, FailurePointTypedDict
     from .failurepointtype import FailurePointType
     from .feature import Feature, FeatureTypedDict
@@ -800,6 +807,8 @@ if TYPE_CHECKING:
     )
     from .globalcustomfield import GlobalCustomField, GlobalCustomFieldTypedDict
     from .grain import Grain
+    from .grantallowancestate import GrantAllowanceState, GrantAllowanceStateTypedDict
+    from .grantstate import GrantState, GrantStateTypedDict
     from .group_group import GroupGroup, GroupGroupTypedDict
     from .groupedinvoicingaction import GroupedInvoicingAction
     from .groupedinvoicingchildrequest import (
@@ -851,6 +860,7 @@ if TYPE_CHECKING:
     from .invoicestatus import InvoiceStatus
     from .invoicesyncsettings import InvoiceSyncSettings, InvoiceSyncSettingsTypedDict
     from .invoicetype import InvoiceType
+    from .lineitemchange import LineItemChange, LineItemChangeTypedDict
     from .lineitemcommitmentconfig import (
         LineItemCommitmentConfig,
         LineItemCommitmentConfigTypedDict,
@@ -1046,6 +1056,7 @@ if TYPE_CHECKING:
         ModifySubscriptionParams,
         ModifySubscriptionParamsTypedDict,
     )
+    from .modifysubscriptiontype import ModifySubscriptionType
     from .onexistingentitypolicy import OnExistingEntityPolicy
     from .onpendingschedulepolicy import OnPendingSchedulePolicy
     from .overrideentitlementrequest import (
@@ -1165,6 +1176,17 @@ if TYPE_CHECKING:
     from .resetusage import ResetUsage
     from .resumemode import ResumeMode
     from .retryrefundop import RetryRefundRequest, RetryRefundRequestTypedDict
+    from .revenueallocationpolicy import RevenueAllocationPolicy
+    from .revenueanalyticsrequest import (
+        RevenueAnalyticsRequest,
+        RevenueAnalyticsRequestTypedDict,
+    )
+    from .revenueanalyticsresponse import (
+        RevenueAnalyticsResponse,
+        RevenueAnalyticsResponseTypedDict,
+    )
+    from .revenueanalyticsrow import RevenueAnalyticsRow, RevenueAnalyticsRowTypedDict
+    from .revenuegranularity import RevenueGranularity
     from .roundtype import RoundType
     from .s3compressiontype import S3CompressionType
     from .s3encryptiontype import S3EncryptionType
@@ -1225,6 +1247,10 @@ if TYPE_CHECKING:
     from .submodifyinheritancerequest import (
         SubModifyInheritanceRequest,
         SubModifyInheritanceRequestTypedDict,
+    )
+    from .submodifylineitemchangerequest import (
+        SubModifyLineItemChangeRequest,
+        SubModifyLineItemChangeRequestTypedDict,
     )
     from .submodifyquantitychangerequest import (
         SubModifyQuantityChangeRequest,
@@ -1911,6 +1937,9 @@ __all__ = [
     "CancelSubscriptionScheduleRequest",
     "CancelSubscriptionScheduleRequestTypedDict",
     "CancellationType",
+    "ChangedAddonAssociation",
+    "ChangedAddonAssociationAction",
+    "ChangedAddonAssociationTypedDict",
     "ChangedInvoice",
     "ChangedInvoiceAction",
     "ChangedInvoiceStatus",
@@ -2168,6 +2197,7 @@ __all__ = [
     "EntitlementGrantAllocationBehavior",
     "EntitlementGrantDurationUnit",
     "EntitlementGrantMeasure",
+    "EntitlementGrantStatus",
     "EntitlementResponse",
     "EntitlementResponseTypedDict",
     "EntitlementSource",
@@ -2215,6 +2245,7 @@ __all__ = [
     "ExportMetadataEntityType",
     "ExportMetadataField",
     "ExportMetadataFieldTypedDict",
+    "FactStatus",
     "FailurePoint",
     "FailurePointType",
     "FailurePointTypedDict",
@@ -2391,6 +2422,10 @@ __all__ = [
     "GlobalCustomField",
     "GlobalCustomFieldTypedDict",
     "Grain",
+    "GrantAllowanceState",
+    "GrantAllowanceStateTypedDict",
+    "GrantState",
+    "GrantStateTypedDict",
     "GroupEntityType",
     "GroupFilter",
     "GroupFilterOrder",
@@ -2438,6 +2473,8 @@ __all__ = [
     "InvoiceSyncSettings",
     "InvoiceSyncSettingsTypedDict",
     "InvoiceType",
+    "LineItemChange",
+    "LineItemChangeTypedDict",
     "LineItemCommitmentConfig",
     "LineItemCommitmentConfigTypedDict",
     "LineItemGrouping",
@@ -2570,6 +2607,7 @@ __all__ = [
     "ModifySubscriptionLineItemTypedDict",
     "ModifySubscriptionParams",
     "ModifySubscriptionParamsTypedDict",
+    "ModifySubscriptionType",
     "OnExistingEntityPolicy",
     "OnPendingSchedulePolicy",
     "OverrideEntitlementRequest",
@@ -2684,6 +2722,14 @@ __all__ = [
     "ResumeMode",
     "RetryRefundRequest",
     "RetryRefundRequestTypedDict",
+    "RevenueAllocationPolicy",
+    "RevenueAnalyticsRequest",
+    "RevenueAnalyticsRequestTypedDict",
+    "RevenueAnalyticsResponse",
+    "RevenueAnalyticsResponseTypedDict",
+    "RevenueAnalyticsRow",
+    "RevenueAnalyticsRowTypedDict",
+    "RevenueGranularity",
     "RoundType",
     "S3CompressionType",
     "S3EncryptionType",
@@ -2732,6 +2778,8 @@ __all__ = [
     "SubModifyGroupedInvoicingParamsTypedDict",
     "SubModifyInheritanceRequest",
     "SubModifyInheritanceRequestTypedDict",
+    "SubModifyLineItemChangeRequest",
+    "SubModifyLineItemChangeRequestTypedDict",
     "SubModifyQuantityChangeRequest",
     "SubModifyQuantityChangeRequestTypedDict",
     "SubModifyTaxAction",
@@ -3234,6 +3282,9 @@ _dynamic_imports: dict[str, str] = {
     "CancelSubscriptionResponseTypedDict": ".cancelsubscriptionresponse",
     "CancelSubscriptionScheduleRequest": ".cancelsubscriptionscheduleop",
     "CancelSubscriptionScheduleRequestTypedDict": ".cancelsubscriptionscheduleop",
+    "ChangedAddonAssociation": ".changedaddonassociation",
+    "ChangedAddonAssociationTypedDict": ".changedaddonassociation",
+    "ChangedAddonAssociationAction": ".changedaddonassociationaction",
     "ChangedInvoice": ".changedinvoice",
     "ChangedInvoiceTypedDict": ".changedinvoice",
     "ChangedInvoiceAction": ".changedinvoiceaction",
@@ -3489,6 +3540,7 @@ _dynamic_imports: dict[str, str] = {
     "EntitlementGrantAllocationBehavior": ".entitlementgrantallocationbehavior",
     "EntitlementGrantDurationUnit": ".entitlementgrantdurationunit",
     "EntitlementGrantMeasure": ".entitlementgrantmeasure",
+    "EntitlementGrantStatus": ".entitlementgrantstatus",
     "EntitlementSource": ".entitlementsource",
     "EntitlementSourceTypedDict": ".entitlementsource",
     "EntitlementSourceEntityType": ".entitlementsourceentitytype",
@@ -3534,6 +3586,7 @@ _dynamic_imports: dict[str, str] = {
     "ExportMetadataEntityType": ".exportmetadataentitytype",
     "ExportMetadataField": ".exportmetadatafield",
     "ExportMetadataFieldTypedDict": ".exportmetadatafield",
+    "FactStatus": ".factstatus",
     "FailurePoint": ".failurepoint",
     "FailurePointTypedDict": ".failurepoint",
     "FailurePointType": ".failurepointtype",
@@ -3712,6 +3765,10 @@ _dynamic_imports: dict[str, str] = {
     "GlobalCustomField": ".globalcustomfield",
     "GlobalCustomFieldTypedDict": ".globalcustomfield",
     "Grain": ".grain",
+    "GrantAllowanceState": ".grantallowancestate",
+    "GrantAllowanceStateTypedDict": ".grantallowancestate",
+    "GrantState": ".grantstate",
+    "GrantStateTypedDict": ".grantstate",
     "GroupGroup": ".group_group",
     "GroupGroupTypedDict": ".group_group",
     "GroupedInvoicingAction": ".groupedinvoicingaction",
@@ -3757,6 +3814,8 @@ _dynamic_imports: dict[str, str] = {
     "InvoiceSyncSettings": ".invoicesyncsettings",
     "InvoiceSyncSettingsTypedDict": ".invoicesyncsettings",
     "InvoiceType": ".invoicetype",
+    "LineItemChange": ".lineitemchange",
+    "LineItemChangeTypedDict": ".lineitemchange",
     "LineItemCommitmentConfig": ".lineitemcommitmentconfig",
     "LineItemCommitmentConfigTypedDict": ".lineitemcommitmentconfig",
     "LineItemGrouping": ".lineitemgrouping",
@@ -3889,6 +3948,7 @@ _dynamic_imports: dict[str, str] = {
     "ModifySubscriptionLineItemTypedDict": ".modifysubscriptionlineitem",
     "ModifySubscriptionParams": ".modifysubscriptionparams",
     "ModifySubscriptionParamsTypedDict": ".modifysubscriptionparams",
+    "ModifySubscriptionType": ".modifysubscriptiontype",
     "OnExistingEntityPolicy": ".onexistingentitypolicy",
     "OnPendingSchedulePolicy": ".onpendingschedulepolicy",
     "OverrideEntitlementRequest": ".overrideentitlementrequest",
@@ -3999,6 +4059,14 @@ _dynamic_imports: dict[str, str] = {
     "ResumeMode": ".resumemode",
     "RetryRefundRequest": ".retryrefundop",
     "RetryRefundRequestTypedDict": ".retryrefundop",
+    "RevenueAllocationPolicy": ".revenueallocationpolicy",
+    "RevenueAnalyticsRequest": ".revenueanalyticsrequest",
+    "RevenueAnalyticsRequestTypedDict": ".revenueanalyticsrequest",
+    "RevenueAnalyticsResponse": ".revenueanalyticsresponse",
+    "RevenueAnalyticsResponseTypedDict": ".revenueanalyticsresponse",
+    "RevenueAnalyticsRow": ".revenueanalyticsrow",
+    "RevenueAnalyticsRowTypedDict": ".revenueanalyticsrow",
+    "RevenueGranularity": ".revenuegranularity",
     "RoundType": ".roundtype",
     "S3CompressionType": ".s3compressiontype",
     "S3EncryptionType": ".s3encryptiontype",
@@ -4046,6 +4114,8 @@ _dynamic_imports: dict[str, str] = {
     "SubModifyGroupedInvoicingParamsTypedDict": ".submodifygroupedinvoicingparams",
     "SubModifyInheritanceRequest": ".submodifyinheritancerequest",
     "SubModifyInheritanceRequestTypedDict": ".submodifyinheritancerequest",
+    "SubModifyLineItemChangeRequest": ".submodifylineitemchangerequest",
+    "SubModifyLineItemChangeRequestTypedDict": ".submodifylineitemchangerequest",
     "SubModifyQuantityChangeRequest": ".submodifyquantitychangerequest",
     "SubModifyQuantityChangeRequestTypedDict": ".submodifyquantitychangerequest",
     "SubModifyTaxAction": ".submodifytaxaction",

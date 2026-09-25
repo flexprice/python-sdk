@@ -1172,7 +1172,8 @@ with Flexprice(
 
 ## execute_subscription_modify
 
-Execute a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes settled as one netted document).
+Execute a mid-cycle subscription modification (inheritance, line item change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes settled as one netted document).
+Type "quantity_change" is deprecated: use "line_item_change", which changes a fixed charge's quantity, price, or both, with the same proration and checkout behaviour.
 
 ### Example Usage
 
@@ -1204,6 +1205,7 @@ with Flexprice(
 | `coupon_params`                                                                                     | [Optional[models.SubModifyCouponParams]](../../models/submodifycouponparams.md)                     | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `grouped_invoicing_params`                                                                          | [Optional[models.SubModifyGroupedInvoicingParams]](../../models/submodifygroupedinvoicingparams.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `inheritance_params`                                                                                | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `line_item_change_params`                                                                           | [Optional[models.SubModifyLineItemChangeRequest]](../../models/submodifylineitemchangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `quantity_change_params`                                                                            | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `tax_params`                                                                                        | [Optional[models.SubModifyTaxParams]](../../models/submodifytaxparams.md)                           | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `trial_end_params`                                                                                  | [Optional[models.SubModifyTrialEndRequest]](../../models/submodifytrialendrequest.md)               | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
@@ -1223,7 +1225,8 @@ with Flexprice(
 
 ## preview_subscription_modify
 
-Preview the impact of a mid-cycle subscription modification (inheritance, quantity change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes) without committing changes.
+Preview the impact of a mid-cycle subscription modification (inheritance, line item change, grouped invoicing, trial end, coupon, tax, a single addon add/remove, or a batch of addon adds and removes) without committing changes.
+Type "quantity_change" is deprecated: use "line_item_change".
 
 ### Example Usage
 
@@ -1236,7 +1239,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="tax")
+    res = f_client.subscriptions.preview_subscription_modify(id="<id>", type_="addon")
 
     # Handle response
     print(res)
@@ -1255,6 +1258,7 @@ with Flexprice(
 | `coupon_params`                                                                                     | [Optional[models.SubModifyCouponParams]](../../models/submodifycouponparams.md)                     | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `grouped_invoicing_params`                                                                          | [Optional[models.SubModifyGroupedInvoicingParams]](../../models/submodifygroupedinvoicingparams.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `inheritance_params`                                                                                | [Optional[models.SubModifyInheritanceRequest]](../../models/submodifyinheritancerequest.md)         | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
+| `line_item_change_params`                                                                           | [Optional[models.SubModifyLineItemChangeRequest]](../../models/submodifylineitemchangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `quantity_change_params`                                                                            | [Optional[models.SubModifyQuantityChangeRequest]](../../models/submodifyquantitychangerequest.md)   | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `tax_params`                                                                                        | [Optional[models.SubModifyTaxParams]](../../models/submodifytaxparams.md)                           | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 | `trial_end_params`                                                                                  | [Optional[models.SubModifyTrialEndRequest]](../../models/submodifytrialendrequest.md)               | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
