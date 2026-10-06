@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from flexprice.environments import Environments
     from flexprice.events import Events
     from flexprice.features import Features
+    from flexprice.fx_rates import FXRates
     from flexprice.groups import Groups
     from flexprice.integrations import Integrations
     from flexprice.invoices import Invoices
@@ -74,6 +75,7 @@ class Flexprice(BaseSDK):
     environments: "Environments"
     events: "Events"
     features: "Features"
+    fx_rates: "FXRates"
     groups: "Groups"
     integrations: "Integrations"
     marketplace: "Marketplace"
@@ -112,6 +114,7 @@ class Flexprice(BaseSDK):
         "environments": ("flexprice.environments", "Environments"),
         "events": ("flexprice.events", "Events"),
         "features": ("flexprice.features", "Features"),
+        "fx_rates": ("flexprice.fx_rates", "FXRates"),
         "groups": ("flexprice.groups", "Groups"),
         "integrations": ("flexprice.integrations", "Integrations"),
         "marketplace": ("flexprice.marketplace", "Marketplace"),
