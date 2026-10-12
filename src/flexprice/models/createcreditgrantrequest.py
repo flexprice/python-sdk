@@ -6,6 +6,7 @@ from .creditgrantexpirydurationunit import CreditGrantExpiryDurationUnit
 from .creditgrantexpirytype import CreditGrantExpiryType
 from .creditgrantperiod import CreditGrantPeriod
 from .creditgrantscope import CreditGrantScope
+from .prorationbehavior import ProrationBehavior
 from datetime import datetime
 from flexprice.types import BaseModel, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -34,6 +35,7 @@ class CreateCreditGrantRequestTypedDict(TypedDict):
     period_count: NotRequired[int]
     plan_id: NotRequired[str]
     priority: NotRequired[int]
+    proration_behavior: NotRequired[ProrationBehavior]
     start_date: NotRequired[datetime]
     subscription_id: NotRequired[str]
     topup_conversion_rate: NotRequired[str]
@@ -80,6 +82,8 @@ class CreateCreditGrantRequest(BaseModel):
 
     priority: Optional[int] = None
 
+    proration_behavior: Optional[ProrationBehavior] = None
+
     start_date: Optional[datetime] = None
 
     subscription_id: Optional[str] = None
@@ -106,6 +110,7 @@ class CreateCreditGrantRequest(BaseModel):
                 "period_count",
                 "plan_id",
                 "priority",
+                "proration_behavior",
                 "start_date",
                 "subscription_id",
                 "topup_conversion_rate",
