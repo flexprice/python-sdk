@@ -15,6 +15,7 @@ from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
+    from flexprice.activity import Activity
     from flexprice.addons import Addons
     from flexprice.alerts import Alerts
     from flexprice.alertsettings import AlertSettings
@@ -58,6 +59,7 @@ if TYPE_CHECKING:
 class Flexprice(BaseSDK):
     r"""Flexprice API: Flexprice API Service"""
 
+    activity: "Activity"
     addons: "Addons"
     credit_grants: "CreditGrants"
     entitlements: "Entitlements"
@@ -97,6 +99,7 @@ class Flexprice(BaseSDK):
     webhook_events: "WebhookEvents"
     workflows: "Workflows"
     _sub_sdk_map = {
+        "activity": ("flexprice.activity", "Activity"),
         "addons": ("flexprice.addons", "Addons"),
         "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
         "entitlements": ("flexprice.entitlements", "Entitlements"),
