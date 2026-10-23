@@ -44,6 +44,7 @@ if TYPE_CHECKING:
     from flexprice.refunds import Refunds
     from flexprice.scheduled_tasks import ScheduledTasks
     from flexprice.secrets import Secrets
+    from flexprice.selfbilling import SelfBilling
     from flexprice.subscriptions import Subscriptions
     from flexprice.tasks import Tasks
     from flexprice.tax_associations import TaxAssociations
@@ -83,6 +84,7 @@ class Flexprice(BaseSDK):
     marketplace: "Marketplace"
     payments: "Payments"
     plans: "Plans"
+    self_billing: "SelfBilling"
     prices: "Prices"
     price_units: "PriceUnits"
     rbac: "Rbac"
@@ -123,6 +125,7 @@ class Flexprice(BaseSDK):
         "marketplace": ("flexprice.marketplace", "Marketplace"),
         "payments": ("flexprice.payments", "Payments"),
         "plans": ("flexprice.plans", "Plans"),
+        "self_billing": ("flexprice.selfbilling", "SelfBilling"),
         "prices": ("flexprice.prices", "Prices"),
         "price_units": ("flexprice.price_units", "PriceUnits"),
         "rbac": ("flexprice.rbac", "Rbac"),
