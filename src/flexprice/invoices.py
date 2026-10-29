@@ -922,9 +922,11 @@ class Invoices(BaseSDK):
         offset: Optional[int] = None,
         order: Optional[models.InvoiceFilterOrder] = None,
         payment_status: Optional[Iterable[models.PaymentStatus]] = None,
+        period_end_gt: Optional[str] = None,
         period_end_gte: Optional[str] = None,
         period_end_lte: Optional[str] = None,
         period_start_gte: Optional[str] = None,
+        period_start_lt: Optional[str] = None,
         period_start_lte: Optional[str] = None,
         skip_line_items: Optional[bool] = None,
         sort: Optional[
@@ -971,9 +973,11 @@ class Invoices(BaseSDK):
         :param order:
         :param payment_status: payment_status filters by the payment state of invoices
             Multiple statuses can be specified to include invoices with any of the listed payment states
+        :param period_end_gt: period_end_gt filters invoices with period_end > value
         :param period_end_gte: period_end_gte filters invoices with period_end >= value
         :param period_end_lte: period_end_lte filters invoices with period_end <= value
         :param period_start_gte: period_start_gte filters invoices with period_start >= value
+        :param period_start_lt: period_start_lt filters invoices with period_start < value
         :param period_start_lte: period_start_lte filters invoices with period_start <= value
         :param skip_line_items: SkipLineItems if true, will not include line items in the response
         :param sort:
@@ -1022,9 +1026,11 @@ class Invoices(BaseSDK):
             payment_status=utils.unmarshal(
                 payment_status, Optional[List[models.PaymentStatus]]
             ),
+            period_end_gt=period_end_gt,
             period_end_gte=period_end_gte,
             period_end_lte=period_end_lte,
             period_start_gte=period_start_gte,
+            period_start_lt=period_start_lt,
             period_start_lte=period_start_lte,
             skip_line_items=skip_line_items,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),
@@ -1133,9 +1139,11 @@ class Invoices(BaseSDK):
         offset: Optional[int] = None,
         order: Optional[models.InvoiceFilterOrder] = None,
         payment_status: Optional[Iterable[models.PaymentStatus]] = None,
+        period_end_gt: Optional[str] = None,
         period_end_gte: Optional[str] = None,
         period_end_lte: Optional[str] = None,
         period_start_gte: Optional[str] = None,
+        period_start_lt: Optional[str] = None,
         period_start_lte: Optional[str] = None,
         skip_line_items: Optional[bool] = None,
         sort: Optional[
@@ -1182,9 +1190,11 @@ class Invoices(BaseSDK):
         :param order:
         :param payment_status: payment_status filters by the payment state of invoices
             Multiple statuses can be specified to include invoices with any of the listed payment states
+        :param period_end_gt: period_end_gt filters invoices with period_end > value
         :param period_end_gte: period_end_gte filters invoices with period_end >= value
         :param period_end_lte: period_end_lte filters invoices with period_end <= value
         :param period_start_gte: period_start_gte filters invoices with period_start >= value
+        :param period_start_lt: period_start_lt filters invoices with period_start < value
         :param period_start_lte: period_start_lte filters invoices with period_start <= value
         :param skip_line_items: SkipLineItems if true, will not include line items in the response
         :param sort:
@@ -1233,9 +1243,11 @@ class Invoices(BaseSDK):
             payment_status=utils.unmarshal(
                 payment_status, Optional[List[models.PaymentStatus]]
             ),
+            period_end_gt=period_end_gt,
             period_end_gte=period_end_gte,
             period_end_lte=period_end_lte,
             period_start_gte=period_start_gte,
+            period_start_lt=period_start_lt,
             period_start_lte=period_start_lte,
             skip_line_items=skip_line_items,
             sort=utils.get_pydantic_model(sort, Optional[List[models.SortCondition]]),

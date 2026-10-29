@@ -6,7 +6,7 @@ from flexprice import models, utils
 from flexprice._hooks import HookContext
 from flexprice.types import BaseModel, OptionalNullable, UNSET
 from flexprice.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Mapping, Optional, Union, cast
+from typing import Any, Iterable, List, Mapping, Optional, Union, cast
 
 
 class ScheduledTasks(BaseSDK):
@@ -1514,6 +1514,7 @@ class ScheduledTasks(BaseSDK):
         self,
         *,
         id: str,
+        customer_external_ids: Iterable[str],
         end_time: Optional[datetime] = None,
         start_time: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1526,6 +1527,7 @@ class ScheduledTasks(BaseSDK):
         Use when you need to run a scheduled export immediately (e.g. on-demand report or catch-up). Supports optional custom time range.
 
         :param id: Scheduled Task ID
+        :param customer_external_ids: Limits a wallet_ledger export to these customers; empty means every customer.
         :param end_time:
         :param start_time:
         :param retries: Override the default retry configuration for this method
@@ -1546,6 +1548,7 @@ class ScheduledTasks(BaseSDK):
         request = models.TriggerScheduledTaskRunRequest(
             id=id,
             body=models.TriggerForceRunRequest(
+                customer_external_ids=utils.unmarshal(customer_external_ids, List[str]),
                 end_time=end_time,
                 start_time=start_time,
             ),
@@ -1630,6 +1633,7 @@ class ScheduledTasks(BaseSDK):
         self,
         *,
         id: str,
+        customer_external_ids: Iterable[str],
         end_time: Optional[datetime] = None,
         start_time: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1642,6 +1646,7 @@ class ScheduledTasks(BaseSDK):
         Use when you need to run a scheduled export immediately (e.g. on-demand report or catch-up). Supports optional custom time range.
 
         :param id: Scheduled Task ID
+        :param customer_external_ids: Limits a wallet_ledger export to these customers; empty means every customer.
         :param end_time:
         :param start_time:
         :param retries: Override the default retry configuration for this method
@@ -1662,6 +1667,7 @@ class ScheduledTasks(BaseSDK):
         request = models.TriggerScheduledTaskRunRequest(
             id=id,
             body=models.TriggerForceRunRequest(
+                customer_external_ids=utils.unmarshal(customer_external_ids, List[str]),
                 end_time=end_time,
                 start_time=start_time,
             ),

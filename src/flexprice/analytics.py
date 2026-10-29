@@ -440,6 +440,7 @@ class Analytics(BaseSDK):
         ] = None,
         grain: Optional[models.ReportQueryRequestGrain] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sort: Optional[
             Union[Iterable[models.ReportSort], Iterable[models.ReportSortTypedDict]]
         ] = None,
@@ -461,6 +462,7 @@ class Analytics(BaseSDK):
         :param filters:
         :param grain:
         :param limit:
+        :param offset:
         :param sort:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -488,6 +490,7 @@ class Analytics(BaseSDK):
                 ),
                 grain=grain,
                 limit=limit,
+                offset=offset,
                 range=range,
                 shape=shape,
                 sort=utils.get_pydantic_model(sort, Optional[List[models.ReportSort]]),
@@ -582,6 +585,7 @@ class Analytics(BaseSDK):
         ] = None,
         grain: Optional[models.ReportQueryRequestGrain] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         sort: Optional[
             Union[Iterable[models.ReportSort], Iterable[models.ReportSortTypedDict]]
         ] = None,
@@ -603,6 +607,7 @@ class Analytics(BaseSDK):
         :param filters:
         :param grain:
         :param limit:
+        :param offset:
         :param sort:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -630,6 +635,7 @@ class Analytics(BaseSDK):
                 ),
                 grain=grain,
                 limit=limit,
+                offset=offset,
                 range=range,
                 shape=shape,
                 sort=utils.get_pydantic_model(sort, Optional[List[models.ReportSort]]),
