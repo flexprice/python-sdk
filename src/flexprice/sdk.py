@@ -15,6 +15,7 @@ from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
+    from flexprice.accounting_periods import AccountingPeriods
     from flexprice.activity import Activity
     from flexprice.addons import Addons
     from flexprice.alerts import Alerts
@@ -22,6 +23,7 @@ if TYPE_CHECKING:
     from flexprice.analytics import Analytics
     from flexprice.checkout import Checkout
     from flexprice.commitments import Commitments
+    from flexprice.contracts import Contracts
     from flexprice.costs import Costs
     from flexprice.coupon_associations import CouponAssociations
     from flexprice.coupons import Coupons
@@ -36,13 +38,17 @@ if TYPE_CHECKING:
     from flexprice.groups import Groups
     from flexprice.integrations import Integrations
     from flexprice.invoices import Invoices
+    from flexprice.journal_entries import JournalEntries
     from flexprice.marketplace import Marketplace
     from flexprice.payments import Payments
+    from flexprice.performance_obligations import PerformanceObligations
     from flexprice.plans import Plans
     from flexprice.price_units import PriceUnits
     from flexprice.prices import Prices
+    from flexprice.products import Products
     from flexprice.rbac import Rbac
     from flexprice.refunds import Refunds
+    from flexprice.revenue_reports import RevenueReports
     from flexprice.scheduled_tasks import ScheduledTasks
     from flexprice.secrets import Secrets
     from flexprice.selfbilling import SelfBilling
@@ -61,6 +67,7 @@ if TYPE_CHECKING:
 class Flexprice(BaseSDK):
     r"""Flexprice API: Flexprice API Service"""
 
+    accounting_periods: "AccountingPeriods"
     activity: "Activity"
     addons: "Addons"
     credit_grants: "CreditGrants"
@@ -70,6 +77,7 @@ class Flexprice(BaseSDK):
     analytics: "Analytics"
     checkout: "Checkout"
     commitments: "Commitments"
+    contracts: "Contracts"
     costs: "Costs"
     coupons: "Coupons"
     coupon_associations: "CouponAssociations"
@@ -83,14 +91,18 @@ class Flexprice(BaseSDK):
     fx_rates: "FXRates"
     groups: "Groups"
     integrations: "Integrations"
+    journal_entries: "JournalEntries"
     marketplace: "Marketplace"
     payments: "Payments"
+    performance_obligations: "PerformanceObligations"
     plans: "Plans"
     self_billing: "SelfBilling"
     prices: "Prices"
     price_units: "PriceUnits"
+    products: "Products"
     rbac: "Rbac"
     refunds: "Refunds"
+    revenue_reports: "RevenueReports"
     secrets: "Secrets"
     subscriptions: "Subscriptions"
     tasks: "Tasks"
@@ -103,6 +115,7 @@ class Flexprice(BaseSDK):
     webhook_events: "WebhookEvents"
     workflows: "Workflows"
     _sub_sdk_map = {
+        "accounting_periods": ("flexprice.accounting_periods", "AccountingPeriods"),
         "activity": ("flexprice.activity", "Activity"),
         "addons": ("flexprice.addons", "Addons"),
         "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
@@ -112,6 +125,7 @@ class Flexprice(BaseSDK):
         "analytics": ("flexprice.analytics", "Analytics"),
         "checkout": ("flexprice.checkout", "Checkout"),
         "commitments": ("flexprice.commitments", "Commitments"),
+        "contracts": ("flexprice.contracts", "Contracts"),
         "costs": ("flexprice.costs", "Costs"),
         "coupons": ("flexprice.coupons", "Coupons"),
         "coupon_associations": ("flexprice.coupon_associations", "CouponAssociations"),
@@ -125,14 +139,21 @@ class Flexprice(BaseSDK):
         "fx_rates": ("flexprice.fx_rates", "FXRates"),
         "groups": ("flexprice.groups", "Groups"),
         "integrations": ("flexprice.integrations", "Integrations"),
+        "journal_entries": ("flexprice.journal_entries", "JournalEntries"),
         "marketplace": ("flexprice.marketplace", "Marketplace"),
         "payments": ("flexprice.payments", "Payments"),
+        "performance_obligations": (
+            "flexprice.performance_obligations",
+            "PerformanceObligations",
+        ),
         "plans": ("flexprice.plans", "Plans"),
         "self_billing": ("flexprice.selfbilling", "SelfBilling"),
         "prices": ("flexprice.prices", "Prices"),
         "price_units": ("flexprice.price_units", "PriceUnits"),
+        "products": ("flexprice.products", "Products"),
         "rbac": ("flexprice.rbac", "Rbac"),
         "refunds": ("flexprice.refunds", "Refunds"),
+        "revenue_reports": ("flexprice.revenue_reports", "RevenueReports"),
         "secrets": ("flexprice.secrets", "Secrets"),
         "subscriptions": ("flexprice.subscriptions", "Subscriptions"),
         "tasks": ("flexprice.tasks", "Tasks"),

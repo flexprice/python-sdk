@@ -938,6 +938,7 @@ class Invoices(BaseSDK):
         status: Optional[models.Status] = None,
         subscription_customer_id: Optional[Iterable[str]] = None,
         subscription_id: Optional[str] = None,
+        updated_at_gte: Optional[datetime] = None,
         voided_at_gte: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -986,6 +987,7 @@ class Invoices(BaseSDK):
         :param subscription_customer_id: subscription_customer_id filters invoices by the subscription owner's customer ID
         :param subscription_id: subscription_id filters invoices generated for a specific subscription
             Only returns invoices that were created as part of the specified subscription's billing
+        :param updated_at_gte: updated_at_gte filters invoices updated at or after the given instant
         :param voided_at_gte: voided_at_gte filters invoices voided at or after the given instant
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1040,6 +1042,7 @@ class Invoices(BaseSDK):
                 subscription_customer_id, Optional[List[str]]
             ),
             subscription_id=subscription_id,
+            updated_at_gte=updated_at_gte,
             voided_at_gte=voided_at_gte,
         )
 
@@ -1155,6 +1158,7 @@ class Invoices(BaseSDK):
         status: Optional[models.Status] = None,
         subscription_customer_id: Optional[Iterable[str]] = None,
         subscription_id: Optional[str] = None,
+        updated_at_gte: Optional[datetime] = None,
         voided_at_gte: Optional[datetime] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1203,6 +1207,7 @@ class Invoices(BaseSDK):
         :param subscription_customer_id: subscription_customer_id filters invoices by the subscription owner's customer ID
         :param subscription_id: subscription_id filters invoices generated for a specific subscription
             Only returns invoices that were created as part of the specified subscription's billing
+        :param updated_at_gte: updated_at_gte filters invoices updated at or after the given instant
         :param voided_at_gte: voided_at_gte filters invoices voided at or after the given instant
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1257,6 +1262,7 @@ class Invoices(BaseSDK):
                 subscription_customer_id, Optional[List[str]]
             ),
             subscription_id=subscription_id,
+            updated_at_gte=updated_at_gte,
             voided_at_gte=voided_at_gte,
         )
 

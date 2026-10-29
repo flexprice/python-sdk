@@ -215,13 +215,13 @@ class Entitlements(BaseSDK):
     def create_entitlement(
         self,
         *,
-        feature_id: str,
-        feature_type: models.FeatureType,
         aggregation_mode: Optional[models.EntitlementAggregationMode] = None,
         config_value: Optional[Mapping[str, Any]] = None,
         end_date: Optional[datetime] = None,
         entity_id: Optional[str] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
+        feature_id: Optional[str] = None,
+        feature_type: Optional[models.FeatureType] = None,
         grant_allocation_behavior: Optional[
             models.EntitlementGrantAllocationBehavior
         ] = None,
@@ -247,13 +247,13 @@ class Entitlements(BaseSDK):
 
         Use when attaching a feature (and its limit) to a plan or addon (e.g. \"10 seats\" or \"1000 API calls\"). Defines what the plan/addon includes.
 
-        :param feature_id:
-        :param feature_type:
         :param aggregation_mode:
         :param config_value:
         :param end_date:
         :param entity_id:
         :param entity_type:
+        :param feature_id: Required, except on a subscription entitlement grant (entity_type SUBSCRIPTION with grant config), which has no feature.
+        :param feature_type:
         :param grant_allocation_behavior:
         :param grant_duration_unit:
         :param grant_duration_value:
@@ -381,13 +381,13 @@ class Entitlements(BaseSDK):
     async def create_entitlement_async(
         self,
         *,
-        feature_id: str,
-        feature_type: models.FeatureType,
         aggregation_mode: Optional[models.EntitlementAggregationMode] = None,
         config_value: Optional[Mapping[str, Any]] = None,
         end_date: Optional[datetime] = None,
         entity_id: Optional[str] = None,
         entity_type: Optional[models.EntitlementEntityType] = None,
+        feature_id: Optional[str] = None,
+        feature_type: Optional[models.FeatureType] = None,
         grant_allocation_behavior: Optional[
             models.EntitlementGrantAllocationBehavior
         ] = None,
@@ -413,13 +413,13 @@ class Entitlements(BaseSDK):
 
         Use when attaching a feature (and its limit) to a plan or addon (e.g. \"10 seats\" or \"1000 API calls\"). Defines what the plan/addon includes.
 
-        :param feature_id:
-        :param feature_type:
         :param aggregation_mode:
         :param config_value:
         :param end_date:
         :param entity_id:
         :param entity_type:
+        :param feature_id: Required, except on a subscription entitlement grant (entity_type SUBSCRIPTION with grant config), which has no feature.
+        :param feature_type:
         :param grant_allocation_behavior:
         :param grant_duration_unit:
         :param grant_duration_value:
@@ -781,6 +781,7 @@ class Entitlements(BaseSDK):
                 Iterable[models.FilterConditionTypedDict],
             ]
         ] = None,
+        grant_scopes: Optional[Iterable[models.EntitlementGrantScopeEntityType]] = None,
         has_grant_config: Optional[bool] = None,
         is_enabled: Optional[bool] = None,
         limit: Optional[int] = None,
@@ -810,6 +811,8 @@ class Entitlements(BaseSDK):
         :param feature_ids:
         :param feature_type:
         :param filters: Specific filters for entitlements
+        :param grant_scopes: GrantScopes selects entitlements by grant scope. Empty means feature only, so
+            subscription entitlement grants, which have no feature, never reach feature-based reads.
         :param has_grant_config: HasGrantConfig filters on grant-config presence (grant_quota set or not).
         :param is_enabled:
         :param limit:
@@ -843,6 +846,9 @@ class Entitlements(BaseSDK):
             feature_type=feature_type,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
+            ),
+            grant_scopes=utils.unmarshal(
+                grant_scopes, Optional[List[models.EntitlementGrantScopeEntityType]]
             ),
             has_grant_config=has_grant_config,
             is_enabled=is_enabled,
@@ -941,6 +947,7 @@ class Entitlements(BaseSDK):
                 Iterable[models.FilterConditionTypedDict],
             ]
         ] = None,
+        grant_scopes: Optional[Iterable[models.EntitlementGrantScopeEntityType]] = None,
         has_grant_config: Optional[bool] = None,
         is_enabled: Optional[bool] = None,
         limit: Optional[int] = None,
@@ -970,6 +977,8 @@ class Entitlements(BaseSDK):
         :param feature_ids:
         :param feature_type:
         :param filters: Specific filters for entitlements
+        :param grant_scopes: GrantScopes selects entitlements by grant scope. Empty means feature only, so
+            subscription entitlement grants, which have no feature, never reach feature-based reads.
         :param has_grant_config: HasGrantConfig filters on grant-config presence (grant_quota set or not).
         :param is_enabled:
         :param limit:
@@ -1003,6 +1012,9 @@ class Entitlements(BaseSDK):
             feature_type=feature_type,
             filters=utils.get_pydantic_model(
                 filters, Optional[List[models.FilterCondition]]
+            ),
+            grant_scopes=utils.unmarshal(
+                grant_scopes, Optional[List[models.EntitlementGrantScopeEntityType]]
             ),
             has_grant_config=has_grant_config,
             is_enabled=is_enabled,

@@ -94,6 +94,7 @@ class PriceResponseTypedDict(TypedDict):
     r"""PriceUnitTiers are the tiers for the price unit when BillingModel is TIERED"""
     price_unit_type: NotRequired[PriceUnitType]
     pricing_unit: NotRequired[PriceUnitResponseTypedDict]
+    product_id: NotRequired[str]
     sequence: NotRequired[int]
     r"""Sequence is the monotonic stamp bumped on every state change that
     subscription line items need to react to. Read by the plan-price sync;
@@ -216,6 +217,8 @@ class PriceResponse(BaseModel):
 
     pricing_unit: Optional[PriceUnitResponse] = None
 
+    product_id: Optional[str] = None
+
     sequence: Optional[int] = None
     r"""Sequence is the monotonic stamp bumped on every state change that
     subscription line items need to react to. Read by the plan-price sync;
@@ -288,6 +291,7 @@ class PriceResponse(BaseModel):
                 "price_unit_tiers",
                 "price_unit_type",
                 "pricing_unit",
+                "product_id",
                 "sequence",
                 "start_date",
                 "status",

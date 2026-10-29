@@ -36,6 +36,7 @@ class Prices(BaseSDK):
         price_unit_config: Optional[
             Union[models.PriceUnitConfig, models.PriceUnitConfigTypedDict]
         ] = None,
+        product_id: Optional[str] = None,
         start_date: Optional[datetime] = None,
         tier_mode: Optional[models.BillingTier] = None,
         tiers: Optional[
@@ -78,6 +79,7 @@ class Prices(BaseSDK):
         :param meter_id:
         :param min_quantity: MinQuantity is the minimum quantity of the price
         :param price_unit_config:
+        :param product_id:
         :param start_date:
         :param tier_mode:
         :param tiers:
@@ -123,6 +125,7 @@ class Prices(BaseSDK):
                 price_unit_config, Optional[models.PriceUnitConfig]
             ),
             price_unit_type=price_unit_type,
+            product_id=product_id,
             start_date=start_date,
             tier_mode=tier_mode,
             tiers=utils.get_pydantic_model(
@@ -232,6 +235,7 @@ class Prices(BaseSDK):
         price_unit_config: Optional[
             Union[models.PriceUnitConfig, models.PriceUnitConfigTypedDict]
         ] = None,
+        product_id: Optional[str] = None,
         start_date: Optional[datetime] = None,
         tier_mode: Optional[models.BillingTier] = None,
         tiers: Optional[
@@ -274,6 +278,7 @@ class Prices(BaseSDK):
         :param meter_id:
         :param min_quantity: MinQuantity is the minimum quantity of the price
         :param price_unit_config:
+        :param product_id:
         :param start_date:
         :param tier_mode:
         :param tiers:
@@ -319,6 +324,7 @@ class Prices(BaseSDK):
                 price_unit_config, Optional[models.PriceUnitConfig]
             ),
             price_unit_type=price_unit_type,
+            product_id=product_id,
             start_date=start_date,
             tier_mode=tier_mode,
             tiers=utils.get_pydantic_model(
@@ -840,6 +846,7 @@ class Prices(BaseSDK):
         parent_price_id: Optional[str] = None,
         plan_ids: Optional[Iterable[str]] = None,
         price_ids: Optional[Iterable[str]] = None,
+        product_ids: Optional[Iterable[str]] = None,
         sort: Optional[str] = None,
         start_date_lt: Optional[str] = None,
         start_time: Optional[datetime] = None,
@@ -869,6 +876,7 @@ class Prices(BaseSDK):
         :param parent_price_id:
         :param plan_ids: Price override filtering fields
         :param price_ids:
+        :param product_ids:
         :param sort:
         :param start_date_lt:
         :param start_time:
@@ -911,6 +919,7 @@ class Prices(BaseSDK):
             parent_price_id=parent_price_id,
             plan_ids=utils.unmarshal(plan_ids, Optional[List[str]]),
             price_ids=utils.unmarshal(price_ids, Optional[List[str]]),
+            product_ids=utils.unmarshal(product_ids, Optional[List[str]]),
             sort=sort,
             start_date_lt=start_date_lt,
             start_time=start_time,
@@ -1012,6 +1021,7 @@ class Prices(BaseSDK):
         parent_price_id: Optional[str] = None,
         plan_ids: Optional[Iterable[str]] = None,
         price_ids: Optional[Iterable[str]] = None,
+        product_ids: Optional[Iterable[str]] = None,
         sort: Optional[str] = None,
         start_date_lt: Optional[str] = None,
         start_time: Optional[datetime] = None,
@@ -1041,6 +1051,7 @@ class Prices(BaseSDK):
         :param parent_price_id:
         :param plan_ids: Price override filtering fields
         :param price_ids:
+        :param product_ids:
         :param sort:
         :param start_date_lt:
         :param start_time:
@@ -1083,6 +1094,7 @@ class Prices(BaseSDK):
             parent_price_id=parent_price_id,
             plan_ids=utils.unmarshal(plan_ids, Optional[List[str]]),
             price_ids=utils.unmarshal(price_ids, Optional[List[str]]),
+            product_ids=utils.unmarshal(product_ids, Optional[List[str]]),
             sort=sort,
             start_date_lt=start_date_lt,
             start_time=start_time,
@@ -1384,6 +1396,7 @@ class Prices(BaseSDK):
                 Iterable[models.CreatePriceTierTypedDict],
             ]
         ] = None,
+        product_id: Optional[str] = None,
         tier_mode: Optional[models.BillingTier] = None,
         tiers: Optional[
             Union[
@@ -1419,6 +1432,7 @@ class Prices(BaseSDK):
         :param metadata:
         :param price_unit_amount: PriceUnitAmount is the price unit amount (for CUSTOM price unit type, FLAT_FEE/PACKAGE billing models)
         :param price_unit_tiers: PriceUnitTiers are the price unit tiers (for CUSTOM price unit type, TIERED billing model)
+        :param product_id: ProductID sets the price's product while it has none; once set it never changes.
         :param tier_mode:
         :param tiers: Tiers determines the pricing tiers for this line item
         :param transform_quantity:
@@ -1453,6 +1467,7 @@ class Prices(BaseSDK):
                 price_unit_tiers=utils.get_pydantic_model(
                     price_unit_tiers, Optional[List[models.CreatePriceTier]]
                 ),
+                product_id=product_id,
                 tier_mode=tier_mode,
                 tiers=utils.get_pydantic_model(
                     tiers, Optional[List[models.CreatePriceTier]]
@@ -1554,6 +1569,7 @@ class Prices(BaseSDK):
                 Iterable[models.CreatePriceTierTypedDict],
             ]
         ] = None,
+        product_id: Optional[str] = None,
         tier_mode: Optional[models.BillingTier] = None,
         tiers: Optional[
             Union[
@@ -1589,6 +1605,7 @@ class Prices(BaseSDK):
         :param metadata:
         :param price_unit_amount: PriceUnitAmount is the price unit amount (for CUSTOM price unit type, FLAT_FEE/PACKAGE billing models)
         :param price_unit_tiers: PriceUnitTiers are the price unit tiers (for CUSTOM price unit type, TIERED billing model)
+        :param product_id: ProductID sets the price's product while it has none; once set it never changes.
         :param tier_mode:
         :param tiers: Tiers determines the pricing tiers for this line item
         :param transform_quantity:
@@ -1623,6 +1640,7 @@ class Prices(BaseSDK):
                 price_unit_tiers=utils.get_pydantic_model(
                     price_unit_tiers, Optional[List[models.CreatePriceTier]]
                 ),
+                product_id=product_id,
                 tier_mode=tier_mode,
                 tiers=utils.get_pydantic_model(
                     tiers, Optional[List[models.CreatePriceTier]]

@@ -8,7 +8,7 @@ with Flexprice(
     api_key_auth="<YOUR_API_KEY_HERE>",
 ) as f_client:
 
-    res = f_client.activity.list_activity()
+    res = f_client.accounting_periods.query_accounting_period()
 
     # Handle response
     print(res)
@@ -29,7 +29,7 @@ async def main():
         api_key_auth="<YOUR_API_KEY_HERE>",
     ) as f_client:
 
-        res = await f_client.activity.list_activity_async()
+        res = await f_client.accounting_periods.query_accounting_period_async()
 
         # Handle response
         print(res)
