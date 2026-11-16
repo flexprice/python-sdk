@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from flexprice.alerts import Alerts
     from flexprice.alertsettings import AlertSettings
     from flexprice.analytics import Analytics
+    from flexprice.billing_entities import BillingEntities
     from flexprice.checkout import Checkout
     from flexprice.commitments import Commitments
     from flexprice.contracts import Contracts
@@ -75,6 +76,7 @@ class Flexprice(BaseSDK):
     alerts: "Alerts"
     alert_settings: "AlertSettings"
     analytics: "Analytics"
+    billing_entities: "BillingEntities"
     checkout: "Checkout"
     commitments: "Commitments"
     contracts: "Contracts"
@@ -123,6 +125,7 @@ class Flexprice(BaseSDK):
         "alerts": ("flexprice.alerts", "Alerts"),
         "alert_settings": ("flexprice.alertsettings", "AlertSettings"),
         "analytics": ("flexprice.analytics", "Analytics"),
+        "billing_entities": ("flexprice.billing_entities", "BillingEntities"),
         "checkout": ("flexprice.checkout", "Checkout"),
         "commitments": ("flexprice.commitments", "Commitments"),
         "contracts": ("flexprice.contracts", "Contracts"),

@@ -115,6 +115,8 @@ class PriceResponseTypedDict(TypedDict):
     type: NotRequired[PriceType]
     updated_at: NotRequired[datetime]
     updated_by: NotRequired[str]
+    warnings: NotRequired[List[str]]
+    r"""Warnings lists defaults applied on create that the caller may want to set explicitly."""
 
 
 class PriceResponse(BaseModel):
@@ -250,6 +252,9 @@ class PriceResponse(BaseModel):
 
     updated_by: Optional[str] = None
 
+    warnings: Optional[List[str]] = None
+    r"""Warnings lists defaults applied on create that the caller may want to set explicitly."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
@@ -303,6 +308,7 @@ class PriceResponse(BaseModel):
                 "type",
                 "updated_at",
                 "updated_by",
+                "warnings",
             ]
         )
         nullable_fields = set(["min_quantity"])
