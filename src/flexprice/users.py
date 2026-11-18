@@ -1369,7 +1369,7 @@ class Users(BaseSDK):
     ):
         r"""Remove user from tenant
 
-        Remove a human user (type=user) from the current tenant. Not supported for service accounts; use DELETE /users/{id} for those.
+        Remove a human user (type=user) from the current tenant. Also revokes every API key the user owns, in all environments. Not supported for service accounts; use DELETE /users/{id} for those.
 
         :param id: User ID
         :param retries: Override the default retry configuration for this method
@@ -1470,7 +1470,7 @@ class Users(BaseSDK):
     ):
         r"""Remove user from tenant
 
-        Remove a human user (type=user) from the current tenant. Not supported for service accounts; use DELETE /users/{id} for those.
+        Remove a human user (type=user) from the current tenant. Also revokes every API key the user owns, in all environments. Not supported for service accounts; use DELETE /users/{id} for those.
 
         :param id: User ID
         :param retries: Override the default retry configuration for this method

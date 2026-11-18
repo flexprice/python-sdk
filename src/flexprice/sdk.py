@@ -61,7 +61,6 @@ if TYPE_CHECKING:
     from flexprice.usage_records import UsageRecords
     from flexprice.users import Users
     from flexprice.wallets import Wallets
-    from flexprice.webhook_events import WebhookEvents
     from flexprice.workflows import Workflows
 
 
@@ -71,8 +70,6 @@ class Flexprice(BaseSDK):
     accounting_periods: "AccountingPeriods"
     activity: "Activity"
     addons: "Addons"
-    credit_grants: "CreditGrants"
-    entitlements: "Entitlements"
     alerts: "Alerts"
     alert_settings: "AlertSettings"
     analytics: "Analytics"
@@ -81,47 +78,46 @@ class Flexprice(BaseSDK):
     commitments: "Commitments"
     contracts: "Contracts"
     costs: "Costs"
-    coupons: "Coupons"
     coupon_associations: "CouponAssociations"
+    coupons: "Coupons"
+    credit_grants: "CreditGrants"
     credit_notes: "CreditNotes"
     customers: "Customers"
-    wallets: "Wallets"
-    invoices: "Invoices"
+    entitlements: "Entitlements"
     environments: "Environments"
     events: "Events"
     features: "Features"
     fx_rates: "FXRates"
     groups: "Groups"
     integrations: "Integrations"
+    invoices: "Invoices"
     journal_entries: "JournalEntries"
     marketplace: "Marketplace"
     payments: "Payments"
     performance_obligations: "PerformanceObligations"
     plans: "Plans"
-    self_billing: "SelfBilling"
-    prices: "Prices"
     price_units: "PriceUnits"
+    prices: "Prices"
     products: "Products"
     rbac: "Rbac"
     refunds: "Refunds"
     revenue_reports: "RevenueReports"
+    scheduled_tasks: "ScheduledTasks"
     secrets: "Secrets"
+    self_billing: "SelfBilling"
     subscriptions: "Subscriptions"
     tasks: "Tasks"
-    scheduled_tasks: "ScheduledTasks"
     tax_associations: "TaxAssociations"
     tax_rates: "TaxRates"
     tenants: "Tenants"
     usage_records: "UsageRecords"
     users: "Users"
-    webhook_events: "WebhookEvents"
+    wallets: "Wallets"
     workflows: "Workflows"
     _sub_sdk_map = {
         "accounting_periods": ("flexprice.accounting_periods", "AccountingPeriods"),
         "activity": ("flexprice.activity", "Activity"),
         "addons": ("flexprice.addons", "Addons"),
-        "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
-        "entitlements": ("flexprice.entitlements", "Entitlements"),
         "alerts": ("flexprice.alerts", "Alerts"),
         "alert_settings": ("flexprice.alertsettings", "AlertSettings"),
         "analytics": ("flexprice.analytics", "Analytics"),
@@ -130,18 +126,19 @@ class Flexprice(BaseSDK):
         "commitments": ("flexprice.commitments", "Commitments"),
         "contracts": ("flexprice.contracts", "Contracts"),
         "costs": ("flexprice.costs", "Costs"),
-        "coupons": ("flexprice.coupons", "Coupons"),
         "coupon_associations": ("flexprice.coupon_associations", "CouponAssociations"),
+        "coupons": ("flexprice.coupons", "Coupons"),
+        "credit_grants": ("flexprice.credit_grants", "CreditGrants"),
         "credit_notes": ("flexprice.credit_notes", "CreditNotes"),
         "customers": ("flexprice.customers", "Customers"),
-        "wallets": ("flexprice.wallets", "Wallets"),
-        "invoices": ("flexprice.invoices", "Invoices"),
+        "entitlements": ("flexprice.entitlements", "Entitlements"),
         "environments": ("flexprice.environments", "Environments"),
         "events": ("flexprice.events", "Events"),
         "features": ("flexprice.features", "Features"),
         "fx_rates": ("flexprice.fx_rates", "FXRates"),
         "groups": ("flexprice.groups", "Groups"),
         "integrations": ("flexprice.integrations", "Integrations"),
+        "invoices": ("flexprice.invoices", "Invoices"),
         "journal_entries": ("flexprice.journal_entries", "JournalEntries"),
         "marketplace": ("flexprice.marketplace", "Marketplace"),
         "payments": ("flexprice.payments", "Payments"),
@@ -150,23 +147,23 @@ class Flexprice(BaseSDK):
             "PerformanceObligations",
         ),
         "plans": ("flexprice.plans", "Plans"),
-        "self_billing": ("flexprice.selfbilling", "SelfBilling"),
-        "prices": ("flexprice.prices", "Prices"),
         "price_units": ("flexprice.price_units", "PriceUnits"),
+        "prices": ("flexprice.prices", "Prices"),
         "products": ("flexprice.products", "Products"),
         "rbac": ("flexprice.rbac", "Rbac"),
         "refunds": ("flexprice.refunds", "Refunds"),
         "revenue_reports": ("flexprice.revenue_reports", "RevenueReports"),
+        "scheduled_tasks": ("flexprice.scheduled_tasks", "ScheduledTasks"),
         "secrets": ("flexprice.secrets", "Secrets"),
+        "self_billing": ("flexprice.selfbilling", "SelfBilling"),
         "subscriptions": ("flexprice.subscriptions", "Subscriptions"),
         "tasks": ("flexprice.tasks", "Tasks"),
-        "scheduled_tasks": ("flexprice.scheduled_tasks", "ScheduledTasks"),
         "tax_associations": ("flexprice.tax_associations", "TaxAssociations"),
         "tax_rates": ("flexprice.tax_rates", "TaxRates"),
         "tenants": ("flexprice.tenants", "Tenants"),
         "usage_records": ("flexprice.usage_records", "UsageRecords"),
         "users": ("flexprice.users", "Users"),
-        "webhook_events": ("flexprice.webhook_events", "WebhookEvents"),
+        "wallets": ("flexprice.wallets", "Wallets"),
         "workflows": ("flexprice.workflows", "Workflows"),
     }
 

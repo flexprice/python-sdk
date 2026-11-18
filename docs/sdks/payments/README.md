@@ -6,6 +6,8 @@
 
 * [list_payments](#list_payments) - List payments
 * [create_payment](#create_payment) - Create payment
+* [get_setup_intent](#get_setup_intent) - Get setup intent
+* [cancel_setup_intent](#cancel_setup_intent) - Cancel setup intent
 * [get_payment](#get_payment) - Get payment
 * [update_payment](#update_payment) - Update payment
 * [delete_payment](#delete_payment) - Delete payment
@@ -39,6 +41,7 @@ with Flexprice(
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `currency`                                                                | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `destination_id`                                                          | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `destination_ids`                                                         | List[*str*]                                                               | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `destination_type`                                                        | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `end_time`                                                                | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
 | `expand`                                                                  | *Optional[str]*                                                           | :heavy_minus_sign:                                                        | N/A                                                                       |
@@ -121,6 +124,88 @@ with Flexprice(
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
 | models.errors.ErrorResponse         | 400                                 | application/json                    |
 | models.errors.ErrorResponse         | 500                                 | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## get_setup_intent
+
+Returns the live state of the customer's latest setup link. Razorpay only.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="getSetupIntent" method="get" path="/payments/customers/{id}/setup/intent" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.payments.get_setup_intent(id="<id>", provider="razorpay")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `id`                                                                    | *str*                                                                   | :heavy_check_mark:                                                      | Customer ID                                                             |
+| `provider`                                                              | [models.GetSetupIntentProvider](../../models/getsetupintentprovider.md) | :heavy_check_mark:                                                      | Payment provider                                                        |
+| `retries`                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)        | :heavy_minus_sign:                                                      | Configuration to override the default retry behavior of the client.     |
+
+### Response
+
+**[models.SetupIntentResponse](../../models/setupintentresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
+| models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
+
+## cancel_setup_intent
+
+Cancels the customer's latest setup link if it hasn't been completed. Razorpay only.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="cancelSetupIntent" method="post" path="/payments/customers/{id}/setup/intent/cancel" -->
+```python
+from flexprice import Flexprice
+
+
+with Flexprice(
+    api_key_auth="<YOUR_API_KEY_HERE>",
+) as f_client:
+
+    res = f_client.payments.cancel_setup_intent(id="<id>", provider="razorpay")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `id`                                                                          | *str*                                                                         | :heavy_check_mark:                                                            | Customer ID                                                                   |
+| `provider`                                                                    | [models.CancelSetupIntentProvider](../../models/cancelsetupintentprovider.md) | :heavy_check_mark:                                                            | Payment provider                                                              |
+| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
+
+### Response
+
+**[models.SetupIntentResponse](../../models/setupintentresponse.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.errors.ErrorResponse         | 400, 404                            | application/json                    |
 | models.errors.FlexpriceDefaultError | 4XX, 5XX                            | \*/\*                               |
 
 ## get_payment
