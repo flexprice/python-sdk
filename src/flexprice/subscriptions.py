@@ -1644,10 +1644,10 @@ class Subscriptions(BaseSDK):
         amount: Optional[str] = None,
         billing_model: Optional[models.BillingModel] = None,
         bucket_size: Optional[models.WindowSize] = None,
-        commitment_amount: Optional[float] = None,
+        commitment_amount: Optional[str] = None,
         commitment_duration: Optional[models.BillingPeriod] = None,
-        commitment_overage_factor: Optional[float] = None,
-        commitment_quantity: Optional[float] = None,
+        commitment_overage_factor: Optional[str] = None,
+        commitment_quantity: Optional[str] = None,
         commitment_time_buckets: Optional[
             Union[
                 Iterable[models.CommitmentBucketRequest],
@@ -1839,10 +1839,10 @@ class Subscriptions(BaseSDK):
         amount: Optional[str] = None,
         billing_model: Optional[models.BillingModel] = None,
         bucket_size: Optional[models.WindowSize] = None,
-        commitment_amount: Optional[float] = None,
+        commitment_amount: Optional[str] = None,
         commitment_duration: Optional[models.BillingPeriod] = None,
-        commitment_overage_factor: Optional[float] = None,
-        commitment_quantity: Optional[float] = None,
+        commitment_overage_factor: Optional[str] = None,
+        commitment_quantity: Optional[str] = None,
         commitment_time_buckets: Optional[
             Union[
                 Iterable[models.CommitmentBucketRequest],
@@ -6501,10 +6501,10 @@ class Subscriptions(BaseSDK):
         self,
         *,
         id: str,
-        commitment_amount: Optional[float] = None,
+        commitment_amount: Optional[str] = None,
         commitment_duration: Optional[models.BillingPeriod] = None,
-        commitment_overage_factor: Optional[float] = None,
-        commitment_quantity: Optional[float] = None,
+        commitment_overage_factor: Optional[str] = None,
+        commitment_quantity: Optional[str] = None,
         commitment_time_buckets: Optional[
             Union[
                 Iterable[models.CommitmentBucketRequest],
@@ -6525,7 +6525,7 @@ class Subscriptions(BaseSDK):
         ] = None,
         price_id: Optional[str] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
-        quantity: Optional[float] = None,
+        quantity: Optional[str] = None,
         start_date: Optional[datetime] = None,
         subscription_phase_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -6679,10 +6679,10 @@ class Subscriptions(BaseSDK):
         self,
         *,
         id: str,
-        commitment_amount: Optional[float] = None,
+        commitment_amount: Optional[str] = None,
         commitment_duration: Optional[models.BillingPeriod] = None,
-        commitment_overage_factor: Optional[float] = None,
-        commitment_quantity: Optional[float] = None,
+        commitment_overage_factor: Optional[str] = None,
+        commitment_quantity: Optional[str] = None,
         commitment_time_buckets: Optional[
             Union[
                 Iterable[models.CommitmentBucketRequest],
@@ -6703,7 +6703,7 @@ class Subscriptions(BaseSDK):
         ] = None,
         price_id: Optional[str] = None,
         proration_behavior: Optional[models.ProrationBehavior] = None,
-        quantity: Optional[float] = None,
+        quantity: Optional[str] = None,
         start_date: Optional[datetime] = None,
         subscription_phase_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
